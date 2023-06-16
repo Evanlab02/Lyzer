@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.API.DTOs;
+using RestSharp;
+using RestSharp.Authenticators;
+using System.Threading;
 
 namespace Lyzer_BE.API.Controllers
 {

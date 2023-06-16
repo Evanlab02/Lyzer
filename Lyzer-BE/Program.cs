@@ -31,4 +31,5 @@ app.Run();
 void ConfigureServices(WebApplicationBuilder builder)
 {
     builder.Services.AddScoped<IDriverService, DriverService>();
+    builder.Services.AddScoped<IScheduleService, ScheduleService>();
 }
