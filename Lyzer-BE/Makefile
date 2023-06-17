@@ -8,4 +8,7 @@ build:
 	dotnet build
 
 clean:
-	rm -rf bin/ obj/ dist/
+	rm -rf bin/ obj/ dist/ TestResults/
+
+test:
+	dotnet test
