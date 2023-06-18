@@ -14,7 +14,7 @@
 	- (Read the services.md to understand why we are using the interface instead of the concrete service)
 - Endpoint methods:
 	- Above your endpoint method in the controller, add the following property, with a comment above stating an example of the full endpoint URL.
-		`// GET api/driver/5`
+		`// GET api/{route-name}/5`
 		`[HttpGet("{id}")]`
 	- If your endpoint is returning an object, ensure that you have created a DTO accordingly.
 **Things to note**
