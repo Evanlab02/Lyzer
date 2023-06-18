@@ -20,7 +20,7 @@ namespace Lyzer_BE.API.Tests
                 .Returns(mockedDriver);
 
             DriverDTO? result = driverController.GetDriver(1);
-            Assert.AreEqual(mockedDriver, result);
+            Assert.That(result, Is.EqualTo(mockedDriver));
         }
     }
 }
