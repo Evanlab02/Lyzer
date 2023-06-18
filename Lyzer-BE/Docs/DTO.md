@@ -1,0 +1,11 @@
+﻿**Creating a DTO**
+- In `API.DTO`
+	- Create a DTO class that has all the properties that you require. 
+	- First check that a similar DTO hasn't been created
+		- If a similar DTO has been created, you can implement the already created DTO and add whatever extra properties you need to it.
+	- Ensure that all properties have a {get; set;} after the property name.
+	- DTO files can have multiple related DTOs inside of it.
+		- e.g. If I have a `ScheduleDTO`, I can also have a `Practice` object class inside of the file that can be used in the `ScheduleDTO`.
+	- If the DTO is to be used in a deserialization process from a RESTSharp request
+		- Make sure that you the \[JSONPropertyName] object property above each DTO property, if they have a different name.
+	- All DTO properties are to be written in PascalCase (Pascal Case is in Pascal Case as an example).
