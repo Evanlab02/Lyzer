@@ -8,7 +8,7 @@ build:
 	dotnet build
 
 clean:
-	rm -rf bin/ obj/ dist/ TestResults/
+	rm -rf bin/ obj/ dist/
 
 test:
-	dotnet test
+	dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover

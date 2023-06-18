@@ -1,4 +1,4 @@
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
@@ -13,11 +13,14 @@ namespace Lyzer_BE.API.Tests
         public void GetSchedule_ShouldReturnEntireSchedule()
         {
             // Arrange
-            var mockedSchedule = new ScheduleDTO { 
-                ScheduleData = new ScheduleDataDTO {
-                    ScheduleTable = new ScheduleTableDTO {
+            var mockedSchedule = new ScheduleDTO
+            {
+                ScheduleData = new ScheduleDataDTO
+                {
+                    ScheduleTable = new ScheduleTableDTO
+                    {
                         Events = new List<EventDTO> {
-                            new EventDTO { 
+                            new EventDTO {
                                 Date = "2021-03-28",
                                 Time = "15:00:00Z",
                                 FirstPractice = new SessionDTO {
@@ -40,7 +43,7 @@ namespace Lyzer_BE.API.Tests
                                     Date = "2021-03-27",
                                     Time = "16:30:00Z"
                                 }
-                            }, 
+                            },
                             new EventDTO {
                                 Date = "2021-04-18",
                                 Time = "14:00:00Z",
@@ -77,4 +80,3 @@ namespace Lyzer_BE.API.Tests
         }
     }
 }
-
