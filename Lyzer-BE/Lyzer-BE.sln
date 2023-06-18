@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyzer-BE", "Lyzer-BE.csproj", "{83E86924-D1BA-417D-A9C7-9D0BFE73B5D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyzer-BE.Tests", "..\LyzerBE.Tests\Lyzer-BE.Tests.csproj", "{818CD78F-866B-44F6-A782-9069E783B078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyzer-BE.Tests", "..\Lyzer-BE.Tests\Lyzer-BE.Tests.csproj", "{818CD78F-866B-44F6-A782-9069E783B078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
