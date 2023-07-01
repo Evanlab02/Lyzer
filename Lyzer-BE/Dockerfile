@@ -6,7 +6,7 @@ COPY appsettings.json /src/appsettings.json
 COPY Properties/ /src/Properties/
 COPY API/ /src/API/
 COPY Database/ /src/Database/
-COPY Scheduler/ /src/Scheduler
+COPY Schedulers/ /src/Schedulers/
 
 WORKDIR /src
 
