@@ -28,7 +28,7 @@ namespace Lyzer_BE.API.Services.Concrete
             foreach (EventDTO eventDTO in events)
             {
                 var endDateTime = DateTime.Parse(eventDTO.Date);
-                if (endDateTime >= today)
+                if (endDateTime > today)
                 {
                     nextEvent = eventDTO;
                     break;

@@ -7,6 +7,7 @@
     <RootNamespace>Lyzer_BE</RootNamespace>
   </PropertyGroup>
 
+
   <ItemGroup>
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
