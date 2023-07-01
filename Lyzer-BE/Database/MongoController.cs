@@ -19,6 +19,13 @@ namespace Lyzer_BE.Database
             _collection = _database.GetCollection<T>(collectionName);
         }
 
+        public MongoController(string databaseName, string collectionName)
+        {
+            CreateMongoDBClient();
+            _database = dbClient.GetDatabase(databaseName);
+            _collection = _database.GetCollection<T>(collectionName);
+        }
+
         private void CreateMongoDBClient()
         {
             string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
@@ -58,6 +65,18 @@ namespace Lyzer_BE.Database
             try
             {
                 _collection.InsertMany(documents);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+            }
+        }
+
+        public void InsertOneIntoCollection(T document)
+        {
+            try
+            {
+                _collection.InsertOne(document);
             }
             catch (Exception ex)
             {
