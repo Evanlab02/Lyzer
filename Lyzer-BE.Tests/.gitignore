@@ -290,3 +290,4 @@ __pycache__/
 
 dist/
 Coverage/
+.env

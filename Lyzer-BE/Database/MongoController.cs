@@ -28,7 +28,7 @@ namespace Lyzer_BE.Database
 
         private void CreateMongoDBClient()
         {
-            string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
+            string connectionUri = Environment.GetEnvironmentVariable("MONGODB_CONNECTION");
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
 
             // Set the ServerApi field of the settings object to Stable API version 1

@@ -8,10 +8,14 @@ namespace Lyzer_BE.API.Services.Concrete
     public class ScheduleService : IScheduleService
     {
         private readonly MongoController<RaceWeekendDTO> _mongoController;
-        public ScheduleService()
+        public ScheduleService(bool testing = false)
         {
-            _mongoController = new MongoController<RaceWeekendDTO>("Schedules");
+            if (!testing)
+            {
+                _mongoController = new MongoController<RaceWeekendDTO>("Schedules");
+            }   
         }
+
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule()
         {
             var options = new RestClientOptions("http://ergast.com/api/f1/");
