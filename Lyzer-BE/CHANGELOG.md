@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/Evanlab02/Lyzer/compare/v0.2.2...v0.2.3) (2023-07-01)
+
+
+### Bug Fixes
+
+* **Workflows:** Dockerfile path recognition ([0566d56](https://github.com/Evanlab02/Lyzer/commit/0566d56e2ee6c2d270e0dd88abae6bae348c84c6))
+
 ## [0.2.2](https://github.com/Evanlab02/Lyzer/compare/v0.2.1...v0.2.2) (2023-07-01)
 
 
