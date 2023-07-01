@@ -1,6 +1,4 @@
-﻿using dotenv.net.Utilities;
-using dotenv.net;
-using Lyzer_BE.API.DTOs;
+﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 

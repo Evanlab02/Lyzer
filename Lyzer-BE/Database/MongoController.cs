@@ -1,6 +1,5 @@
-﻿using MongoDB.Driver;
-using MongoDB.Bson;
-using dotenv.net.Utilities;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System.Diagnostics;
 
 namespace Lyzer_BE.Database
