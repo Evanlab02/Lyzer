@@ -46,6 +46,6 @@ jobs:
         run: |
           dotnet publish --configuration Release --output dist/
           zip -r UbuntuRelease.zip dist/
-          gh release create ${{ steps.release.outputs.tag_name }} UbuntuRelease.zip
+          gh release upload ${{ steps.release.outputs.tag_name }} UbuntuRelease.zip
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
