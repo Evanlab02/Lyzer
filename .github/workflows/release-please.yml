@@ -21,7 +21,6 @@ jobs:
           default-branch: trunk
       - name: Build image
         if: ${{ steps.release.outputs.releases_created }}
-        working-directory: Lyzer-BE/
         run: docker build -t lyzer:latest .
       - name: Install doctl
         if: ${{ steps.release.outputs.releases_created }}
