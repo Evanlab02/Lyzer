@@ -2,8 +2,6 @@ using dotenv.net;
 using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
-using Lyzer_BE.Database;
-using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +26,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (app.Environment.IsProduction())
+{
+    IHydrationService hydrationService = new HydrationService();
+    hydrationService.HydrateCurrentSchedule();
+}
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -40,4 +44,5 @@ void ConfigureServices(WebApplicationBuilder builder)
 {
     builder.Services.AddScoped<IDriverService, DriverService>();
     builder.Services.AddScoped<IScheduleService, ScheduleService>();
+    builder.Services.AddScoped<IHydrationService, HydrationService>();
 }
