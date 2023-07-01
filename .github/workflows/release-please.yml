@@ -19,3 +19,6 @@ jobs:
           command: manifest
           token: ${{secrets.GITHUB_TOKEN}}
           default-branch: trunk
+      - name: Deploy to Digital Ocean
+        if: ${{ steps.release.outputs.release_created }}
+        with:

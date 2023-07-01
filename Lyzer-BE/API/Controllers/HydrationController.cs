@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyzer_BE.API.Controllers
 {
-    [Route("api/hydration")]
+    [Route("api/hydrate")]
     [ApiController]
     public class HydrationController : ControllerBase
     {
