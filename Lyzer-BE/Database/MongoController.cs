@@ -8,7 +8,7 @@ namespace Lyzer_BE.Database
     public class MongoController<T>
     {
         private MongoClient dbClient;
-        
+
         private IMongoDatabase _database;
         private IMongoCollection<T> _collection;
 
@@ -18,7 +18,7 @@ namespace Lyzer_BE.Database
             _database = dbClient.GetDatabase("Lyzer");
             _collection = _database.GetCollection<T>(collectionName);
         }
-        
+
         private void CreateMongoDBClient()
         {
             string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
@@ -53,7 +53,7 @@ namespace Lyzer_BE.Database
             return _collection;
         }
 
-        public void InsertOneIntoCollection(List<T> documents)
+        public void InsertManyIntoCollection(List<T> documents)
         {
             try
             {

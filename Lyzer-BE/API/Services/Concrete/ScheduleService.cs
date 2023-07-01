@@ -8,7 +8,7 @@ namespace Lyzer_BE.API.Services.Concrete
     public class ScheduleService : IScheduleService
     {
         private readonly MongoController<RaceWeekendDTO> _mongoController;
-        public ScheduleService() 
+        public ScheduleService()
         {
             _mongoController = new MongoController<RaceWeekendDTO>("Schedules");
         }
