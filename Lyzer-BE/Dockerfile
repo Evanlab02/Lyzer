@@ -5,7 +5,8 @@ COPY Program.cs /src/Program.cs
 COPY appsettings.json /src/appsettings.json
 COPY Properties/ /src/Properties/
 COPY API/ /src/API/
-COPY Database /src/Database/
+COPY Database/ /src/Database/
+COPY Scheduler/ /src/Scheduler
 
 WORKDIR /src
 
