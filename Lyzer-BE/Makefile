@@ -12,3 +12,6 @@ clean:
 
 test:
 	dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+
+format:
+	dotnet format Lyzer-BE.csproj
