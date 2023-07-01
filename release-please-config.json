@@ -1,0 +1,7 @@
+{
+    "packages": {
+        "Lyzer-BE": {
+            "release-type": "simple"
+        }
+    }
+}
