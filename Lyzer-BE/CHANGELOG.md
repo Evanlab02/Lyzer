@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/Evanlab02/Lyzer/compare/v0.2.3...v0.2.4) (2023-07-01)
+
+
+### Bug Fixes
+
+* **Workflows:** Forgot to checkout ([e984205](https://github.com/Evanlab02/Lyzer/commit/e9842058fcf122dbba9da7403b1621c508d40cbc))
+
 ## [0.2.3](https://github.com/Evanlab02/Lyzer/compare/v0.2.2...v0.2.3) (2023-07-01)
 
 
