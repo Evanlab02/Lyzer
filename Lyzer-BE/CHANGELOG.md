@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/Evanlab02/Lyzer/compare/v0.2.5...v0.2.6) (2023-07-01)
+
+
+### Bug Fixes
+
+* **Workflows:** Whitespace ([3ddaef4](https://github.com/Evanlab02/Lyzer/commit/3ddaef43a2d9314f80ac00084c1104b10121fb26))
+
 ## [0.2.5](https://github.com/Evanlab02/Lyzer/compare/v0.2.4...v0.2.5) (2023-07-01)
 
 
