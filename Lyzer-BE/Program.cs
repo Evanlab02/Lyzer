@@ -2,6 +2,7 @@ using dotenv.net;
 using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
+using Lyzer_BE.Schedulers.Hydraters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,4 +46,7 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddScoped<IDriverService, DriverService>();
     builder.Services.AddScoped<IScheduleService, ScheduleService>();
     builder.Services.AddScoped<IHydrationService, HydrationService>();
+
+    //Scheduled Services
+    builder.Services.AddHostedService<CurrentScheduleHydrater>();
 }
