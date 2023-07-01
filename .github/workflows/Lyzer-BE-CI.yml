@@ -28,3 +28,6 @@ jobs:
       - name: Test
         working-directory: Lyzer-BE/
         run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --verbosity normal
+      - name: Build Release
+        working-directory: Lyzer-BE/
+        run: dotnet publish --configuration Release --output dist/
