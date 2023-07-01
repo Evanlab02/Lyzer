@@ -4,6 +4,6 @@ namespace Lyzer_BE.API.Services.Interfaces
 {
     public interface IHydrationService
     {
-        public ScheduleDTO HydrateCurrentSchedule();
+        public Task<ScheduleDTO> HydrateCurrentSchedule();
     }
 }
