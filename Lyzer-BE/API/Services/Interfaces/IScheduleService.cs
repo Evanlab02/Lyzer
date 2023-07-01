@@ -4,8 +4,8 @@ namespace Lyzer_BE.API.Services.Interfaces
 {
     public interface IScheduleService
     {
-        public Task<List<EventDTO>>? GetFullSchedule();
+        public Task<List<RaceWeekendDTO>>? GetFullSchedule();
 
-        public Task<EventDTO>? GetNextOrCurrentEvent();
+        public Task<RaceWeekendDTO>? GetNextOrCurrentEvent();
     }
 }

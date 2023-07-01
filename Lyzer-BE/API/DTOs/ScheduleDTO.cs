@@ -17,10 +17,10 @@ namespace Lyzer_BE.API.DTOs
     public class ScheduleTableDTO
     {
         [JsonPropertyName("Races")]
-        public List<EventDTO> Events { get; set; }
+        public List<RaceWeekendDTO> RaceWeekends { get; set; }
     }
 
-    public class EventDTO
+    public class RaceWeekendDTO
     {
         public string Round { get; set; }
         public string RaceName { get; set; }

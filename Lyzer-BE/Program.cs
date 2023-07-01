@@ -2,6 +2,7 @@ using dotenv.net;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
+using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigureServices(builder);
 
 DotEnv.Load();
-
-MongoController.CreateMongoDBClient();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

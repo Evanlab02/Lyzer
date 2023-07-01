@@ -11,7 +11,7 @@ namespace Lyzer_BE.Tests.API.Services
         public void GetFullSchedule_ShouldReturn22Events()
         {
             IScheduleService scheduleService = new ScheduleService();
-            List<EventDTO> events = scheduleService.GetFullSchedule().Result;
+            List<RaceWeekendDTO> events = scheduleService.GetFullSchedule().Result;
             Assert.That(events.Count, Is.EqualTo(22));
         }
 
@@ -20,7 +20,7 @@ namespace Lyzer_BE.Tests.API.Services
         {
             var today = DateTime.Now;
             IScheduleService scheduleService = new ScheduleService();
-            EventDTO events = scheduleService.GetNextOrCurrentEvent().Result;
+            RaceWeekendDTO events = scheduleService.GetNextOrCurrentEvent().Result;
             var endDateTime = DateTime.Parse(events.Date);
             Assert.That(today, Is.LessThan(endDateTime));
         }

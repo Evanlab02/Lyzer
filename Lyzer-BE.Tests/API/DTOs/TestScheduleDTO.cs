@@ -28,7 +28,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         [Test]
         public void GetDate_ShouldReturnDate()
         {
-            EventDTO EventDTO = new EventDTO();
+            RaceWeekendDTO EventDTO = new RaceWeekendDTO();
             EventDTO.Date = "2023-03-28";
             Assert.That(EventDTO.Date, Is.EqualTo("2023-03-28"));
         }
@@ -36,7 +36,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         [Test]
         public void GetTime_ShouldReturnTime()
         {
-            EventDTO EventDTO = new EventDTO();
+            RaceWeekendDTO EventDTO = new RaceWeekendDTO();
             EventDTO.Time = "17:00:00Z";
             Assert.That(EventDTO.Time, Is.EqualTo("17:00:00Z"));
         }
@@ -44,7 +44,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         [Test]
         public void GetRound_ShouldReturnRound()
         {
-            EventDTO EventDTO = new EventDTO();
+            RaceWeekendDTO EventDTO = new RaceWeekendDTO();
             EventDTO.Round = "1";
             Assert.That(EventDTO.Round, Is.EqualTo("1"));
         }
@@ -52,7 +52,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         [Test]
         public void GetRaceName_ShouldReturnRaceName()
         {
-            EventDTO EventDTO = new EventDTO();
+            RaceWeekendDTO EventDTO = new RaceWeekendDTO();
             EventDTO.RaceName = "Bahrain";
             Assert.That(EventDTO.RaceName, Is.EqualTo("Bahrain"));
         }
