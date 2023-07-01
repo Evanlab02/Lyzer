@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/Evanlab02/Lyzer/compare/v0.2.4...v0.2.5) (2023-07-01)
+
+
+### Bug Fixes
+
+* **Docker:** Removed unused dependency ([6d3f3ce](https://github.com/Evanlab02/Lyzer/commit/6d3f3ce107d652326455eb7a1ee387d2ddf3d644))
+
 ## [0.2.4](https://github.com/Evanlab02/Lyzer/compare/v0.2.3...v0.2.4) (2023-07-01)
 
 
