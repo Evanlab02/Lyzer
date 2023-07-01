@@ -20,26 +20,26 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           default-branch: trunk
       - name: Build image
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         working-directory: Lyzer-BE/
         run: docker build -t lyzer:latest .
       - name: Install doctl
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Log in to DO Container Registry
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         run: doctl registry login --expiry-seconds 600
       - name: Tag image
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         run: docker tag lyzer:latest \
           registry.digitalocean.com/lyzer-cr/lyzer:latest
       - name: Push image to DO Container Registry
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         run: docker push registry.digitalocean.com/lyzer-cr/lyzer:latest
       - name: Release asset to Github Releases
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         run: |
           dotnet publish --configuration Release --output dist/
           zip -r UbuntuRelease.zip dist/
