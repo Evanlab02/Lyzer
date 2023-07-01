@@ -24,7 +24,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Format
         working-directory: Lyzer-BE/
-        run: dotnet format --verify-no-changes .\Lyzer-BE.csproj
+        run: dotnet format --verify-no-changes Lyzer-BE.csproj
       - name: Test
         working-directory: Lyzer-BE/
         run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --verbosity normal
