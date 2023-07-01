@@ -16,7 +16,7 @@ namespace Lyzer_BE.API.Tests
             var driverServiceMock = new Mock<IDriverService>();
             var driverController = new DriverController(driverServiceMock.Object);
 
-            driverServiceMock.Setup(s => s.GetDriver(It.Is<int>(id => id == 1)))
+            driverServiceMock.Setup(service => service.GetDriver(It.Is<int>(id => id == 1)))
                 .Returns(mockedDriver);
 
             DriverDTO? result = driverController.GetDriver(1);
