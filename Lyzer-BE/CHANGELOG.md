@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.0](https://github.com/Evanlab02/Lyzer/compare/v0.1.0...v0.2.0) (2023-07-01)
+
+
+### Features
+
+* **Hydration:** Hydrate schedules through endpoint ([6962200](https://github.com/Evanlab02/Lyzer/commit/69622002bf13e5c19802ce83c6c4beccf0043494))
+* **Hydration:** setup hydration service. ([59aa20a](https://github.com/Evanlab02/Lyzer/commit/59aa20a10185cc3e28caf6c7e1ea44f50ee46c81))
+* **Scheduler:** Adding Scheduler folder with CurrentSchedule Scheduled Hydration. ([1bf2d93](https://github.com/Evanlab02/Lyzer/commit/1bf2d93a82e2ec12eab175040b404307c2e2d5fc))
+
+
+### Bug Fixes
+
+* cleanup ([40ba46d](https://github.com/Evanlab02/Lyzer/commit/40ba46d94d07bb410971fa10f4363faa429a6d09))
+* **Docker:** Docker now copies Database source files ([fdb0d04](https://github.com/Evanlab02/Lyzer/commit/fdb0d04ea4bf31320b940ee40f405d4126f59b33))
+* **Docker:** Fix Docker Images ([e81992b](https://github.com/Evanlab02/Lyzer/commit/e81992b0842ecaa1eb0261d52161412d81789a64))
+* Testing for Schedule Service ([b7274c6](https://github.com/Evanlab02/Lyzer/commit/b7274c6c9e538b62d0560f04e5aabd1ab2c5ac3f))
+
 ## 0.1.0 (2023-07-01)
 
 
