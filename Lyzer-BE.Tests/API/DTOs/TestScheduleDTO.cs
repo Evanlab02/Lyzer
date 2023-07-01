@@ -6,7 +6,7 @@ namespace Lyzer_BE.Tests.API.DTOs
     public class TestSessionDTO
     {
         [Test]
-        public void getDate_ShouldReturnDate()
+        public void GetDate_ShouldReturnDate()
         {
             SessionDTO sessionDTO = new SessionDTO();
             sessionDTO.Date = "2023-03-28";
@@ -14,7 +14,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         }
 
         [Test]
-        public void getTime_ShouldReturnTime()
+        public void GetTime_ShouldReturnTime()
         {
             SessionDTO sessionDTO = new SessionDTO();
             sessionDTO.Time = "17:00:00Z";
@@ -26,7 +26,7 @@ namespace Lyzer_BE.Tests.API.DTOs
     public class TestEventDTO
     {
         [Test]
-        public void getDate_ShouldReturnDate()
+        public void GetDate_ShouldReturnDate()
         {
             EventDTO EventDTO = new EventDTO();
             EventDTO.Date = "2023-03-28";
@@ -34,7 +34,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         }
 
         [Test]
-        public void getTime_ShouldReturnTime()
+        public void GetTime_ShouldReturnTime()
         {
             EventDTO EventDTO = new EventDTO();
             EventDTO.Time = "17:00:00Z";
@@ -42,7 +42,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         }
 
         [Test]
-        public void getRound_ShouldReturnRound()
+        public void GetRound_ShouldReturnRound()
         {
             EventDTO EventDTO = new EventDTO();
             EventDTO.Round = "1";
@@ -50,7 +50,7 @@ namespace Lyzer_BE.Tests.API.DTOs
         }
 
         [Test]
-        public void getRaceName_ShouldReturnRaceName()
+        public void GetRaceName_ShouldReturnRaceName()
         {
             EventDTO EventDTO = new EventDTO();
             EventDTO.RaceName = "Bahrain";
