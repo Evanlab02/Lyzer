@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/Evanlab02/Lyzer/compare/v0.2.6...v0.2.7) (2023-07-01)
+
+
+### Bug Fixes
+
+* **Workflows:** Github release asset ([d81cfe7](https://github.com/Evanlab02/Lyzer/commit/d81cfe71177b6b6c7012281ca38c74f154faa63c))
+
 ## [0.2.6](https://github.com/Evanlab02/Lyzer/compare/v0.2.5...v0.2.6) (2023-07-01)
 
 
