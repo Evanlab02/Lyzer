@@ -1,0 +1,27 @@
+name: Lyzer-BE CI
+
+on:
+  push:
+    branches: ["trunk"]
+  pull_request:
+    branches: ["trunk"]
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        working-directory: Lyzer-BE/
+        run: dotnet restore
+      - name: Build
+        working-directory: Lyzer-BE/
+        run: dotnet build --no-restore
+      - name: Test
+        working-directory: Lyzer-BE/
+        run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --verbosity normal
