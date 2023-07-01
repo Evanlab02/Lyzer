@@ -83,5 +83,18 @@ namespace Lyzer_BE.Database
                 Debug.WriteLine($"LyzerDB: {ex}");
             }
         }
+
+
+        public void DeleteManyFromCollection(FilterDefinition<T> filter)
+        {
+            try
+            {
+                _collection.DeleteMany(filter);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+            }
+        }
     }
 }

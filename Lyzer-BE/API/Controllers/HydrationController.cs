@@ -16,8 +16,8 @@ namespace Lyzer_BE.API.Controllers
         }
 
         // GET api/hydration/schedule
-        [HttpGet]
-        public ScheduleDTO HydrateCurrentSchedule()
+        [HttpGet("schedule")]
+        public Task<ScheduleDTO> HydrateCurrentSchedule()
         {
             return _hydrationService.HydrateCurrentSchedule();
         }
