@@ -13,7 +13,7 @@ namespace Lyzer_BE.API.Services.Concrete
             if (!testing)
             {
                 _mongoController = new MongoController<RaceWeekendDTO>("Schedules");
-            }   
+            }
         }
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule()
