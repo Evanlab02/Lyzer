@@ -13,8 +13,8 @@ namespace Lyzer_BE.API.Tests
         {
             // Arrange
 
-            var Events = new List<EventDTO> {
-                new EventDTO {
+            var Events = new List<RaceWeekendDTO> {
+                new RaceWeekendDTO {
                     Date = "2021-03-28",
                     Time = "15:00:00Z",
                     FirstPractice = new SessionDTO {
@@ -38,7 +38,7 @@ namespace Lyzer_BE.API.Tests
                         Time = "16:30:00Z"
                     }
                 },
-                new EventDTO {
+                new RaceWeekendDTO {
                     Date = "2021-04-18",
                     Time = "14:00:00Z",
                     FirstPractice = new SessionDTO {
@@ -67,14 +67,14 @@ namespace Lyzer_BE.API.Tests
             scheduleServiceMock.Setup(s => s.GetFullSchedule())
                 .ReturnsAsync(Events);
 
-            List<EventDTO>? result = scheduleController.GetSchedule().Result;
+            List<RaceWeekendDTO>? result = scheduleController.GetSchedule().Result;
             Assert.That(result, Is.EqualTo(Events));
         }
 
         [Test]
         public void GetNextEvent_ShouldReturnNextEvent()
         {
-            var Event = new EventDTO
+            var Event = new RaceWeekendDTO
             {
                 Date = "2021-03-28",
                 Time = "15:00:00Z",
@@ -112,7 +112,7 @@ namespace Lyzer_BE.API.Tests
             scheduleServiceMock.Setup(s => s.GetNextOrCurrentEvent())
                 .ReturnsAsync(Event);
 
-            EventDTO? result = scheduleController.GetNextEvent().Result;
+            RaceWeekendDTO? result = scheduleController.GetNextEvent().Result;
             Assert.That(result, Is.EqualTo(Event));
         }
     }

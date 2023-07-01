@@ -1,5 +1,9 @@
+using dotenv.net;
+using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
+using Lyzer_BE.Database;
+using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigureServices(builder);
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -16,6 +21,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    DotEnv.Load();
+    string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
+    Environment.SetEnvironmentVariable("MONGODB_CONNECTION", connectionUri);
     app.UseSwagger();
     app.UseSwaggerUI();
 }

@@ -17,13 +17,13 @@ namespace Lyzer_BE.API.Controllers
 
         // GET api/schedule
         [HttpGet("current")]
-        public Task<List<EventDTO>>? GetSchedule()
+        public Task<List<RaceWeekendDTO>>? GetSchedule()
         {
             return _scheduleService.GetFullSchedule();
         }
 
         [HttpGet("next")]
-        public Task<EventDTO>? GetNextEvent()
+        public Task<RaceWeekendDTO>? GetNextEvent()
         {
             return _scheduleService.GetNextOrCurrentEvent();
         }
