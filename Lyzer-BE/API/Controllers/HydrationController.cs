@@ -16,10 +16,16 @@ namespace Lyzer_BE.API.Controllers
         }
 
         // GET api/hydration/schedule
-        [HttpGet("schedule")]
+        [HttpGet("schedule/current")]
         public Task<ScheduleDTO> HydrateCurrentSchedule()
         {
             return _hydrationService.HydrateCurrentSchedule();
+        }
+
+        [HttpGet("schedule/next")]
+        public Task<ScheduleDTO> HydrateFollowingYearSchedule()
+        {
+            return _hydrationService.HydrateFollowingYearSchedule();
         }
     }
 }

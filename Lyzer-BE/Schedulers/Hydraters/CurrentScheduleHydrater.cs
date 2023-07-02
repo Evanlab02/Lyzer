@@ -13,6 +13,7 @@ namespace Lyzer_BE.Schedulers.Hydraters
             {
                 await Task.Delay(TimeSpan.FromDays(30), stoppingToken); // Delay between each run
                 hydrationService.HydrateCurrentSchedule();
+                hydrationService.HydrateFollowingYearSchedule();
             }
         }
     }
