@@ -35,9 +35,7 @@ namespace Lyzer_BE.API.Services.Concrete
                 Time = "00:00:00",
             };
 
-            _mongoController.SetCollection(today.Year.ToString());
             var events = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-
 
             foreach (RaceWeekendDTO eventDTO in events)
             {
