@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System.Text.Json.Serialization;
 
 namespace Lyzer_BE.API.DTOs
 {
@@ -20,6 +21,7 @@ namespace Lyzer_BE.API.DTOs
         public List<RaceWeekendDTO> RaceWeekends { get; set; }
     }
 
+    [BsonIgnoreExtraElements]
     public class RaceWeekendDTO
     {
         public string Round { get; set; }
