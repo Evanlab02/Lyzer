@@ -22,7 +22,7 @@ namespace Lyzer_BE.API.Controllers
             return _scheduleService.GetFullSchedule();
         }
 
-        [HttpGet("race/next")]
+        [HttpGet("/current/race/next")]
         public Task<RaceWeekendDTO>? GetNextEvent()
         {
             return _scheduleService.GetNextOrCurrentEvent();
