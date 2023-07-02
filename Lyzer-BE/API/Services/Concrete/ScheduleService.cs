@@ -1,49 +1,45 @@
 ﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
-using RestSharp;
+using MongoDB.Driver;
 
 namespace Lyzer_BE.API.Services.Concrete
 {
     public class ScheduleService : IScheduleService
     {
-        private readonly MongoController<RaceWeekendDTO> _mongoController;
+        private readonly MongoController<RaceWeekendDTO> _mongoControllerCurrent;
+        private readonly MongoController<RaceWeekendDTO> _mongoControllerAll;
         public ScheduleService(bool testing = false)
         {
             if (!testing)
             {
-                _mongoController = new MongoController<RaceWeekendDTO>("Schedules");
+                _mongoControllerCurrent = new MongoController<RaceWeekendDTO>("Current Schedules");
+                _mongoControllerAll = new MongoController<RaceWeekendDTO>("All Schedules");
             }
         }
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule()
         {
-            var options = new RestClientOptions("http://ergast.com/api/f1/");
-            var client = new RestClient(options);
-            var request = new RestRequest($"current.json");
-            var response = await client.GetAsync<ScheduleDTO>(request);
-            return response.ScheduleData.ScheduleTable.RaceWeekends;
+            return await _mongoControllerCurrent.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
         }
 
         public async Task<RaceWeekendDTO>? GetNextOrCurrentEvent()
         {
-            var options = new RestClientOptions("http://ergast.com/api/f1/");
-            var client = new RestClient(options);
-            var request = new RestRequest($"current.json");
-            var response = await client.GetAsync<ScheduleDTO>(request);
-            var events = response.ScheduleData.ScheduleTable.RaceWeekends;
+            var events = await _mongoControllerCurrent.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
             RaceWeekendDTO nextEvent = new RaceWeekendDTO();
             var today = DateTime.Now;
             foreach (RaceWeekendDTO eventDTO in events)
             {
-                var endDateTime = DateTime.Parse(eventDTO.Date);
+                var endDateTime = DateTime.Parse($"{eventDTO.Date} {eventDTO.Time}").AddHours(2.5);
                 if (endDateTime > today)
                 {
                     nextEvent = eventDTO;
                     break;
                 }
             }
+            //Edge case: someway to account for the last race, what do we return then?
+
             return nextEvent;
         }
     }
