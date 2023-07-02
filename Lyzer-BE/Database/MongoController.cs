@@ -95,5 +95,36 @@ namespace Lyzer_BE.Database
                 Debug.WriteLine($"LyzerDB: {ex}");
             }
         }
+
+        public async Task<List<T>> FindManyFromCollection(FilterDefinition<T> filter)
+        {
+            List<T> result = new List<T>();
+            try
+            {
+                result = await _collection.Find(filter).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+            }
+
+            return result;
+        }
+
+        public async Task<T?> FindOneFromCollection(FilterDefinition<T> filter)
+        {
+            T? result = default(T);
+
+            try
+            {
+                result = await _collection.Find(filter).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+            }
+
+            return result;
+        }
     }
 }
