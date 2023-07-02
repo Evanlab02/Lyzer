@@ -2,7 +2,6 @@
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
 using MongoDB.Driver;
-using RestSharp;
 
 namespace Lyzer_BE.API.Services.Concrete
 {
