@@ -62,10 +62,7 @@ namespace Lyzer_BE.Database
         public async Task<bool> SetCollection(string collectionName)
         {
             bool collectionExists = await DoesCollectionExist(collectionName);
-
-            if (collectionExists)
-                _collection = _database.GetCollection<T>(collectionName);
-
+            _collection = _database.GetCollection<T>(collectionName);
             return collectionExists;
         }
 

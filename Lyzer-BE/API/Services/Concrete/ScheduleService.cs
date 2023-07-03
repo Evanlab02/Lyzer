@@ -18,33 +18,22 @@ namespace Lyzer_BE.API.Services.Concrete
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year)
         {
+            if (year.Equals("current"))
+            {
+                year = DateTime.Now.Year.ToString();
+            }
+            else
+            {
+                await _mongoController.SetCollection(year);
+            }
+
             if (
-                !year.Equals("current") &&
-                !String.IsNullOrEmpty(year) &&
-                Int32.Parse(year) >= 1950 &&
-                Int32.Parse(year) <= DateTime.Now.AddYears(1).Year
+                !string.IsNullOrEmpty(year) &&
+                int.Parse(year) >= 1950 &&
+                int.Parse(year) <= DateTime.Now.AddYears(1).Year
             )
             {
-                var collectionExists = await _mongoController.SetCollection(year);
-
-                var hydratedSchedule = new ScheduleDTO();
-
-                if (!collectionExists)
-                {
-                    hydratedSchedule = await _hydrationService.HydrateSchedule(year, _mongoController);
-                }
-
-                List<RaceWeekendDTO> schedule = new();
-
-                if (!collectionExists)
-                {
-                    schedule = hydratedSchedule.ScheduleData.ScheduleTable.RaceWeekends;
-                }
-                else
-                {
-                    schedule = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-                }
-
+                List<RaceWeekendDTO> schedule = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
                 if (schedule.Count == 0)
                 {
@@ -52,17 +41,9 @@ namespace Lyzer_BE.API.Services.Concrete
                     schedule = result.ScheduleData.ScheduleTable.RaceWeekends;
                 }
 
-                await _mongoController.SetCollection(DateTime.Now.Year.ToString());
-
                 return schedule;
             }
-            else if (year.Equals("current"))
-            {
-                return await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-            }
-
             //Throw some exception once exception handler is created.
-
             return new List<RaceWeekendDTO>();
         }
 
@@ -77,9 +58,12 @@ namespace Lyzer_BE.API.Services.Concrete
                 Time = "00:00:00",
             };
 
-            var raceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
+            var currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
+            var nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
-            foreach (RaceWeekendDTO raceWeekendDTO in raceWeekends)
+            var allRaceWeekends = currentYearRaceWeekends.Concat(nextYearRaceWeekends).ToList();
+
+            foreach (RaceWeekendDTO raceWeekendDTO in allRaceWeekends)
             {
                 var nextRWDatetime = DateTime.Parse($"{nextRaceWeekend.Date} {nextRaceWeekend.Time}").AddHours(2.5);
                 var endDateTime = DateTime.Parse($"{raceWeekendDTO.Date} {raceWeekendDTO.Time}").AddHours(2.5);
@@ -89,23 +73,6 @@ namespace Lyzer_BE.API.Services.Concrete
                     nextRaceWeekend = raceWeekendDTO;
                 }
             };
-
-            if (nextRaceWeekend.Date == $"{twoYearsFromNow.Year}-01-01")
-            {
-                await _mongoController.SetCollection((today.Year + 1).ToString());
-                var nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-
-                foreach (RaceWeekendDTO raceWeekendDTO in nextYearRaceWeekends)
-                {
-                    var nextRWDatetime = DateTime.Parse($"{nextRaceWeekend.Date} {nextRaceWeekend.Time}").AddHours(2.5);
-                    var endDateTime = DateTime.Parse($"{raceWeekendDTO.Date} {raceWeekendDTO.Time}").AddHours(2.5);
-
-                    if (endDateTime > today && nextRWDatetime > endDateTime)
-                    {
-                        nextRaceWeekend = raceWeekendDTO;
-                    }
-                };
-            }
 
             return nextRaceWeekend;
         }

@@ -8,57 +8,7 @@ namespace Lyzer_BE.API.Services.Concrete
 {
     public class HydrationService : IHydrationService
     {
-        public async Task<ScheduleDTO> HydrateCurrentSchedule()
-        {
-            var options = new RestClientOptions("http://ergast.com/api/f1/");
-            var client = new RestClient(options);
-            var request = new RestRequest($"current.json");
-            var response = await client.GetAsync<ScheduleDTO>(request);
-
-            MongoController<RaceWeekendDTO> mongoController = new("Schedules", DateTime.Now.Year.ToString());
-            var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
-            mongoController.DeleteManyFromCollection(filterValues);
-
-            mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
-
-            return response;
-        }
-
-        public async Task<ScheduleDTO> HydrateFollowingYearSchedule()
-        {
-            var nextYear = DateTime.Now.AddYears(1).Year.ToString();
-
-            var options = new RestClientOptions("http://ergast.com/api/f1/");
-            var client = new RestClient(options);
-            var request = new RestRequest($"{nextYear}.json");
-            var response = await client.GetAsync<ScheduleDTO>(request);
-
-            if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
-            {
-                MongoController<RaceWeekendDTO> mongoController = new("Schedules", nextYear);
-
-                bool collectionExists = await mongoController.DoesCollectionExist(nextYear);
-
-                if (!collectionExists)
-                {
-                    await mongoController.CreateCollection(nextYear);
-                }
-                else
-                {
-                    var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
-                    mongoController.DeleteManyFromCollection(filterValues);
-                }
-
-                if (response.ScheduleData.ScheduleTable.RaceWeekends.Count != 0)
-                {
-                    mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
-                }
-            }
-
-            return response;
-        }
-
-        public async Task<ScheduleDTO> HydrateSchedule(string year, MongoController<RaceWeekendDTO>? mongoController = null)
+        public async Task<ScheduleDTO> HydrateSchedule(string year)
         {
             var options = new RestClientOptions("http://ergast.com/api/f1/");
             var client = new RestClient(options);
@@ -68,35 +18,13 @@ namespace Lyzer_BE.API.Services.Concrete
             //TODO: Move duplicated code into method that can be used by other hydration methods.
             if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
             {
-                if (mongoController == null)
-                    mongoController = new("Schedules", year);
-
-                bool collectionExists = await mongoController.DoesCollectionExist(year);
-
-                if (!collectionExists)
-                {
-                    await mongoController.CreateCollection(year);
-                }
-                else
-                {
-                    var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
-                    mongoController.DeleteManyFromCollection(filterValues);
-                }
-
-                if (response.ScheduleData.ScheduleTable.RaceWeekends.Count != 0)
-                {
-                    mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
-                }
-
-                await mongoController.SetCollection(DateTime.Now.Year.ToString());
+                MongoController<RaceWeekendDTO> mongoController = new("Schedules", year);
+                var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
+                mongoController.DeleteManyFromCollection(filterValues);
+                mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
             }
 
             return response;
-        }
-
-        public async Task<ScheduleDTO> HydrateSchedule(string year)
-        {
-            return await HydrateSchedule(year, null);
         }
     }
 }

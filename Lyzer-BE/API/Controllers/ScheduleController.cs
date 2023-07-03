@@ -27,7 +27,7 @@ namespace Lyzer_BE.API.Controllers
             return _scheduleService.GetFullSchedule(year);
         }
 
-        [HttpGet("/current/raceweekend/next")]
+        [HttpGet("current/raceweekend/next")]
         public Task<RaceWeekendDTO>? GetNextRaceWeekend()
         {
             return _scheduleService.GetNextOrCurrentRaceWeekend();
