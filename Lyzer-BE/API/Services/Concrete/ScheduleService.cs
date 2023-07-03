@@ -45,7 +45,7 @@ namespace Lyzer_BE.API.Services.Concrete
                 {
                     schedule = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
                 }
-                    
+
 
                 if (schedule.Count == 0)
                 {

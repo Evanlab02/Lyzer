@@ -1,8 +1,4 @@
-﻿using Lyzer_BE.API.DTOs;
-using Lyzer_BE.API.Services.Concrete;
-using Lyzer_BE.API.Services.Interfaces;
-
-namespace Lyzer_BE.Tests.API.Services
+﻿namespace Lyzer_BE.Tests.API.Services
 {
     [TestFixture]
     public class TestScheduleService
