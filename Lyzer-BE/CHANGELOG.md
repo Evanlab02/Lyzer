@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.3.0](https://github.com/Evanlab02/Lyzer/compare/v0.2.7...v0.3.0) (2023-07-03)
+
+
+### Features
+
+* **Hydration:** Can now hydrate next season data ([a5ae4ca](https://github.com/Evanlab02/Lyzer/commit/a5ae4ca4113b311444850af9d287b0b8a57ca691))
+* **MongoDB:** FindMany and FindOne ([fc885de](https://github.com/Evanlab02/Lyzer/commit/fc885de38fa8e20f41e31a6bcd9e7d771f8e2304))
+* **Mongo:** Updating SetCollection and new collection methods ([1215c0c](https://github.com/Evanlab02/Lyzer/commit/1215c0ce18556d074d1e0d3f7a150d6f35c68634))
+* **Schedule:** Flexible schedule endpoint created ([ec9b87f](https://github.com/Evanlab02/Lyzer/commit/ec9b87f517e6f38bb92fa51ced5bbc2f2ab76723))
+
+
+### Bug Fixes
+
+* **Hydration:** HydateSchedule method updated to use mongoController object instead of always creating new ([26a3cce](https://github.com/Evanlab02/Lyzer/commit/26a3cce9969f14ee24969b8f2f4c31301713596f))
+* **MongoDB:** Converted logic for new database-collection structure ([00badb1](https://github.com/Evanlab02/Lyzer/commit/00badb1612091392894fb0b438fd3782198ac320))
+* **Schedule:** Can now get schedule for current or next year. If failed, returns default value ([d05e18d](https://github.com/Evanlab02/Lyzer/commit/d05e18d948ccddd819ee8e37ef1a477c6f41e3ea))
+* **Schedule:** Updated after hydration fix ([8ea3cbb](https://github.com/Evanlab02/Lyzer/commit/8ea3cbbcac5828b928584ae48c4ab20232b85aa4))
+
 ## [0.2.7](https://github.com/Evanlab02/Lyzer/compare/v0.2.6...v0.2.7) (2023-07-01)
 
 
