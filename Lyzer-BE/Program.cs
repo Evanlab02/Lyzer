@@ -31,6 +31,7 @@ if (app.Environment.IsProduction())
 {
     IHydrationService hydrationService = new HydrationService();
     hydrationService.HydrateCurrentSchedule();
+    hydrationService.HydrateFollowingYearSchedule();
 }
 
 app.UseHttpsRedirection();

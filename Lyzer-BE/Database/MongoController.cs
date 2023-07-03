@@ -59,6 +59,11 @@ namespace Lyzer_BE.Database
             return _collection;
         }
 
+        public void SetCollection(string collectionName)
+        {
+            _collection = _database.GetCollection<T>(collectionName);
+        }
+
         public void InsertManyIntoCollection(List<T> documents)
         {
             try
