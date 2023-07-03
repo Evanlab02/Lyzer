@@ -3,52 +3,65 @@ using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Schedulers.Hydraters;
+using System.Diagnostics.CodeAnalysis;
 
-var builder = WebApplication.CreateBuilder(args);
+App program = new();
+program.main(args);
 
-// Add services to the container.
-ConfigureServices(builder);
+[ExcludeFromCodeCoverage]
+public class App
+{ 
+    public void main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+        // Add services to the container.
+        ConfigureServices(builder);
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        builder.Services.AddControllers();
 
-var app = builder.Build();
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    DotEnv.Load();
-    string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
-    Environment.SetEnvironmentVariable("MONGODB_CONNECTION", connectionUri);
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+        var app = builder.Build();
 
-if (app.Environment.IsProduction())
-{
-    var year = DateTime.Now.Year;
-    IHydrationService hydrationService = HydrationService.Instance;
-    hydrationService.HydrateSchedule(year.ToString());
-    hydrationService.HydrateSchedule((year + 1).ToString());
-}
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            DotEnv.Load();
+            string connectionUri = EnvReader.GetStringValue("MONGODB_CONNECTION");
+            Environment.SetEnvironmentVariable("MONGODB_CONNECTION", connectionUri);
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
 
-app.UseHttpsRedirection();
+        if (app.Environment.IsProduction())
+        {
+            var year = DateTime.Now.Year;
+            IHydrationService hydrationService = HydrationService.Instance;
+            hydrationService.HydrateSchedule(year.ToString());
+            hydrationService.HydrateSchedule((year + 1).ToString());
+        }
 
-app.UseAuthorization();
+        app.UseHttpsRedirection();
 
-app.MapControllers();
+        app.UseAuthorization();
 
-app.Run();
+        app.MapControllers();
 
-void ConfigureServices(WebApplicationBuilder builder)
-{
-    builder.Services.AddSingleton<IHydrationService, HydrationService>();
-    builder.Services.AddScoped<IDriverService, DriverService>();
-    builder.Services.AddScoped<IScheduleService, ScheduleService>();
+        app.Run();
 
-    //Scheduled Services
-    builder.Services.AddHostedService<CurrentScheduleHydrater>();
-}
+        void ConfigureServices(WebApplicationBuilder builder)
+        {
+            builder.Services.AddSingleton<IHydrationService, HydrationService>();
+            builder.Services.AddScoped<IDriverService, DriverService>();
+            builder.Services.AddScoped<IScheduleService, ScheduleService>();
+
+            //Scheduled Services
+            builder.Services.AddHostedService<CurrentScheduleHydrater>();
+        }
+    }
+} 
+
+
