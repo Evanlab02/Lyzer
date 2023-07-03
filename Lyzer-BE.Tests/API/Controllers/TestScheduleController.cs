@@ -64,10 +64,10 @@ namespace Lyzer_BE.API.Tests
             var scheduleServiceMock = new Mock<IScheduleService>();
             var scheduleController = new ScheduleController(scheduleServiceMock.Object);
 
-            scheduleServiceMock.Setup(s => s.GetFullSchedule())
+            scheduleServiceMock.Setup(s => s.GetFullSchedule("current"))
                 .ReturnsAsync(Events);
 
-            List<RaceWeekendDTO>? result = scheduleController.GetSchedule().Result;
+            List<RaceWeekendDTO>? result = scheduleController.GetCurrent().Result;
             Assert.That(result, Is.EqualTo(Events));
         }
 
@@ -109,10 +109,10 @@ namespace Lyzer_BE.API.Tests
             var scheduleServiceMock = new Mock<IScheduleService>();
             var scheduleController = new ScheduleController(scheduleServiceMock.Object);
 
-            scheduleServiceMock.Setup(s => s.GetNextOrCurrentEvent())
+            scheduleServiceMock.Setup(s => s.GetNextOrCurrentRaceWeekend())
                 .ReturnsAsync(Event);
 
-            RaceWeekendDTO? result = scheduleController.GetNextEvent().Result;
+            RaceWeekendDTO? result = scheduleController.GetNextRaceWeekend().Result;
             Assert.That(result, Is.EqualTo(Event));
         }
     }

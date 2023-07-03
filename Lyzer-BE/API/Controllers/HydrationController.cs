@@ -19,13 +19,15 @@ namespace Lyzer_BE.API.Controllers
         [HttpGet("schedule/current")]
         public Task<ScheduleDTO> HydrateCurrentSchedule()
         {
-            return _hydrationService.HydrateCurrentSchedule();
+            var year = DateTime.Now.Year;
+            return _hydrationService.HydrateSchedule(year.ToString());
         }
 
         [HttpGet("schedule/next")]
         public Task<ScheduleDTO> HydrateFollowingYearSchedule()
         {
-            return _hydrationService.HydrateFollowingYearSchedule();
+            var year = DateTime.Now.Year + 1;
+            return _hydrationService.HydrateSchedule(year.ToString());
         }
     }
 }

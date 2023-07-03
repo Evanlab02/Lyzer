@@ -15,17 +15,22 @@ namespace Lyzer_BE.API.Controllers
             _scheduleService = scheduleService;
         }
 
-        // GET api/schedule
         [HttpGet("current")]
-        public Task<List<RaceWeekendDTO>>? GetSchedule()
+        public Task<List<RaceWeekendDTO>>? GetCurrent()
         {
             return _scheduleService.GetFullSchedule();
         }
 
-        [HttpGet("/current/race/next")]
-        public Task<RaceWeekendDTO>? GetNextEvent()
+        [HttpGet("{year}")]
+        public Task<List<RaceWeekendDTO>>? GetScheduleForYear(string year)
         {
-            return _scheduleService.GetNextOrCurrentEvent();
+            return _scheduleService.GetFullSchedule(year);
+        }
+
+        [HttpGet("current/raceweekend/next")]
+        public Task<RaceWeekendDTO>? GetNextRaceWeekend()
+        {
+            return _scheduleService.GetNextOrCurrentRaceWeekend();
         }
 
     }

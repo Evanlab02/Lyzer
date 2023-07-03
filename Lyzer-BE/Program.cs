@@ -29,9 +29,10 @@ if (app.Environment.IsDevelopment())
 
 if (app.Environment.IsProduction())
 {
+    var year = DateTime.Now.Year;
     IHydrationService hydrationService = new HydrationService();
-    hydrationService.HydrateCurrentSchedule();
-    hydrationService.HydrateFollowingYearSchedule();
+    hydrationService.HydrateSchedule(year.ToString());
+    hydrationService.HydrateSchedule((year + 1).ToString());
 }
 
 app.UseHttpsRedirection();

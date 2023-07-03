@@ -59,9 +59,46 @@ namespace Lyzer_BE.Database
             return _collection;
         }
 
-        public void SetCollection(string collectionName)
+        public async Task<bool> SetCollection(string collectionName)
         {
+            bool collectionExists = await DoesCollectionExist(collectionName);
             _collection = _database.GetCollection<T>(collectionName);
+            return collectionExists;
+        }
+
+        public async Task<bool> CreateCollection(string collectionName)
+        {
+            bool collectionExists = await DoesCollectionExist(collectionName);
+
+            if (!collectionExists)
+            {
+                await _database.CreateCollectionAsync(collectionName);
+            }
+
+            return collectionExists;
+        }
+        public async Task<bool> DeleteCollection(string collectionName)
+        {
+            bool collectionExists = await DoesCollectionExist(collectionName);
+
+            if (collectionExists)
+            {
+                await _database.DropCollectionAsync(collectionName);
+            }
+
+            return collectionExists;
+        }
+
+        public async Task<bool> DoesCollectionExist(string collectionName)
+        {
+            var collections = _database.ListCollectionNamesAsync().Result.ToList();
+
+            if (!collections.Any(x => x.Equals(collectionName)))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void InsertManyIntoCollection(List<T> documents)

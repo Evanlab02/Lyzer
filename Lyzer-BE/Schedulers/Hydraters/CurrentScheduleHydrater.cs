@@ -12,8 +12,9 @@ namespace Lyzer_BE.Schedulers.Hydraters
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(TimeSpan.FromDays(30), stoppingToken); // Delay between each run
-                hydrationService.HydrateCurrentSchedule();
-                hydrationService.HydrateFollowingYearSchedule();
+                var year = DateTime.Now.Year;
+                hydrationService.HydrateSchedule(year.ToString());
+                hydrationService.HydrateSchedule((year + 1).ToString());
             }
         }
     }
