@@ -59,9 +59,49 @@ namespace Lyzer_BE.Database
             return _collection;
         }
 
-        public void SetCollection(string collectionName)
+        public bool SetCollection(string collectionName)
         {
-            _collection = _database.GetCollection<T>(collectionName);
+            bool collectionExists = DoesCollectionExist(collectionName);
+
+            if (collectionExists)
+                _collection = _database.GetCollection<T>(collectionName);
+
+            return collectionExists;
+        }
+
+        public bool CreateCollection(string collectionName)
+        {
+            bool collectionExists = DoesCollectionExist(collectionName);
+
+            if (!collectionExists)
+            {
+                _database.CreateCollection(collectionName);
+            }
+
+            return collectionExists;
+        }
+        public bool DeleteCollection(string collectionName)
+        {
+            bool collectionExists = DoesCollectionExist(collectionName);
+
+            if (collectionExists)
+            {
+                _database.DropCollection(collectionName);
+            }
+
+            return collectionExists;
+        }
+
+        public bool DoesCollectionExist(string collectionName)
+        {
+            var collections = _database.ListCollectionNames().ToList();
+
+            if (!collections.Any(x => x.Equals(collectionName)))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void InsertManyIntoCollection(List<T> documents)
