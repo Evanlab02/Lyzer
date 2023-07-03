@@ -27,19 +27,18 @@ namespace Lyzer_BE.API.Services.Concrete
             {
                 var collectionExists = await _mongoController.SetCollection(year);
 
-                var tempSchedule = new ScheduleDTO();
+                var hydratedSchedule = new ScheduleDTO();
 
                 if (!collectionExists)
                 {
-                    await _mongoController.CreateCollection(year);
-                    tempSchedule = await _hydrationService.HydrateSchedule(year);
+                    hydratedSchedule = await _hydrationService.HydrateSchedule(year, _mongoController);
                 }
 
                 List<RaceWeekendDTO> schedule = new();
 
                 if (!collectionExists)
                 {
-                    schedule = tempSchedule.ScheduleData.ScheduleTable.RaceWeekends;
+                    schedule = hydratedSchedule.ScheduleData.ScheduleTable.RaceWeekends;
                 }
                 else
                 {
