@@ -1,26 +1,31 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace Lyzer_BE.API.DTOs
 {
+    [ExcludeFromCodeCoverage]
     public class ScheduleDTO
     {
         [JsonPropertyName("MRData")]
         public ScheduleDataDTO ScheduleData { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     public class ScheduleDataDTO
     {
         [JsonPropertyName("RaceTable")]
         public ScheduleTableDTO ScheduleTable { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     public class ScheduleTableDTO
     {
         [JsonPropertyName("Races")]
         public List<RaceWeekendDTO> RaceWeekends { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     [BsonIgnoreExtraElements]
     public class RaceWeekendDTO
     {
@@ -35,6 +40,7 @@ namespace Lyzer_BE.API.DTOs
         public SessionDTO Sprint { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     public class SessionDTO
     {
         public string Date { get; set; }

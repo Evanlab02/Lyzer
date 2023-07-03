@@ -1,5 +1,5 @@
 clean:
-	rm -rf TestResults/ bin/ obj/
+	rm -rf TestResults/ Coverage/
 
 test:
 	dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover

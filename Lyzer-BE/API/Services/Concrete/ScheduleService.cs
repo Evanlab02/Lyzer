@@ -22,10 +22,6 @@ namespace Lyzer_BE.API.Services.Concrete
             {
                 year = DateTime.Now.Year.ToString();
             }
-            else
-            {
-                await _mongoController.SetCollection(year);
-            }
 
             if (
                 !string.IsNullOrEmpty(year) &&
@@ -33,6 +29,7 @@ namespace Lyzer_BE.API.Services.Concrete
                 int.Parse(year) <= DateTime.Now.AddYears(1).Year
             )
             {
+                _mongoController.SetCollection(year);
                 List<RaceWeekendDTO> schedule = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
                 if (schedule.Count == 0)

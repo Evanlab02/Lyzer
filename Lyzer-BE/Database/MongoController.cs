@@ -11,12 +11,6 @@ namespace Lyzer_BE.Database
         private IMongoDatabase _database;
         private IMongoCollection<T> _collection;
 
-        public MongoController(string collectionName)
-        {
-            CreateMongoDBClient();
-            _database = dbClient.GetDatabase("Lyzer");
-            _collection = _database.GetCollection<T>(collectionName);
-        }
 
         public MongoController(string databaseName, string collectionName)
         {
@@ -49,57 +43,11 @@ namespace Lyzer_BE.Database
             }
         }
 
-        public IMongoDatabase GetDatabase()
+        public void SetCollection(string collectionName)
         {
-            return _database;
-        }
-
-        public IMongoCollection<T> GetCollection()
-        {
-            return _collection;
-        }
-
-        public async Task<bool> SetCollection(string collectionName)
-        {
-            bool collectionExists = await DoesCollectionExist(collectionName);
             _collection = _database.GetCollection<T>(collectionName);
-            return collectionExists;
         }
 
-        public async Task<bool> CreateCollection(string collectionName)
-        {
-            bool collectionExists = await DoesCollectionExist(collectionName);
-
-            if (!collectionExists)
-            {
-                await _database.CreateCollectionAsync(collectionName);
-            }
-
-            return collectionExists;
-        }
-        public async Task<bool> DeleteCollection(string collectionName)
-        {
-            bool collectionExists = await DoesCollectionExist(collectionName);
-
-            if (collectionExists)
-            {
-                await _database.DropCollectionAsync(collectionName);
-            }
-
-            return collectionExists;
-        }
-
-        public async Task<bool> DoesCollectionExist(string collectionName)
-        {
-            var collections = _database.ListCollectionNamesAsync().Result.ToList();
-
-            if (!collections.Any(x => x.Equals(collectionName)))
-            {
-                return false;
-            }
-
-            return true;
-        }
 
         public void InsertManyIntoCollection(List<T> documents)
         {
@@ -112,19 +60,6 @@ namespace Lyzer_BE.Database
                 Debug.WriteLine($"LyzerDB: {ex}");
             }
         }
-
-        public void InsertOneIntoCollection(T document)
-        {
-            try
-            {
-                _collection.InsertOne(document);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"LyzerDB: {ex}");
-            }
-        }
-
 
         public void DeleteManyFromCollection(FilterDefinition<T> filter)
         {
@@ -144,22 +79,6 @@ namespace Lyzer_BE.Database
             try
             {
                 result = await _collection.Find(filter).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"LyzerDB: {ex}");
-            }
-
-            return result;
-        }
-
-        public async Task<T?> FindOneFromCollection(FilterDefinition<T> filter)
-        {
-            T? result = default(T);
-
-            try
-            {
-                result = await _collection.Find(filter).FirstOrDefaultAsync();
             }
             catch (Exception ex)
             {
