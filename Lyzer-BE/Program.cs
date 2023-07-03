@@ -10,7 +10,7 @@ program.main(args);
 
 [ExcludeFromCodeCoverage]
 public class App
-{ 
+{
     public void main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +62,6 @@ public class App
             builder.Services.AddHostedService<CurrentScheduleHydrater>();
         }
     }
-} 
+}
 
 
