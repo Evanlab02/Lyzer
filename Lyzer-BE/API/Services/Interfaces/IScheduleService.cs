@@ -4,8 +4,8 @@ namespace Lyzer_BE.API.Services.Interfaces
 {
     public interface IScheduleService
     {
-        public Task<List<RaceWeekendDTO>>? GetFullSchedule();
+        public Task<List<RaceWeekendDTO>>? GetFullSchedule(string year = "current");
 
-        public Task<RaceWeekendDTO>? GetNextOrCurrentEvent();
+        public Task<RaceWeekendDTO>? GetNextOrCurrentRaceWeekend();
     }
 }

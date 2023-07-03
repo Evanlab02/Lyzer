@@ -59,9 +59,9 @@ namespace Lyzer_BE.Database
             return _collection;
         }
 
-        public bool SetCollection(string collectionName)
+        public async Task<bool> SetCollection(string collectionName)
         {
-            bool collectionExists = DoesCollectionExist(collectionName);
+            bool collectionExists = await DoesCollectionExist(collectionName);
 
             if (collectionExists)
                 _collection = _database.GetCollection<T>(collectionName);
@@ -69,32 +69,32 @@ namespace Lyzer_BE.Database
             return collectionExists;
         }
 
-        public bool CreateCollection(string collectionName)
+        public async Task<bool> CreateCollection(string collectionName)
         {
-            bool collectionExists = DoesCollectionExist(collectionName);
+            bool collectionExists = await DoesCollectionExist(collectionName);
 
             if (!collectionExists)
             {
-                _database.CreateCollection(collectionName);
+                await _database.CreateCollectionAsync(collectionName);
             }
 
             return collectionExists;
         }
-        public bool DeleteCollection(string collectionName)
+        public async Task<bool> DeleteCollection(string collectionName)
         {
-            bool collectionExists = DoesCollectionExist(collectionName);
+            bool collectionExists = await DoesCollectionExist(collectionName);
 
             if (collectionExists)
             {
-                _database.DropCollection(collectionName);
+                await _database.DropCollectionAsync(collectionName);
             }
 
             return collectionExists;
         }
 
-        public bool DoesCollectionExist(string collectionName)
+        public async Task<bool> DoesCollectionExist(string collectionName)
         {
-            var collections = _database.ListCollectionNames().ToList();
+            var collections = _database.ListCollectionNamesAsync().Result.ToList();
 
             if (!collections.Any(x => x.Equals(collectionName)))
             {

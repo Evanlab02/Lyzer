@@ -47,5 +47,28 @@ namespace Lyzer_BE.API.Services.Concrete
 
             return response;
         }
+
+        public async Task<ScheduleDTO> HydrateSchedule(string year)
+        {
+            var options = new RestClientOptions("http://ergast.com/api/f1/");
+            var client = new RestClient(options);
+            var request = new RestRequest($"{year}.json");
+            var response = await client.GetAsync<ScheduleDTO>(request);
+
+            //TODO: Move duplicated code into method that can be used by other hydration methods.
+            if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
+            {
+                MongoController<RaceWeekendDTO> mongoController = new("Schedules", year);
+                var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
+                mongoController.DeleteManyFromCollection(filterValues);
+
+                if (response.ScheduleData.ScheduleTable.RaceWeekends.Count != 0)
+                {
+                    mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
+                }
+            }
+
+            return response;
+        }
     }
 }
