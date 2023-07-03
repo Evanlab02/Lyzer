@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
 {
     var year = DateTime.Now.Year;
-    IHydrationService hydrationService = new HydrationService();
+    IHydrationService hydrationService = HydrationService.Instance;
     hydrationService.HydrateSchedule(year.ToString());
     hydrationService.HydrateSchedule((year + 1).ToString());
 }
@@ -45,9 +45,9 @@ app.Run();
 
 void ConfigureServices(WebApplicationBuilder builder)
 {
+    builder.Services.AddSingleton<IHydrationService, HydrationService>();
     builder.Services.AddScoped<IDriverService, DriverService>();
     builder.Services.AddScoped<IScheduleService, ScheduleService>();
-    builder.Services.AddScoped<IHydrationService, HydrationService>();
 
     //Scheduled Services
     builder.Services.AddHostedService<CurrentScheduleHydrater>();

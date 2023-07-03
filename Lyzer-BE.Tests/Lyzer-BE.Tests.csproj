@@ -19,6 +19,9 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="ReportGenerator" Version="5.1.22" />
+		<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="RichardSzalay.MockHttp" Version="6.0.0" />
 		<ProjectReference Include="..\Lyzer-BE\Lyzer-BE.csproj" />
 	</ItemGroup>
 
