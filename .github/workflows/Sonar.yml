@@ -46,7 +46,7 @@ jobs:
         working-directory: Lyzer-BE/
         run: |
           docker pull mongo:latest
-          docker run -p 27017:27017 mongo:latest &
+          docker run -d -p 27017:27017 mongo:latest
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Evanlab02_Lyzer" /o:"evanlab02" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build
           dotnet test
