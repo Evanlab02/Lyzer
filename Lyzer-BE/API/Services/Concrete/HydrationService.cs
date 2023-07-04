@@ -9,20 +9,24 @@ namespace Lyzer_BE.API.Services.Concrete
 {
     public sealed class HydrationService : IHydrationService
     {
-        private static RestClient _restClient = new(new RestClientOptions("http://ergast.com/api/f1/"));
+        private static RestClient _restClient;
+        public HydrationService()
+        {
+            _restClient = new RestClient(new RestClientOptions("http://ergast.com/api/f1/"));
+        }
 
         public static HydrationService Instance { get { return Nested.instance; } }
 
-        private sealed class Nested
+        private class Nested
         {
             static Nested()
             {
             }
 
-            internal static readonly HydrationService instance = new();
+            internal static readonly HydrationService instance = new HydrationService();
         }
 
-        public static void SetRestClient(RestClient restClient)
+        public void SetRestClient(RestClient restClient)
         {
             _restClient = restClient;
         }
