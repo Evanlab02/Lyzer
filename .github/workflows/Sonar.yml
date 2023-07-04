@@ -34,6 +34,7 @@ jobs:
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
+        working-directory: Lyzer-BE/
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
@@ -42,6 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
+        working-directory: Lyzer-BE/
         run: |
           docker pull mongo:latest
           docker run -p 27017:27017 mongo:latest &
