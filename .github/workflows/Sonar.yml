@@ -49,7 +49,7 @@ jobs:
           dotnet tool install --global dotnet-coverage
           docker pull mongo:latest
           docker run -d -p 27017:27017 mongo:latest
-          dotnet sonarscanner begin /k:"<sonar-project-key>" /d:sonar.login="<sonar-token>" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet sonarscanner begin /k:"Evanlab02_Lyzer" /o:"evanlab02" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build --no-incremental
           dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
-          dotnet sonarscanner end /d:sonar.login="<sonar-token>"
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
