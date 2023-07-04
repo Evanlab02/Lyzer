@@ -6,6 +6,5 @@ namespace Lyzer_BE.API.Services.Interfaces
     public interface IHydrationService
     {
         public Task<ScheduleDTO> HydrateSchedule(string year);
-        public void SetRestClient(RestClient restClient);
     }
 }
