@@ -1,5 +1,8 @@
-﻿namespace Lyzer_BE.API.DTOs
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Lyzer_BE.API.DTOs
 {
+    [ExcludeFromCodeCoverage]
     public class DriverDTO
     {
         public int Id { get; set; }

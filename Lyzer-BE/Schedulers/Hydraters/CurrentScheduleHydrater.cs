@@ -1,13 +1,15 @@
 ﻿using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lyzer_BE.Schedulers.Hydraters
 {
+    [ExcludeFromCodeCoverage]
     public class CurrentScheduleHydrater : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            IHydrationService hydrationService = new HydrationService();
+            IHydrationService hydrationService = HydrationService.Instance;
 
             while (!stoppingToken.IsCancellationRequested)
             {

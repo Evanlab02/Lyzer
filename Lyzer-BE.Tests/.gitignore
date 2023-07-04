@@ -291,3 +291,5 @@ __pycache__/
 dist/
 Coverage/
 .env
+
+coverage.json

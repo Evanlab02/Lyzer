@@ -1,5 +1,5 @@
 ﻿using Lyzer_BE.API.DTOs;
-using Lyzer_BE.Database;
+using RestSharp;
 
 namespace Lyzer_BE.API.Services.Interfaces
 {

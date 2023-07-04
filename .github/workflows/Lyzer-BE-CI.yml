@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
+      - name: Pull Mongo Docker Image
+        run: docker pull mongo:latest
+      - name: Run Mongo Docker Image
+        run: docker run -p 27017:27017 mongo:latest &
       - name: Restore dependencies
         working-directory: Lyzer-BE/
         run: dotnet restore

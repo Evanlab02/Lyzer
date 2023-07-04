@@ -2,19 +2,40 @@
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace Lyzer_BE.API.Services.Concrete
 {
-    public class HydrationService : IHydrationService
+    public sealed class HydrationService : IHydrationService
     {
+        private static RestClient _restClient;
+        public HydrationService()
+        {
+            _restClient = new RestClient(new RestClientOptions("http://ergast.com/api/f1/"));
+        }
+
+        public static HydrationService Instance { get { return Nested.instance; } }
+
+        private class Nested
+        {
+            static Nested()
+            {
+            }
+
+            internal static readonly HydrationService instance = new HydrationService();
+        }
+
+        public void SetRestClient(RestClient restClient)
+        {
+            _restClient = restClient;
+        }
+
         public async Task<ScheduleDTO> HydrateSchedule(string year)
         {
-            var options = new RestClientOptions("http://ergast.com/api/f1/");
-            var client = new RestClient(options);
             var request = new RestRequest($"{year}.json");
-            var response = await client.GetAsync<ScheduleDTO>(request);
-
+            var response = await _restClient.GetAsync<ScheduleDTO>(request);
+            Console.WriteLine(JsonConvert.SerializeObject(response));
             //TODO: Move duplicated code into method that can be used by other hydration methods.
             if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
             {
