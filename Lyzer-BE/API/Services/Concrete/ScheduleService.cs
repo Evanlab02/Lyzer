@@ -36,7 +36,9 @@ namespace Lyzer_BE.API.Services.Concrete
                 {
                     var result = await _hydrationService.HydrateSchedule(year);
                     return result.ScheduleData.ScheduleTable.RaceWeekends;
-                } else {
+                }
+                else
+                {
                     return await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
                 }
             }
@@ -56,17 +58,19 @@ namespace Lyzer_BE.API.Services.Concrete
                 Time = "00:00:00",
             };
 
-            if (!_mongoController.CollectionExists()) {
+            if (!_mongoController.CollectionExists())
+            {
                 await _hydrationService.HydrateSchedule(today.Year.ToString());
             };
-            
+
             var currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
             _mongoController.SetCollection(yearFromNow);
-             
-            if (!_mongoController.CollectionExists()) {
+
+            if (!_mongoController.CollectionExists())
+            {
                 await _hydrationService.HydrateSchedule(yearFromNow);
             }
-            
+
             var nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
             var allRaceWeekends = currentYearRaceWeekends.Concat(nextYearRaceWeekends).ToList();
 

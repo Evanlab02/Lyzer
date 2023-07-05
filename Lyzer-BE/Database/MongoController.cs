@@ -59,7 +59,7 @@ namespace Lyzer_BE.Database
         {
             var filter = new BsonDocument("name", _collectionName);
             var options = new ListCollectionNamesOptions { Filter = filter };
-            return _database.ListCollectionNames(options).Any();          
+            return _database.ListCollectionNames(options).Any();
         }
 
         public void InsertManyIntoCollection(List<T> documents)
