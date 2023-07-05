@@ -6,8 +6,8 @@ namespace Lyzer_BE.Database
 {
     public class MongoController<T>
     {
+        private String _collectionName;
         private MongoClient dbClient;
-
         private IMongoDatabase _database;
         private IMongoCollection<T> _collection;
 
@@ -17,6 +17,7 @@ namespace Lyzer_BE.Database
             CreateMongoDBClient();
             _database = dbClient.GetDatabase(databaseName);
             _collection = _database.GetCollection<T>(collectionName);
+            _collectionName = collectionName;
         }
 
         private void CreateMongoDBClient()
@@ -46,8 +47,20 @@ namespace Lyzer_BE.Database
         public void SetCollection(string collectionName)
         {
             _collection = _database.GetCollection<T>(collectionName);
+            _collectionName = collectionName;
         }
 
+        public void CreateCollection()
+        {
+            _database.CreateCollection(_collectionName);
+        }
+
+        public bool CollectionExists()
+        {
+            var filter = new BsonDocument("name", _collectionName);
+            var options = new ListCollectionNamesOptions { Filter = filter };
+            return _database.ListCollectionNames(options).Any();          
+        }
 
         public void InsertManyIntoCollection(List<T> documents)
         {

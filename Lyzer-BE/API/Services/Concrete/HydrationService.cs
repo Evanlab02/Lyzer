@@ -35,14 +35,17 @@ namespace Lyzer_BE.API.Services.Concrete
         {
             var request = new RestRequest($"{year}.json");
             var response = await _restClient.GetAsync<ScheduleDTO>(request);
-            Console.WriteLine(JsonConvert.SerializeObject(response));
-            //TODO: Move duplicated code into method that can be used by other hydration methods.
+
+            MongoController<RaceWeekendDTO> mongoController = new("Schedules", year);
+            mongoController.CreateCollection();
+            Console.WriteLine("Created collection for year: " + year);
+
             if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
             {
-                MongoController<RaceWeekendDTO> mongoController = new("Schedules", year);
                 var filterValues = Builders<RaceWeekendDTO>.Filter.Empty;
                 mongoController.DeleteManyFromCollection(filterValues);
                 mongoController.InsertManyIntoCollection(response.ScheduleData.ScheduleTable.RaceWeekends);
+                Console.WriteLine("Hydrated schedule for year: " + year);
             }
 
             return response;

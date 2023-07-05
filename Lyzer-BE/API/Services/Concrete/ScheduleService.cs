@@ -16,7 +16,7 @@ namespace Lyzer_BE.API.Services.Concrete
             _hydrationService = hydrationService;
         }
 
-        public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year)
+        public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year = "current")
         {
             if (year.Equals("current"))
             {
@@ -30,15 +30,15 @@ namespace Lyzer_BE.API.Services.Concrete
             )
             {
                 _mongoController.SetCollection(year);
-                List<RaceWeekendDTO> schedule = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
+                var CollectionExists = _mongoController.CollectionExists();
 
-                if (schedule.Count == 0)
+                if (!CollectionExists)
                 {
                     var result = await _hydrationService.HydrateSchedule(year);
-                    schedule = result.ScheduleData.ScheduleTable.RaceWeekends;
+                    return result.ScheduleData.ScheduleTable.RaceWeekends;
+                } else {
+                    return await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
                 }
-
-                return schedule;
             }
             //Throw some exception once exception handler is created.
             return new List<RaceWeekendDTO>();
@@ -47,6 +47,7 @@ namespace Lyzer_BE.API.Services.Concrete
         public async Task<RaceWeekendDTO>? GetNextOrCurrentRaceWeekend()
         {
             var today = DateTime.Now;
+            var yearFromNow = today.AddYears(1).Year.ToString();
             var twoYearsFromNow = today.AddYears(2);
 
             RaceWeekendDTO nextRaceWeekend = new()
@@ -55,9 +56,18 @@ namespace Lyzer_BE.API.Services.Concrete
                 Time = "00:00:00",
             };
 
+            if (!_mongoController.CollectionExists()) {
+                await _hydrationService.HydrateSchedule(today.Year.ToString());
+            };
+            
             var currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
+            _mongoController.SetCollection(yearFromNow);
+             
+            if (!_mongoController.CollectionExists()) {
+                await _hydrationService.HydrateSchedule(yearFromNow);
+            }
+            
             var nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-
             var allRaceWeekends = currentYearRaceWeekends.Concat(nextYearRaceWeekends).ToList();
 
             foreach (RaceWeekendDTO raceWeekendDTO in allRaceWeekends)
