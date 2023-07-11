@@ -61,7 +61,7 @@ namespace Lyzer_BE.API.Services.Concrete
             if (!_mongoController.CollectionExists())
             {
                 await _hydrationService.HydrateSchedule(today.Year.ToString());
-            };
+            }
 
             var currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
             _mongoController.SetCollection(yearFromNow);

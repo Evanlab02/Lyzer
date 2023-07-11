@@ -61,7 +61,7 @@ namespace Lyzer_BE.Tests.API.Services
 
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             List<RaceWeekendDTO> events = scheduleService.GetFullSchedule("current").Result;
-            Assert.That(events.Count, Is.EqualTo(2));
+            Assert.That(events, Has.Count.EqualTo(2));
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace Lyzer_BE.Tests.API.Services
 
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             List<RaceWeekendDTO> events = scheduleService.GetFullSchedule("2021").Result;
-            Assert.That(events.Count, Is.EqualTo(2));
+            Assert.That(events, Has.Count.EqualTo(2));
         }
 
         [Test]
@@ -96,8 +96,11 @@ namespace Lyzer_BE.Tests.API.Services
             var eventDate = DateTime.Now.AddDays(1);
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             RaceWeekendDTO nextEvent = scheduleService.GetNextOrCurrentRaceWeekend().Result;
-            Assert.That(nextEvent.Date, Is.EqualTo($"{eventDate.Year}-{eventDate.Month}-{eventDate.Day}"));
-            Assert.That(nextEvent.Round, Is.EqualTo("2"));
+            Assert.Multiple(() =>
+            {
+                Assert.That(nextEvent.Date, Is.EqualTo($"{eventDate.Year}-{eventDate.Month}-{eventDate.Day}"));
+                Assert.That(nextEvent.Round, Is.EqualTo("2"));
+            });
             _mongoController.SetCollection(yearFromNow);
             Assert.That(_mongoController.CollectionExists(), Is.True);
         }
@@ -107,7 +110,7 @@ namespace Lyzer_BE.Tests.API.Services
         {
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             List<RaceWeekendDTO> events = scheduleService.GetFullSchedule("1949").Result;
-            Assert.That(events.Count, Is.EqualTo(0));
+            Assert.That(events, Is.Empty);
         }
 
         [Test]
@@ -116,7 +119,7 @@ namespace Lyzer_BE.Tests.API.Services
             var year = _today.AddYears(2).Year.ToString();
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             List<RaceWeekendDTO> events = scheduleService.GetFullSchedule(year).Result;
-            Assert.That(events.Count, Is.EqualTo(0));
+            Assert.That(events, Is.Empty);
         }
 
     }
