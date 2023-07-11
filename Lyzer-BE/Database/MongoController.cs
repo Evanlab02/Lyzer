@@ -55,6 +55,11 @@ namespace Lyzer_BE.Database
             _database.CreateCollection(_collectionName);
         }
 
+        public void DestroyCollection()
+        {
+            _database.DropCollection(_collectionName);
+        }
+
         public bool CollectionExists()
         {
             var filter = new BsonDocument("name", _collectionName);

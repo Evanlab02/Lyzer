@@ -2,7 +2,6 @@
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
 using MongoDB.Driver;
-using Newtonsoft.Json;
 using RestSharp;
 
 namespace Lyzer_BE.API.Services.Concrete
@@ -37,8 +36,11 @@ namespace Lyzer_BE.API.Services.Concrete
             var response = await _restClient.GetAsync<ScheduleDTO>(request);
 
             MongoController<RaceWeekendDTO> mongoController = new("Schedules", year);
-            mongoController.CreateCollection();
-            Console.WriteLine("Created collection for year: " + year);
+            if (!mongoController.CollectionExists())
+            {
+                mongoController.CreateCollection();
+                Console.WriteLine("Created collection for year: " + year);
+            }
 
             if (response.ScheduleData.ScheduleTable.RaceWeekends.Count > 0)
             {
