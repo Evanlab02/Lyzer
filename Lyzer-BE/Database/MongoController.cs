@@ -54,7 +54,7 @@ namespace Lyzer_BE.Database
         public void CreateCollection([Optional] string collectionName)
         {
             var collection = _collectionName;
-            if (string.IsNullOrEmpty(collectionName))
+            if (!string.IsNullOrEmpty(collectionName))
             {
                 collection = collectionName;
             }
@@ -64,7 +64,7 @@ namespace Lyzer_BE.Database
         public void DestroyCollection([Optional] string collectionName)
         {
             var collection = _collectionName;
-            if (string.IsNullOrEmpty(collectionName))
+            if (!string.IsNullOrEmpty(collectionName))
             {
                 collection = collectionName;
             }
@@ -75,7 +75,7 @@ namespace Lyzer_BE.Database
         {
             var filter = new BsonDocument("name", _collectionName);
 
-            if (string.IsNullOrEmpty(collectionName))
+            if (!string.IsNullOrEmpty(collectionName))
             {
                 filter = new BsonDocument("name", collectionName);
             }
