@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.4.0](https://github.com/Evanlab02/Lyzer/compare/v0.3.0...v0.4.0) (2023-07-04)
+
+
+### Features
+
+* **MongoDB:** Can now run tests using MongoDB Docker image ([083a614](https://github.com/Evanlab02/Lyzer/commit/083a6142217fd4a617b8313fca4262626f8543e5))
+* **Testing:** Some new lazy tests ([1f77267](https://github.com/Evanlab02/Lyzer/commit/1f7726778f60b10f4329946cab0061eaadd8f6c3))
+* **Tests:** Added Hydration and Schedule Tests ([7795aa1](https://github.com/Evanlab02/Lyzer/commit/7795aa10425d636a20e9aad6639569ab495b08e5))
+
+
+### Bug Fixes
+
+* Code Smells For SonarCloud ([8103360](https://github.com/Evanlab02/Lyzer/commit/81033604f3b97485e817185f7a64777f01e0bcee))
+* Moved App Startup to its own namespace ([bcef49d](https://github.com/Evanlab02/Lyzer/commit/bcef49d53075191dd489fa9c6d24f3c031dedb19))
+* **Workflows:** Updated Release Workflows ([a05de42](https://github.com/Evanlab02/Lyzer/commit/a05de42e7038fac120d1a351cbed90f7d35a9ce8))
+
 ## [0.3.0](https://github.com/Evanlab02/Lyzer/compare/v0.2.7...v0.3.0) (2023-07-03)
 
 
