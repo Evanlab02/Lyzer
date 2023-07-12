@@ -35,3 +35,6 @@ jobs:
       - name: Build Release
         working-directory: Lyzer-BE/
         run: dotnet publish --configuration Release --output dist/
+      - name: Build Docker Image
+        working-directory: Lyzer-BE/
+        run: docker build -t lyzer:latest .
