@@ -75,7 +75,7 @@ namespace Lyzer_BE.Database
         {
             var filter = new BsonDocument("name", _collectionName);
 
-            if (collectionName !=  null)
+            if (collectionName != null)
             {
                 filter = new BsonDocument("name", collectionName);
             }
