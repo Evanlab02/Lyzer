@@ -2,7 +2,6 @@
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
-using MongoDB.Driver;
 using RestSharp;
 using RichardSzalay.MockHttp;
 
@@ -18,7 +17,7 @@ namespace Lyzer_BE.Tests.API.Services
         [SetUp]
         public void Setup()
         {
-            if (String.IsNullOrEmpty(Environment.GetEnvironmentVariable("MONGODB_CONNECTION")))
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MONGODB_CONNECTION")))
                 Environment.SetEnvironmentVariable("MONGODB_CONNECTION", "mongodb://localhost:27017");
 
             var year = _today.Year.ToString();
@@ -42,17 +41,16 @@ namespace Lyzer_BE.Tests.API.Services
                     Round = "2"
                 },
             });
+
+            _mongoController.CreateCollection(_today.AddYears(1).Year.ToString());
         }
 
         [TearDown]
         public void TearDown()
         {
-            _mongoController.SetCollection(_today.Year.ToString());
-            _mongoController.DestroyCollection();
-            _mongoController.SetCollection(_today.AddYears(1).Year.ToString());
-            _mongoController.DestroyCollection();
-            _mongoController.SetCollection("2021");
-            _mongoController.DestroyCollection();
+            _mongoController.DestroyCollection(_today.Year.ToString());
+            _mongoController.DestroyCollection(_today.AddYears(1).Year.ToString());
+            _mongoController.DestroyCollection("2021");
         }
 
         [Test]
@@ -82,18 +80,44 @@ namespace Lyzer_BE.Tests.API.Services
         }
 
         [Test]
-        public void GetNextOrCurrentEvent_ShouldReturnNextEvent()
+        public void GetNextOrCurrentEvent_ShouldReturnNextEventWithMongo()
         {
+            var eventDate = DateTime.Now.AddDays(1);
+            var yearFromNow = DateTime.Now.AddYears(1).Year.ToString();
+            IScheduleService scheduleService = new ScheduleService(hydrationService);
+            RaceWeekendDTO nextEvent = scheduleService.GetNextOrCurrentRaceWeekend().Result;
+            Assert.Multiple(() =>
+            {
+                Assert.That(nextEvent.Date, Is.EqualTo($"{eventDate.Year}-{eventDate.Month}-{eventDate.Day}"));
+                Assert.That(nextEvent.Round, Is.EqualTo("2"));
+            });
+            Assert.That(_mongoController.CollectionExists(yearFromNow), Is.True);
+        }
+
+        [Test]
+        public void GetNextOrCurrentEvent_ShouldReturnNextEventWithRestSharp()
+        {
+            _mongoController.DestroyCollection(_today.Year.ToString());
+            _mongoController.DestroyCollection(_today.AddYears(1).Year.ToString());
+
             var yearFromNow = DateTime.Now.AddYears(1).Year.ToString();
             var mockHttp = new MockHttpMessageHandler();
-            var jsonSchedule = "{\"MRData\":{\"RaceTable\":{\"Races\":[]}}}";
+
+            var previousEvent = DateTime.Now.AddDays(-1);
+            var eventDate = DateTime.Now.AddDays(1);
+
+            var jsonScheduleCurrentYear = "{\"MRData\":{\"RaceTable\":{\"Races\":[{\"Round\":\"1\",\"RaceName\":null,\"Date\":\"" + $"{previousEvent.Year}-{previousEvent.Month}-{previousEvent.Day}" + "\",\"Time\":\"15:00:00Z\",\"FirstPractice\":null,\"SecondPractice\":null,\"ThirdPractice\":null,\"Qualifying\":null,\"Sprint\":null},{\"Round\":\"2\",\"RaceName\":null,\"Date\":\"" + $"{eventDate.Year}-{eventDate.Month}-{eventDate.Day}" + "\",\"Time\":\"16:00:00Z\",\"FirstPractice\":null,\"SecondPractice\":null,\"ThirdPractice\":null,\"Qualifying\":null,\"Sprint\":null}]}}}";
+            mockHttp.When($"http://ergast.com/api/f1/{_today.Year}.json")
+                   .Respond("application/json", jsonScheduleCurrentYear);
+
+            var jsonScheduleNextYear = "{\"MRData\":{\"RaceTable\":{\"Races\":[]}}}";
             mockHttp.When($"http://ergast.com/api/f1/{yearFromNow}.json")
-                   .Respond("application/json", jsonSchedule);
+                   .Respond("application/json", jsonScheduleNextYear);
 
             var client = new RestClient(new RestClientOptions("http://ergast.com/api/f1/") { ConfigureMessageHandler = _ => mockHttp });
             hydrationService.SetRestClient(client);
 
-            var eventDate = DateTime.Now.AddDays(1);
+            
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             RaceWeekendDTO nextEvent = scheduleService.GetNextOrCurrentRaceWeekend().Result;
             Assert.Multiple(() =>
@@ -121,6 +145,5 @@ namespace Lyzer_BE.Tests.API.Services
             List<RaceWeekendDTO> events = scheduleService.GetFullSchedule(year).Result;
             Assert.That(events, Is.Empty);
         }
-
     }
 }

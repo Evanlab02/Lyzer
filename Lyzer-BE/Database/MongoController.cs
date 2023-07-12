@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Lyzer_BE.Database
 {
@@ -50,19 +51,35 @@ namespace Lyzer_BE.Database
             _collectionName = collectionName;
         }
 
-        public void CreateCollection()
+        public void CreateCollection([Optional] string collectionName)
         {
-            _database.CreateCollection(_collectionName);
+            var collection = _collectionName;
+            if (collectionName != null)
+            {
+                collection = collectionName;
+            }
+            _database.CreateCollection(collection);
         }
 
-        public void DestroyCollection()
+        public void DestroyCollection([Optional] string collectionName)
         {
-            _database.DropCollection(_collectionName);
+            var collection = _collectionName;
+            if (collectionName != null)
+            {
+                collection = collectionName;
+            }
+            _database.DropCollection(collection);
         }
 
-        public bool CollectionExists()
+        public bool CollectionExists([Optional] string collectionName)
         {
             var filter = new BsonDocument("name", _collectionName);
+
+            if (collectionName !=  null)
+            {
+                filter = new BsonDocument("name", collectionName);
+            }
+
             var options = new ListCollectionNamesOptions { Filter = filter };
             return _database.ListCollectionNames(options).Any();
         }
