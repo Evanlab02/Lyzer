@@ -18,16 +18,9 @@ namespace Lyzer_BE.API.Services.Concrete
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year = "current")
         {
-            if (year.Equals("current"))
-            {
-                year = DateTime.Now.Year.ToString();
-            }
+            year = GetCurrentYearIfCurrent(year);
 
-            if (
-                !string.IsNullOrEmpty(year) &&
-                int.Parse(year) >= 1950 &&
-                int.Parse(year) <= DateTime.Now.AddYears(1).Year
-            )
+            if (IsYearValid(year))
             {
                 _mongoController.SetCollection(year);
 
@@ -89,6 +82,54 @@ namespace Lyzer_BE.API.Services.Concrete
             };
 
             return nextRaceWeekend;
+        }
+
+        public async Task<RaceWeekendDTO?> GetRaceWeekendByRound(string round, string year = "current")
+        {
+            year = GetCurrentYearIfCurrent(year);
+
+            if (IsYearValid(year))
+            {
+                _mongoController.SetCollection(year);
+
+                if (!_mongoController.CollectionExists())
+                {
+                    var result = await _hydrationService.HydrateSchedule(year);
+                    return result
+                        .ScheduleData
+                        .ScheduleTable
+                        .RaceWeekends
+                        .Where(x => x.Round.Equals(round))
+                        .FirstOrDefault();
+                }
+                else
+                {
+                    return await _mongoController
+                        .FindOneFromCollection(Builders<RaceWeekendDTO>.Filter.Where(x => x.Round.Equals(round)));
+                }
+            }
+            //Throw some exception once exception handler is created.
+            return new RaceWeekendDTO();
+        }
+
+        /// <summary>
+        /// <param name="year">String to check if current</param>
+        /// <returns>Current Date Year if the string is "current" or returns the same value</returns>
+        /// </summary>
+        private string GetCurrentYearIfCurrent(string year)
+        {
+            return year == "current" ? DateTime.Now.Year.ToString() : year;
+        }
+
+        /// <summary>
+        /// <param name="year">Year being validated</param>
+        /// <returns>Bool depending of if the year matches the valid criteria.</returns>
+        /// </summary>
+        private bool IsYearValid(string year)
+        {
+            return !String.IsNullOrEmpty(year) &&
+                    int.Parse(year) >= 1950 &&
+                    int.Parse(year) <= DateTime.Now.AddYears(1).Year;
         }
     }
 }

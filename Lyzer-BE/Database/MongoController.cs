@@ -122,5 +122,19 @@ namespace Lyzer_BE.Database
 
             return result;
         }
+
+        public async Task<T> FindOneFromCollection(FilterDefinition<T> filter)
+        {
+            T result = default;
+            try
+            {
+                result = await _collection.Find(filter).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+            }
+            return result;
+        }
     }
 }

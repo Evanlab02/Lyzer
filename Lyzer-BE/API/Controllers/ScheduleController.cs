@@ -33,5 +33,16 @@ namespace Lyzer_BE.API.Controllers
             return _scheduleService.GetNextOrCurrentRaceWeekend();
         }
 
+        [HttpGet("current/raceweekend/{round}")]
+        public Task<RaceWeekendDTO?> GetRaceWeekendByRound(string round)
+        {
+            return _scheduleService.GetRaceWeekendByRound(round);
+        }
+
+        [HttpGet("{year}/raceweekend/{round}")]
+        public Task<RaceWeekendDTO?> GetRaceWeekendByRoundAndYear(string round, string year)
+        {
+            return _scheduleService.GetRaceWeekendByRound(round);
+        }
     }
 }
