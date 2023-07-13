@@ -1,13 +1,14 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Lyzer_BE.Database
 {
     public class MongoController<T>
     {
+        private String _collectionName;
         private MongoClient dbClient;
-
         private IMongoDatabase _database;
         private IMongoCollection<T> _collection;
 
@@ -17,6 +18,7 @@ namespace Lyzer_BE.Database
             CreateMongoDBClient();
             _database = dbClient.GetDatabase(databaseName);
             _collection = _database.GetCollection<T>(collectionName);
+            _collectionName = collectionName;
         }
 
         private void CreateMongoDBClient()
@@ -46,8 +48,41 @@ namespace Lyzer_BE.Database
         public void SetCollection(string collectionName)
         {
             _collection = _database.GetCollection<T>(collectionName);
+            _collectionName = collectionName;
         }
 
+        public void CreateCollection([Optional] string collectionName)
+        {
+            var collection = _collectionName;
+            if (!string.IsNullOrEmpty(collectionName))
+            {
+                collection = collectionName;
+            }
+            _database.CreateCollection(collection);
+        }
+
+        public void DestroyCollection([Optional] string collectionName)
+        {
+            var collection = _collectionName;
+            if (!string.IsNullOrEmpty(collectionName))
+            {
+                collection = collectionName;
+            }
+            _database.DropCollection(collection);
+        }
+
+        public bool CollectionExists([Optional] string collectionName)
+        {
+            var filter = new BsonDocument("name", _collectionName);
+
+            if (!string.IsNullOrEmpty(collectionName))
+            {
+                filter = new BsonDocument("name", collectionName);
+            }
+
+            var options = new ListCollectionNamesOptions { Filter = filter };
+            return _database.ListCollectionNames(options).Any();
+        }
 
         public void InsertManyIntoCollection(List<T> documents)
         {
