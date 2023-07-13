@@ -117,7 +117,7 @@ namespace Lyzer_BE.Tests.API.Services
             var client = new RestClient(new RestClientOptions("http://ergast.com/api/f1/") { ConfigureMessageHandler = _ => mockHttp });
             hydrationService.SetRestClient(client);
 
-            
+
             IScheduleService scheduleService = new ScheduleService(hydrationService);
             RaceWeekendDTO nextEvent = scheduleService.GetNextOrCurrentRaceWeekend().Result;
             Assert.Multiple(() =>

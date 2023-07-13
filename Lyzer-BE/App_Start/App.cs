@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using dotenv.net;
 using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Schedulers.Hydraters;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace Lyzer_BE.App_Start

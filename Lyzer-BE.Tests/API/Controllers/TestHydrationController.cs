@@ -2,11 +2,6 @@
 using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lyzer_BE.Tests.API.Controllers
 {
@@ -71,8 +66,8 @@ namespace Lyzer_BE.Tests.API.Controllers
                     }
                 }
             };
-                
-                
+
+
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
