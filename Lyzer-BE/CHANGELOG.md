@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/Evanlab02/Lyzer/compare/v0.4.0...v0.4.1) (2023-07-13)
+
+
+### Bug Fixes
+
+* **Docker:** Fixed docker build issue ([af028ce](https://github.com/Evanlab02/Lyzer/commit/af028cec8566603f8f986748b132f308bd37bf31))
+
 ## [0.4.0](https://github.com/Evanlab02/Lyzer/compare/v0.3.0...v0.4.0) (2023-07-04)
 
 
