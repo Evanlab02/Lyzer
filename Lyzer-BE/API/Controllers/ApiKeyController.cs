@@ -21,7 +21,7 @@ namespace Lyzer_BE.API.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<AuthResultDTO> GenerateApiKey(ApiKeyUserDTO userApiKey)
+        public async Task<AuthResultDTO> VerifyUser(ApiKeyUserDTO userApiKey)
         {
             return await _apiKeyService.VerifyToken(userApiKey);
         }
