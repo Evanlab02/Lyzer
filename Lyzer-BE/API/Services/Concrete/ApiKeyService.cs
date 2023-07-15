@@ -1,7 +1,6 @@
 ﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Database;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MongoDB.Driver;
 using System.Security.Cryptography;
 
@@ -41,8 +40,8 @@ namespace Lyzer_BE.API.Services.Concrete
                 ValidToken = false
             };
 
-            HashedApiKeyDTO dbApiKey = await _mongoController.FindOneFromCollection(Builders<HashedApiKeyDTO>.Filter.Empty);
-            if (dbApiKey.UserName != userApiKey.UserName)
+            HashedApiKeyDTO dbApiKey = await _mongoController.FindOneFromCollection(Builders<HashedApiKeyDTO>.Filter.Eq(apiKey => apiKey.UserName, userApiKey.UserName));
+            if (dbApiKey == null || dbApiKey.UserName != userApiKey.UserName)
             {
                 return result;
             }
