@@ -57,6 +57,7 @@ namespace Lyzer_BE.App_Start
                 builder.Services.AddSingleton<IHydrationService, HydrationService>();
                 builder.Services.AddScoped<IDriverService, DriverService>();
                 builder.Services.AddScoped<IScheduleService, ScheduleService>();
+                builder.Services.AddScoped<IApiKeyService, ApiKeyService>();
 
                 //Scheduled Services
                 builder.Services.AddHostedService<CurrentScheduleHydrater>();

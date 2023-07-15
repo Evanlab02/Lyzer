@@ -122,5 +122,22 @@ namespace Lyzer_BE.Database
 
             return result;
         }
+
+        public async Task<T> FindOneFromCollection(FilterDefinition<T> filter)
+        {
+            List<T> resultArray = new List<T>();
+            try
+            {
+                var result = await _collection.Find(filter).FirstOrDefaultAsync();
+                resultArray.Add(result);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LyzerDB: {ex}");
+                Console.WriteLine(ex.ToString());
+            }
+
+            return resultArray[0];
+        }
     }
 }
