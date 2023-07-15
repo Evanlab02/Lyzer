@@ -2,11 +2,6 @@
 using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lyzer_BE.Tests.API.Controllers
 {
@@ -71,17 +66,36 @@ namespace Lyzer_BE.Tests.API.Controllers
                     }
                 }
             };
-                
-                
+
+            AuthResultDTO authResult = new()
+            {
+                ValidToken = true
+            };
+
+            ApiKeyUserDTO mockUserKey = new()
+            {
+                ApiToken = "testing",
+                UserName = "testing"
+            };
+
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object);
+            var apiKeyServiceMock = new Mock<IApiKeyService>();
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+
             var currentYear = DateTime.Now.Year.ToString();
             hydrationServiceMock.Setup(service => service.HydrateSchedule(It.Is<string>(year => year == currentYear)))
-                .Returns(Task.FromResult<ScheduleDTO>(schedule));
+                .Returns(Task.FromResult(schedule));
 
-            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule();
+            apiKeyServiceMock.Setup(
+                service => service.VerifyToken(
+                    It.Is<ApiKeyUserDTO>(
+                        userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
+                    )
+                ).Returns(Task.FromResult(authResult));
+
+            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule(mockUserKey);
             Assert.That(result.ScheduleData.ScheduleTable.RaceWeekends.Count, Is.EqualTo(2));
         }
 
@@ -144,17 +158,98 @@ namespace Lyzer_BE.Tests.API.Controllers
                 }
             };
 
+            AuthResultDTO authResult = new()
+            {
+                ValidToken = true
+            };
+
+            ApiKeyUserDTO mockUserKey = new()
+            {
+                ApiToken = "testing",
+                UserName = "testing"
+            };
 
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object);
+            var apiKeyServiceMock = new Mock<IApiKeyService>();
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+
             var yearFromNow = DateTime.Now.AddYears(1).Year.ToString();
             hydrationServiceMock.Setup(service => service.HydrateSchedule(It.Is<string>(year => year == yearFromNow)))
                 .Returns(Task.FromResult<ScheduleDTO>(schedule));
 
-            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule();
+            apiKeyServiceMock.Setup(
+                service => service.VerifyToken(
+                    It.Is<ApiKeyUserDTO>(
+                        userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
+                    )
+                ).Returns(Task.FromResult(authResult));
+
+            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule(mockUserKey);
             Assert.That(result.ScheduleData.ScheduleTable.RaceWeekends.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public async Task hydrateCurrentScheduleWithInvalidToken_ShouldReturnEmpty()
+        {
+            AuthResultDTO authResult = new()
+            {
+                ValidToken = false
+            };
+
+            ApiKeyUserDTO mockUserKey = new()
+            {
+                ApiToken = "testing",
+                UserName = "testing"
+            };
+
+
+            // Arrange
+            var hydrationServiceMock = new Mock<IHydrationService>();
+            var apiKeyServiceMock = new Mock<IApiKeyService>();
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+
+            apiKeyServiceMock.Setup(
+                service => service.VerifyToken(
+                    It.Is<ApiKeyUserDTO>(
+                        userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
+                    )
+                ).Returns(Task.FromResult(authResult));
+
+            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule(mockUserKey);
+            Assert.That(result.ScheduleData, Is.Null);
+        }
+
+        [Test]
+        public async Task hydrateNextScheduleWithInvalidToken_ShouldReturnEmpty()
+        {
+            AuthResultDTO authResult = new()
+            {
+                ValidToken = false
+            };
+
+            ApiKeyUserDTO mockUserKey = new()
+            {
+                ApiToken = "testing",
+                UserName = "testing"
+            };
+
+
+            // Arrange
+            var hydrationServiceMock = new Mock<IHydrationService>();
+            var apiKeyServiceMock = new Mock<IApiKeyService>();
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+
+            apiKeyServiceMock.Setup(
+                service => service.VerifyToken(
+                    It.Is<ApiKeyUserDTO>(
+                        userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
+                    )
+                ).Returns(Task.FromResult(authResult));
+
+            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule(mockUserKey);
+            Assert.That(result.ScheduleData, Is.Null);
         }
     }
 }

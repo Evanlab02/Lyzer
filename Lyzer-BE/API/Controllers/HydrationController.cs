@@ -9,25 +9,39 @@ namespace Lyzer_BE.API.Controllers
     public class HydrationController : ControllerBase
     {
         private readonly IHydrationService _hydrationService;
+        private readonly IApiKeyService _apiKeyService;
 
-        public HydrationController(IHydrationService hydrationService)
+        public HydrationController(IHydrationService hydrationService, IApiKeyService apiKeyService)
         {
             _hydrationService = hydrationService;
+            _apiKeyService = apiKeyService;
         }
 
         // GET api/hydration/schedule
-        [HttpGet("schedule/current")]
-        public Task<ScheduleDTO> HydrateCurrentSchedule()
+        [HttpPost("schedule/current")]
+        public async Task<ScheduleDTO> HydrateCurrentSchedule(ApiKeyUserDTO apiToken)
         {
+            var auth = await _apiKeyService.VerifyToken(apiToken);
+            if (!auth.ValidToken)
+            {
+                return new ScheduleDTO();
+            }
+
             var year = DateTime.Now.Year;
-            return _hydrationService.HydrateSchedule(year.ToString());
+            return await _hydrationService.HydrateSchedule(year.ToString());
         }
 
-        [HttpGet("schedule/next")]
-        public Task<ScheduleDTO> HydrateFollowingYearSchedule()
+        [HttpPost("schedule/next")]
+        public async Task<ScheduleDTO> HydrateFollowingYearSchedule(ApiKeyUserDTO apiToken)
         {
+            var auth = await _apiKeyService.VerifyToken(apiToken);
+            if (!auth.ValidToken)
+            {
+                return new ScheduleDTO();
+            }
+
             var year = DateTime.Now.Year + 1;
-            return _hydrationService.HydrateSchedule(year.ToString());
+            return await _hydrationService.HydrateSchedule(year.ToString());
         }
     }
 }
