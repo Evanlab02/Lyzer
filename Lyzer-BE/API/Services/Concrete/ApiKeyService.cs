@@ -11,7 +11,7 @@ namespace Lyzer_BE.API.Services.Concrete
     {
         MongoController<HashedApiKeyDTO> _mongoController;
 
-        public ApiKeyService() 
+        public ApiKeyService()
         {
             _mongoController = new MongoController<HashedApiKeyDTO>("ApiKeys", "SaltAndHash");
         }
@@ -50,7 +50,7 @@ namespace Lyzer_BE.API.Services.Concrete
             using (var hmac = new HMACSHA512(Convert.FromBase64String(dbApiKey.HashedApiSalt)))
             {
                 var userHashedToken = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userApiKey.ApiToken));
-                if (userHashedToken.SequenceEqual(Convert.FromBase64String(dbApiKey.HashedApiToken))) 
+                if (userHashedToken.SequenceEqual(Convert.FromBase64String(dbApiKey.HashedApiToken)))
                 {
                     result.ValidToken = true;
                 }
