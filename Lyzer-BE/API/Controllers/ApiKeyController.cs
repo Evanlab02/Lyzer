@@ -1,5 +1,4 @@
 ﻿using Lyzer_BE.API.DTOs;
-using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
