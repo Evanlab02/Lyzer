@@ -1,11 +1,6 @@
 ﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lyzer_BE.Tests.API.Services
 {

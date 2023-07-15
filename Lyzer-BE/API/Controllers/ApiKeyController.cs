@@ -1,6 +1,7 @@
 ﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Lyzer_BE.API.Controllers
 {
@@ -20,10 +21,37 @@ namespace Lyzer_BE.API.Controllers
             return _apiKeyService.GenerateKey(username);
         }
 
-        [HttpPost("authenticate")]
-        public async Task<AuthResultDto> VerifyUser(ApiKeyUserDto userApiKey)
+        [HttpGet("authenticate")]
+        public async Task<AuthResultDto> VerifyUser()
         {
-            return await _apiKeyService.VerifyToken(userApiKey);
+            try
+            {
+                string token = Request.Headers["Lyzer-Api-Token"];
+                if (token == null || token.Split(" ").Length != 2)
+                {
+                    throw new Exception("Did not receive headers.");
+                }
+
+                var userName = token.Split(" ")[0];
+                var apiToken = token.Split(" ")[1];
+
+                ApiKeyUserDto userApiKey = new()
+                {
+                    UserName = userName,
+                    ApiToken = apiToken
+                };
+
+                return await _apiKeyService.VerifyToken(userApiKey);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Console.WriteLine(ex.Message);
+                return new AuthResultDto()
+                {
+                    ValidToken = false
+                };
+            }
         }
     }
 }
