@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Lyzer_BE.API.DTOs
 {
     [ExcludeFromCodeCoverage]
-    public class ApiKeyDTO
+    public class ApiKeyDto
     {
         public string? UserName { get; set; }
         public string? ApiToken { get; set; }
@@ -13,7 +13,7 @@ namespace Lyzer_BE.API.DTOs
     }
 
     [ExcludeFromCodeCoverage]
-    public class ApiKeyUserDTO
+    public class ApiKeyUserDto
     {
         public string? UserName { get; set; }
         public string? ApiToken { get; set; }
@@ -21,14 +21,14 @@ namespace Lyzer_BE.API.DTOs
 
     [ExcludeFromCodeCoverage]
     [BsonIgnoreExtraElements]
-    public class HashedApiKeyDTO
+    public class HashedApiKeyDto
     {
         public string? UserName { get; set; }
         public string? HashedApiToken { get; set; }
         public string? HashedApiSalt { get; set; }
     }
 
-    public class AuthResultDTO
+    public class AuthResultDto
     {
         public bool ValidToken { get; set; }
     }

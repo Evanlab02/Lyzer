@@ -19,7 +19,7 @@ namespace Lyzer_BE.API.Controllers
 
         // GET api/hydration/schedule
         [HttpPost("schedule/current")]
-        public async Task<ScheduleDTO> HydrateCurrentSchedule(ApiKeyUserDTO apiToken)
+        public async Task<ScheduleDTO> HydrateCurrentSchedule(ApiKeyUserDto apiToken)
         {
             var auth = await _apiKeyService.VerifyToken(apiToken);
             if (!auth.ValidToken)
@@ -32,7 +32,7 @@ namespace Lyzer_BE.API.Controllers
         }
 
         [HttpPost("schedule/next")]
-        public async Task<ScheduleDTO> HydrateFollowingYearSchedule(ApiKeyUserDTO apiToken)
+        public async Task<ScheduleDTO> HydrateFollowingYearSchedule(ApiKeyUserDto apiToken)
         {
             var auth = await _apiKeyService.VerifyToken(apiToken);
             if (!auth.ValidToken)

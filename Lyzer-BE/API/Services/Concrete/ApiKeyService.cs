@@ -8,17 +8,17 @@ namespace Lyzer_BE.API.Services.Concrete
 {
     public class ApiKeyService : IApiKeyService
     {
-        MongoController<HashedApiKeyDTO> _mongoController;
+        private readonly MongoController<HashedApiKeyDto> _mongoController;
 
         public ApiKeyService()
         {
-            _mongoController = new MongoController<HashedApiKeyDTO>("ApiKeys", "SaltAndHash");
+            _mongoController = new MongoController<HashedApiKeyDto>("ApiKeys", "SaltAndHash");
         }
 
-        public ApiKeyDTO GenerateKey(string userName)
+        public ApiKeyDto GenerateKey(string userName)
         {
             Guid guid = Guid.NewGuid();
-            ApiKeyDTO key = new()
+            ApiKeyDto key = new()
             {
                 UserName = userName,
                 ApiToken = guid.ToString()
@@ -33,15 +33,15 @@ namespace Lyzer_BE.API.Services.Concrete
             return key;
         }
 
-        public async Task<AuthResultDTO> VerifyToken(ApiKeyUserDTO userApiKey)
+        public async Task<AuthResultDto> VerifyToken(ApiKeyUserDto userApiKey)
         {
-            var result = new AuthResultDTO()
+            var result = new AuthResultDto()
             {
                 ValidToken = false
             };
 
-            HashedApiKeyDTO dbApiKey = await _mongoController.FindOneFromCollection(Builders<HashedApiKeyDTO>.Filter.Eq(apiKey => apiKey.UserName, userApiKey.UserName));
-            if (dbApiKey == null || dbApiKey.UserName != userApiKey.UserName)
+            HashedApiKeyDto dbApiKey = await _mongoController.FindOneFromCollection(Builders<HashedApiKeyDto>.Filter.Eq(apiKey => apiKey.UserName, userApiKey.UserName));
+            if (userApiKey.ApiToken == null || dbApiKey == null || dbApiKey.HashedApiSalt == null || dbApiKey.HashedApiToken == null || dbApiKey.UserName != userApiKey.UserName)
             {
                 return result;
             }

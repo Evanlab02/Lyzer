@@ -67,12 +67,12 @@ namespace Lyzer_BE.Tests.API.Controllers
                 }
             };
 
-            AuthResultDTO authResult = new()
+            AuthResultDto authResult = new()
             {
                 ValidToken = true
             };
 
-            ApiKeyUserDTO mockUserKey = new()
+            ApiKeyUserDto mockUserKey = new()
             {
                 ApiToken = "testing",
                 UserName = "testing"
@@ -90,7 +90,7 @@ namespace Lyzer_BE.Tests.API.Controllers
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
-                    It.Is<ApiKeyUserDTO>(
+                    It.Is<ApiKeyUserDto>(
                         userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
                     )
                 ).Returns(Task.FromResult(authResult));
@@ -158,12 +158,12 @@ namespace Lyzer_BE.Tests.API.Controllers
                 }
             };
 
-            AuthResultDTO authResult = new()
+            AuthResultDto authResult = new()
             {
                 ValidToken = true
             };
 
-            ApiKeyUserDTO mockUserKey = new()
+            ApiKeyUserDto mockUserKey = new()
             {
                 ApiToken = "testing",
                 UserName = "testing"
@@ -181,7 +181,7 @@ namespace Lyzer_BE.Tests.API.Controllers
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
-                    It.Is<ApiKeyUserDTO>(
+                    It.Is<ApiKeyUserDto>(
                         userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
                     )
                 ).Returns(Task.FromResult(authResult));
@@ -193,12 +193,12 @@ namespace Lyzer_BE.Tests.API.Controllers
         [Test]
         public async Task hydrateCurrentScheduleWithInvalidToken_ShouldReturnEmpty()
         {
-            AuthResultDTO authResult = new()
+            AuthResultDto authResult = new()
             {
                 ValidToken = false
             };
 
-            ApiKeyUserDTO mockUserKey = new()
+            ApiKeyUserDto mockUserKey = new()
             {
                 ApiToken = "testing",
                 UserName = "testing"
@@ -212,7 +212,7 @@ namespace Lyzer_BE.Tests.API.Controllers
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
-                    It.Is<ApiKeyUserDTO>(
+                    It.Is<ApiKeyUserDto>(
                         userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
                     )
                 ).Returns(Task.FromResult(authResult));
@@ -224,12 +224,12 @@ namespace Lyzer_BE.Tests.API.Controllers
         [Test]
         public async Task hydrateNextScheduleWithInvalidToken_ShouldReturnEmpty()
         {
-            AuthResultDTO authResult = new()
+            AuthResultDto authResult = new()
             {
                 ValidToken = false
             };
 
-            ApiKeyUserDTO mockUserKey = new()
+            ApiKeyUserDto mockUserKey = new()
             {
                 ApiToken = "testing",
                 UserName = "testing"
@@ -243,7 +243,7 @@ namespace Lyzer_BE.Tests.API.Controllers
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
-                    It.Is<ApiKeyUserDTO>(
+                    It.Is<ApiKeyUserDto>(
                         userDto => userDto.UserName == "testing" && userDto.ApiToken == "testing")
                     )
                 ).Returns(Task.FromResult(authResult));

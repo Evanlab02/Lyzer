@@ -11,7 +11,7 @@ namespace Lyzer_BE.Tests.API.Controllers
         [Test]
         public void GenerateUserName_ShouldReturnApiKey()
         {
-            var mockedApiKey = new ApiKeyDTO()
+            var mockedApiKey = new ApiKeyDto()
             {
                 ApiToken = "token",
                 UserName = "username",
@@ -25,14 +25,14 @@ namespace Lyzer_BE.Tests.API.Controllers
             apiKeyServiceMock.Setup(service => service.GenerateKey(It.Is<string>(userName => userName == "username")))
                 .Returns(mockedApiKey);
 
-            ApiKeyDTO? result = apiKeyController.GenerateApiKey("username");
+            ApiKeyDto? result = apiKeyController.GenerateApiKey("username");
             Assert.That(result, Is.EqualTo(mockedApiKey));
         }
 
         [Test]
         public void Authenticate_ShouldAuthResult()
         {
-            var mockedAuth = new AuthResultDTO()
+            var mockedAuth = new AuthResultDto()
             {
                 ValidToken = true
             };
@@ -41,12 +41,12 @@ namespace Lyzer_BE.Tests.API.Controllers
             var apiKeyController = new ApiKeyController(apiKeyServiceMock.Object);
 
             apiKeyServiceMock.Setup(service => service.VerifyToken(
-                It.Is<ApiKeyUserDTO>(
+                It.Is<ApiKeyUserDto>(
                     auth => auth.ApiToken == "token" && auth.UserName == "username")
                 )
             ).Returns(Task.FromResult(mockedAuth));
 
-            Task<AuthResultDTO>? result = apiKeyController.VerifyUser(new ApiKeyUserDTO()
+            Task<AuthResultDto>? result = apiKeyController.VerifyUser(new ApiKeyUserDto()
             {
                 ApiToken = "token",
                 UserName = "username"

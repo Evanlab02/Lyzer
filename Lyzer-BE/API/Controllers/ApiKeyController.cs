@@ -15,13 +15,13 @@ namespace Lyzer_BE.API.Controllers
         }
 
         [HttpGet("generate/{username}")]
-        public ApiKeyDTO GenerateApiKey(string username)
+        public ApiKeyDto GenerateApiKey(string username)
         {
             return _apiKeyService.GenerateKey(username);
         }
 
         [HttpPost("authenticate")]
-        public async Task<AuthResultDTO> VerifyUser(ApiKeyUserDTO userApiKey)
+        public async Task<AuthResultDto> VerifyUser(ApiKeyUserDto userApiKey)
         {
             return await _apiKeyService.VerifyToken(userApiKey);
         }
