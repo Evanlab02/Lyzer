@@ -10,6 +10,7 @@ namespace Lyzer_BE.API.Controllers
     public class ApiKeyController : ControllerBase
     {
         private readonly IApiKeyService _apiKeyService;
+
         public ApiKeyController(IApiKeyService apiKeyService)
         {
             _apiKeyService = apiKeyService;
@@ -29,7 +30,10 @@ namespace Lyzer_BE.API.Controllers
                 string token = Request.Headers["Lyzer-Api-Token"];
                 if (token == null || token.Split(" ").Length != 2)
                 {
-                    throw new Exception("Did not receive headers.");
+                    return new AuthResultDto()
+                    {
+                        ValidToken = false
+                    };
                 }
 
                 var userName = token.Split(" ")[0];
