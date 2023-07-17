@@ -1,5 +1,6 @@
 ﻿using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
+using Lyzer_BE.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lyzer_BE.API.Controllers
@@ -18,9 +19,11 @@ namespace Lyzer_BE.API.Controllers
         }
 
         // GET api/hydration/schedule
-        [HttpPost("schedule/current")]
-        public async Task<ScheduleDTO> HydrateCurrentSchedule(ApiKeyUserDto apiToken)
+        [HttpGet("schedule/current")]
+        public async Task<ScheduleDTO> HydrateCurrentSchedule()
         {
+            string token = Request.Headers["Lyzer-Api-Token"];
+            ApiKeyUserDto apiToken = AuthUtils.GenerateApiKey(token);
             var auth = await _apiKeyService.VerifyToken(apiToken);
             if (!auth.ValidToken)
             {
@@ -31,9 +34,11 @@ namespace Lyzer_BE.API.Controllers
             return await _hydrationService.HydrateSchedule(year.ToString());
         }
 
-        [HttpPost("schedule/next")]
-        public async Task<ScheduleDTO> HydrateFollowingYearSchedule(ApiKeyUserDto apiToken)
+        [HttpGet("schedule/next")]
+        public async Task<ScheduleDTO> HydrateFollowingYearSchedule()
         {
+            string token = Request.Headers["Lyzer-Api-Token"];
+            ApiKeyUserDto apiToken = AuthUtils.GenerateApiKey(token);
             var auth = await _apiKeyService.VerifyToken(apiToken);
             if (!auth.ValidToken)
             {

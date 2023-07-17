@@ -7,6 +7,7 @@ COPY API/ /src/API/
 COPY Database/ /src/Database/
 COPY Schedulers/ /src/Schedulers/
 COPY App_Start/ /src/App_Start/
+COPY Utils/ /src/Utils/
 
 WORKDIR /src
 
