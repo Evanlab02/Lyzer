@@ -1,6 +1,8 @@
 ﻿using Lyzer_BE.API.Controllers;
 using Lyzer_BE.API.DTOs;
 using Lyzer_BE.API.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 
 namespace Lyzer_BE.Tests.API.Controllers
@@ -72,17 +74,20 @@ namespace Lyzer_BE.Tests.API.Controllers
                 ValidToken = true
             };
 
-            ApiKeyUserDto mockUserKey = new()
-            {
-                ApiToken = "testing",
-                UserName = "testing"
-            };
-
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
             var apiKeyServiceMock = new Mock<IApiKeyService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Lyzer-Api-Token"] = "testing testing";
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object)
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = httpContext
+                }
+            };
 
             var currentYear = DateTime.Now.Year.ToString();
             hydrationServiceMock.Setup(service => service.HydrateSchedule(It.Is<string>(year => year == currentYear)))
@@ -95,7 +100,7 @@ namespace Lyzer_BE.Tests.API.Controllers
                     )
                 ).Returns(Task.FromResult(authResult));
 
-            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule(mockUserKey);
+            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule();
             Assert.That(result.ScheduleData.ScheduleTable.RaceWeekends.Count, Is.EqualTo(2));
         }
 
@@ -163,17 +168,19 @@ namespace Lyzer_BE.Tests.API.Controllers
                 ValidToken = true
             };
 
-            ApiKeyUserDto mockUserKey = new()
-            {
-                ApiToken = "testing",
-                UserName = "testing"
-            };
-
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
             var apiKeyServiceMock = new Mock<IApiKeyService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Lyzer-Api-Token"] = "testing testing";
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object)
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = httpContext
+                }
+            };
 
             var yearFromNow = DateTime.Now.AddYears(1).Year.ToString();
             hydrationServiceMock.Setup(service => service.HydrateSchedule(It.Is<string>(year => year == yearFromNow)))
@@ -186,7 +193,7 @@ namespace Lyzer_BE.Tests.API.Controllers
                     )
                 ).Returns(Task.FromResult(authResult));
 
-            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule(mockUserKey);
+            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule();
             Assert.That(result.ScheduleData.ScheduleTable.RaceWeekends.Count, Is.EqualTo(2));
         }
 
@@ -198,17 +205,18 @@ namespace Lyzer_BE.Tests.API.Controllers
                 ValidToken = false
             };
 
-            ApiKeyUserDto mockUserKey = new()
-            {
-                ApiToken = "testing",
-                UserName = "testing"
-            };
-
-
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
             var apiKeyServiceMock = new Mock<IApiKeyService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Lyzer-Api-Token"] = "testing testing";
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object)
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = httpContext
+                }
+            };
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
@@ -217,7 +225,7 @@ namespace Lyzer_BE.Tests.API.Controllers
                     )
                 ).Returns(Task.FromResult(authResult));
 
-            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule(mockUserKey);
+            ScheduleDTO result = await hydrationController.HydrateCurrentSchedule();
             Assert.That(result.ScheduleData, Is.Null);
         }
 
@@ -229,17 +237,19 @@ namespace Lyzer_BE.Tests.API.Controllers
                 ValidToken = false
             };
 
-            ApiKeyUserDto mockUserKey = new()
-            {
-                ApiToken = "testing",
-                UserName = "testing"
-            };
-
 
             // Arrange
             var hydrationServiceMock = new Mock<IHydrationService>();
             var apiKeyServiceMock = new Mock<IApiKeyService>();
-            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object);
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers["Lyzer-Api-Token"] = "testing testing";
+            var hydrationController = new HydrationController(hydrationServiceMock.Object, apiKeyServiceMock.Object)
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = httpContext
+                }
+            };
 
             apiKeyServiceMock.Setup(
                 service => service.VerifyToken(
@@ -248,7 +258,7 @@ namespace Lyzer_BE.Tests.API.Controllers
                     )
                 ).Returns(Task.FromResult(authResult));
 
-            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule(mockUserKey);
+            ScheduleDTO result = await hydrationController.HydrateFollowingYearSchedule();
             Assert.That(result.ScheduleData, Is.Null);
         }
     }
