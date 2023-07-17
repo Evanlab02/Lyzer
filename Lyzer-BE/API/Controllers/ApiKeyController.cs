@@ -2,7 +2,6 @@
 using Lyzer_BE.API.Services.Interfaces;
 using Lyzer_BE.Utils;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Lyzer_BE.API.Controllers
 {

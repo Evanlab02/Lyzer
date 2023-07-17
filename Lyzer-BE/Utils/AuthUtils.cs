@@ -8,7 +8,7 @@ namespace Lyzer_BE.Utils
         {
             try
             {
-                
+
                 if (apiKeyHeader == null || apiKeyHeader.Split(" ").Length != 2)
                 {
                     return new ApiKeyUserDto();
