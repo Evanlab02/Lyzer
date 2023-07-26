@@ -8,10 +8,7 @@ build:
 	dotnet build
 
 clean:
-	rm -rf bin/ obj/ dist/
-
-test:
-	dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+	rm -rf dist/
 
 format:
 	dotnet format Lyzer-BE.csproj
