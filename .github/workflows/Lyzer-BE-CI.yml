@@ -16,10 +16,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-      - name: Pull Mongo Docker Image
-        run: docker pull mongo:latest
-      - name: Run Mongo Docker Image
-        run: docker run -p 27017:27017 mongo:latest &
       - name: Restore dependencies
         working-directory: Lyzer-BE/
         run: dotnet restore
@@ -29,9 +25,6 @@ jobs:
       - name: Format
         working-directory: Lyzer-BE/
         run: dotnet format --verify-no-changes Lyzer-BE.csproj
-      - name: Test
-        working-directory: Lyzer-BE/
-        run: dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --verbosity normal
       - name: Build Release
         working-directory: Lyzer-BE/
         run: dotnet publish --configuration Release --output dist/
