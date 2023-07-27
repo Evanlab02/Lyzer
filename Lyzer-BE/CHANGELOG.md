@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/Evanlab02/Lyzer/compare/v0.4.1...v0.5.0) (2023-07-27)
+
+
+### Features
+
+* **Schedule:** Flexible Raceweekend by round endpoints added. ([89709ed](https://github.com/Evanlab02/Lyzer/commit/89709edd4b128abe82c0239151073abc61598f52))
+
 ## [0.4.1](https://github.com/Evanlab02/Lyzer/compare/v0.4.0...v0.4.1) (2023-07-13)
 
 
