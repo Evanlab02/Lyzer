@@ -42,7 +42,7 @@ namespace Lyzer_BE.API.Controllers
         [HttpGet("{year}/raceweekend/{round}")]
         public Task<RaceWeekendDTO?> GetRaceWeekendByRoundAndYear(string round, string year)
         {
-            return _scheduleService.GetRaceWeekendByRound(round);
+            return _scheduleService.GetRaceWeekendByRound(round, year);
         }
     }
 }

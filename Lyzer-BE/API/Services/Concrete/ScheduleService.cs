@@ -88,7 +88,7 @@ namespace Lyzer_BE.API.Services.Concrete
         {
             year = GetCurrentYearIfCurrent(year);
 
-            if (IsYearValid(year))
+            if (IsYearValid(year) && int.TryParse(round, out _))
             {
                 _mongoController.SetCollection(year);
 
@@ -100,34 +100,29 @@ namespace Lyzer_BE.API.Services.Concrete
                         .ScheduleTable
                         .RaceWeekends
                         .Where(x => x.Round.Equals(round))
-                        .FirstOrDefault();
+                        .FirstOrDefault(new RaceWeekendDTO());
                 }
                 else
                 {
-                    return await _mongoController
+                    var result = await _mongoController
                         .FindOneFromCollection(Builders<RaceWeekendDTO>.Filter.Where(x => x.Round.Equals(round)));
+
+                    return result != null ? result : new RaceWeekendDTO();
                 }
             }
             //Throw some exception once exception handler is created.
             return new RaceWeekendDTO();
         }
 
-        /// <summary>
-        /// <param name="year">String to check if current</param>
-        /// <returns>Current Date Year if the string is "current" or returns the same value</returns>
-        /// </summary>
         private string GetCurrentYearIfCurrent(string year)
         {
             return year == "current" ? DateTime.Now.Year.ToString() : year;
         }
 
-        /// <summary>
-        /// <param name="year">Year being validated</param>
-        /// <returns>Bool depending of if the year matches the valid criteria.</returns>
-        /// </summary>
         private bool IsYearValid(string year)
         {
             return !String.IsNullOrEmpty(year) &&
+                    int.TryParse(year, out _) &&
                     int.Parse(year) >= 1950 &&
                     int.Parse(year) <= DateTime.Now.AddYears(1).Year;
         }
