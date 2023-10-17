@@ -5,7 +5,7 @@
     margin: 0;
 
     .main-item {
-        width: 250px;
+        width: 100px;
     }
 
     .navbar-item {
@@ -22,15 +22,38 @@
         text-decoration: none;
         font-size: 1.2rem;
         font-weight: 500;
-        z-index: 1028;
         display: flex;
         align-items: center;
     }
 
     #lyzer-logo {
         cursor: pointer;
-        font-size: 1.5rem;
+        font-size: 2rem;
         color: #3b5fe2;
-        padding-right: 0.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #lyzer-logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: none;
+    }
+
+    .navbar-button {
+        color: #8c98a5;
+        font-size: 1.8rem;
+        padding-top: 0rem;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .main-item {
+            width: 1000px;
+        }
+
+        #lyzer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
     }
 }

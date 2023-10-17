@@ -14,7 +14,9 @@
     "@emotion/styled": "11.11.0",
     "@mui/material": "5.14.13",
     "@shoelace-style/shoelace": "2.8.0",
+    "apexcharts": "^3.44.0",
     "react": "18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-dom": "18.2.0",
     "react-router-dom": "6.17.0"
   },
