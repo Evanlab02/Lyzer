@@ -69,7 +69,7 @@ namespace Lyzer_BE.API.Services.Concrete
             if (IsYearValid(year) && int.TryParse(round, out _))
             {
                 CheckIfScheduleExists(year);
-                
+
                 var result = await _mongoController
                     .FindOneFromCollection(Builders<RaceWeekendDTO>.Filter.Where(x => x.Round.Equals(round)));
 
@@ -91,10 +91,10 @@ namespace Lyzer_BE.API.Services.Concrete
                     int.Parse(year) >= 1950 &&
                     int.Parse(year) <= DateTime.Now.AddYears(1).Year;
         }
-        
+
         private void CheckIfScheduleExists(string year, string customMessage = "")
         {
-            string errorMsg = String.IsNullOrEmpty(customMessage) 
+            string errorMsg = String.IsNullOrEmpty(customMessage)
                                 ? customMessage : $"Race schedule does not exist on Mongo for year: {year}";
 
             if (!_mongoController.CollectionExists(year))

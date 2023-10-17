@@ -34,7 +34,7 @@ namespace Lyzer_BE.App_Start
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            
+
             //Commented out in case we want to ever use this another time.
             //if (app.Environment.IsProduction())
             //{
