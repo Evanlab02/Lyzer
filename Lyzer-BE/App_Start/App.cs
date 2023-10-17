@@ -2,7 +2,6 @@ using dotenv.net;
 using dotenv.net.Utilities;
 using Lyzer_BE.API.Services.Concrete;
 using Lyzer_BE.API.Services.Interfaces;
-using Lyzer_BE.Schedulers.Hydraters;
 using System.Diagnostics.CodeAnalysis;
 
 
@@ -35,14 +34,11 @@ namespace Lyzer_BE.App_Start
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            if (app.Environment.IsProduction())
-            {
-                var year = DateTime.Now.Year;
-                IHydrationService hydrationService = HydrationService.Instance;
-                hydrationService.HydrateSchedule(year.ToString());
-                hydrationService.HydrateSchedule((year + 1).ToString());
-            }
+            
+            //Commented out in case we want to ever use this another time.
+            //if (app.Environment.IsProduction())
+            //{
+            //}
 
             app.UseHttpsRedirection();
 
@@ -54,12 +50,8 @@ namespace Lyzer_BE.App_Start
 
             void ConfigureServices(WebApplicationBuilder builder)
             {
-                builder.Services.AddSingleton<IHydrationService, HydrationService>();
                 builder.Services.AddScoped<IDriverService, DriverService>();
                 builder.Services.AddScoped<IScheduleService, ScheduleService>();
-
-                //Scheduled Services
-                builder.Services.AddHostedService<CurrentScheduleHydrater>();
             }
         }
     }
