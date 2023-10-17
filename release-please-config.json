@@ -1,7 +1,12 @@
 {
     "packages": {
         "Lyzer-BE": {
-            "release-type": "simple"
+            "release-type": "simple",
+            "component": "Lyzer-BE"
+        },
+        "Lyzer-FE": {
+            "release-type": "node",
+            "component": "Lyzer-FE"
         }
     }
 }

@@ -1,0 +1,59 @@
+.navbar {
+    background-color: #3c4751 !important;
+    min-height: 70px;
+    display: flex;
+    margin: 0;
+
+    .main-item {
+        width: 100px;
+    }
+
+    .navbar-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    a {
+        cursor: pointer;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+    #lyzer-logo {
+        cursor: pointer;
+        font-size: 2rem;
+        color: #3b5fe2;
+        padding-right: 1.5rem;
+    }
+
+    #lyzer-logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: none;
+    }
+
+    .navbar-button {
+        color: #8c98a5;
+        font-size: 1.8rem;
+        padding-top: 0rem;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .main-item {
+            width: 1000px;
+        }
+
+        #lyzer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+    }
+}
