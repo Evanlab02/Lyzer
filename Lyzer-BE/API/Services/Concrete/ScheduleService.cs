@@ -8,12 +8,10 @@ namespace Lyzer_BE.API.Services.Concrete
     public class ScheduleService : IScheduleService
     {
         private readonly MongoController<RaceWeekendDTO> _mongoController;
-        private readonly IHydrationService _hydrationService;
 
-        public ScheduleService(IHydrationService hydrationService)
+        public ScheduleService()
         {
             _mongoController = new MongoController<RaceWeekendDTO>("Schedules", DateTime.Now.Year.ToString());
-            _hydrationService = hydrationService;
         }
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year = "current")
@@ -22,20 +20,12 @@ namespace Lyzer_BE.API.Services.Concrete
 
             if (IsYearValid(year))
             {
-                _mongoController.SetCollection(year);
+                CheckIfScheduleExists(year);
 
-                if (!_mongoController.CollectionExists())
-                {
-                    var result = await _hydrationService.HydrateSchedule(year);
-                    return result.ScheduleData.ScheduleTable.RaceWeekends;
-                }
-                else
-                {
-                    return await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-                }
+                return await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
             }
-            //Throw some exception once exception handler is created.
-            return new List<RaceWeekendDTO>();
+
+            throw new Exception($"Invalid year received for GetFullSchedule: {year}");
         }
 
         public async Task<RaceWeekendDTO>? GetNextOrCurrentRaceWeekend()
@@ -50,23 +40,11 @@ namespace Lyzer_BE.API.Services.Concrete
                 Time = "00:00:00",
             };
 
-            List<RaceWeekendDTO> currentYearRaceWeekends;
-            List<RaceWeekendDTO> nextYearRaceWeekends;
+            CheckIfScheduleExists(today.Year.ToString(), $"Current year's schedule is unavailable. ({today.Year.ToString()})");
+            List<RaceWeekendDTO> currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
-            if (!_mongoController.CollectionExists(today.Year.ToString()) && !_mongoController.CollectionExists(yearFromNow))
-            {
-                var currentYearResponse = await _hydrationService.HydrateSchedule(today.Year.ToString());
-                var followingYearResponse = await _hydrationService.HydrateSchedule(yearFromNow);
-                currentYearRaceWeekends = currentYearResponse.ScheduleData.ScheduleTable.RaceWeekends;
-                nextYearRaceWeekends = followingYearResponse.ScheduleData.ScheduleTable.RaceWeekends;
-            }
-            else
-            {
-                _mongoController.SetCollection(today.Year.ToString());
-                currentYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-                _mongoController.SetCollection(yearFromNow);
-                nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
-            }
+            CheckIfScheduleExists(yearFromNow, $"The following year's schedule is not yet available. ({yearFromNow})");
+            List<RaceWeekendDTO> nextYearRaceWeekends = await _mongoController.FindManyFromCollection(Builders<RaceWeekendDTO>.Filter.Empty);
 
             var allRaceWeekends = currentYearRaceWeekends.Concat(nextYearRaceWeekends).ToList();
 
@@ -90,28 +68,15 @@ namespace Lyzer_BE.API.Services.Concrete
 
             if (IsYearValid(year) && int.TryParse(round, out _))
             {
-                _mongoController.SetCollection(year);
+                CheckIfScheduleExists(year);
 
-                if (!_mongoController.CollectionExists())
-                {
-                    var result = await _hydrationService.HydrateSchedule(year);
-                    return result
-                        .ScheduleData
-                        .ScheduleTable
-                        .RaceWeekends
-                        .Where(x => x.Round.Equals(round))
-                        .FirstOrDefault(new RaceWeekendDTO());
-                }
-                else
-                {
-                    var result = await _mongoController
-                        .FindOneFromCollection(Builders<RaceWeekendDTO>.Filter.Where(x => x.Round.Equals(round)));
+                var result = await _mongoController
+                    .FindOneFromCollection(Builders<RaceWeekendDTO>.Filter.Where(x => x.Round.Equals(round)));
 
-                    return result != null ? result : new RaceWeekendDTO();
-                }
+                return result != null ? result : new RaceWeekendDTO();
             }
-            //Throw some exception once exception handler is created.
-            return new RaceWeekendDTO();
+
+            throw new Exception($"Invalid year or round received for GetRaceWeekendByRound: {year}/{round}");
         }
 
         private string GetCurrentYearIfCurrent(string year)
@@ -125,6 +90,17 @@ namespace Lyzer_BE.API.Services.Concrete
                     int.TryParse(year, out _) &&
                     int.Parse(year) >= 1950 &&
                     int.Parse(year) <= DateTime.Now.AddYears(1).Year;
+        }
+
+        private void CheckIfScheduleExists(string year, string customMessage = "")
+        {
+            string errorMsg = String.IsNullOrEmpty(customMessage)
+                                ? customMessage : $"Race schedule does not exist on Mongo for year: {year}";
+
+            if (!_mongoController.CollectionExists(year))
+                throw new Exception(errorMsg);
+
+            _mongoController.SetCollection(year);
         }
     }
 }
