@@ -52,6 +52,7 @@ namespace Lyzer_BE.App_Start
             {
                 builder.Services.AddScoped<IDriverService, DriverService>();
                 builder.Services.AddScoped<IScheduleService, ScheduleService>();
+                builder.Services.AddScoped<INotificationService, NotificationService>();
             }
         }
     }

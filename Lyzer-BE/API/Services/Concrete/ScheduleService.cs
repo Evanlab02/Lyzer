@@ -8,10 +8,12 @@ namespace Lyzer_BE.API.Services.Concrete
     public class ScheduleService : IScheduleService
     {
         private readonly MongoController<RaceWeekendDTO> _mongoController;
+        private readonly INotificationService notificationService;
 
-        public ScheduleService()
+        public ScheduleService(INotificationService notificationService)
         {
             _mongoController = new MongoController<RaceWeekendDTO>("Schedules", DateTime.Now.Year.ToString());
+            this.notificationService = notificationService;
         }
 
         public async Task<List<RaceWeekendDTO>>? GetFullSchedule(string year = "current")
@@ -30,6 +32,12 @@ namespace Lyzer_BE.API.Services.Concrete
 
         public async Task<RaceWeekendDTO>? GetNextOrCurrentRaceWeekend()
         {
+            notificationService.SendAlert(new AlertDto()
+            {
+                Message = "SEBASTIAN VETTEL! DU BIST WELTMEISTER!!",
+                Exception = "Testy Exception we are working good good :) or maybe not, not sure, we will see"
+            }, Enums.AlertLevel.NonCritical);
+
             var today = DateTime.Now;
             var yearFromNow = today.AddYears(1).Year.ToString();
             var twoYearsFromNow = today.AddYears(2);
