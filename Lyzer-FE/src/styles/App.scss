@@ -17,10 +17,16 @@
 }
 
 .page-title {
+    --lyzer-title-color: #acbfd2;
+
+    @media (prefers-color-scheme: light) {
+        --lyzer-title-color: #000000;
+    }
+
     font-size: 1.05rem;
     font-family: IBM Plex Sans, sans-serif;
     margin: 0;
-    color: #acbfd2;
+    color: var(--lyzer-title-color);
     font-weight: 500;
     line-height: 1.1;
 }

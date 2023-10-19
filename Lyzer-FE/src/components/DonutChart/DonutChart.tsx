@@ -7,7 +7,7 @@ export default function DonutChart() {
     const options = {
         colors: ['#00D2FF', '#FF0000', '#3b5fe2', '#FF8700', '#0090FF', '#9b00d9'],
         chart: {
-            foreColor: "#fff",
+            foreColor: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#fff" : "#000",
             type: 'donut',
             width: 380,
         },

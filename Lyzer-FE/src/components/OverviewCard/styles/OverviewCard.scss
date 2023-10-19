@@ -1,13 +1,13 @@
 .overview-card {
     font-family: IBM Plex Sans, sans-serif;
     border-radius: 0.3rem;
-    background-color: #36404a;
+    background-color: var(--lyzer-card-bg-color);
     padding: 1.5rem;
     padding-bottom: 4.25rem;
     height: fit-content;
 
     .card-heading {
-        color: #acbfd2 !important;
+        color: var(--lyzer-card-heading) !important;
         font-weight: bold !important;
         text-transform: uppercase !important;
         font-size: 15px !important;
@@ -30,12 +30,12 @@
             .section-heading {
                 font-weight: 700 !important;
                 text-transform: uppercase !important;
-                color: #8c98a5 !important;
+                color: var(--lyzer-card-sub-heading) !important;
                 font-size: 12px !important;
             }
 
             .section-value {
-                color: #acbfd2;
+                color: var(--lyzer-card-heading);
                 margin: 6px 0 6px 0;
                 font-size: 1.35rem;
             }

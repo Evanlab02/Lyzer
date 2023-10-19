@@ -1,8 +1,34 @@
+html {
+    --lyzer-base-bg-color: #303841;
+    --lyzer-base-text-color: #94a0ad;
+    --lyzer-card-bg-color: #36404a;
+    --lyzer-card-heading: #acbfd2;
+    --lyzer-card-sub-heading: #8c98a5;
+    --lyzer-card-value: #acbfd2;
+    --lyzer-nav-bg-color: #3c4751;
+    --lyzer-nav-button-color: #8c98a5;
+    --lyzer-side-bar-bg-color: #37424c;
+    --lyzer-side-bar-item-color: #ffffff;
+
+    @media (prefers-color-scheme: light) {
+        --lyzer-base-bg-color: #e3f2fd;
+        --lyzer-base-text-color: #000000;
+        --lyzer-card-bg-color: #ffffff;
+        --lyzer-card-heading: #000000;
+        --lyzer-card-sub-heading: #000000;
+        --lyzer-card-value: #000000;
+        --lyzer-nav-bg-color: #ffffff;
+        --lyzer-nav-button-color: #000000;
+        --lyzer-side-bar-bg-color: #ffffff;
+        --lyzer-side-bar-item-color: #000000;
+    }
+}
+
 body {
     margin: 0;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    background-color: #303841;
-    color: #94a0ad;
+    background-color: var(--lyzer-base-bg-color);
+    color: var(--lyzer-base-text-color);
     font-family: 'IBM Plex Sans', sans-serif;
 }

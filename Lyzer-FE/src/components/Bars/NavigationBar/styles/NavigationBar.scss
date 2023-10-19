@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #3c4751 !important;
+    background-color: var(--lyzer-nav-bg-color) !important;
     min-height: 70px;
     display: flex;
     margin: 0;
@@ -40,7 +40,7 @@
     }
 
     .navbar-button {
-        color: #8c98a5;
+        color: var(--lyzer-nav-button-color);
         font-size: 1.8rem;
         padding-top: 0rem;
     }

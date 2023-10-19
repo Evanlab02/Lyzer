@@ -17,7 +17,7 @@ export default function LineChart() {
     const options = {
         colors: ['#3b5fe2', '#00D2FF'],
         chart: {
-            foreColor: "#fff",
+            foreColor: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#fff" : "#000",
             height: 350,
             type: 'line',
             zoom: {
