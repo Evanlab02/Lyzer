@@ -29,7 +29,7 @@ export default function BarChart() {
     const options = {
         colors: ['#00D2FF', '#FF0000', '#3b5fe2', '#FF8700', '#0090FF'],
         chart: {
-            foreColor: "#fff",
+            foreColor: window.matchMedia("(prefers-color-scheme: dark)").matches ? "#fff" : "#000",
             type: 'bar',
             height: 350
         },

@@ -4,8 +4,7 @@
     z-index: 3;
     position: fixed;
     height: 100%;
-    color: #94a0ad;
-    background-color: #37424c;
+    background-color: var(--lyzer-side-bar-bg-color);
     display: flex;
     flex-direction: column;
 
@@ -20,14 +19,13 @@
     }
 
     .sidebar-button {
-        color: #8c98a5;
         font-size: 1.8rem;
         padding: 0rem;
     }
 
     a {
         cursor: pointer;
-        color: #ffffff;
+        color: var(--lyzer-side-bar-item-color);
         text-decoration: none;
         font-size: 1.2rem;
         font-weight: 500;

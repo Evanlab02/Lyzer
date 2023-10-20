@@ -1,11 +1,11 @@
 .line-chart-wrapper {
     font-family: IBM Plex Sans, sans-serif;
     border-radius: 0.3rem;
-    background-color: #36404a;
+    background-color: var(--lyzer-card-bg-color);
     padding: 1.5rem;
 
     .line-chart-title {
-        color: #acbfd2 !important;
+        color: var(--lyzer-card-heading) !important;
         font-weight: bold !important;
         text-transform: uppercase !important;
         font-size: 15px !important;
