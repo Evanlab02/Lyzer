@@ -41,6 +41,7 @@ namespace Lyzer_BE.API.Services.Concrete
             var request = new RestRequest(AlertChannel.NonCritical, Method.Post);
 
             //Json doesn't look so great. Maybe we can look into making it a better looking string?
+            //https://docs.ntfy.sh/publish/
             request.AddJsonBody(alert);
 
             var response = await client.PostAsync(request);
