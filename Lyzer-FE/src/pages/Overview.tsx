@@ -9,6 +9,7 @@ const LineChart = lazy(() => import("../components/LineChart/LineChart"));
 const BarChart = lazy(() => import("../components/BarChart/BarChart"));
 const DonutChart = lazy(() => import("../components/DonutChart/DonutChart"));
 
+
 export default function Overview() {
     return (
         <>
