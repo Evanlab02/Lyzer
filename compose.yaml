@@ -1,0 +1,32 @@
+services:
+  redis:
+    image: redis:7.4.1-alpine3.20
+    container_name: lyzer-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - lyzer-network
+
+  api:
+    build: Backend/Lyzer
+    container_name: lyzer-api
+    env_file:
+      - .env.dev
+    ports:
+      - 8080:8080
+    networks:
+      - lyzer-network
+    develop:
+      watch:
+        - action: rebuild
+          path: ./Backend/Lyzer
+
+networks:
+  lyzer-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    external: false

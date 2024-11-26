@@ -1,0 +1,5 @@
+obj/
+bin/
+Lyzer.csproj.user
+Lyzer.http
+appsettings.Development.json
