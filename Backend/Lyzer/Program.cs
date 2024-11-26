@@ -1,3 +1,4 @@
+using Lyzer.Clients;
 using Lyzer.Controllers;
 using Lyzer.Services;
 
@@ -10,6 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<CacheService>();
+
+builder.Services.AddScoped<JolpicaClient>();
+builder.Services.AddScoped<DriverService>();
 builder.Services.AddScoped<RacesService>();
 
 var app = builder.Build();
