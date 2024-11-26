@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyzer", "Lyzer\Lyzer.csproj", "{A1E8CAD1-02AA-46A1-A3FF-DBFB7168414A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1E8CAD1-02AA-46A1-A3FF-DBFB7168414A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E8CAD1-02AA-46A1-A3FF-DBFB7168414A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E8CAD1-02AA-46A1-A3FF-DBFB7168414A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E8CAD1-02AA-46A1-A3FF-DBFB7168414A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30004CD4-D556-43C1-8D12-F5F45949789F}
+	EndGlobalSection
+EndGlobal
