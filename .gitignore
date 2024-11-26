@@ -1,3 +1,8 @@
+# Visual Studio/Backend Exclusions
 .vs
 bin/
 obj/
+
+# Documentation exclusions
+Docs/site
+Docs/uv.lock
