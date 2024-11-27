@@ -40,7 +40,7 @@ namespace Lyzer.Middleware
             var errorResponse = new
             {
                 Message = message,
-                Details = exception.Message // Replace this with a more user-friendly message in production.
+                Details = exception.Message
             };
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
