@@ -1,5 +1,5 @@
 using Lyzer.Clients;
-using Lyzer.Controllers;
+using Lyzer.Middleware;
 using Lyzer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,14 +25,11 @@ if (app.Environment.IsDevelopment())
 
 }
 
-
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();

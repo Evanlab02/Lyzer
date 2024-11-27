@@ -1,9 +1,10 @@
-﻿using System.Text.Json;
-using RestSharp;
+﻿using System.Runtime.Serialization;
+using System.Text.Json;
 using Newtonsoft.Json;
+using RestSharp;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
-using System.Runtime.Serialization;
+using Lyzer.Errors;
 
 namespace Lyzer.Clients
 {
@@ -26,7 +27,7 @@ namespace Lyzer.Clients
 
             if (result == null)
             {
-                throw new HttpRequestException("Could not retrieve data at: " + requestPath);
+                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
             }
 
             JsonElement root = result.RootElement;
@@ -38,7 +39,8 @@ namespace Lyzer.Clients
 
             DriverStandingsDTO? driverStandings = JsonConvert.DeserializeObject<DriverStandingsDTO>(standings.GetRawText());
 
-            if (driverStandings == null) {
+            if (driverStandings == null)
+            {
                 throw new SerializationException("Could not deserialize driver standings.");
             }
 

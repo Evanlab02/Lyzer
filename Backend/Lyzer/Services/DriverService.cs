@@ -23,7 +23,8 @@ namespace Lyzer.Services
             string key = String.Format(CacheKeyConstants.DriverStandings, "current");
             string? result = await _cache.Get(key);
 
-            if (result == null) {
+            if (result == null)
+            {
                 DriverStandingsDTO standings = await _client.GetCurrentDriverStandings();
                 await _cache.Add(key, JsonConvert.SerializeObject(standings), TimeSpan.FromHours(1));
                 return standings;

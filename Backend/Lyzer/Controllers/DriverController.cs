@@ -19,7 +19,7 @@ namespace Lyzer.Controllers
         }
 
         [HttpGet("standings", Name = "Get driver standings")]
-        public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
+        public async Task<ActionResult<DriverStandingsDTO>> GetCurrentDriverStandings()
         {
             return await _driverService.GetCurrentDriverStandings();
         }
