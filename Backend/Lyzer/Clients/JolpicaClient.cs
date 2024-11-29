@@ -15,14 +15,14 @@ namespace Lyzer.Clients
 
         public JolpicaClient(ILogger<JolpicaClient> logger)
         {
-            RestClientOptions options = new RestClientOptions(URIConstants.Jolpica.BaseUri);
+            RestClientOptions options = new RestClientOptions(JolpicaConstants.BaseUri);
             _client = new RestClient(options);
             _logger = logger;
         }
 
         public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
         {
-            string requestPath = String.Format(URIConstants.Jolpica.DriverStandingsUri, "current");
+            string requestPath = String.Format(JolpicaConstants.DriverStandingsUri, "current");
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)

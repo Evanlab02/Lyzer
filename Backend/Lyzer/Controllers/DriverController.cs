@@ -1,7 +1,7 @@
-﻿using Lyzer.Common.DTO;
+﻿using Microsoft.AspNetCore.Mvc;
+using Lyzer.Common.DTO;
 using Lyzer.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+
 
 namespace Lyzer.Controllers
 {
@@ -19,7 +19,7 @@ namespace Lyzer.Controllers
         }
 
         [HttpGet("standings", Name = "Get driver standings")]
-        public async Task<ActionResult<DriverStandingsDTO>> GetCurrentDriverStandings()
+        public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
         {
             return await _driverService.GetCurrentDriverStandings();
         }
