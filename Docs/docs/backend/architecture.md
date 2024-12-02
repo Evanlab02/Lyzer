@@ -1,26 +1,26 @@
 # General Structure of the API/Backend
 
-The primary components to be aware of when it comes the backend are:
+The primary components to be aware of in the backend are:
 
-- Controllers
-- Services
-- Clients
-- Repositories
+- **Controllers**
+- **Services**
+- **Clients**
+- **Repositories**
 
-There are also others like that play a less pivotal role but still form the project, such as:
+There are also other components that play a less pivotal role but still form part of the project, such as:
 
-- Constants
-- DTOs
-- Middleware
-- Errors
+- **Constants**
+- **DTOs**
+- **Middleware**
+- **Errors**
 
 ## Controllers
 
-The controllers are the entry point to the API from a consumer perspective, this is where endpoints are declared and exposed to the consumer.
+The controllers are the entry point to the API from a consumer perspective. This is where endpoints are declared and exposed to the consumer.
 
-They are primarily responsible for the routing and should be as un-sophisticated as possible, they call the relevant services to handle the business logic, data retrieval etc.
+They are primarily responsible for routing and should be as simple as possible. They call the relevant services to handle business logic, data retrieval, etc.
 
-An example of a controller would be as below:
+An example of a controller is shown below:
 
 ```csharp
 using Lyzer.Common.DTO;
@@ -54,11 +54,11 @@ namespace Lyzer.Controllers
 
 ## Services
 
-The services will most likely be the more complex and sophisticated pieces of the codebase as it would be here where we do heavy lifting.
+The services are likely the more complex and sophisticated pieces of the codebase, as this is where the heavy lifting occurs.
 
-The services are responsible for handling all business logic, transformation and calling the relevant data retrievel methods/functionality.
+Services are responsible for handling all business logic, transformation, and calling the relevant data retrieval methods/functionality.
 
-An example of a service would be as below:
+An example of a service is shown below:
 
 ```csharp
 using Lyzer.Clients;
@@ -103,11 +103,9 @@ namespace Lyzer.Services
 
 Clients are responsible for communicating with other APIs. In the case of Lyzer, an example is a client to query Jolpica F1 data.
 
-The clients should be doing minimal work and keeping everything as simple as possible, and focus primarily on communication with APIs.
+Clients should perform minimal work, keeping everything as simple as possible, and focus primarily on communication with APIs. They should *not* perform transformations or similar tasks.
 
-They should *not* be performing transformations of anything of the sort.
-
-An example implementation would be as below:
+An example implementation is shown below:
 
 ```csharp
 using System.Runtime.Serialization;
@@ -164,17 +162,17 @@ namespace Lyzer.Clients
 
 ## Repositories
 
-Repositories are responsible for communicating with data storage such as a DB (database) like postgres, currently the project does not contain any repositories but in the future, we would very likely need it.
+Repositories are responsible for communicating with data storage such as a database (e.g., PostgreSQL). Currently, the project does not contain any repositories, but they will likely be needed in the future.
 
-Please note that repositories are similiar to clients where buisness logic and transformation should be kept to a minimum and generally avoided in these classes.
+Please note that repositories are similar to clients in that business logic and transformation should be kept to a minimum and generally avoided in these classes.
 
 ## Constants
 
-We contain classes with constants that will be values that are frequently used and if we make changes to them, should reflect accross the entire codebase.
+We use classes with constants for values that are frequently used. If we make changes to these values, they should reflect across the entire codebase.
 
-This is easy to do with constants, as all values using the variable, would be updated.
+This is easy to manage with constants, as all values using the variable will be updated.
 
-An example would be:
+An example is shown below:
 
 ```csharp
 namespace Lyzer.Common.Constants
@@ -192,11 +190,11 @@ namespace Lyzer.Common.Constants
 
 ## DTOs
 
-You might be familiar with schemas, models or the plethora of other things these could be called. In this codebase, they are reffered to as DTOs (Data transfer objects).
+You might be familiar with schemas, models, or other terms for these. In this codebase, they are referred to as DTOs (Data Transfer Objects).
 
-These objects are representations of what the API will return on successful calls.
+These objects represent what the API will return on successful calls.
 
-An example being:
+An example is shown below:
 
 ```csharp
 namespace Lyzer.Common.DTO
@@ -217,12 +215,94 @@ namespace Lyzer.Common.DTO
 
 ## Middleware
 
-TODO
+Middleware components are used to handle cross-cutting concerns such as logging, authentication, and error handling. They are executed in the order they are registered in the application pipeline.
+
+Currently we only use this for error handling.
+
+An example is shown below:
+
+```csharp
+using Lyzer.Errors;
+using Newtonsoft.Json;
+
+namespace Lyzer.Middleware
+{
+    public class ExceptionHandlingMiddleware
+    {
+        private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+
+        public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+        {
+            _next = next;
+            _logger = logger;
+        }
+
+        public async Task Invoke(HttpContext context)
+        {
+            try
+            {
+                await _next(context);
+            }
+            catch (Exception404NotFound ex)
+            {
+                _logger.LogError(ex, "404 exception occurred.");
+                await HandleExceptionAsync(context, StatusCodes.Status404NotFound, "Not found.", ex);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unhandled exception occurred.");
+                await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError, "An unexpected error occurred.", ex);
+            }
+        }
+
+        private static Task HandleExceptionAsync(HttpContext context, int statusCode, string message, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = statusCode;
+
+            var errorResponse = new
+            {
+                Message = message,
+                Details = exception.Message
+            };
+
+            return context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
+        }
+    }
+}
+```
+
+Middleware components are registered in the `Program.cs` file. For example:
+
+```csharp
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+```
 
 ## Errors
 
-TODO
+Error handling is a crucial part of any application. In Lyzer, we handle errors using custom exceptions and middleware to ensure consistent and meaningful error responses.
+
+The middleware aspect of this was covered above, below you can find an example of a custom exception.
+
+```csharp
+namespace Lyzer.Errors
+{
+    public class Exception404NotFound : Exception
+    {
+        public Exception404NotFound(string message) : base(message) { }
+    }
+}
+```
 
 ## Diagram
 
-TODO
+![Diagram of the Backend Structure](./assets/structure.png)
