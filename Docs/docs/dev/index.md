@@ -16,15 +16,15 @@ Before diving into development, ensure you have the following tools installed:
 
 Follow these steps to spin up the development environment:  
 
-1. **Clone the Repository**  
+- **Clone the Repository**  
    Ensure you have the latest version of the Lyzer repository on your local machine:  
 
    ```bash  
-   git clone https://github.com/<your-username>/lyzer.git  
+   git clone https://github.com/LittleClumsy/Lyzer.git  
    cd lyzer  
    ```
 
-2. **Start the Containers in Watch Mode**  
+- **Start the Containers in Watch Mode**  
    Use the following command to start the Docker containers with **watch mode** enabled:
 
    ```bash  
@@ -33,7 +33,7 @@ Follow these steps to spin up the development environment:
 
    > The `watch` command ensures that changes to the API source code automatically trigger a rebuild for the container.  
 
-3. **Verify the Environment**  
+- **Verify the Environment**  
    Once the containers are up, confirm that the API is running by navigating to its swagger docs (e.g., `http://localhost:8080/swagger/index.html`).
 
 ## Development Workflow  
