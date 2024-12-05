@@ -46,5 +46,32 @@ namespace Lyzer.Clients
 
             return driverStandings;
         }
+
+        public async Task<ResultsDTO> GetLatestRaceResult()
+        {
+            string requestPath = String.Format(JolpicaConstants.ResultsUri, "current", "last");
+            JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
+
+            if (result == null)
+            {
+                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+            }
+
+            JsonElement root = result.RootElement;
+
+            JsonElement results = root
+                .GetProperty("MRData")
+                .GetProperty("RaceTable")
+                .GetProperty("Races")[0];
+
+            ResultsDTO? latestResults = JsonConvert.DeserializeObject<ResultsDTO>(results.GetRawText());
+
+            if (latestResults == null)
+            {
+                throw new SerializationException("Could not deserialize driver standings.");
+            }
+
+            return latestResults;
+        }
     }
 }
