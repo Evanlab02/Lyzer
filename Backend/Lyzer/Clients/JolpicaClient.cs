@@ -47,7 +47,7 @@ namespace Lyzer.Clients
             return driverStandings;
         }
 
-        public async Task<ConstructorDTO> GetContructorsStandingsForYear(string year)
+        public async Task<ConstructorStandingsDTO> GetContructorsStandingsForYear(string year)
         {
             string requestPath = String.Format(JolpicaConstants.ConstructorStandingsUri, year);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
@@ -59,10 +59,10 @@ namespace Lyzer.Clients
 
             JsonElement standings = root
                 .GetProperty("MRData")
-                .GetProperty("ConstructorsTable")
-                .GetProperty("Constructors")[0];
+                .GetProperty("StandingsTable")
+                .GetProperty("StandingsLists")[0];
 
-            ConstructorDTO? constructorStandings = JsonConvert.DeserializeObject<ConstructorDTO>(standings.GetRawText());
+            ConstructorStandingsDTO? constructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(standings.GetRawText());
             
             if (constructorStandings == null)
                 throw new SerializationException($"Could not deserialize constructor standings for year {year}");

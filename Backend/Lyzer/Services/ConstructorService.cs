@@ -18,19 +18,19 @@ namespace Lyzer.Services
             _client = client;
         }
 
-        public async Task<ConstructorDTO> GetConstructorsStandingsForYear(string year)
+        public async Task<ConstructorStandingsDTO> GetConstructorsStandingsForYear(string year)
         {
             string key = String.Format(CacheKeyConstants.ConstructorStandings, year);
             string? result = await _cache.Get(key);
 
             if (result == null)
             {
-                ConstructorDTO standings = await _client.GetContructorsStandingsForYear(year);
+                ConstructorStandingsDTO standings = await _client.GetContructorsStandingsForYear(year);
                 await _cache.Add(key, JsonConvert.SerializeObject(standings), TimeSpan.FromHours(1));
                 return standings;
             }
 
-            return JsonConvert.DeserializeObject<ConstructorDTO>(result) ?? new ConstructorDTO();
+            return JsonConvert.DeserializeObject<ConstructorStandingsDTO>(result) ?? new ConstructorStandingsDTO();
         }
 
 

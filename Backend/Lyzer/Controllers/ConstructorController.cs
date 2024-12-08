@@ -18,7 +18,7 @@ namespace Lyzer.Controllers
         }
 
         [HttpGet("standings", Name = "Get constructors standings for specified year")]
-        public async Task<ConstructorDTO> GetConstructorsStandingsForYear()
+        public async Task<ConstructorStandingsDTO> GetConstructorsStandingsForYear()
         {
             return await _constructorService.GetConstructorsStandingsForYear("current");
         }
