@@ -20,9 +20,9 @@ namespace Lyzer.Clients
             _logger = logger;
         }
 
-        public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
+        public async Task<DriverStandingsDTO> GetDriverStandings(string year)
         {
-            string requestPath = String.Format(JolpicaConstants.DriverStandingsUri, "current");
+            string requestPath = String.Format(JolpicaConstants.DriverStandingsUri, year);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
