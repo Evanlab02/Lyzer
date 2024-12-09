@@ -21,7 +21,7 @@ namespace Lyzer.Controllers
         [HttpGet("", Name = "GetLatestRaceResult")]
         public async Task<ResultsDTO> GetLatestRaceResult()
         {
-            return await _resultsService.GetLatestRaceResult();
+            return await _resultsService.GetCachedRaceResult("current", "last");
         }
     }
 }

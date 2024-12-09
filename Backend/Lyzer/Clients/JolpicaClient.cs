@@ -47,9 +47,9 @@ namespace Lyzer.Clients
             return driverStandings;
         }
 
-        public async Task<ResultsDTO> GetLatestRaceResult()
+        public async Task<ResultsDTO> GetRaceResult(string year, string round)
         {
-            string requestPath = String.Format(JolpicaConstants.ResultsUri, "current", "last");
+            string requestPath = String.Format(JolpicaConstants.ResultsUri, year, round);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
