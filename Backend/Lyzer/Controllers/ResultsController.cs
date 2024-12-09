@@ -18,10 +18,10 @@ namespace Lyzer.Controllers
             _resultsService = resultsService;
         }
 
-        [HttpGet("", Name = "GetLatestRaceResult")]
-        public async Task<ResultsDTO> GetLatestRaceResult()
+        [HttpGet("current/{round}", Name = "GetLatestRaceResult")]
+        public async Task<ResultsDTO> GetLatestRaceResult(string round)
         {
-            return await _resultsService.GetCachedRaceResult("current", "last");
+            return await _resultsService.GetCachedRaceResult("current", round);
         }
     }
 }
