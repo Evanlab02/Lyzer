@@ -46,5 +46,28 @@ namespace Lyzer.Clients
 
             return driverStandings;
         }
+
+        public async Task<ConstructorStandingsDTO> GetContructorsStandingsForYear(string year)
+        {
+            string requestPath = String.Format(JolpicaConstants.ConstructorStandingsUri, year);
+            JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
+
+            if (result == null) 
+                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+
+            JsonElement root = result.RootElement;
+
+            JsonElement standings = root
+                .GetProperty("MRData")
+                .GetProperty("StandingsTable")
+                .GetProperty("StandingsLists")[0];
+
+            ConstructorStandingsDTO? constructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(standings.GetRawText());
+            
+            if (constructorStandings == null)
+                throw new SerializationException($"Could not deserialize constructor standings for year {year}");
+
+            return constructorStandings;
+        }
     }
 }
