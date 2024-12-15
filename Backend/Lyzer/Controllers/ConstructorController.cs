@@ -17,10 +17,10 @@ namespace Lyzer.Controllers
             _constructorService = constructorService;
         }
 
-        [HttpGet("standings/{year}", Name = "Get constructors standings for specified year")]
-        public async Task<ConstructorStandingsDTO> GetConstructorsStandingsForYear(string year)
+        [HttpGet("standings/current", Name = "Get constructors standings for current year")]
+        public async Task<ConstructorStandingsDTO> GetCurrentYearStandings(string year)
         {
-            return await _constructorService.GetConstructorsStandingsForYear(year);
+            return await _constructorService.GetCachedConstructorStandings(year);
         }
     }
 }

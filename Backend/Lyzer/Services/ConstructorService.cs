@@ -18,7 +18,7 @@ namespace Lyzer.Services
             _client = client;
         }
 
-        public async Task<ConstructorStandingsDTO> GetConstructorsStandingsForYear(string year)
+        public async Task<ConstructorStandingsDTO> GetCachedConstructorStandings(string year)
         {
             string key = String.Format(CacheKeyConstants.ConstructorStandings, year);
             string? result = await _cache.Get(key);
