@@ -16,6 +16,7 @@ builder.Services.AddSingleton<CacheService>();
 builder.Services.AddScoped<JolpicaClient>();
 builder.Services.AddScoped<DriverService>();
 builder.Services.AddScoped<RacesService>();
+builder.Services.AddScoped<ResultsService>();
 builder.Services.AddScoped<ConstructorService>();
 
 var app = builder.Build();
