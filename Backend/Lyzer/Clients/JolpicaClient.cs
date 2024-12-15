@@ -53,9 +53,7 @@ namespace Lyzer.Clients
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
-            {
                 throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
-            }
 
             JsonElement root = result.RootElement;
 
@@ -67,9 +65,7 @@ namespace Lyzer.Clients
             ResultsDTO? latestResults = JsonConvert.DeserializeObject<ResultsDTO>(results.GetRawText());
 
             if (latestResults == null)
-            {
-                throw new SerializationException("Could not deserialize driver standings.");
-            }
+                throw new SerializationException("Could not deserialize race results.");
 
             return latestResults;
         }
@@ -79,7 +75,7 @@ namespace Lyzer.Clients
             string requestPath = String.Format(JolpicaConstants.ConstructorStandingsUri, year);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
-            if (result == null) 
+            if (result == null)
                 throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
 
             JsonElement root = result.RootElement;
@@ -90,7 +86,7 @@ namespace Lyzer.Clients
                 .GetProperty("StandingsLists")[0];
 
             ConstructorStandingsDTO? constructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(standings.GetRawText());
-            
+
             if (constructorStandings == null)
                 throw new SerializationException($"Could not deserialize constructor standings for year {year}");
 
