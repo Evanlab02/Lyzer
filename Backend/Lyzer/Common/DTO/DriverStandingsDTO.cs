@@ -9,7 +9,7 @@
 
     public class DriverStandingDTO
     {
-        public required string Position { get; set; }
+        public string? Position { get; set; }
         public required string PositionText { get; set; }
         public required string Points { get; set; }
         public required string Wins { get; set; }

@@ -20,12 +20,12 @@ namespace Lyzer.Common.DTO
         public required string PositionText { get; set; }
         public required string Points { get; set; }
         public required DriverDTO Driver { get; set; }
-        public required ConstructorDTO Constructor { get; set; }
-        public required string Grid { get; set; }
-        public required string Laps { get; set; }
-        public required string Status { get; set; }
-        public required ResultTimeDTO Time { get; set; }
-        public required ResultFastestLapDTO FastestLap { get; set; }
+        public ConstructorDTO? Constructor { get; set; }
+        public string? Grid { get; set; }
+        public string? Laps { get; set; }
+        public string? Status { get; set; }
+        public ResultTimeDTO? Time { get; set; }
+        public ResultFastestLapDTO? FastestLap { get; set; }
     }
 
     public class ResultTimeDTO
