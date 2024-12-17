@@ -1,4 +1,5 @@
 using Lyzer.Services;
+
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -19,9 +20,9 @@ namespace Lyzer.Controllers
         }
 
         [HttpGet("", Name = "GetRaces")]
-        public async Task<RacesDTO> GetRaces()
+        public RacesDTO GetRaces()
         {
-            return await _racesService.GetRaces();
+            return _racesService.GetRaces();
         }
     }
 }

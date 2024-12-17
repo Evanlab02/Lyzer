@@ -2,16 +2,16 @@
 {
     public class ConstructorStandingsDTO
     {
-        public string Season { get; set; }
-        public string Round { get; set; }
-        public List<ConstructorStandingDTO> ConstructorStandings { get; set; }
+        public required string Season { get; set; }
+        public required string Round { get; set; }
+        public required List<ConstructorStandingDTO> ConstructorStandings { get; set; }
     }
     public class ConstructorStandingDTO
     {
-        public string Position { get; set; }
-        public string PositionText { get; set; }
-        public string Points { get; set; }
-        public string Wins { get; set; }
-        public ConstructorDTO Constructor { get; set; }
+        public required string Position { get; set; }
+        public required string PositionText { get; set; }
+        public required string Points { get; set; }
+        public required string Wins { get; set; }
+        public required ConstructorDTO Constructor { get; set; }
     }
 }

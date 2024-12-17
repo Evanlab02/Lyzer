@@ -5,7 +5,7 @@ namespace Lyzer.Common.DTO
         public required string Season { get; set; }
         public required string Round { get; set; }
         public required string Url { get; set; }
-        
+
         public required string RaceName { get; set; }
         public required CircuitDTO Circuit { get; set; }
         public required string Date { get; set; }
@@ -28,13 +28,13 @@ namespace Lyzer.Common.DTO
         public required ResultFastestLapDTO FastestLap { get; set; }
     }
 
-    public class ResultTimeDTO 
+    public class ResultTimeDTO
     {
         public string? Millis { get; set; }
         public required string Time { get; set; }
     }
 
-    public class ResultFastestLapDTO 
+    public class ResultFastestLapDTO
     {
         public required string rank { get; set; }
         public required string lap { get; set; }
@@ -42,7 +42,7 @@ namespace Lyzer.Common.DTO
         public required ResultAverageSpeedDTO AverageSpeed { get; set; }
     }
 
-    public class ResultAverageSpeedDTO 
+    public class ResultAverageSpeedDTO
     {
         public required string Units { get; set; }
         public required string Speed { get; set; }
