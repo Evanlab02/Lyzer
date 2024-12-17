@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Backend/Lyzer
+        working-directory: Backend
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
@@ -22,6 +22,7 @@ jobs:
         with:
           dotnet-version: '8.x'
           cache: true
+          cache-dependency-path: Backend/Lyzer
       - name: Install dependencies
         run: dotnet restore
       - name: Build app
