@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [trunk]
+  push:
+    branches: [trunk]
+
+permissions:
+  contents: read
+
+jobs:
+  be-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Backend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+          cache: true
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build app
+        run: dotnet build
