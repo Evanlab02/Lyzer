@@ -33,7 +33,7 @@ export default tseslint.config(
       ],
       "indent": [
         "error",
-        "tab"
+        "space"
       ],
       "linebreak-style": [
         "error",
