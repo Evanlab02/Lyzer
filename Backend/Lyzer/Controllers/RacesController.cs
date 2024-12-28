@@ -1,3 +1,4 @@
+using Lyzer.Common.DTO;
 using Lyzer.Services;
 
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +20,10 @@ namespace Lyzer.Controllers
             _racesService = racesService;
         }
 
-        [HttpGet("", Name = "GetRaces")]
-        public RacesDTO GetRaces()
+        [HttpGet("current", Name = "GetSeasonRaces")]
+        public async Task<RacesDTO> GetSeasonRaces()
         {
-            return _racesService.GetRaces();
+            return await _racesService.GetCachedRaces("current");
         }
     }
 }
