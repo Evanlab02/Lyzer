@@ -16,8 +16,12 @@ builder.Services.AddSingleton<CacheService>();
 builder.Services.AddScoped<JolpicaClient>();
 builder.Services.AddScoped<DriverService>();
 builder.Services.AddScoped<RacesService>();
+builder.Services.AddScoped<ResultsService>();
+builder.Services.AddScoped<ConstructorService>();
 
 var app = builder.Build();
+
+Console.WriteLine($"Application running on: {string.Join(", ", builder.WebHost.GetSetting("urls"))}");
 
 // Empty for now
 if (app.Environment.IsDevelopment())

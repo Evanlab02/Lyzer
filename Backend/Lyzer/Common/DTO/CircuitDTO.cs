@@ -2,10 +2,9 @@
 {
     public class CircuitDTO
     {
-
-            public required string CircuitId { get; set; }
-            public required string Url { get; set; }
-            public required string CircuitName { get; set; }
-        
-}
+        public required string CircuitId { get; set; }
+        public required string Url { get; set; }
+        public required string CircuitName { get; set; }
+        public required LocationDTO Location { get; set; }
+    }
 }
