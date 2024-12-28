@@ -18,10 +18,10 @@ namespace Lyzer.Controllers
             _driverService = driverService;
         }
 
-        [HttpGet("standings/current", Name = "Get driver standings")]
+        [HttpGet("standings", Name = "Get driver standings")]
         public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
         {
-            return await _driverService.GetCachedDriverStandings("current");
+            return await _driverService.GetCurrentDriverStandings();
         }
     }
 }

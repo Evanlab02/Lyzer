@@ -18,14 +18,14 @@ namespace Lyzer.Services
             _cache = cache;
         }
 
-        public async Task<DriverStandingsDTO> GetCachedDriverStandings(string year)
+        public async Task<DriverStandingsDTO> GetCurrentDriverStandings()
         {
-            string key = String.Format(CacheKeyConstants.DriverStandings, year);
+            string key = String.Format(CacheKeyConstants.DriverStandings, "current");
             string? result = await _cache.Get(key);
 
             if (result == null)
             {
-                DriverStandingsDTO standings = await _client.GetDriverStandings(year);
+                DriverStandingsDTO standings = await _client.GetCurrentDriverStandings();
                 await _cache.Add(key, JsonConvert.SerializeObject(standings), TimeSpan.FromHours(1));
                 return standings;
             }
