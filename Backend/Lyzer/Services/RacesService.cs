@@ -1,9 +1,10 @@
+using System.Runtime.Serialization;
+
 using Lyzer.Clients;
 using Lyzer.Common.Constants;
+using Lyzer.Common.DTO;
 
 using Newtonsoft.Json;
-
-using System.Runtime.Serialization;
 
 namespace Lyzer.Services
 {
