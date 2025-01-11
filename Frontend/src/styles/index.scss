@@ -1,14 +1,14 @@
+@forward "vars";
 @use "colours" as *;
 @forward "navbar";
 
-
 body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    background-color: $lyzer-black;
-    color: $lyzer-white;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
 }
