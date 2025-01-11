@@ -3,9 +3,13 @@ import Navigation from "./routes/Navigation";
 import "./styles/index.scss";
 
 function App() {
+	function onMenuClickCallback() {
+		console.log("Menu clicked");
+	}
+
 	return (
 		<>
-			<NavBar />
+			<NavBar onMenuClick={onMenuClickCallback}/>
 			<Navigation />
 		</>
 	);
