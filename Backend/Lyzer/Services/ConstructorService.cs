@@ -1,6 +1,9 @@
-﻿using Lyzer.Clients;
+﻿using System.Runtime.Serialization;
+
+using Lyzer.Clients;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
+
 using Newtonsoft.Json;
 
 namespace Lyzer.Services
@@ -30,9 +33,14 @@ namespace Lyzer.Services
                 return standings;
             }
 
-            return JsonConvert.DeserializeObject<ConstructorStandingsDTO>(result) ?? new ConstructorStandingsDTO();
+            ConstructorStandingsDTO? cachedConstructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(result);
+
+            if (cachedConstructorStandings == null)
+            {
+                throw new SerializationException("Could not deserialize cached result.");
+            }
+
+            return cachedConstructorStandings;
         }
-
-
     }
 }

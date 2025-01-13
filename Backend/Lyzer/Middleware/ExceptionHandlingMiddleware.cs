@@ -1,4 +1,5 @@
 using Lyzer.Errors;
+
 using Newtonsoft.Json;
 
 namespace Lyzer.Middleware

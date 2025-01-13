@@ -1,4 +1,4 @@
-﻿namespace Lyzer.Common.DTO
+namespace Lyzer.Common.DTO
 {
     public class LocationDTO
     {

@@ -1,4 +1,4 @@
-﻿namespace Lyzer.Common.Constants
+namespace Lyzer.Common.Constants
 {
     public static class JolpicaConstants
     {

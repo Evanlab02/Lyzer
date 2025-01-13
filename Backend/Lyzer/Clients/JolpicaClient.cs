@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using System.Text.Json;
-using Newtonsoft.Json;
-using RestSharp;
+
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
 using Lyzer.Errors;
+
+using Newtonsoft.Json;
+
+using RestSharp;
 
 namespace Lyzer.Clients
 {

@@ -1,7 +1,7 @@
 ﻿namespace Lyzer.Common.DTO
 {
     public class RacesDTO
-    { 
+    {
         public required string Season { get; set; }
         public required List<RaceDTO> Races { get; set; }
     }
