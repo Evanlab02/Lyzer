@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using System.Text.Json;
-using Newtonsoft.Json;
-using RestSharp;
+
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
 using Lyzer.Errors;
+
+using Newtonsoft.Json;
+
+using RestSharp;
 
 namespace Lyzer.Clients
 {
@@ -91,6 +94,32 @@ namespace Lyzer.Clients
                 throw new SerializationException($"Could not deserialize constructor standings for year {year}");
 
             return constructorStandings;
+        }
+        public async Task<RacesDTO> GetAllRacesForSeason(string season)
+        {
+            string requestPath = String.Format(JolpicaConstants.RacesUri, season);
+            JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
+
+            if (result == null)
+            {
+                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+            }
+
+            JsonElement root = result.RootElement;
+
+            JsonElement races = root
+                .GetProperty("MRData")
+                .GetProperty("RaceTable");
+
+
+            RacesDTO? raceList = JsonConvert.DeserializeObject<RacesDTO>(races.GetRawText());
+
+            if (raceList == null)
+            {
+                throw new SerializationException("Could not deserialize race results.");
+            }
+
+            return raceList;
         }
     }
 }

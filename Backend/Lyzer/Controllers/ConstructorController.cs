@@ -1,5 +1,6 @@
-﻿using Lyzer.Common.DTO;
+using Lyzer.Common.DTO;
 using Lyzer.Services;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lyzer.Controllers

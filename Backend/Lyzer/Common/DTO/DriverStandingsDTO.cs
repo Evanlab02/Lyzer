@@ -2,18 +2,18 @@
 {
     public class DriverStandingsDTO
     {
-        public string Season { get; set; }
-        public string Round { get; set; }
-        public List<DriverStandingDTO> DriverStandings { get; set; }
+        public required string Season { get; set; }
+        public required string Round { get; set; }
+        public required List<DriverStandingDTO> DriverStandings { get; set; }
     }
 
     public class DriverStandingDTO
     {
-        public string Position { get; set; }
-        public string PositionText { get; set; }
-        public string Points { get; set; }
-        public string Wins { get; set; }
-        public DriverDTO Driver { get; set; }
-        public List<ConstructorDTO> Constructors { get; set; }
+        public string? Position { get; set; }
+        public required string PositionText { get; set; }
+        public required string Points { get; set; }
+        public required string Wins { get; set; }
+        public required DriverDTO Driver { get; set; }
+        public required List<ConstructorDTO> Constructors { get; set; }
     }
 }

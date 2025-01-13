@@ -1,6 +1,9 @@
-﻿using Lyzer.Clients;
+﻿using System.Runtime.Serialization;
+
+using Lyzer.Clients;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
+
 using Newtonsoft.Json;
 
 namespace Lyzer.Services
@@ -30,7 +33,14 @@ namespace Lyzer.Services
                 return standings;
             }
 
-            return JsonConvert.DeserializeObject<DriverStandingsDTO>(result) ?? new DriverStandingsDTO();
+            DriverStandingsDTO? cachedDriverStandings = JsonConvert.DeserializeObject<DriverStandingsDTO>(result);
+
+            if (cachedDriverStandings == null)
+            {
+                throw new SerializationException("Could not deserialize cached result.");
+            }
+
+            return cachedDriverStandings;
         }
     }
 }

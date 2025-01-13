@@ -1,4 +1,5 @@
 ﻿using Lyzer.Clients;
+
 using StackExchange.Redis;
 
 namespace Lyzer.Services
@@ -36,5 +37,5 @@ namespace Lyzer.Services
         {
             return await _db.KeyExistsAsync(key);
         }
-    } 
+    }
 }
