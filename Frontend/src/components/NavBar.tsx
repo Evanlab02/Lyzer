@@ -2,7 +2,7 @@ import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import "../styles/navbar.scss";
 
-type NavBarProps = {
+interface NavBarProps {
 	onMenuClick: (event: React.MouseEvent<SVGElement>) => void;
 }
 
@@ -17,27 +17,25 @@ export default function NavBar({ onMenuClick}: NavBarProps) {
 				className="icon menu"
 				id="navbar-menu"
 			/>
-			<div>
-				​🇱​​🇾​​🇿​​🇪​​🇷​
-			</div>
+			<div>L Y Z E R</div>
 			{
-				isDarkMode ? (
+				isDarkMode ? 
 					<Moon
 						id="theme-toggle-dark"
 						className="icon theme-toggle"
 						color="white"
 						size={28}
-						onClick={() => toggleTheme()}
+						onClick={() => { toggleTheme(); }}
 					/>
-				) : (
+					:
 					<Sun
 						id="theme-toggle-light"
 						className="icon theme-toggle"
 						color="black"
 						size={28}
-						onClick={() => toggleTheme()}
+						onClick={() => { toggleTheme(); }}
 					/>
-				)
+				
 			}
 		</div>
 	);
