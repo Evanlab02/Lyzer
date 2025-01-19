@@ -6,7 +6,7 @@ type NavBarProps = {
 	onMenuClick: (event: React.MouseEvent<SVGElement>) => void;
 }
 
-export default function NavBar({ onMenuClick}: NavBarProps) {
+export default function NavBar({ onMenuClick }: NavBarProps) {
 	const {isDarkMode, toggleTheme} = useTheme();
 
 	return (
