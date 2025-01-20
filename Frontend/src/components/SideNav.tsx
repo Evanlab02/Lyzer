@@ -1,11 +1,11 @@
 import { ArrowLeftToLine } from "lucide-react";
-import "../styles/sideNav.scss"
+import "../styles/sideNav.scss";
 import { useTheme } from "../hooks/useTheme";
 import React, { useEffect, useRef } from "react";
 import { ROUTES } from "../consts/routes";
 import { Link, useLocation } from "react-router-dom";
 
-type SideNavProps = {
+interface SideNavProps  {
 	sideNavOpen: boolean;
 	onCloseClick: () => void;
 	onSideNavBlur: React.FocusEventHandler<SVGSVGElement>;
@@ -31,7 +31,7 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 		}
 
 		return () => {
-				document.removeEventListener("mousedown", handleOutsideClick);
+			document.removeEventListener("mousedown", handleOutsideClick);
 		};
 	}, [sideNavOpen, onCloseClick]);
 
@@ -54,17 +54,17 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 				Add logo to top of side menu */}
 				{Object.values(ROUTES).map((item, index) => (
 					<Link 
-						key={"linkContainer" + index} 
-						className={"link-container " + (isSelectedRoute(item.route) ? 'selected' : '')}
+						key={`linkContainer${index.toString()}`} 
+						className={"link-container " + (isSelectedRoute(item.route) ? "selected" : "")}
 						to={item.route}
 					>
 						{item.icon}
-						<div key={"linkName" + index}>
+						<div key={`linkName${index.toString()}`}>
 							{item.name.toUpperCase()}
 						</div>
 					</Link>
 				))}
 			</div>
 		</div>
-	)
+	);
 }
