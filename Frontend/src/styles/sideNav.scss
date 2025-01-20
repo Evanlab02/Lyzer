@@ -25,6 +25,8 @@
 	.links {
 		margin-top: 6em;
 		display: flex;
+		flex-direction: column;
+		gap: 1em;
 		justify-content: center;
 
 		.link-container {
@@ -33,10 +35,16 @@
 			justify-content: center;
 			align-items: center;
 			gap: 1em;
-			background-color: gray;
-			border: 1px solid gray;
-			padding: 8px 55px;
-			border-radius: 8px;
+			text-decoration: none;
+			color: var(--secondary-colour) !important;
+			
+			&.selected {
+				background-color: gray;
+				border: 1px solid gray;
+				padding: 10px;
+				border-radius: 8px;
+				margin: 0 24px;
+			}
 		}
 	}
 }

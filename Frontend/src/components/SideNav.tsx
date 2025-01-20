@@ -1,7 +1,9 @@
-import { ArrowLeftToLine, Home } from "lucide-react";
+import { ArrowLeftToLine } from "lucide-react";
 import "../styles/sideNav.scss"
 import { useTheme } from "../hooks/useTheme";
 import React, { useEffect, useRef } from "react";
+import { ROUTES } from "../consts/routes";
+import { Link, useLocation } from "react-router-dom";
 
 type SideNavProps = {
 	sideNavOpen: boolean;
@@ -15,20 +17,27 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 
 	const sideNavRef = useRef<HTMLDivElement>(null);
 
+	const location = useLocation();
+
 	useEffect(() => {
 		function handleOutsideClick(event: MouseEvent) {
-		if (sideNavRef.current && !sideNavRef.current.contains(event.target as Node)) {
-			onCloseClick();
+			if (sideNavRef.current && !sideNavRef.current.contains(event.target as Node)) {
+				onCloseClick();
+			}
 		}
-	}
 
-	if (sideNavOpen) {
-		document.addEventListener("mousedown", handleOutsideClick);
-	}
+		if (sideNavOpen) {
+			document.addEventListener("mousedown", handleOutsideClick);
+		}
 
-	return () => {
-			document.removeEventListener("mousedown", handleOutsideClick);
-	};}, [sideNavOpen, onCloseClick]);
+		return () => {
+				document.removeEventListener("mousedown", handleOutsideClick);
+		};
+	}, [sideNavOpen, onCloseClick]);
+
+	const isSelectedRoute: (route: string) => boolean = (route: string) => {
+		return location.pathname === route;
+	};
 
 	return (
 		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef}>
@@ -43,10 +52,18 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 				{/* Check if active link, apply active style
 				Create hover style
 				Add logo to top of side menu */}
-				<div className="link-container">
-					<Home />
-					<strong><a>Overview</a></strong>
-				</div>
+				{Object.values(ROUTES).map((item, index) => (
+					<Link 
+						key={"linkContainer" + index} 
+						className={"link-container " + (isSelectedRoute(item.route) ? 'selected' : '')}
+						to={item.route}
+					>
+						{item.icon}
+						<div key={"linkName" + index}>
+							{item.name.toUpperCase()}
+						</div>
+					</Link>
+				))}
 			</div>
 		</div>
 	)
