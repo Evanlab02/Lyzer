@@ -1,8 +1,4 @@
-﻿using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
-
-using Lyzer.Clients;
-using Lyzer.Common.Constants;
+﻿using Lyzer.Clients;
 using Lyzer.Common.DTO;
 
 using Newtonsoft.Json;
@@ -11,16 +7,10 @@ namespace Lyzer.Services
 {
     public class UpcomingRaceWeekendService
     {
-        private readonly ILogger<UpcomingRaceWeekendService> _logger;
-        private readonly JolpicaClient _client;
-        private readonly CacheService _cache;
         private readonly RacesService _racesService;
 
-        public UpcomingRaceWeekendService(ILogger<UpcomingRaceWeekendService> logger, JolpicaClient client, CacheService cache, RacesService racesService)
+        public UpcomingRaceWeekendService(RacesService racesService)
         {
-            _logger = logger;
-            _client = client;
-            _cache = cache;
             _racesService = racesService;
         }
 

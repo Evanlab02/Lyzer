@@ -9,12 +9,10 @@ namespace Lyzer.Controllers
     [Route("api/v1/lyzer/overview")]
     public class UpcomingRaceWeekendController : ControllerBase
     {
-        private readonly ILogger<UpcomingRaceWeekendController> _logger;
         private readonly UpcomingRaceWeekendService _upcomingRaceWeekendService;
 
-        public UpcomingRaceWeekendController(ILogger<UpcomingRaceWeekendController> logger, UpcomingRaceWeekendService upcomingRaceWeekendService)
+        public UpcomingRaceWeekendController(UpcomingRaceWeekendService upcomingRaceWeekendService)
         {
-            _logger = logger;
             _upcomingRaceWeekendService = upcomingRaceWeekendService;
         }
 
