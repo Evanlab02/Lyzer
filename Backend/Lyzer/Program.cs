@@ -18,6 +18,7 @@ builder.Services.AddScoped<DriverService>();
 builder.Services.AddScoped<RacesService>();
 builder.Services.AddScoped<ResultsService>();
 builder.Services.AddScoped<ConstructorService>();
+builder.Services.AddScoped<UpcomingRaceWeekendService>();
 
 var app = builder.Build();
 

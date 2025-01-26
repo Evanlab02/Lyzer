@@ -6,5 +6,6 @@ namespace Lyzer.Common.Constants
         public static string Results { get; set; } = "results-{0}-{1}";
         public static string ConstructorStandings { get; set; } = "constructor-standings-{0}";
         public static string Races { get; set; } = "races-{0}";
+        public static string UpcomingRaceWeekend { get; set; } = "upcoming-race-weekend-{0}";
     }
 }
