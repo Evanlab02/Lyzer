@@ -16,7 +16,7 @@ namespace Lyzer.Controllers
             _upcomingRaceWeekendService = upcomingRaceWeekendService;
         }
 
-        [HttpGet("current", Name = "GetUpcomingRaceWeekend")]
+        [HttpGet("", Name = "GetUpcomingRaceWeekend")]
         public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend()
         {
             return await _upcomingRaceWeekendService.GetUpcomingRaceWeekend("current");

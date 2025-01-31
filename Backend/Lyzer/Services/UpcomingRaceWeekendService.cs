@@ -57,16 +57,16 @@ namespace Lyzer.Services
             return today >= practiceDate && today <= raceDate;
         }
 
-        public double GetHoursUntilRaceWeekend(RacesDTO racesDto)
+        public int GetMinutesToRaceWeekend(RacesDTO racesDto)
         {
             DateTimeOffset firstPractice = NextFirstPractice(racesDto).Date;
 
             var now = DateTimeOffset.UtcNow;
             TimeSpan diff = firstPractice - now;
-            return diff.TotalHours < 0 ? 0 : diff.TotalHours;
+            return (int)(diff.TotalMinutes < 0 ? 0 : diff.TotalMinutes);
         }
 
-        public double TimeToRaceWeekendProgress(RacesDTO racesDto)
+        public int TimeToRaceWeekendProgress(RacesDTO racesDto)
         {
             var lastRace = LastRace(racesDto);
             var nextRace = NextRace(racesDto);
@@ -74,10 +74,10 @@ namespace Lyzer.Services
             if (lastRace != null && nextRace != null)
             {
                 TimeSpan timeDiff = nextRace.RaceStartDateTime - lastRace.RaceStartDateTime;
-                double totaleHoursBetweenRaces = timeDiff.TotalHours;
-                double timeSoFar = (DateTimeOffset.UtcNow - lastRace.RaceStartDateTime).TotalHours;
+                int totalHoursBetweenRaces = (int)timeDiff.TotalHours;
+                int timeSoFar = (int)(DateTimeOffset.UtcNow - lastRace.RaceStartDateTime).TotalHours;
 
-                double progress = timeSoFar / totaleHoursBetweenRaces;
+                int progress = timeSoFar / totalHoursBetweenRaces;
                 if (progress < 0) return 0;
                 if (progress > 100) return 0;
                 return progress;
@@ -107,7 +107,7 @@ namespace Lyzer.Services
             var isRaceWeekend = IsRaceWeekend(racesDto);
             var timeToRaceWeekendProgress = TimeToRaceWeekendProgress(racesDto);
             var status = RaceWeekendProgressStatus(racesDto);
-            var timeToRaceWeekend = GetHoursUntilRaceWeekend(racesDto);
+            var timeToRaceWeekend = GetMinutesToRaceWeekend(racesDto);
 
             return new UpcomingRaceWeekendDTO()
             {
