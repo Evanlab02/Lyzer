@@ -1,0 +1,16 @@
+@use "colours";
+
+:root {
+  --primary-colour: #{colours.$lyzer-black};
+  --secondary-colour: #{colours.$lyzer-white};
+}
+
+[data-theme="light"] {
+  --primary-colour: #{colours.$lyzer-white};
+  --secondary-colour: #{colours.$lyzer-black};
+}
+
+[data-theme="dark"] {
+  --primary-colour: #{colours.$lyzer-black};
+  --secondary-colour: #{colours.$lyzer-white};
+}
