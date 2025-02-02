@@ -1,0 +1,57 @@
+@forward "vars";
+@use "colours" as *;
+
+.side-nav {
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: var(--primary-colour);
+	overflow-x: hidden;
+	transition: 0.5s;
+	display: flex;
+	flex-direction: column;
+
+	&.open {
+		width: 250px;
+		box-shadow: #80808036 2px 2px
+	}
+
+	&.closed {
+		width: 0;
+	}
+
+	.links {
+		margin-top: 6em;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		justify-content: center;
+
+		.link-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 1em;
+			text-decoration: none;
+			color: var(--secondary-colour) !important;
+			
+			&.selected {
+				background-color: gray;
+				border: 1px solid gray;
+				padding: 10px;
+				border-radius: 8px;
+				margin: 0 24px;
+			}
+		}
+	}
+}
+
+.closeIcon {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+}

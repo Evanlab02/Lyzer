@@ -1,16 +1,16 @@
 @use "colours";
 
 :root {
-  --primary-color: #{colours.$lyzer-black};
-  --secondary-color: #{colours.$lyzer-white};
+  --primary-colour: #{colours.$lyzer-black};
+  --secondary-colour: #{colours.$lyzer-white};
 }
 
 [data-theme="light"] {
-  --primary-color: #{colours.$lyzer-white};
-  --secondary-color: #{colours.$lyzer-black};
+  --primary-colour: #{colours.$lyzer-white};
+  --secondary-colour: #{colours.$lyzer-black};
 }
 
 [data-theme="dark"] {
-  --primary-color: #{colours.$lyzer-black};
-  --secondary-color: #{colours.$lyzer-white};
+  --primary-colour: #{colours.$lyzer-black};
+  --secondary-colour: #{colours.$lyzer-white};
 }
