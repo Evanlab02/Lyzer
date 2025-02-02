@@ -4,6 +4,23 @@ exports[`Overview page renders correctly 1`] = `
 <div
   data-testid="lyzer-overview-page"
 >
-  Hello, Lyzer!
+  <div
+    class="flex-grid-container"
+  >
+    <div
+      class="flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+    >
+      <div>
+        IDK
+      </div>
+    </div>
+    <div
+      class="flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+    >
+      <div>
+        IDK
+      </div>
+    </div>
+  </div>
 </div>
 `;
