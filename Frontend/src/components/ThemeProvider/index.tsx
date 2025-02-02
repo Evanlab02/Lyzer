@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { ThemeContext } from "../../hooks/useTheme";
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export default function ThemeProvider(props: PropsWithChildren) {
+	const { children } = props;
+
 	const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 	const [isDarkMode, setDarkMode] = useState(

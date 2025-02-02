@@ -20,13 +20,13 @@ export default defineConfig({
 			enabled: true,
 			provider: "v8"
 		},
-		setupFiles: ['./src/setupTests.ts'],
+		setupFiles: ["./src/setupTests.ts"],
 		workspace: [ 
 		  { 
-			extends: true, 
-			test: { 
+				extends: true, 
+				test: { 
 			  environment: "jsdom", 
-			}, 
+				}, 
 		  }, 
 		], 
 	}
