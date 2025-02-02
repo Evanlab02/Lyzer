@@ -1,14 +1,7 @@
-import { vi, expect, it, beforeEach } from "vitest";
+import { vi, expect, it } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
 import { ThemeProvider } from "../../components/ThemeProvider";
 import NavBar from "../../components/NavBar";
-
-
-beforeEach(() => {
-	vi.clearAllMocks();
-    document.body.innerHTML = "";
-});
-
 
 it("Navbar renders correctly", () => {
     const { getByTestId } = render(

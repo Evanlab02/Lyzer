@@ -1,6 +1,6 @@
 export default function Overview() {
 	return (
-		<div>
+		<div data-testid="lyzer-overview-page">
             Hello, Lyzer!
 		</div>
 	);

@@ -7,11 +7,21 @@ import "./styles/index.scss";
 
 interface SideNavProps  {
 	sideNavOpen: boolean;
+	testId?: string;
+	menuToggleTestId?: string;
 	onCloseClick: () => void;
 	onSideNavBlur: React.FocusEventHandler<SVGSVGElement>;
 }
 
-export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: SideNavProps) {
+export default function SideMenu(props: Readonly<SideNavProps>) {
+	const { 
+		sideNavOpen, 
+		testId,
+		menuToggleTestId,
+		onCloseClick, 
+		onSideNavBlur
+	} = props;
+
 	const {isDarkMode} = useTheme();
 
 	const sideNavRef = useRef<HTMLDivElement>(null);
@@ -39,13 +49,14 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 	};
 
 	return (
-		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef}>
+		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef} data-testid={testId}>
 			<ArrowLeftToLine 
 				onClick={onCloseClick}
 				onBlur={onSideNavBlur}
 				color={isDarkMode ? "white" : "black"}
 				className="closeIcon"
 				size={28}
+				data-testid={menuToggleTestId}
 			/>
 			<div id="links" className="links">
 				{/* Check if active link, apply active style
