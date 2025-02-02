@@ -3,22 +3,34 @@ import { useTheme } from "../../hooks/useTheme";
 import "./styles/index.scss";
 
 interface NavBarProps {
+	testId?: string;
+	menuToggleTestId?: string;
+	themeToggleTestId?: string;
 	onMenuClick: (event: React.MouseEvent<SVGElement>) => void;
 }
 
-export default function NavBar({ onMenuClick }: NavBarProps) {
+export default function NavBar(props: Readonly<NavBarProps>) {
+	const {
+		testId,
+		menuToggleTestId,
+		themeToggleTestId,
+		onMenuClick
+	} = props;
+	
 	const {
 		isDarkMode, 
 		toggleTheme
 	} = useTheme();
 
 	return (
-		<div className="navbar">
+		<div className="navbar" data-testid={testId}>
 			<Menu 
 				color={isDarkMode ? "white" : "black"} 
-				size={28} onClick={onMenuClick} 
+				size={28} 
+				onClick={onMenuClick} 
 				className="icon menu"
 				id="navbar-menu"
+				data-testid={menuToggleTestId}
 			/>
 			<div>L Y Z E R</div>
 			{
@@ -28,6 +40,7 @@ export default function NavBar({ onMenuClick }: NavBarProps) {
 						className="icon theme-toggle"
 						color="white"
 						size={28}
+						data-testid={themeToggleTestId}
 						onClick={() => { toggleTheme(); }}
 					/>
 					:
@@ -36,6 +49,7 @@ export default function NavBar({ onMenuClick }: NavBarProps) {
 						className="icon theme-toggle"
 						color="black"
 						size={28}
+						data-testid={themeToggleTestId}
 						onClick={() => { toggleTheme(); }}
 					/>
 				
