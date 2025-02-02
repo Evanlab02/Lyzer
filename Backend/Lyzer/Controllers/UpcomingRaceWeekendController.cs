@@ -9,17 +9,17 @@ namespace Lyzer.Controllers
     [Route("api/v1/lyzer/overview")]
     public class UpcomingRaceWeekendController : ControllerBase
     {
-        private readonly UpcomingRaceWeekendService _upcomingRaceWeekendService;
+        private readonly RacesService _raceService;
 
-        public UpcomingRaceWeekendController(UpcomingRaceWeekendService upcomingRaceWeekendService)
+        public UpcomingRaceWeekendController(RacesService raceService)
         {
-            _upcomingRaceWeekendService = upcomingRaceWeekendService;
+            _raceService = raceService;
         }
 
         [HttpGet("", Name = "GetUpcomingRaceWeekend")]
         public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend()
         {
-            return await _upcomingRaceWeekendService.GetUpcomingRaceWeekend("current");
+            return await _raceService.GetUpcomingRaceWeekend("current");
         }
     }
 }
