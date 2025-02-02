@@ -17,11 +17,9 @@ export default function NavBar({ onMenuClick }: NavBarProps) {
 				className="icon menu"
 				id="navbar-menu"
 			/>
-			<div>
-				L Y Z E R
-			</div>
+			<div>L Y Z E R</div>
 			{
-				isDarkMode ? (
+				isDarkMode ? 
 					<Moon
 						id="theme-toggle-dark"
 						className="icon theme-toggle"
@@ -29,7 +27,7 @@ export default function NavBar({ onMenuClick }: NavBarProps) {
 						size={28}
 						onClick={() => { toggleTheme(); }}
 					/>
-				) : (
+					:
 					<Sun
 						id="theme-toggle-light"
 						className="icon theme-toggle"
@@ -37,7 +35,7 @@ export default function NavBar({ onMenuClick }: NavBarProps) {
 						size={28}
 						onClick={() => { toggleTheme(); }}
 					/>
-				)
+				
 			}
 		</div>
 	);
