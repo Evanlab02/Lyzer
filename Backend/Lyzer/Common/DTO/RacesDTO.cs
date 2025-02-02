@@ -18,12 +18,12 @@ namespace Lyzer.Common.DTO
 
         // Actual race date/time 
         public required string Date { get; set; }
-        public required string Time { get; set; }
+        public string? Time { get; set; }
         // Sub-objects for each session
-        public required SessionDTO FirstPractice { get; set; }
-        public required SessionDTO SecondPractice { get; set; }
-        public required SessionDTO ThirdPractice { get; set; }
-        public required SessionDTO Qualifying { get; set; }
+        public SessionDTO? FirstPractice { get; set; }
+        public SessionDTO? SecondPractice { get; set; }
+        public SessionDTO? ThirdPractice { get; set; }
+        public SessionDTO? Qualifying { get; set; }
 
         // Computed property for the actual race's date/time
         [JsonIgnore]
