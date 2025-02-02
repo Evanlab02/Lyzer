@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SideMenu from "./components/SideNav";
 import Navigation from "./routes/Navigation";
@@ -16,6 +17,7 @@ function App() {
 			<SideMenu sideNavOpen={sideNavOpen} onCloseClick={toggleSideNav} onSideNavBlur={toggleSideNav}/>
 			<NavBar onMenuClick={toggleSideNav}/>
 			<Navigation />
+			<Outlet />
 		</>
 	);
 }

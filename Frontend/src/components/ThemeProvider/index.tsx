@@ -1,11 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-
-interface ThemeContextType {
-	isDarkMode: boolean;
-	toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+import { useEffect, useState } from "react";
+import { ThemeContext } from "../../hooks/useTheme";
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -31,13 +25,4 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 			{children}
 		</ThemeContext.Provider>
 	);
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useTheme = (): ThemeContextType => {
-	const context = useContext(ThemeContext);
-	if (!context) {
-		throw new Error("useTheme must be used within a ThemeProvider");
-	}
-	return context;
 };

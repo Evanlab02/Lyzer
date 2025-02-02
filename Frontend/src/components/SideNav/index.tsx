@@ -1,9 +1,9 @@
-import { ArrowLeftToLine } from "lucide-react";
-import "../styles/sideNav.scss";
-import { useTheme } from "../hooks/useTheme";
 import React, { useEffect, useRef } from "react";
-import { ROUTES } from "../consts/routes";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowLeftToLine } from "lucide-react";
+import { ROUTES } from "../../constants/routes";
+import { useTheme } from "../../hooks/useTheme";
+import "./styles/index.scss";
 
 interface SideNavProps  {
 	sideNavOpen: boolean;
@@ -12,7 +12,6 @@ interface SideNavProps  {
 }
 
 export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: SideNavProps) {
-
 	const {isDarkMode} = useTheme();
 
 	const sideNavRef = useRef<HTMLDivElement>(null);
@@ -58,7 +57,7 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 						className={"link-container " + (isSelectedRoute(item.route) ? "selected" : "")}
 						to={item.route}
 					>
-						{item.icon}
+						{item.children}
 						<div key={`linkName${index.toString()}`}>
 							{item.name.toUpperCase()}
 						</div>

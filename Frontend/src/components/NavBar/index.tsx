@@ -1,13 +1,16 @@
 import { Menu, Moon, Sun } from "lucide-react";
-import { useTheme } from "../hooks/useTheme";
-import "../styles/navbar.scss";
+import { useTheme } from "../../hooks/useTheme";
+import "./styles/index.scss";
 
 interface NavBarProps {
 	onMenuClick: (event: React.MouseEvent<SVGElement>) => void;
 }
 
 export default function NavBar({ onMenuClick }: NavBarProps) {
-	const {isDarkMode, toggleTheme} = useTheme();
+	const {
+		isDarkMode, 
+		toggleTheme
+	} = useTheme();
 
 	return (
 		<div className="navbar">
