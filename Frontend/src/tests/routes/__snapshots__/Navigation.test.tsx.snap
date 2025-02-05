@@ -75,12 +75,12 @@ exports[`Navigation renders overview page correctly 1`] = `
         <h3
           class="lyzer-card-body"
         >
-          Ongoing session: Race @ 12:00:00 UTC
+          Next session: Practice 1 @ 12:00:00 UTC
         </h3>
         <progress
-          class="lyzer-progress lyzer-progress-complete"
+          class="lyzer-progress lyzer-progress-incomplete"
           max="100"
-          value="100"
+          value="0"
         />
       </div>
     </div>

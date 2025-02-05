@@ -3,10 +3,10 @@ import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 import ThemeProvider from "../../components/ThemeProvider";
 import Navigation from "../../routes/Navigation";
-
+import { overviewMockIsNotRaceWeekend } from "../mocks/overviewMock";
 
 it("Navigation renders overview page correctly", async () => {
-	fetchMock.mockResponseOnce(JSON.stringify({}));
+	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsNotRaceWeekend));
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
@@ -20,7 +20,6 @@ it("Navigation renders overview page correctly", async () => {
 });
 
 it("Navigation renders 404 page correctly", async () => {
-	fetchMock.mockResponseOnce(JSON.stringify({}));
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/non-existent-route"]}>
 			<ThemeProvider>
