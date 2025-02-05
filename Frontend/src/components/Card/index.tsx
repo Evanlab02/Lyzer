@@ -3,14 +3,18 @@ import CardHeading from "./CardHeading";
 import { PropsWithChildren } from "react";
 import "./styles/index.scss";
 
-export default function Card(props: PropsWithChildren) {
-    const { children } = props;
+export interface CardProps extends PropsWithChildren {
+    testId?: string;
+}
 
-    return(
-        <div className="lyzer-card">
-            {children}
-        </div>
-    );
+export default function Card(props: CardProps) {
+	const { children, testId } = props;
+
+	return(
+		<div className="lyzer-card" data-testid={testId}>
+			{children}
+		</div>
+	);
 }
 
 export { CardBody, CardHeading };

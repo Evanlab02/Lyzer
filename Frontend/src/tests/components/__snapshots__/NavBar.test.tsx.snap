@@ -6,7 +6,7 @@ exports[`Navbar renders correctly 1`] = `
   data-testid="lyzer-nav-bar"
 >
   <svg
-    class="lucide lucide-menu icon menu"
+    class="lucide lucide-menu icon menu cursor-pointer"
     fill="none"
     height="28"
     id="navbar-menu"
@@ -41,7 +41,7 @@ exports[`Navbar renders correctly 1`] = `
     L Y Z E R
   </div>
   <svg
-    class="lucide lucide-sun icon theme-toggle"
+    class="lucide lucide-sun icon theme-toggle cursor-pointer"
     fill="none"
     height="28"
     id="theme-toggle-light"

@@ -9,48 +9,48 @@ export interface CardSectionProps {
 }
 
 export default function CardSection(props: CardSectionProps) {
-    const { 
-        raceWeekendProgress = LOADING_RACE_WEEKEND_PROGRESS
-    } = props;
+	const { 
+		raceWeekendProgress = LOADING_RACE_WEEKEND_PROGRESS
+	} = props;
 
-    return (
-        <>
-            <GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
-                <Card>
-                    <CardHeading>
+	return (
+		<>
+			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+				<Card>
+					<CardHeading>
                         Is it race weekend?
-                    </CardHeading>
-                </Card>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
-                <Card>
-                    <CardHeading>
+					</CardHeading>
+				</Card>
+			</GridItem>
+			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+				<Card>
+					<CardHeading>
                         Race weekend progress
-                    </CardHeading>
-                    <CardBody>
-                        {raceWeekendProgress.ongoing ? `Ongoing session: ${raceWeekendProgress.name}` : `Next session: ${raceWeekendProgress.name}`}
-                    </CardBody>
-                    <Progress 
-                        value={raceWeekendProgress.weekendProgress}
-                        max={100}
-                        useProgressColour
-                    />
-                </Card>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
-                <Card>
-                    <CardHeading>
+					</CardHeading>
+					<CardBody>
+						{raceWeekendProgress.ongoing ? `Ongoing session: ${raceWeekendProgress.name}` : `Next session: ${raceWeekendProgress.name}`}
+					</CardBody>
+					<Progress 
+						value={raceWeekendProgress.weekendProgress}
+						max={100}
+						useProgressColour
+					/>
+				</Card>
+			</GridItem>
+			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+				<Card>
+					<CardHeading>
                         Driver leader
-                    </CardHeading>
-                </Card>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
-                <Card>
-                    <CardHeading>
+					</CardHeading>
+				</Card>
+			</GridItem>
+			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+				<Card>
+					<CardHeading>
                         Constructor leader
-                    </CardHeading>
-                </Card>
-            </GridItem>
-        </>
-    );
+					</CardHeading>
+				</Card>
+			</GridItem>
+		</>
+	);
 }
