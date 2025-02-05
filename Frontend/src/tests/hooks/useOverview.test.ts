@@ -29,3 +29,22 @@ it("should return the overview data that is a race weekend and ongoing", async (
 		});
 	});
 });
+
+it("should return new data when refreshData is called", async () => {
+	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsNotRaceWeekend));
+	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsRaceWeekendOngoing));
+
+	const { result } = renderHook(() => useOverview());
+
+	await waitFor(() => {
+		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsNotRaceWeekend.raceWeekendProgress);
+	});
+
+	await waitFor(() => {
+		result.current.refreshData();
+	});
+
+	await waitFor(() => {
+		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsRaceWeekendOngoing.raceWeekendProgress);
+	});
+});

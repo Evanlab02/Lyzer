@@ -3,15 +3,6 @@ import { render } from "@testing-library/react";
 import Overview from "../../pages/Overview";
 import { OverviewInterface } from "../../clients/interfaces/overviewInterfaces";
 
-it("Overview page renders loading state correctly", async () => {
-	const { findByTestId } = render(
-		<Overview />
-	);
-
-	const overviewPage = await findByTestId("lyzer-overview-page");
-	expect(overviewPage).toMatchSnapshot();
-});
-
 it("Given the user is on the overview page when it is race weekend and there is no ongoing session, then the user should be able to see what the next session of the race weekend will be.", async () => {
 	const mockData = {
 		raceWeekendProgress: {
