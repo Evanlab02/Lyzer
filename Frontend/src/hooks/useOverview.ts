@@ -14,7 +14,13 @@ export default function useOverview() {
 		setOverviewData(result);
 	};
 
+	const refreshData = () => {
+		setOverviewData(undefined);
+		void fetchData();
+	};
+
 	return {
-		raceWeekendProgress: overviewData?.raceWeekendProgress
+		raceWeekendProgress: overviewData?.raceWeekendProgress,
+		refreshData
 	};
 }

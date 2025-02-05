@@ -10,9 +10,9 @@ export async function getOverview() : Promise<OverviewInterface> {
 
 	return {
 		raceWeekendProgress: {
-			name: "Qualifying @ 12:00:00 UTC",
+			name: "Race @ 12:00:00 UTC",
 			ongoing: true,
-			weekendProgress: 80
+			weekendProgress: 100
 		}
 	} as OverviewInterface;
 }

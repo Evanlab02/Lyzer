@@ -1,7 +1,16 @@
-.ml-16 {
-    margin-left: 16px;
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
 
-.mt-16 {
-    margin-top: 16px;
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
