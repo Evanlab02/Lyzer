@@ -6,6 +6,7 @@ import Navigation from "../../routes/Navigation";
 
 
 it("Navigation renders overview page correctly", async () => {
+	fetchMock.mockResponseOnce(JSON.stringify({}));
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
@@ -19,6 +20,7 @@ it("Navigation renders overview page correctly", async () => {
 });
 
 it("Navigation renders 404 page correctly", async () => {
+	fetchMock.mockResponseOnce(JSON.stringify({}));
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/non-existent-route"]}>
 			<ThemeProvider>

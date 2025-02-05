@@ -5,8 +5,8 @@ import ThemeProvider from "../../components/ThemeProvider";
 import SideMenu from "../../components/SideNav";
 
 
-it("SideNav renders closed correctly", () => {
-	const { getByTestId } = render(
+it("SideNav renders closed correctly", async () => {
+	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
 				<SideMenu
@@ -19,12 +19,12 @@ it("SideNav renders closed correctly", () => {
 		</MemoryRouter>
 	);
 
-	const sideNav = getByTestId("lyzer-side-nav");
+	const sideNav = await findByTestId("lyzer-side-nav");
 	expect(sideNav).toMatchSnapshot();
 });
 
-it("SideNav renders open correctly", () => {
-	const { getByTestId } = render(
+it("SideNav renders open correctly", async () => {
+	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
 				<SideMenu
@@ -37,13 +37,13 @@ it("SideNav renders open correctly", () => {
 		</MemoryRouter>
 	);
 
-	const sideNav = getByTestId("lyzer-side-nav");
+	const sideNav = await findByTestId("lyzer-side-nav");
 	expect(sideNav).toMatchSnapshot();
 });
 
-it("SideNav calls onCloseClick when menuToggle is clicked", () => {
+it("SideNav calls onCloseClick when menuToggle is clicked", async () => {
 	const onCloseClick = vi.fn();
-	const { getByTestId } = render(
+	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
 				<SideMenu
@@ -57,7 +57,7 @@ it("SideNav calls onCloseClick when menuToggle is clicked", () => {
 		</MemoryRouter>
 	);
 
-	const menuToggle = getByTestId("lyzer-side-nav-menu-toggle");
+	const menuToggle = await findByTestId("lyzer-side-nav-menu-toggle");
 	fireEvent.click(menuToggle);
 
 	expect(onCloseClick).toHaveBeenCalledTimes(1);

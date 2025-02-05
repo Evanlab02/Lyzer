@@ -8,7 +8,7 @@ export default function Overview() {
 	const { 
 		raceWeekendProgress,
 		refreshData
-	} = useOverview();
+	} = useOverview();;
 
 	return (
 		<div className="page-content" data-testid="lyzer-overview-page">

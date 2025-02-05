@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { OverviewInterface } from "../clients/interfaces/overviewInterfaces";
+import { RaceWeekendProgress } from "../clients/interfaces/overviewInterfaces";
 import { getOverview } from "../clients/overviewClient";
 
 export default function useOverview() {
-	const [overviewData, setOverviewData] = useState<OverviewInterface>();
+	const [raceWeekendProgress, setRaceWeekendProgress] = useState<RaceWeekendProgress>();
 
 	useEffect(() => {
 		void fetchData();
@@ -11,16 +11,16 @@ export default function useOverview() {
 
 	const fetchData = async () => {
 		const result = await getOverview();
-		setOverviewData(result);
+		setRaceWeekendProgress(result.raceWeekendProgress);
 	};
 
 	const refreshData = () => {
-		setOverviewData(undefined);
+		setRaceWeekendProgress(undefined);
 		void fetchData();
 	};
 
 	return {
-		raceWeekendProgress: overviewData?.raceWeekendProgress,
+		raceWeekendProgress,
 		refreshData
 	};
 }
