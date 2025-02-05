@@ -1,0 +1,18 @@
+.lyzer-card {
+    background-color: var(--card-bg-colour);
+    border-radius: 8px;
+    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
+
+    .lyzer-card-heading {
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        font-size: 12px !important;
+    }
+
+    .lyzer-card-body {
+        margin: 10px 0 10px 0;
+        font-size: 1.35rem;
+    }
+}

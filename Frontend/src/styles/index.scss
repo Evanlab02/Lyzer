@@ -5,9 +5,14 @@ body, html {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "IBM Plex Sans", sans-serif;
 }
 
 body {
 	background-color: var(--primary-colour);
 	color: var(--secondary-colour);
+}
+
+.page-content {
+	padding: 0 20px;
 }

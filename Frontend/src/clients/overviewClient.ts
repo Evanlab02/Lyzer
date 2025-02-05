@@ -1,11 +1,18 @@
 import { OverviewInterface } from "./interfaces/overviewInterfaces";
 
 export async function getOverview() : Promise<OverviewInterface> {
-	const response: Response = await fetch("https://catfact.ninja/fact", {
+	await fetch("https://catfact.ninja/fact", {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json"
 		}
 	});
-	return (await response.json()) as OverviewInterface;
+
+	return {
+		raceWeekendProgress: {
+			name: "Qualifying @ 12:00:00 UTC",
+			ongoing: true,
+			weekendProgress: 80
+		}
+	} as OverviewInterface;
 }

@@ -4,6 +4,7 @@ import { getOverview } from "../clients/overviewClient";
 
 export default function useOverview() {
 	const [overviewData, setOverviewData] = useState<OverviewInterface>();
+
 	useEffect(() => {
 		void fetchData();
 	}, []);
@@ -13,5 +14,7 @@ export default function useOverview() {
 		setOverviewData(result);
 	};
 
-	return {overviewData};
+	return {
+		raceWeekendProgress: overviewData?.raceWeekendProgress
+	};
 }

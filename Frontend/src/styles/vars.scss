@@ -1,16 +1,29 @@
 @use "colours";
 
 :root {
+  // SAME ACROSS ALL THEMES
+  --progress-bar-indicator-colour: #{colours.$lyzer-red};
+  --progress-bar-indicator-colour-complete: #{colours.$lyzer-green};
+  --progress-bar-indicator-colour-almost: #{colours.$lyzer-turquoise};
+  --progress-bar-indicator-colour-incomplete: #{colours.$lyzer-blue};
+  // END OF SAME ACROSS ALL THEMES
+
   --primary-colour: #{colours.$lyzer-black};
   --secondary-colour: #{colours.$lyzer-white};
+  --card-bg-colour: #{colours.$lyzer-dark-grey};
+  --progress-bar-track-colour: #{colours.$lyzer-mid-grey};
 }
 
 [data-theme="light"] {
   --primary-colour: #{colours.$lyzer-white};
   --secondary-colour: #{colours.$lyzer-black};
+  --card-bg-colour: #{colours.$lyzer-white};
+  --progress-bar-track-colour: #{colours.$lyzer-white};
 }
 
 [data-theme="dark"] {
   --primary-colour: #{colours.$lyzer-black};
   --secondary-colour: #{colours.$lyzer-white};
+  --card-bg-colour: #{colours.$lyzer-dark-grey};
+  --progress-bar-track-colour: #{colours.$lyzer-mid-grey};
 }

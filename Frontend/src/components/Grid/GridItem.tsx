@@ -13,6 +13,7 @@ export default function GridItem(props: Readonly<FlexGridItemProps>) {
 	const { children, xs, sm, md, lg, xl, xxl } = props;
 
 	const classes = [
+		"flex-grid-item",
 		xs && `flex-grid-col-xs-${xs.toString()}`,
 		sm && `flex-grid-col-sm-${sm.toString()}`,
 		md && `flex-grid-col-md-${md.toString()}`,

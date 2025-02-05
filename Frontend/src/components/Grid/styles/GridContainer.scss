@@ -1,6 +1,16 @@
 .flex-grid-container {
     display: flex;
     flex-wrap: wrap;
+    width: calc(100% + 16px);
+    margin-left: -16px;
+    margin-top: -16px;
+
+    .flex-grid-item {
+        margin: 0;
+        padding-left: 16px;
+        padding-top: 16px;
+        box-sizing: border-box;
+    }
 
     @media (3800px <=width) {
         .flex-grid-col-xxl-1 {

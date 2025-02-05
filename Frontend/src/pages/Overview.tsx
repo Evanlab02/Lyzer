@@ -1,15 +1,19 @@
-import { GridContainer, GridItem } from "../components/Grid";
+import { GridContainer } from "../components/Grid";
+import CardSection from "../layouts/Overview/CardSection";
+import TableSection from "../layouts/Overview/TableSection";
+import useOverview from "../hooks/useOverview";
 
 export default function Overview() {
+	const { raceWeekendProgress } = useOverview();
+
 	return (
-		<div data-testid="lyzer-overview-page">
+		<div className="page-content" data-testid="lyzer-overview-page">
+			<h2>Overview</h2>
 			<GridContainer>
-				<GridItem xs={12} sm={12} md={6} lg={6} xl={4} xxl={4}>
-					<div>IDK</div>
-				</GridItem>
-				<GridItem xs={12} sm={12} md={6} lg={6} xl={4} xxl={4}>
-					<div>IDK</div>
-				</GridItem>
+				<CardSection 
+					raceWeekendProgress={raceWeekendProgress} 
+				/>
+				<TableSection />
 			</GridContainer>
 		</div>
 	);
