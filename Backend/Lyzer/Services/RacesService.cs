@@ -40,5 +40,10 @@ namespace Lyzer.Services
 
             return cachedRaces;
         }
+
+        public Task<RaceWeekendProgressDTO> GetRaceWeekendProgress()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
