@@ -1,0 +1,13 @@
+@forward "vars";
+@use "colours" as *;
+
+body, html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--primary-colour);
+	color: var(--secondary-colour);
+}

@@ -1,0 +1,25 @@
+@forward "vars";
+@use "colours" as *;
+
+.navbar {
+	width: 100vw; 
+	height: 4em; 
+	border-bottom: 1px solid var(--secondary-colour); 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+	box-sizing: border-box; 
+	margin: 0; 
+	padding: 0; 
+
+	.icon {
+		&.menu {
+			margin-left: 20px;
+		}
+
+		&.theme-toggle {
+			margin-right: 20px;
+		}
+	}
+}
