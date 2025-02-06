@@ -44,6 +44,9 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+extra_css:
+  - css/extra.css
+
 nav:
   - Home: index.md
   - Development:
@@ -53,3 +56,5 @@ nav:
     - How we utilize redis: backend/caching.md
     - API/Backend:
       - General Structure: backend/architecture.md
+    - Frontend:
+      - General Structure: frontend/architecture.md

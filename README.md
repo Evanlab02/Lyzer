@@ -21,8 +21,9 @@ Although it's early days, here’s what Lyzer might offer in the future:
 
 ## ⚙️ Tech Stack  
 
-- **Backend:** C#  
-- **Frontend:** React, Typescript
+- **Caching:** Redis
+- **Backend:** C#, ASP.NET Core
+- **Frontend:** React, Typescript, Vite
 
 ## 🌟 Contributing  
 
