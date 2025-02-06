@@ -23,6 +23,18 @@ services:
         - action: rebuild
           path: ./Backend/Lyzer
 
+  web:
+    build: Frontend
+    container_name: lyzer-web
+    ports:
+      - 80:80
+    networks:
+      - lyzer-network
+    develop:
+      watch:
+        - action: rebuild
+          path: ./Frontend
+
 networks:
   lyzer-network:
     driver: bridge
