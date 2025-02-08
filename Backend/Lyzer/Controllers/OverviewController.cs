@@ -7,11 +7,11 @@ namespace Lyzer.Controllers
 {
     [ApiController]
     [Route("api/v1/lyzer/overview")]
-    public class UpcomingRaceWeekendController : ControllerBase
+    public class OverviewController : ControllerBase
     {
         private readonly RacesService _raceService;
 
-        public UpcomingRaceWeekendController(RacesService raceService)
+        public OverviewController(RacesService raceService)
         {
             _raceService = raceService;
         }

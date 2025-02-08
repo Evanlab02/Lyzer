@@ -119,6 +119,16 @@ namespace Lyzer.Clients
                 throw new SerializationException("Could not deserialize race results.");
             }
 
+            foreach (RaceDTO race in raceList.Races)
+            {
+                List<SessionDTO?> allSessions = new List<SessionDTO?> { race.FirstPractice, race.SecondPractice, race.ThirdPractice, race.Qualifying, race.Sprint, race.SprintQualifying };
+
+                race.Sessions = allSessions
+                    .Where(x => x != null)
+                    .Cast<SessionDTO>()
+                    .ToList();
+            }
+
             return raceList;
         }
     }

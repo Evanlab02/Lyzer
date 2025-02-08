@@ -13,12 +13,14 @@ namespace Lyzer.Services
         private readonly ILogger<RacesService> _logger;
         private readonly JolpicaClient _client;
         private readonly CacheService _cache;
+
         public RacesService(ILogger<RacesService> logger, JolpicaClient client, CacheService cache)
         {
             _logger = logger;
             _client = client;
             _cache = cache;
         }
+
         public async Task<RacesDTO> GetCachedRaces(string season)
         {
             string key = String.Format(CacheKeyConstants.Races, season);
@@ -40,7 +42,8 @@ namespace Lyzer.Services
 
             return cachedRaces;
         }
-        private RaceDTO? NextRace(RacesDTO racesDto)
+
+        private RaceDTO? GetNextRace(RacesDTO racesDto)
         {
             var now = DateTimeOffset.UtcNow;
 
@@ -50,7 +53,7 @@ namespace Lyzer.Services
                 .FirstOrDefault();
         }
 
-        public RaceDTO? LastRace(RacesDTO racesDto)
+        public RaceDTO? GetLastRace(RacesDTO racesDto)
         {
             var now = DateTimeOffset.UtcNow;
 
@@ -60,24 +63,35 @@ namespace Lyzer.Services
                 .FirstOrDefault();
         }
 
-        public DateTimeOffset NextFirstPractice(RacesDTO racesDto)
+        public DateTimeOffset NextFirstSession(RacesDTO racesDto)
         {
-            var nextRace = NextRace(racesDto) ?? throw new InvalidOperationException("No upcoming race found.");
-            var fridayDate = nextRace.RaceStartDateTime.AddDays(-2);
+            var nextRace = GetNextRace(racesDto);
 
-            return fridayDate;
+            if (nextRace == null)
+            {
+                throw new InvalidOperationException("No upcoming race found.");
+            }
+
+            var firstSession = nextRace.Sessions.FirstOrDefault();
+
+            if (firstSession == null)
+            {
+                return nextRace.RaceStartDateTime.AddDays(-2);
+            }
+
+            return firstSession.SessionDateTime;
         }
 
         public bool IsRaceWeekend(RacesDTO racesDto)
         {
-            var nextRace = NextRace(racesDto);
+            var nextRace = GetNextRace(racesDto);
             if (nextRace == null)
             {
                 return false;
             }
 
             DateTimeOffset raceDate = nextRace.RaceStartDateTime;
-            DateTimeOffset practiceDate = NextFirstPractice(racesDto);
+            DateTimeOffset practiceDate = NextFirstSession(racesDto);
             var today = DateTimeOffset.UtcNow;
 
             return today >= practiceDate && today <= raceDate;
@@ -85,7 +99,7 @@ namespace Lyzer.Services
 
         public int GetMinutesToRaceWeekend(RacesDTO racesDto)
         {
-            DateTimeOffset firstPractice = NextFirstPractice(racesDto).Date;
+            DateTimeOffset firstPractice = NextFirstSession(racesDto).Date;
 
             var now = DateTimeOffset.UtcNow;
             TimeSpan diff = firstPractice - now;
@@ -94,8 +108,8 @@ namespace Lyzer.Services
 
         public int TimeToRaceWeekendProgress(RacesDTO racesDto)
         {
-            var lastRace = LastRace(racesDto);
-            var nextRace = NextRace(racesDto);
+            var lastRace = GetLastRace(racesDto);
+            var nextRace = GetNextRace(racesDto);
 
             if (lastRace != null && nextRace != null)
             {
@@ -111,7 +125,7 @@ namespace Lyzer.Services
             return 0;
         }
 
-        public string RaceWeekendProgressStatus(RacesDTO racesDto)
+        public string UpcomingRaceWeekendProgressStatus(RacesDTO racesDto)
         {
             var raceWeekendProgress = TimeToRaceWeekendProgress(racesDto);
 
@@ -128,12 +142,11 @@ namespace Lyzer.Services
 
         public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend(string season)
         {
-
             RacesDTO racesDto = await GetCachedRaces(season);
 
             var isRaceWeekend = IsRaceWeekend(racesDto);
             var timeToRaceWeekendProgress = TimeToRaceWeekendProgress(racesDto);
-            var status = RaceWeekendProgressStatus(racesDto);
+            var status = UpcomingRaceWeekendProgressStatus(racesDto);
             var timeToRaceWeekend = GetMinutesToRaceWeekend(racesDto);
 
             return new UpcomingRaceWeekendDTO()
@@ -145,5 +158,35 @@ namespace Lyzer.Services
             };
         }
 
+        public async Task<RaceWeekendProgressDTO> GetRaceWeekendProgress()
+        {
+            var races = await GetCachedRaces("current");
+            var nextRace = GetNextRace(races);
+
+            if (nextRace == null)
+            {
+                throw new InvalidOperationException("No upcoming race found.");
+            }
+
+            var nextSession = GetNextRaceSession(nextRace);
+
+            var now = DateTimeOffset.UtcNow;
+
+            if (nextSession == null && (nextRace.RaceStartDateTime))
+
+            return new RaceWeekendProgressDTO() 
+            {
+                Name = nextSession.Name,
+                Ongoing = false,
+                WeekendProgress = 0,
+            };
+        }
+
+        private SessionDTO? GetNextRaceSession(RaceDTO race)
+        {
+            var now = DateTimeOffset.UtcNow;
+
+            return race.Sessions.FirstOrDefault(x => x.SessionDateTime > now);
+        }
     }
 }
