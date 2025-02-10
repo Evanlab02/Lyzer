@@ -1,10 +1,13 @@
+using System;
 using System.Runtime.Serialization;
 
 using Lyzer.Clients;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
+using Lyzer.Common.Extensions;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Lyzer.Services
 {
@@ -43,12 +46,12 @@ namespace Lyzer.Services
             return cachedRaces;
         }
 
-        private RaceDTO? GetNextRace(RacesDTO racesDto)
+        private RaceDTO? GetNextOrCurrentRace(RacesDTO racesDto)
         {
             var now = DateTimeOffset.UtcNow;
 
             return racesDto.Races
-                .Where(r => r.RaceStartDateTime > now)
+                .Where(r => (r.RaceStartDateTime > now && r.RaceStartDateTime.AddHours(3) < now) || r.RaceStartDateTime > now)
                 .OrderBy(r => r.RaceStartDateTime)
                 .FirstOrDefault();
         }
@@ -65,7 +68,7 @@ namespace Lyzer.Services
 
         public DateTimeOffset NextFirstSession(RacesDTO racesDto)
         {
-            var nextRace = GetNextRace(racesDto);
+            var nextRace = GetNextOrCurrentRace(racesDto);
 
             if (nextRace == null)
             {
@@ -84,7 +87,7 @@ namespace Lyzer.Services
 
         public bool IsRaceWeekend(RacesDTO racesDto)
         {
-            var nextRace = GetNextRace(racesDto);
+            var nextRace = GetNextOrCurrentRace(racesDto);
             if (nextRace == null)
             {
                 return false;
@@ -109,7 +112,7 @@ namespace Lyzer.Services
         public int TimeToRaceWeekendProgress(RacesDTO racesDto)
         {
             var lastRace = GetLastRace(racesDto);
-            var nextRace = GetNextRace(racesDto);
+            var nextRace = GetNextOrCurrentRace(racesDto);
 
             if (lastRace != null && nextRace != null)
             {
@@ -161,7 +164,7 @@ namespace Lyzer.Services
         public async Task<RaceWeekendProgressDTO> GetRaceWeekendProgress()
         {
             var races = await GetCachedRaces("current");
-            var nextRace = GetNextRace(races);
+            var nextRace = GetNextOrCurrentRace(races);
 
             if (nextRace == null)
             {
@@ -172,13 +175,25 @@ namespace Lyzer.Services
 
             var now = DateTimeOffset.UtcNow;
 
-            if (nextSession == null && (nextRace.RaceStartDateTime))
+            if (nextSession == null 
+                    && (nextRace.RaceStartDateTime > now && nextRace.RaceStartDateTime.AddHours(3) < now))
+            {
+                nextSession = new SessionDTO()
+                {
+                    Name = "Race",
+                    Date = nextRace.RaceStartDateTime.Date.ToString(),
+                    Time = nextRace.RaceStartDateTime.TimeOfDay.ToString()
+                };
+            }
+
+            var isOngoing = nextSession?.SessionDateTime > now && nextSession.SessionDateTime.AddMinutes(GetMaxSessionTime(nextSession)) < now;
+            var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession!);
 
             return new RaceWeekendProgressDTO() 
             {
-                Name = nextSession.Name,
-                Ongoing = false,
-                WeekendProgress = 0,
+                Name = nextSession?.Name ?? "No upcoming session.",
+                Ongoing = isOngoing,
+                WeekendProgress = weekendProgressPercentage,
             };
         }
 
@@ -187,6 +202,28 @@ namespace Lyzer.Services
             var now = DateTimeOffset.UtcNow;
 
             return race.Sessions.FirstOrDefault(x => x.SessionDateTime > now);
+        }
+
+        private int GetMaxSessionTime(SessionDTO session)
+        {
+            if (session.Name.Contains("Practice"))
+                return (int)MaxSessionTimeConstants.Practice;
+
+            var maxTime = Enums.GetValueFromEnumDescription<MaxSessionTimeConstants>(session.Name);
+
+            if (maxTime == null)
+                throw new Exception("Invalid session name provided");
+
+            return maxTime.Value;
+        }
+
+        private int GetWeekendProgressPercentage(RaceDTO race, SessionDTO nextSession)
+        {
+            //+1 to include the race
+            var remainingSessions = 2;
+            var totalSessions = race.Sessions.Count + 1;
+
+            return (int)Math.Round((double)remainingSessions / totalSessions * 100);
         }
     }
 }
