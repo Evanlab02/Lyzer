@@ -175,7 +175,7 @@ namespace Lyzer.Services
 
             var now = DateTimeOffset.UtcNow;
 
-            if (nextSession == null 
+            if (nextSession == null
                     && (nextRace.RaceStartDateTime > now && nextRace.RaceStartDateTime.AddHours(3) < now))
             {
                 nextSession = new SessionDTO()
@@ -189,7 +189,7 @@ namespace Lyzer.Services
             var isOngoing = nextSession?.SessionDateTime > now && nextSession.SessionDateTime.AddMinutes(GetMaxSessionTime(nextSession)) < now;
             var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession!);
 
-            return new RaceWeekendProgressDTO() 
+            return new RaceWeekendProgressDTO()
             {
                 Name = nextSession?.Name ?? "No upcoming session.",
                 Ongoing = isOngoing,
