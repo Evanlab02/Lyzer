@@ -111,7 +111,6 @@ namespace Lyzer.Clients
                 .GetProperty("MRData")
                 .GetProperty("RaceTable");
 
-
             RacesDTO? raceList = JsonConvert.DeserializeObject<RacesDTO>(races.GetRawText());
 
             if (raceList == null)
@@ -123,9 +122,27 @@ namespace Lyzer.Clients
             {
                 List<SessionDTO?> allSessions = new List<SessionDTO?> { race.FirstPractice, race.SecondPractice, race.ThirdPractice, race.Qualifying, race.Sprint, race.SprintQualifying };
 
+                var sessionNames = new Dictionary<SessionDTO, string>(
+                    new[]
+                    {
+                        (race.FirstPractice, "First Practice"),
+                        (race.SecondPractice, "Second Practice"),
+                        (race.ThirdPractice, "Third Practice"),
+                        (race.Qualifying, "Qualifying"),
+                        (race.Sprint, "Sprint"),
+                        (race.SprintQualifying, "Sprint Qualifying")
+                    }
+                    .Where(x => x.Item1 != null)
+                    .Select(x => new KeyValuePair<SessionDTO, string>(x.Item1!, x.Item2))
+                );
+
                 race.Sessions = allSessions
                     .Where(x => x != null)
-                    .Cast<SessionDTO>()
+                    .Select(session =>
+                        {
+                            session!.Name = sessionNames[session];
+                            return session;
+                        })
                     .ToList();
             }
 
