@@ -2,6 +2,7 @@
 .vs
 bin/
 obj/
+Backend/Properties/launchSettings.json
 
 # Documentation exclusions
 Docs/site
