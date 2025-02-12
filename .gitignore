@@ -2,7 +2,7 @@
 .vs
 bin/
 obj/
-Backend/Properties/launchSettings.json
+Backend/Lyzer/Properties/launchSettings.json
 
 # Documentation exclusions
 Docs/site
