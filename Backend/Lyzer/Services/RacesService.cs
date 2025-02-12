@@ -51,7 +51,7 @@ namespace Lyzer.Services
             var now = DateTimeOffset.UtcNow;
 
             return racesDto.Races
-                .Where(r => (r.RaceStartDateTime > now && r.RaceStartDateTime.AddHours(3) < now) || r.RaceStartDateTime > now)
+                .Where(r => now < r.RaceStartDateTime.AddMinutes((int)MaxSessionTimeConstants.Race))
                 .OrderBy(r => r.RaceStartDateTime)
                 .FirstOrDefault();
         }
@@ -176,7 +176,7 @@ namespace Lyzer.Services
             var now = DateTimeOffset.UtcNow;
 
             if (nextSession == null
-                    && (nextRace.RaceStartDateTime > now && nextRace.RaceStartDateTime.AddHours(3) < now))
+                    && (nextRace.RaceStartDateTime.AddMinutes((int)MaxSessionTimeConstants.Race) > now))
             {
                 nextSession = new SessionDTO()
                 {
@@ -186,7 +186,7 @@ namespace Lyzer.Services
                 };
             }
 
-            var isOngoing = nextSession?.SessionDateTime > now && nextSession.SessionDateTime.AddMinutes(GetMaxSessionTime(nextSession)) < now;
+            var isOngoing = nextSession?.SessionDateTime < now && nextSession.SessionDateTime.AddMinutes(GetMaxSessionTime(nextSession)) > now;
             var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession!);
 
             return new RaceWeekendProgressDTO()
@@ -219,8 +219,14 @@ namespace Lyzer.Services
 
         private int GetWeekendProgressPercentage(RaceDTO race, SessionDTO nextSession)
         {
+            var now = DateTimeOffset.UtcNow;
+
+            var remainingSessions = race.Sessions.Where(x => x.SessionDateTime <= now).Count();
+
+            if (race.RaceStartDateTime < now)
+                remainingSessions++;
+
             //+1 to include the race
-            var remainingSessions = 2;
             var totalSessions = race.Sessions.Count + 1;
 
             return (int)Math.Round((double)remainingSessions / totalSessions * 100);
