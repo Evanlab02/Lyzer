@@ -143,7 +143,7 @@ namespace Lyzer.Services
             }
         }
 
-        public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend(string season)
+        public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend(string season = "current")
         {
             RacesDTO racesDto = await GetCachedRaces(season);
 
