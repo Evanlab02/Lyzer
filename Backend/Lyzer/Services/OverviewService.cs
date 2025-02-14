@@ -6,7 +6,7 @@ namespace Lyzer.Services
     {
         private readonly RacesService _racesService;
 
-        public OverviewService(RacesService racesService) 
+        public OverviewService(RacesService racesService)
         {
             _racesService = racesService;
         }
