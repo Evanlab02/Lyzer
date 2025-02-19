@@ -27,3 +27,21 @@ jobs:
         run: dotnet restore
       - name: Build app
         run: dotnet build
+
+  fe-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Frontend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.11.0'
+          cache: 'npm'
+          cache-dependency-path: Frontend/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build app
+        run: npm run build
