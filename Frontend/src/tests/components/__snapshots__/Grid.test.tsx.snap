@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Grid container renders correctly 1`] = `
+<div
+  class="flex-grid-container"
+  data-testid="lyzer-grid-container"
+>
+  Grid Container
+</div>
+`;
+
+exports[`Grid container renders correctly with grid items 1`] = `
+<div
+  class="flex-grid-container"
+  data-testid="lyzer-grid-container"
+>
+  <div
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-9 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-1"
+  >
+    Grid Item
+  </div>
+</div>
+`;

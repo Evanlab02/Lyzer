@@ -1,11 +1,11 @@
 .PHONY: requirements
 requirements:
-	uv pip compile pyproject.toml --no-strip-extras --no-annotate -o requirements.txt
+	uv pip compile requirements.in --no-annotate -o requirements.txt
 	
 .PHONY: serve
 serve:
 	uv run mkdocs serve
 
-.PHONY:
+.PHONY: build
 build:
 	uv run mkdocs build

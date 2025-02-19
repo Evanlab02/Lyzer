@@ -3,9 +3,10 @@ import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 import ThemeProvider from "../../components/ThemeProvider";
 import Navigation from "../../routes/Navigation";
-
+import { overviewMockIsNotRaceWeekend } from "../mocks/overviewMock";
 
 it("Navigation renders overview page correctly", async () => {
+	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsNotRaceWeekend));
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>
 			<ThemeProvider>
