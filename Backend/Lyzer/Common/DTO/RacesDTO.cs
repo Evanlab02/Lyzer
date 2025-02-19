@@ -24,6 +24,9 @@ namespace Lyzer.Common.DTO
         public SessionDTO? SecondPractice { get; set; }
         public SessionDTO? ThirdPractice { get; set; }
         public SessionDTO? Qualifying { get; set; }
+        public SessionDTO? Sprint { get; set; }
+        public SessionDTO? SprintQualifying { get; set; }
+        public required List<SessionDTO> Sessions { get; set; }
 
         // Computed property for the actual race's date/time
         [JsonIgnore]

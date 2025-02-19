@@ -7,19 +7,21 @@ namespace Lyzer.Controllers
 {
     [ApiController]
     [Route("api/v1/lyzer/overview")]
-    public class UpcomingRaceWeekendController : ControllerBase
+    public class OverviewController : ControllerBase
     {
         private readonly RacesService _raceService;
+        private readonly OverviewService _overviewService;
 
-        public UpcomingRaceWeekendController(RacesService raceService)
+        public OverviewController(RacesService raceService, OverviewService overviewService)
         {
             _raceService = raceService;
+            _overviewService = overviewService;
         }
 
-        [HttpGet("", Name = "GetUpcomingRaceWeekend")]
-        public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend()
+        [HttpGet("", Name = "GetOverviewData")]
+        public async Task<OverviewDataDTO> GetOverviewData()
         {
-            return await _raceService.GetUpcomingRaceWeekend("current");
+            return await _overviewService.GetOverviewData();
         }
     }
 }
