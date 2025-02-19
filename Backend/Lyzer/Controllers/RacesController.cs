@@ -25,5 +25,11 @@ namespace Lyzer.Controllers
         {
             return await _racesService.GetCachedRaces("current");
         }
+
+        [HttpGet("current/progress", Name = "GetRaceWeekendProgress")]
+        public async Task<RaceWeekendProgressDTO> GetRaceWeekendProgress()
+        {
+            return await _racesService.GetRaceWeekendProgress();
+        }
     }
 }

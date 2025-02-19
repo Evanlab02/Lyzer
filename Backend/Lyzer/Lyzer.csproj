@@ -8,6 +8,7 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <UserSecretsId>38619cbf-4b4d-4afe-9eb2-30a4a6dc01f1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
