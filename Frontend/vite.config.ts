@@ -10,7 +10,7 @@ export default defineConfig({
 		open: "/",
 		proxy: {
 			"/apis/lyzer": {
-				target: "http://localhost:8000",
+				target: "http://localhost:5131",
 				changeOrigin: true,
 				rewrite: (path) => path.replace("/apis/lyzer", ""),
 				configure: (proxy) => {

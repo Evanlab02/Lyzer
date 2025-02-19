@@ -1,11 +1,13 @@
 import Progress from "../../components/Progress";
+import Upcoming
 import Card, {CardBody, CardHeading} from "../../components/Card";
 import { GridItem } from "../../components/Grid";
-import { RaceWeekendProgress } from "../../clients/interfaces/overviewInterfaces";
+import { RaceWeekendProgress, UpcomingRaceWeekend } from "../../clients/interfaces/overviewInterfaces";
 import { LOADING_RACE_WEEKEND_PROGRESS } from "../../constants/loading";
 
 export interface CardSectionProps {
     raceWeekendProgress?: RaceWeekendProgress;
+	upcomingRaceWeekend?: UpcomingRaceWeekend;
 }
 
 export default function CardSection(props: CardSectionProps) {
@@ -20,6 +22,10 @@ export default function CardSection(props: CardSectionProps) {
 					<CardHeading>
                         Is it race weekend?
 					</CardHeading>
+					<CardBody>
+						{upcomingRaceWeekend.isRaceWeekend ? "Yes" : "No"}
+					</CardBody>
+
 				</Card>
 			</GridItem>
 			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
