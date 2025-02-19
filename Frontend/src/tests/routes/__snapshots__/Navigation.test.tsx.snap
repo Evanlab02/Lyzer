@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation renders 404 page correctly 1`] = `
+<div
+  data-testid="lyzer-not-found-page"
+>
+  Page not found
+</div>
+`;
+
+exports[`Navigation renders overview page correctly 1`] = `
+<div
+  data-testid="lyzer-overview-page"
+>
+  Hello, Lyzer!
+</div>
+`;

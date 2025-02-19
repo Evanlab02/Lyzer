@@ -6,3 +6,10 @@ obj/
 # Documentation exclusions
 Docs/site
 Docs/uv.lock
+
+# Frontend exclusions
+Frontend/coverage
+Frontend/node_modules
+Frontend/dist
+Frontend/build
+Frontend/coverage
