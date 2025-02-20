@@ -1,17 +1,26 @@
-import { ArrowLeftToLine } from "lucide-react";
-import "../styles/sideNav.scss";
-import { useTheme } from "../hooks/useTheme";
 import React, { useEffect, useRef } from "react";
-import { ROUTES } from "../consts/routes";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowLeftToLine } from "lucide-react";
+import { ROUTES } from "../../constants/routes";
+import { useTheme } from "../../hooks/useTheme";
+import "./styles/index.scss";
 
 interface SideNavProps  {
 	sideNavOpen: boolean;
+	testId?: string;
+	menuToggleTestId?: string;
 	onCloseClick: () => void;
 	onSideNavBlur: React.FocusEventHandler<SVGSVGElement>;
 }
 
-export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: SideNavProps) {
+export default function SideMenu(props: Readonly<SideNavProps>) {
+	const { 
+		sideNavOpen, 
+		testId,
+		menuToggleTestId,
+		onCloseClick, 
+		onSideNavBlur
+	} = props;
 
 	const {isDarkMode} = useTheme();
 
@@ -40,13 +49,14 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 	};
 
 	return (
-		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef}>
+		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef} data-testid={testId}>
 			<ArrowLeftToLine 
 				onClick={onCloseClick}
 				onBlur={onSideNavBlur}
 				color={isDarkMode ? "white" : "black"}
 				className="closeIcon"
 				size={28}
+				data-testid={menuToggleTestId}
 			/>
 			<div id="links" className="links">
 				{/* Check if active link, apply active style
@@ -58,7 +68,7 @@ export default function SideMenu({ sideNavOpen, onCloseClick, onSideNavBlur}: Si
 						className={"link-container " + (isSelectedRoute(item.route) ? "selected" : "")}
 						to={item.route}
 					>
-						{item.icon}
+						{item.children}
 						<div key={`linkName${index.toString()}`}>
 							{item.name.toUpperCase()}
 						</div>

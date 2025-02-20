@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar renders correctly 1`] = `
+<div
+  class="navbar"
+  data-testid="lyzer-nav-bar"
+>
+  <svg
+    class="lucide lucide-menu icon menu"
+    fill="none"
+    height="28"
+    id="navbar-menu"
+    stroke="black"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="28"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line
+      x1="4"
+      x2="20"
+      y1="12"
+      y2="12"
+    />
+    <line
+      x1="4"
+      x2="20"
+      y1="6"
+      y2="6"
+    />
+    <line
+      x1="4"
+      x2="20"
+      y1="18"
+      y2="18"
+    />
+  </svg>
+  <div>
+    L Y Z E R
+  </div>
+  <svg
+    class="lucide lucide-sun icon theme-toggle"
+    fill="none"
+    height="28"
+    id="theme-toggle-light"
+    stroke="black"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="28"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="4"
+    />
+    <path
+      d="M12 2v2"
+    />
+    <path
+      d="M12 20v2"
+    />
+    <path
+      d="m4.93 4.93 1.41 1.41"
+    />
+    <path
+      d="m17.66 17.66 1.41 1.41"
+    />
+    <path
+      d="M2 12h2"
+    />
+    <path
+      d="M20 12h2"
+    />
+    <path
+      d="m6.34 17.66-1.41 1.41"
+    />
+    <path
+      d="m19.07 4.93-1.41 1.41"
+    />
+  </svg>
+</div>
+`;

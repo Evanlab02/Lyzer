@@ -1,22 +1,20 @@
+import { PropsWithChildren } from "react";
 import { Home, User } from "lucide-react";
-import { ReactElement } from "react";
 
-interface RouteInterface {
+interface RouteInterface extends PropsWithChildren {
 	name: string,
 	route: string,
-	/* eslint-disable @typescript-eslint/no-explicit-any */
-	icon: ReactElement<any, any>;
 }
 
 export const ROUTES: Record<string, RouteInterface> = {
 	OVERVIEW: {
 		name: "overview",
 		route: "/",
-		icon: <Home />,
+		children: <Home />,
 	},
 	DRIVERS: {
 		name: "drivers",
 		route: "/drivers",
-		icon: <User />,
+		children: <User />,
 	},
 };
