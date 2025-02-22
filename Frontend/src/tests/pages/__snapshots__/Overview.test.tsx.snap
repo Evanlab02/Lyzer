@@ -71,7 +71,7 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
           <p
             class="text-sm m-0"
           >
-            Sat, Feb 22, 2025, 2:00 PM
+            Sat, Feb 22, 2025, 12:00 PM
           </p>
         </h3>
         <progress
@@ -215,7 +215,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
           <p
             class="text-sm m-0"
           >
-            Sat, Feb 22, 2025, 2:00 PM
+            Sat, Feb 22, 2025, 12:00 PM
           </p>
         </h3>
         <progress
@@ -359,7 +359,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
           <p
             class="text-sm m-0"
           >
-            Sat, Feb 22, 2025, 2:00 PM
+            Sat, Feb 22, 2025, 12:00 PM
           </p>
         </h3>
         <progress
@@ -503,7 +503,7 @@ exports[`Given the user is on the overview page when it is race weekend and we a
           <p
             class="text-sm m-0"
           >
-            Sat, Feb 22, 2025, 2:00 PM
+            Sat, Feb 22, 2025, 12:00 PM
           </p>
         </h3>
         <progress

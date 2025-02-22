@@ -35,7 +35,7 @@ exports[`CardSection renders correctly 1`] = `
         <p
           class="text-sm m-0"
         >
-          Sat, Feb 22, 2025, 2:00 PM
+          Sat, Feb 22, 2025, 12:00 PM
         </p>
       </h3>
       <progress
