@@ -75,7 +75,12 @@ exports[`Navigation renders overview page correctly 1`] = `
         <h3
           class="lyzer-card-body"
         >
-          Next session: Practice 1 @ 12:00:00 UTC
+          Next session: Practice 1
+          <p
+            class="text-sm m-0"
+          >
+            Sat, Feb 22, 2025, 2:00 PM
+          </p>
         </h3>
         <progress
           class="lyzer-progress lyzer-progress-incomplete"

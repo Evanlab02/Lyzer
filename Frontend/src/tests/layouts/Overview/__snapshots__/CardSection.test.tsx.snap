@@ -31,7 +31,12 @@ exports[`CardSection renders correctly 1`] = `
       <h3
         class="lyzer-card-body"
       >
-        Ongoing session: Race @ 12:00:00 UTC
+        Ongoing session: Race
+        <p
+          class="text-sm m-0"
+        >
+          Sat, Feb 22, 2025, 2:00 PM
+        </p>
       </h3>
       <progress
         class="lyzer-progress lyzer-progress-complete"

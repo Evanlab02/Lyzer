@@ -21,10 +21,11 @@ it("CardSection renders correctly", async () => {
 		<div data-testid="lyzer-card-section">
 			<CardSection 
 				raceWeekendProgress={{
-					name: "Race @ 12:00:00 UTC",
+					name: "Race",
 					ongoing: true,
-					weekendProgress: 100
-				}} 
+					weekendProgress: 100,
+					startDateTime: "2025-02-22T12:00:00.000Z"
+				}}
 			/>
 		</div>
 	);
