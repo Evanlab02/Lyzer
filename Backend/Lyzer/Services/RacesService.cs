@@ -194,6 +194,7 @@ namespace Lyzer.Services
                 Name = nextSession?.Name ?? "No upcoming session.",
                 Ongoing = isOngoing,
                 WeekendProgress = weekendProgressPercentage,
+                StartDateTime = nextSession?.SessionDateTime
             };
         }
 

@@ -11,6 +11,7 @@
         public required string Name { get; set; }
         public required bool Ongoing { get; set; }
         public required int WeekendProgress { get; set; }
+        public DateTime? StartDateTime { get; set; }
     }
 
     public class UpcomingRaceWeekendDTO

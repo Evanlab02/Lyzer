@@ -10,12 +10,12 @@ namespace Lyzer.Common.DTO
 
 
         [JsonIgnore]
-        public DateTimeOffset SessionDateTime
+        public DateTime SessionDateTime
         {
             get
             {
-                string combined = $"{Date}T{Time}";
-                return DateTimeOffset.Parse(combined);
+                DateTime localDateTime = DateTime.Parse($"{Date}T{Time}");
+                return DateTime.SpecifyKind(localDateTime, DateTimeKind.Local).ToUniversalTime();
             }
         }
     }
