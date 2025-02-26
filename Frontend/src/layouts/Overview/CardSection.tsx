@@ -27,7 +27,7 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 					</CardHeading>
 					<CardBody>
 						{upcomingRaceWeekend.status}
-						{upcomingRaceWeekend.timeToRaceWeekend && (
+						{upcomingRaceWeekend.timeToRaceWeekend > 0 && !upcomingRaceWeekend.isRaceWeekend && (
 							<p className="text-sm m-0">
 								{`${convertMinutesToHighestDenominator(upcomingRaceWeekend.timeToRaceWeekend)} to go`}
 							</p>
