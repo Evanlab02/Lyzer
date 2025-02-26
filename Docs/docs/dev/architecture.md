@@ -9,6 +9,10 @@
 - **Lyzer API**
     - C#
     - ASP.NET
+- **Lyzer Frontend**
+    - React
+    - Typescript
+    - Vite
 
 ### Jolpica F1 API
 
@@ -31,6 +35,15 @@ The Lyzer API is a C#, ASP.NET powered backend. Its main roles are:
     - Constructor Standings
     - Races
     - Results
+- Providing a RESTful API for the Lyzer Frontend
+
+### Lyzer Frontend
+
+The Lyzer Frontend is a React, Typescript, and Vite powered frontend. It is responsible for:
+
+- Displaying Formula 1 data in a user-friendly manner
+- Providing a way to interact with the Formula 1 data
+- Providing a way to interact with the Lyzer API
 
 ## Diagram
 

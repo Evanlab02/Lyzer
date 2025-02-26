@@ -3,8 +3,8 @@ import { fireEvent, render } from "@testing-library/react";
 import ThemeProvider from "../../components/ThemeProvider";
 import NavBar from "../../components/NavBar";
 
-it("Navbar renders correctly", () => {
-	const { getByTestId } = render(
+it("Navbar renders correctly", async () => {
+	const { findByTestId } = render(
 		<ThemeProvider>
 			<NavBar
 				testId="lyzer-nav-bar"
@@ -13,14 +13,14 @@ it("Navbar renders correctly", () => {
 		</ThemeProvider>
 	);
 
-	const navBar = getByTestId("lyzer-nav-bar");
+	const navBar = await findByTestId("lyzer-nav-bar");
 	expect(navBar).toMatchSnapshot();
 });
 
-it("Navbar onMenuClick is called", () => {
+it("Navbar onMenuClick is called", async () => {
 	const onMenuClick = vi.fn();
     
-	const { getByTestId } = render(
+	const { findByTestId } = render(
 		<ThemeProvider>
 			<NavBar
 				testId="lyzer-nav-bar"
@@ -30,7 +30,7 @@ it("Navbar onMenuClick is called", () => {
 		</ThemeProvider>
 	);
 
-	const menuIcon = getByTestId("lyzer-nav-bar-menu-icon");
+	const menuIcon = await findByTestId("lyzer-nav-bar-menu-icon");
 	fireEvent.click(menuIcon);
 
 	expect(onMenuClick).toHaveBeenCalledTimes(1);

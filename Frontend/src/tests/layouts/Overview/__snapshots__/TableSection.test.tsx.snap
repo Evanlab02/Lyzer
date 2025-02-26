@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TableSection renders correctly 1`] = `
+<div
+  data-testid="lyzer-table-section"
+>
+  <div
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+  >
+    <div
+      class="lyzer-card"
+    >
+      <h1>
+        Overview Section
+      </h1>
+    </div>
+  </div>
+  <div
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+  >
+    <div
+      class="lyzer-card"
+    >
+      <h1>
+        Constructor Standings
+      </h1>
+    </div>
+  </div>
+  <div
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+  >
+    <div
+      class="lyzer-card"
+    >
+      <h1>
+        Driver Standings
+      </h1>
+    </div>
+  </div>
+</div>
+`;

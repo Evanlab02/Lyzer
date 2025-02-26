@@ -28,7 +28,7 @@ export default function NavBar(props: Readonly<NavBarProps>) {
 				color={isDarkMode ? "white" : "black"} 
 				size={28} 
 				onClick={onMenuClick} 
-				className="icon menu"
+				className="icon menu cursor-pointer"
 				id="navbar-menu"
 				data-testid={menuToggleTestId}
 			/>
@@ -37,7 +37,7 @@ export default function NavBar(props: Readonly<NavBarProps>) {
 				isDarkMode ? 
 					<Moon
 						id="theme-toggle-dark"
-						className="icon theme-toggle"
+						className="icon theme-toggle cursor-pointer"
 						color="white"
 						size={28}
 						data-testid={themeToggleTestId}
@@ -46,7 +46,7 @@ export default function NavBar(props: Readonly<NavBarProps>) {
 					:
 					<Sun
 						id="theme-toggle-light"
-						className="icon theme-toggle"
+						className="icon theme-toggle cursor-pointer"
 						color="black"
 						size={28}
 						data-testid={themeToggleTestId}

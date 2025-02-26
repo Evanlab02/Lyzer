@@ -1,0 +1,40 @@
+.lyzer-progress {
+    width: 100%;
+    border-radius: 8px;
+    border-width: 0px;
+    height: 6px;
+    background-color: var(--progress-bar-track-colour);
+    color: var(--progress-bar-indicator-colour);
+}
+
+.lyzer-progress::-webkit-progress-value,
+.lyzer-progress::-moz-progress-bar {
+    background-color: var(--progress-bar-indicator-colour);
+}
+
+.lyzer-progress-complete {
+    color: var(--progress-bar-indicator-colour-complete) !important;
+}
+
+.lyzer-progress-complete::-webkit-progress-value,
+.lyzer-progress-complete::-moz-progress-bar {
+    background-color: var(--progress-bar-indicator-colour-complete) !important;
+}
+
+.lyzer-progress-almost {
+    color: var(--progress-bar-indicator-colour-almost) !important;
+}
+
+.lyzer-progress-almost::-webkit-progress-value,
+.lyzer-progress-almost::-moz-progress-bar {
+    background-color: var(--progress-bar-indicator-colour-almost) !important;
+}
+
+.lyzer-progress-incomplete {
+    color: var(--progress-bar-indicator-colour-incomplete) !important;
+}
+
+.lyzer-progress-incomplete::-webkit-progress-value,
+.lyzer-progress-incomplete::-moz-progress-bar {
+    background-color: var(--progress-bar-indicator-colour-incomplete) !important;
+}

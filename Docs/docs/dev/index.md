@@ -8,11 +8,9 @@ Before diving into development, ensure you have the following tools installed:
 
 - **Docker**: For containerizing and managing the development environment.  
 - **Docker Compose**: To orchestrate the various containers required for Lyzer.  
-- **An IDE or Editor**: We recommend [Visual Studio Code](https://code.visualstudio.com/) for its Docker and C# support, but feel free to use your preferred editor.
+- **An IDE or Editor**: We recommend [Visual Studio](https://visualstudio.microsoft.com/) for backend development and [Visual Studio Code](https://code.visualstudio.com/) for frontend development, but feel free to use your preferred editor.
 
-> **Note:** At this stage, only the **API** is ready for active development. The frontend is not yet in a functional state.  
-
-## Starting the Development Environment  
+## Starting the Backend Development Environment  
 
 Follow these steps to spin up the development environment:  
 
@@ -36,17 +34,47 @@ Follow these steps to spin up the development environment:
 - **Verify the Environment**  
    Once the containers are up, confirm that the API is running by navigating to its swagger docs (e.g., `http://localhost:8080/swagger/index.html`).
 
+## Starting the Frontend Development Environment  
+
+Ensure you have spun up the backend development environment first. Follow these steps to spin up the frontend development environment:  
+
+- **Clone the Repository**  
+   Ensure you have the latest version of the Lyzer repository on your local machine:  
+
+   ```bash  
+   git clone https://github.com/LittleClumsy/Lyzer.git  
+   cd lyzer  
+   ```
+
+- **Install Dependencies**  
+   Navigate to the `frontend` directory and install the dependencies:
+
+   ```bash  
+   cd frontend  
+   npm install  
+   ```
+
+- **Start the Development Server**  
+   Use the following command to start the development server:
+
+   ```bash  
+   npm run dev  
+   ```
+
+   > The development server will automatically reload if you make changes to the code. The frontend will be available at `http://localhost:5173`.
+
 ## Development Workflow  
 
 ### Making Changes  
 
-- All API code is located in the `/Backend` directory.
-- Save changes, and the watch mode will rebuild the application automatically.
+   - All API code is located in the `/Backend` directory.
+   - All frontend code is located in the `/Frontend` directory.
+   - Save changes, and the code will be automatically rebuilt and the application will be automatically restarted.
 
 ### Testing the API  
 
 - Use the swagger documentation to test the endpoints
-- Or Use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test API endpoints.  
+- Or use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test API endpoints.
 
 ## Troubleshooting  
 
