@@ -7,6 +7,7 @@ import { RefreshCcw } from "lucide-react";
 export default function Overview() {
 	const { 
 		raceWeekendProgress,
+		upcomingRaceWeekend,
 		refreshData
 	} = useOverview();;
 
@@ -22,7 +23,8 @@ export default function Overview() {
 			</div>
 			<GridContainer>
 				<CardSection 
-					raceWeekendProgress={raceWeekendProgress} 
+					raceWeekendProgress={raceWeekendProgress}
+					upcomingRaceWeekend={upcomingRaceWeekend}
 				/>
 				<TableSection />
 			</GridContainer>
