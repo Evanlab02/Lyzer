@@ -1,5 +1,6 @@
 export interface OverviewInterface {
     raceWeekendProgress: RaceWeekendProgress;
+    upcomingRaceWeekend: UpcomingRaceWeekend;
 }
 
 export interface RaceWeekendProgress {
@@ -7,4 +8,11 @@ export interface RaceWeekendProgress {
     ongoing: boolean;
     weekendProgress: number;
     startDateTime?: string;
+}
+
+export interface UpcomingRaceWeekend {
+    isRaceWeekend: boolean;
+    timeToRaceWeekendProgress: number;
+    timeToRaceWeekend: number;
+    status: string;
 }

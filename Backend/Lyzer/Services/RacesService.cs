@@ -114,17 +114,26 @@ namespace Lyzer.Services
             var lastRace = GetLastRace(racesDto);
             var nextRace = GetNextOrCurrentRace(racesDto);
 
-            if (lastRace != null && nextRace != null)
+            if (nextRace != null)
             {
-                TimeSpan timeDiff = nextRace.RaceStartDateTime - lastRace.RaceStartDateTime;
-                int totalHoursBetweenRaces = (int)timeDiff.TotalHours;
-                int timeSoFar = (int)(DateTimeOffset.UtcNow - lastRace.RaceStartDateTime).TotalHours;
+                // Change to start of year if not found
+                DateTimeOffset fallbackDate = new(DateTime.UtcNow.Year, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
+                DateTimeOffset lastRaceDate = lastRace != null
+                    ? lastRace.RaceStartDateTime
+                    : fallbackDate;
 
-                int progress = timeSoFar / totalHoursBetweenRaces * 100;
+                DateTimeOffset nextRaceDate = nextRace.FirstPractice != null ? nextRace.FirstPractice.SessionDateTime : nextRace.RaceStartDateTime;
+
+                TimeSpan timeDiff = nextRaceDate - lastRaceDate;
+                double totalHoursBetweenRaces = timeDiff.TotalHours;
+                double timeSoFar = (DateTimeOffset.UtcNow - lastRaceDate).TotalHours;
+
+                double progress = timeSoFar / totalHoursBetweenRaces * 100;
                 if (progress < 0) return 0;
-                if (progress > 100) return 0;
-                return progress;
+                if (progress > 100) return 100;
+                return (int)progress;
             }
+
             return 0;
         }
 

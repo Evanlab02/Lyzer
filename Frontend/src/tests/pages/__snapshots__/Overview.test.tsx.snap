@@ -51,6 +51,21 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
         >
           Is it race weekend?
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Almost
+          <p
+            class="text-sm m-0"
+          >
+            10 hours to go
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-almost"
+          max="100"
+          value="90"
+        />
       </div>
     </div>
     <div
@@ -195,6 +210,16 @@ exports[`Given the user is on the overview page when it is race weekend and ther
         >
           Is it race weekend?
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Yes
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-complete"
+          max="100"
+          value="100"
+        />
       </div>
     </div>
     <div
@@ -339,6 +364,16 @@ exports[`Given the user is on the overview page when it is race weekend and ther
         >
           Is it race weekend?
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Yes
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-complete"
+          max="100"
+          value="100"
+        />
       </div>
     </div>
     <div
@@ -483,6 +518,16 @@ exports[`Given the user is on the overview page when it is race weekend and we a
         >
           Is it race weekend?
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Yes
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-complete"
+          max="100"
+          value="100"
+        />
       </div>
     </div>
     <div
@@ -510,6 +555,478 @@ exports[`Given the user is on the overview page when it is race weekend and we a
           class="lyzer-progress lyzer-progress-incomplete"
           max="100"
           value="50"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Driver leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Constructor leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Overview Section
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Constructor Standings
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Driver Standings
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Given: User is on the overview page When: It is less than 24 hours to go until race weekend Then: User should be able to see that it is almost race weekend. 1`] = `
+<div
+  class="page-content"
+  data-testid="lyzer-overview-page"
+>
+  <div
+    class="flex-row justify-between items-center"
+  >
+    <h2>
+      Overview
+    </h2>
+    <svg
+      class="lucide lucide-refresh-ccw cursor-pointer"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+      />
+      <path
+        d="M3 3v5h5"
+      />
+      <path
+        d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"
+      />
+      <path
+        d="M16 16h5v5"
+      />
+    </svg>
+  </div>
+  <div
+    class="flex-grid-container"
+  >
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Is it race weekend?
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Almost
+          <p
+            class="text-sm m-0"
+          >
+            10 hours to go
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-almost"
+          max="100"
+          value="80"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Race weekend progress
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Next session: Practice 1
+          <p
+            class="text-sm m-0"
+          >
+            Sat, Feb 22, 2025, 12:00 PM
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-incomplete"
+          max="100"
+          value="0"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Driver leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Constructor leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Overview Section
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Constructor Standings
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Driver Standings
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Given: User is on the overview page When: It is not race weekend Then: User should be able to see that it is not race weekend. 1`] = `
+<div
+  class="page-content"
+  data-testid="lyzer-overview-page"
+>
+  <div
+    class="flex-row justify-between items-center"
+  >
+    <h2>
+      Overview
+    </h2>
+    <svg
+      class="lucide lucide-refresh-ccw cursor-pointer"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+      />
+      <path
+        d="M3 3v5h5"
+      />
+      <path
+        d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"
+      />
+      <path
+        d="M16 16h5v5"
+      />
+    </svg>
+  </div>
+  <div
+    class="flex-grid-container"
+  >
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Is it race weekend?
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          No
+          <p
+            class="text-sm m-0"
+          >
+            5 days to go
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-incomplete"
+          max="100"
+          value="50"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Race weekend progress
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Next session: Practice 1
+          <p
+            class="text-sm m-0"
+          >
+            Sat, Feb 22, 2025, 12:00 PM
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-incomplete"
+          max="100"
+          value="0"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Driver leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Constructor leader
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Overview Section
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Constructor Standings
+        </h1>
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <h1>
+          Driver Standings
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Given: User is on the overview page When: It is race weekend Then: User should be able to see that it is race weekend. 1`] = `
+<div
+  class="page-content"
+  data-testid="lyzer-overview-page"
+>
+  <div
+    class="flex-row justify-between items-center"
+  >
+    <h2>
+      Overview
+    </h2>
+    <svg
+      class="lucide lucide-refresh-ccw cursor-pointer"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+      />
+      <path
+        d="M3 3v5h5"
+      />
+      <path
+        d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"
+      />
+      <path
+        d="M16 16h5v5"
+      />
+    </svg>
+  </div>
+  <div
+    class="flex-grid-container"
+  >
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Is it race weekend?
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Yes
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-complete"
+          max="100"
+          value="100"
+        />
+      </div>
+    </div>
+    <div
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    >
+      <div
+        class="lyzer-card"
+      >
+        <span
+          class="lyzer-card-heading"
+        >
+          Race weekend progress
+        </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Ongoing session: Race
+          <p
+            class="text-sm m-0"
+          >
+            Sat, Feb 22, 2025, 12:00 PM
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-complete"
+          max="100"
+          value="100"
         />
       </div>
     </div>

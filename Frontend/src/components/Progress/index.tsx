@@ -8,7 +8,7 @@ export interface ProgressProps {
     testId?: string;
 }
 
-export default function Progress(props: ProgressProps) {
+export default function Progress(props: Readonly<ProgressProps>) {
 	const { 
 		value = 0, 
 		max = 100,
