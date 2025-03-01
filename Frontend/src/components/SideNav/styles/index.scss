@@ -34,13 +34,14 @@
 			gap: 1em;
 			text-decoration: none;
 			color: var(--secondary-colour) !important;
-			
+			min-width: 185px;
+			padding: 10px;
+			margin: 0 24px;
+			border-radius: 8px;
+
 			&.selected {
 				background-color: gray;
 				border: 1px solid gray;
-				padding: 10px;
-				border-radius: 8px;
-				margin: 0 24px;
 			}
 		}
 	}

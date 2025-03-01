@@ -1,6 +1,12 @@
 site_name: Lyzer
+site_url: 'https://littleclumsy.github.io/Lyzer/'
 plugins:
   - search
+
+extra:
+  version:
+    provider: mike
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -12,19 +18,35 @@ markdown_extensions:
   - "admonition"
   - "pymdownx.details"
   - "pymdownx.superfences"
+
 theme:
   name: material
   features:
     - content.code.copy
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.prune
+    - navigation.path
+    - navigation.top
   palette: 
     - scheme: default
+      primary: black
+      accent: red
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
     - scheme: slate
+      primary: black
+      accent: red
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+extra_css:
+  - css/extra.css
+
 nav:
   - Home: index.md
   - Development:
@@ -34,3 +56,5 @@ nav:
     - How we utilize redis: backend/caching.md
     - API/Backend:
       - General Structure: backend/architecture.md
+    - Frontend:
+      - General Structure: frontend/architecture.md

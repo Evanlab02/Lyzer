@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import SideMenu from "./components/SideNav";
 import Navigation from "./routes/Navigation";
 import "./styles/index.scss";
+import "./styles/utils.scss";
 
 function App() {
 	const [sideNavOpen, setSideNavOpen] = useState(false);

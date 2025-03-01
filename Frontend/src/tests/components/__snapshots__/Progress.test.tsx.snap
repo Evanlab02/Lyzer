@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Empty progress bar renders correctly 1`] = `
+<progress
+  class="lyzer-progress "
+  data-testid="lyzer-progress-bar"
+  max="100"
+  value="0"
+/>
+`;
+
+exports[`Progress bar renders correctly with 50% value 1`] = `
+<progress
+  class="lyzer-progress lyzer-progress-incomplete"
+  data-testid="lyzer-progress-bar"
+  max="100"
+  value="50"
+/>
+`;
+
+exports[`Progress bar renders correctly with 80% value 1`] = `
+<progress
+  class="lyzer-progress lyzer-progress-almost"
+  data-testid="lyzer-progress-bar"
+  max="100"
+  value="80"
+/>
+`;
+
+exports[`Progress bar renders correctly with 100% value 1`] = `
+<progress
+  class="lyzer-progress lyzer-progress-complete"
+  data-testid="lyzer-progress-bar"
+  max="100"
+  value="100"
+/>
+`;
+
+exports[`Progress bar renders correctly with value 1`] = `
+<progress
+  class="lyzer-progress "
+  data-testid="lyzer-progress-bar"
+  max="100"
+  value="50"
+/>
+`;

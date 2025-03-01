@@ -1,4 +1,8 @@
 import { beforeEach, vi } from "vitest";
+import createFetchMock from "vitest-fetch-mock";
+
+const fetchMocker = createFetchMock(vi);
+fetchMocker.enableMocks();
 
 beforeEach(() => {
 	vi.clearAllMocks();
@@ -19,4 +23,4 @@ beforeEach(() => {
 			dispatchEvent: vi.fn(),
 		})),
 	});
-}); 
+});

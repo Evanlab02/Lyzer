@@ -1,0 +1,54 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Basic card renders correctly 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  Basic Card
+</div>
+`;
+
+exports[`Card with body renders correctly 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  <h3
+    class="lyzer-card-body"
+  >
+    Card Body
+  </h3>
+</div>
+`;
+
+exports[`Card with heading and body renders correctly 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  <span
+    class="lyzer-card-heading"
+  >
+    Card Heading
+  </span>
+  <h3
+    class="lyzer-card-body"
+  >
+    Card Body
+  </h3>
+</div>
+`;
+
+exports[`Card with heading renders correctly 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  <span
+    class="lyzer-card-heading"
+  >
+    Card Heading
+  </span>
+</div>
+`;

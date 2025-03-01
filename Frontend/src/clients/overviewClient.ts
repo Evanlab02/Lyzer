@@ -1,11 +1,16 @@
 import { OverviewInterface } from "./interfaces/overviewInterfaces";
 
 export async function getOverview() : Promise<OverviewInterface> {
-	const response: Response = await fetch("https://catfact.ninja/fact", {
+	const response = await fetch("/apis/lyzer/api/v1/lyzer/overview", {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json"
 		}
 	});
-	return (await response.json()) as OverviewInterface;
+
+	if (!response.ok || response.status !== 200) {
+		throw new Error("Failed to fetch overview data.");
+	}
+
+	return await response.json() as OverviewInterface;
 }
