@@ -15,6 +15,16 @@ exports[`CardSection renders correctly 1`] = `
       >
         Is it race weekend?
       </span>
+      <h3
+        class="lyzer-card-body"
+      >
+        Yes
+      </h3>
+      <progress
+        class="lyzer-progress lyzer-progress-complete"
+        max="100"
+        value="100"
+      />
     </div>
   </div>
   <div
@@ -89,6 +99,16 @@ exports[`CardSection renders loading state correctly 1`] = `
       >
         Is it race weekend?
       </span>
+      <h3
+        class="lyzer-card-body"
+      >
+        No
+      </h3>
+      <progress
+        class="lyzer-progress lyzer-progress-incomplete"
+        max="100"
+        value="0"
+      />
     </div>
   </div>
   <div

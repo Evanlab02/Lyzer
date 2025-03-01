@@ -8,6 +8,7 @@ it("CardSection renders loading state correctly", async () => {
 		<div data-testid="lyzer-card-section">
 			<CardSection 
 				raceWeekendProgress={undefined}
+				upcomingRaceWeekend={undefined}
 			/>
 		</div>
 	);
@@ -25,6 +26,12 @@ it("CardSection renders correctly", async () => {
 					ongoing: true,
 					weekendProgress: 100,
 					startDateTime: "2025-02-22T12:00:00.000Z"
+				}}
+				upcomingRaceWeekend={{
+					isRaceWeekend: true,
+					status: "Yes",
+					timeToRaceWeekendProgress: 100,
+					timeToRaceWeekend: 0
 				}}
 			/>
 		</div>

@@ -10,5 +10,6 @@ export const LOADING_RACE_WEEKEND_PROGRESS = {
 export const LOADING_UPCOMING_RACE_WEEKEND = {
 	isRaceWeekend: false,
 	status: "No",
-	timeToRaceWeekendProgress: 0
+	timeToRaceWeekendProgress: 0,
+	timeToRaceWeekend: 0
 } as UpcomingRaceWeekend;

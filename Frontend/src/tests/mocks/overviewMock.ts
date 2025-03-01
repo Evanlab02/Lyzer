@@ -6,6 +6,12 @@ export const overviewMockIsNotRaceWeekend: OverviewInterface = {
 		ongoing: false,
 		weekendProgress: 0,
 		startDateTime: "2025-02-22T12:00:00.000Z"
+	},
+	upcomingRaceWeekend: {
+		isRaceWeekend: false,
+		status: "No",
+		timeToRaceWeekendProgress: 50,
+		timeToRaceWeekend: 4000
 	}
 };
 
@@ -15,5 +21,11 @@ export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
 		ongoing: true,
 		weekendProgress: 100,
 		startDateTime: "2025-02-22T12:00:00.000Z"
+	}, 
+	upcomingRaceWeekend: {
+		isRaceWeekend: true,
+		status: "Yes",
+		timeToRaceWeekendProgress: 100,
+		timeToRaceWeekend: 0
 	}
 };

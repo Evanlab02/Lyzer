@@ -6,16 +6,14 @@ export interface ProgressProps {
     max?: number;
     useProgressColour?: boolean;
     testId?: string;
-	customClass?: string;
 }
 
-export default function Progress(props: ProgressProps) {
+export default function Progress(props: Readonly<ProgressProps>) {
 	const { 
 		value = 0, 
 		max = 100,
 		useProgressColour = false,
-		testId,
-		customClass
+		testId
 	} = props;
 
 	const progressClassName = useMemo(() => {
@@ -31,7 +29,7 @@ export default function Progress(props: ProgressProps) {
 
 	return (
 		<progress
-			className={`lyzer-progress ${progressClassName ?? ""} ${customClass ?? ""}`}
+			className={`lyzer-progress ${progressClassName ?? ""}`}
 			value={value}
 			max={max}
 			data-testid={testId}

@@ -15,6 +15,15 @@ it("should return the overview data that is not a race weekend", async () => {
 			startDateTime: "2025-02-22T12:00:00.000Z"
 		});
 	});
+
+	await waitFor(() => {
+		expect(result.current.upcomingRaceWeekend).toStrictEqual({
+			isRaceWeekend: false,
+			status: "No",
+			timeToRaceWeekendProgress: 50,
+			timeToRaceWeekend: 4000
+		});
+	});
 });
 
 it("should return the overview data that is a race weekend and ongoing", async () => {
@@ -29,6 +38,15 @@ it("should return the overview data that is a race weekend and ongoing", async (
 			startDateTime: "2025-02-22T12:00:00.000Z"
 		});
 	});
+
+	await waitFor(() => {
+		expect(result.current.upcomingRaceWeekend).toStrictEqual({
+			isRaceWeekend: true,
+			status: "Yes",
+			timeToRaceWeekendProgress: 100,
+			timeToRaceWeekend: 0
+		});
+	});
 });
 
 it("should return new data when refreshData is called", async () => {
@@ -39,6 +57,7 @@ it("should return new data when refreshData is called", async () => {
 
 	await waitFor(() => {
 		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsNotRaceWeekend.raceWeekendProgress);
+		expect(result.current.upcomingRaceWeekend).toStrictEqual(overviewMockIsNotRaceWeekend.upcomingRaceWeekend);
 	});
 
 	await waitFor(() => {
@@ -47,5 +66,6 @@ it("should return new data when refreshData is called", async () => {
 
 	await waitFor(() => {
 		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsRaceWeekendOngoing.raceWeekendProgress);
+		expect(result.current.upcomingRaceWeekend).toStrictEqual(overviewMockIsRaceWeekendOngoing.upcomingRaceWeekend);
 	});
 });
