@@ -118,11 +118,13 @@ namespace Lyzer.Services
             {
                 // Change to start of year if not found
                 DateTimeOffset fallbackDate = new(DateTime.UtcNow.Year, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
-                DateTimeOffset lastRaceDate = lastRace != null && lastRace.FirstPractice != null 
-                    ? lastRace.FirstPractice.SessionDateTime 
+                DateTimeOffset lastRaceDate = lastRace != null
+                    ? lastRace.RaceStartDateTime
                     : fallbackDate;
 
-                TimeSpan timeDiff = nextRace.RaceStartDateTime - lastRaceDate;
+                DateTimeOffset nextRaceDate = nextRace.FirstPractice != null ? nextRace.FirstPractice.SessionDateTime : nextRace.RaceStartDateTime;
+
+                TimeSpan timeDiff = nextRaceDate - lastRaceDate;
                 double totalHoursBetweenRaces = timeDiff.TotalHours;
                 double timeSoFar = (DateTimeOffset.UtcNow - lastRaceDate).TotalHours;
 
