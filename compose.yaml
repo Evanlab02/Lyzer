@@ -30,6 +30,8 @@ services:
       - 80:80
     networks:
       - lyzer-network
+    volumes:
+      - ./Frontend/Caddyfile:/etc/caddy/Caddyfile
     develop:
       watch:
         - action: rebuild
