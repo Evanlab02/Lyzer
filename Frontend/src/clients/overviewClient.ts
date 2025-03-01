@@ -13,12 +13,4 @@ export async function getOverview() : Promise<OverviewInterface> {
 	}
 
 	return await response.json() as OverviewInterface;
-
-	// return {
-	// 	raceWeekendProgress: {
-	// 		name: "Race @ 12:00:00 UTC",
-	// 		ongoing: true,
-	// 		weekendProgress: 100
-	// 	}
-	// } as OverviewInterface;
 }

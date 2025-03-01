@@ -9,13 +9,14 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "lint:fix": "eslint . --fix",
-    "test": "vitest run --coverage --watch=false",
-    "test:update": "vitest --update --watch=false",
-    "test:ui": "vitest --ui --coverage",
-    "test:watch": "vitest --watch"
+    "test": "TZ=UTC vitest run --coverage --watch=false",
+    "test:update": "TZ=UTC vitest --update --watch=false",
+    "test:ui": "TZ=UTC vitest --ui --coverage",
+    "test:watch": "TZ=UTC vitest --watch"
   },
   "dependencies": {
     "lucide-react": "^0.471.1",
+    "luxon": "^3.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.1",
@@ -25,6 +26,7 @@
     "@eslint/js": "^9.13.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
+    "@types/luxon": "^3.4.2",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",

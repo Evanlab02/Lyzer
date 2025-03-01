@@ -1,14 +1,16 @@
+import { DateTime } from "luxon";
 import Progress from "../../components/Progress";
 import Card, {CardBody, CardHeading} from "../../components/Card";
 import { GridItem } from "../../components/Grid";
 import { RaceWeekendProgress } from "../../clients/interfaces/overviewInterfaces";
 import { LOADING_RACE_WEEKEND_PROGRESS } from "../../constants/loading";
 
+
 export interface CardSectionProps {
     raceWeekendProgress?: RaceWeekendProgress;
 }
 
-export default function CardSection(props: CardSectionProps) {
+export default function CardSection(props: Readonly<CardSectionProps>) {
 	const { 
 		raceWeekendProgress = LOADING_RACE_WEEKEND_PROGRESS
 	} = props;
@@ -29,6 +31,11 @@ export default function CardSection(props: CardSectionProps) {
 					</CardHeading>
 					<CardBody>
 						{raceWeekendProgress.ongoing ? `Ongoing session: ${raceWeekendProgress.name}` : `Next session: ${raceWeekendProgress.name}`}
+						{raceWeekendProgress.startDateTime && (
+							<p className="text-sm m-0">
+								{DateTime.fromISO(raceWeekendProgress.startDateTime).toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}
+							</p>
+						)}
 					</CardBody>
 					<Progress 
 						value={raceWeekendProgress.weekendProgress}
