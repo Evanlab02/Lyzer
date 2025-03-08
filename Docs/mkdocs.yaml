@@ -49,8 +49,8 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Development:
-    - Getting Started: dev/index.md
+  - Roadmap/Milestones:
+    - Release 0.1.0: roadmap/0-1-0.md
   - Architecture, code and patterns:
     - Overview: architecture/overview.md
     - API/Backend:
@@ -58,5 +58,5 @@ nav:
       - How we utilize redis: architecture/backend/caching.md
     - Frontend:
       - General Structure: architecture/frontend/overview.md
-  - Roadmap/Milestones:
-    - Release 0.1.0: roadmap/0-1-0.md
+  - Development:
+    - Getting Started: dev/index.md
