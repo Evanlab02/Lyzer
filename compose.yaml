@@ -5,42 +5,73 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - redis-data:/data
+      - redis-data-dev:/data
     networks:
       - lyzer-network
 
   api:
-    build: Backend/Lyzer
+    build:
+      context: Backend/Lyzer
+      dockerfile: Docker/Dev/Dockerfile
     container_name: lyzer-api
     env_file:
       - .env.dev
     ports:
-      - 8000:8080
+      - 8080:8080
     networks:
       - lyzer-network
     develop:
       watch:
-        - action: rebuild
+        - action: sync
           path: ./Backend/Lyzer
+          target: /app
+          ignore:
+            - bin/
+            - obj/
+        - action: rebuild
+          path: ./Backend/Lyzer/Lyzer.csproj
 
-  web:
-    build: Frontend
-    container_name: lyzer-web
+  docs:
+    build:
+      context: Docs
+    container_name: lyzer-docs
     ports:
-      - 80:80
+      - 8000:8000
     networks:
       - lyzer-network
-    volumes:
-      - ./Frontend/Caddyfile:/etc/caddy/Caddyfile
     develop:
       watch:
+        - action: sync
+          path: ./Docs
+          target: /app
         - action: rebuild
+          path: ./Docs/requirements.txt
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: docker/dev/Dockerfile
+    container_name: lyzer-frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - lyzer-network
+    develop:
+      watch:
+        - action: sync
           path: ./Frontend
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./Frontend/package.json
+        - action: rebuild
+          path: ./Frontend/package-lock.json
 
 networks:
   lyzer-network:
     driver: bridge
 
 volumes:
-  redis-data:
+  redis-data-dev:
     external: false
