@@ -21,6 +21,11 @@ namespace Lyzer.Middleware
             {
                 await _next(context);
             }
+            catch (CustomHttpException ex)
+            {
+                _logger.LogError(ex, "Custom HTTP exception occurred.");
+                await HandleExceptionAsync(context, ex.StatusCode, ex.Message, ex);
+            }
             catch (Exception404NotFound ex)
             {
                 _logger.LogError(ex, "404 exception occurred.");

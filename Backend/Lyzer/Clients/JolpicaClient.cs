@@ -15,6 +15,7 @@ namespace Lyzer.Clients
     {
         private readonly ILogger<JolpicaClient> _logger;
         private readonly RestClient _client;
+        private const string _ResponseWrapper = "MRData";
 
         public JolpicaClient(ILogger<JolpicaClient> logger)
         {
@@ -30,21 +31,30 @@ namespace Lyzer.Clients
 
             if (result == null)
             {
-                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+                _logger.LogError("Could not retrieve driver standings from Jolpica for {Year}", year);
+                throw new CustomHttpException("Could not retrieve driver standings from Jolpica for " + year, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
 
-            JsonElement standings = root
-                .GetProperty("MRData")
+            JsonElement standingsLists = root
+                .GetProperty(_ResponseWrapper)
                 .GetProperty("StandingsTable")
-                .GetProperty("StandingsLists")[0];
+                .GetProperty("StandingsLists");
 
+            if (standingsLists.GetArrayLength() == 0)
+            {
+                _logger.LogError("No standings found for {Year}", year);
+                throw new CustomHttpException("No standings found for " + year, StatusCodes.Status404NotFound);
+            }
+
+            JsonElement standings = standingsLists[0];
             DriverStandingsDTO? driverStandings = JsonConvert.DeserializeObject<DriverStandingsDTO>(standings.GetRawText());
 
             if (driverStandings == null)
             {
-                throw new SerializationException("Could not deserialize driver standings.");
+                _logger.LogError("Could not deserialize driver standings for {Year}", year);
+                throw new SerializationException("Could not deserialize driver standings for " + year);
             }
 
             return driverStandings;
@@ -56,19 +66,32 @@ namespace Lyzer.Clients
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
-                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+            {
+                _logger.LogError("Could not retrieve results from jolpica for year: {Year} and round: {Round}", year, round);
+                throw new CustomHttpException("Could not retrieve results from jolpica for year: " + year + " and round: " + round, StatusCodes.Status500InternalServerError);
+            }
 
             JsonElement root = result.RootElement;
 
-            JsonElement results = root
-                .GetProperty("MRData")
+            JsonElement resultsLists = root
+                .GetProperty(_ResponseWrapper)
                 .GetProperty("RaceTable")
-                .GetProperty("Races")[0];
+                .GetProperty("Races");
 
+            if (resultsLists.GetArrayLength() == 0)
+            {
+                _logger.LogError("No results found for year: {Year} and round: {Round}", year, round);
+                throw new CustomHttpException("No results found for year: " + year + " and round: " + round, StatusCodes.Status404NotFound);
+            }
+
+            JsonElement results = resultsLists[0];
             ResultsDTO? latestResults = JsonConvert.DeserializeObject<ResultsDTO>(results.GetRawText());
 
             if (latestResults == null)
-                throw new SerializationException("Could not deserialize race results.");
+            {
+                _logger.LogError("Could not deserialize race results for year: {Year} and round: {Round}", year, round);
+                throw new SerializationException("Could not deserialize race results for year: " + year + " and round: " + round);
+            }
 
             return latestResults;
         }
@@ -79,19 +102,32 @@ namespace Lyzer.Clients
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
-                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+            {
+                _logger.LogError("Could not retrieve constructor standings from jolpica for year: {Year}", year);
+                throw new CustomHttpException("Could not retrieve constructor standings from jolpica for year: " + year, StatusCodes.Status500InternalServerError);
+            }
 
             JsonElement root = result.RootElement;
 
-            JsonElement standings = root
-                .GetProperty("MRData")
+            JsonElement standingsLists = root
+                .GetProperty(_ResponseWrapper)
                 .GetProperty("StandingsTable")
-                .GetProperty("StandingsLists")[0];
+                .GetProperty("StandingsLists");
 
+            if (standingsLists.GetArrayLength() == 0)
+            {
+                _logger.LogError("No constructor standings found for year: {Year}", year);
+                throw new CustomHttpException("No constructor standings found for year: " + year, StatusCodes.Status404NotFound);
+            }
+
+            JsonElement standings = standingsLists[0];
             ConstructorStandingsDTO? constructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(standings.GetRawText());
 
             if (constructorStandings == null)
-                throw new SerializationException($"Could not deserialize constructor standings for year {year}");
+            {
+                _logger.LogError("Could not deserialize constructor standings for year: {Year}", year);
+                throw new SerializationException("Could not deserialize constructor standings for year: " + year);
+            }
 
             return constructorStandings;
         }
@@ -102,20 +138,22 @@ namespace Lyzer.Clients
 
             if (result == null)
             {
-                throw new Exception404NotFound("Could not retrieve data at: " + requestPath);
+                _logger.LogError("Could not retrieve races from jolpica for year: {Year}", season);
+                throw new CustomHttpException("Could not retrieve races from jolpica for year: " + season, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
 
             JsonElement races = root
-                .GetProperty("MRData")
+                .GetProperty(_ResponseWrapper)
                 .GetProperty("RaceTable");
 
             RacesDTO? raceList = JsonConvert.DeserializeObject<RacesDTO>(races.GetRawText());
 
             if (raceList == null)
             {
-                throw new SerializationException("Could not deserialize race results.");
+                _logger.LogError("Could not deserialize races for year: {Year}", season);
+                throw new SerializationException("Could not deserialize races for year: " + season);
             }
 
             foreach (RaceDTO race in raceList.Races)

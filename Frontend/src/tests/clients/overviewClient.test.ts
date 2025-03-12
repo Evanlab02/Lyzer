@@ -17,7 +17,7 @@ it("getOverview returns overview data that is a race weekend and ongoing", async
 
 it("getOverview fails when the response is not ok", async () => {
 	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsNotRaceWeekend), { status: 404 });
-	
+
 	const callWrapper = async () => {
 		await getOverview();
 	};

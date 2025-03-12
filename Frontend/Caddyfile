@@ -1,0 +1,11 @@
+:80 {
+	handle_path /apis/lyzer/* {
+		reverse_proxy lyzer-api:8080
+	}
+
+	handle_path /* {
+		root * /var/www/html/
+		try_files {path} /index.html
+		file_server
+	}
+}

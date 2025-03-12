@@ -1,6 +1,6 @@
 # Lyzer 🏎️📊  
 
-*A Formula 1 Data Analysis Tool (Work in Progress)*  
+*A Formula 1 Data Analysis Tool (Work in Progress)*
 
 Lyzer is a passion project aimed at bringing Formula 1 enthusiasts closer to the data. While still in its early stages, Lyzer is designed to analyze and compare Formula 1 statistics, providing insights for fans, analysts, and data enthusiasts alike.  
 

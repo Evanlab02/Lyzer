@@ -59,6 +59,21 @@ exports[`Navigation renders overview page correctly 1`] = `
         >
           Is it race weekend?
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          No
+          <p
+            class="text-sm m-0"
+          >
+            3 days to go
+          </p>
+        </h3>
+        <progress
+          class="lyzer-progress lyzer-progress-incomplete"
+          max="100"
+          value="50"
+        />
       </div>
     </div>
     <div
