@@ -26,6 +26,7 @@ Lyzer currently uses Redis as a caching solution for F1 data, implemented throug
 Valkey is a Redis-compatible fork that maintains compatibility with the Redis API while offering a more permissive license. As the Redis project continues to evolve its licensing, migrating to Valkey would protect us from potential future restrictions or compliance issues.
 
 Current implementation details:
+
 - We use Redis 7.4.1-alpine3.20 in Docker containers
 - Connection is managed via StackExchange.Redis 2.8.16 NuGet package
 - Data is stored as serialized JSON strings with various TTLs (1-24 hours)
@@ -33,21 +34,28 @@ Current implementation details:
 
 ## Proposed Resolution
 
-1. Replace Redis Docker images with Valkey images in all compose files:
-   - Update `compose.yaml` and `compose.staging.yaml` to use Valkey instead of Redis
-   - Ensure proper image tagging and version selection
+**Replace Redis Docker images with Valkey images in all compose files:**
 
-2. Evaluate compatibility:
-   - Confirm StackExchange.Redis works with Valkey (expected to work seamlessly)
-   - Document any configuration differences
+- Update `compose.yaml` and `compose.staging.yaml` to use Valkey instead of Redis
+- Ensure proper image tagging and version selection
 
-3. Testing:
-   - Create comprehensive tests to verify caching functionality
-   - Validate all existing cache operations (Get, Add, Remove, exists)
 
-4. Documentation updates:
-   - Update architecture docs to reflect the change from Redis to Valkey
-   - Document the migration process and any configuration changes
+**Evaluate compatibility:**
+
+- Confirm StackExchange.Redis works with Valkey (expected to work seamlessly)
+- Document any configuration differences
+
+
+**Testing:**
+
+- Create comprehensive tests to verify caching functionality
+- Validate all existing cache operations (Get, Add, Remove, exists)
+
+
+**Documentation updates:**
+
+- Update architecture docs to reflect the change from Redis to Valkey
+- Document the migration process and any configuration changes
 
 ## Benefits of Resolution
 
