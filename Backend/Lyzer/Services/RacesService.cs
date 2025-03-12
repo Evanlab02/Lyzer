@@ -67,7 +67,7 @@ namespace Lyzer.Services
             switch (timeToRaceWeekendProgress)
             {
                 case 100:
-                    status =  "It is race weekend!";
+                    status = "It is race weekend!";
                     break;
                 case int progress when progress >= 80:
                     status = "Almost";
