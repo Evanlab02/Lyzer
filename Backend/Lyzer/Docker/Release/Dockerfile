@@ -9,11 +9,11 @@ WORKDIR /src
 COPY Lyzer.csproj Lyzer.csproj
 RUN dotnet restore "./Lyzer.csproj"
 COPY . .
-RUN dotnet build "./Lyzer.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./Lyzer.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Lyzer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Lyzer.csproj" -c "$BUILD_CONFIGURATION" -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
