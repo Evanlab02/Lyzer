@@ -32,7 +32,7 @@ namespace Lyzer.Clients
             if (result == null)
             {
                 _logger.LogError("Could not retrieve driver standings from Jolpica for {Year}", year);
-                throw new CustomHttpException("Could not retrieve driver standings from Jolpica for " + year, StatusCodes.Status500InternalServerError);
+                throw new GeneralException("Could not retrieve driver standings from Jolpica for " + year, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
@@ -45,7 +45,7 @@ namespace Lyzer.Clients
             if (standingsLists.GetArrayLength() == 0)
             {
                 _logger.LogError("No standings found for {Year}", year);
-                throw new CustomHttpException("No standings found for " + year, StatusCodes.Status404NotFound);
+                throw new GeneralException("No standings found for " + year, StatusCodes.Status404NotFound);
             }
 
             JsonElement standings = standingsLists[0];
@@ -68,7 +68,7 @@ namespace Lyzer.Clients
             if (result == null)
             {
                 _logger.LogError("Could not retrieve results from jolpica for year: {Year} and round: {Round}", year, round);
-                throw new CustomHttpException("Could not retrieve results from jolpica for year: " + year + " and round: " + round, StatusCodes.Status500InternalServerError);
+                throw new GeneralException("Could not retrieve results from jolpica for year: " + year + " and round: " + round, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
@@ -81,7 +81,7 @@ namespace Lyzer.Clients
             if (resultsLists.GetArrayLength() == 0)
             {
                 _logger.LogError("No results found for year: {Year} and round: {Round}", year, round);
-                throw new CustomHttpException("No results found for year: " + year + " and round: " + round, StatusCodes.Status404NotFound);
+                throw new GeneralException("No results found for year: " + year + " and round: " + round, StatusCodes.Status404NotFound);
             }
 
             JsonElement results = resultsLists[0];
@@ -104,7 +104,7 @@ namespace Lyzer.Clients
             if (result == null)
             {
                 _logger.LogError("Could not retrieve constructor standings from jolpica for year: {Year}", year);
-                throw new CustomHttpException("Could not retrieve constructor standings from jolpica for year: " + year, StatusCodes.Status500InternalServerError);
+                throw new GeneralException("Could not retrieve constructor standings from jolpica for year: " + year, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
@@ -117,7 +117,7 @@ namespace Lyzer.Clients
             if (standingsLists.GetArrayLength() == 0)
             {
                 _logger.LogError("No constructor standings found for year: {Year}", year);
-                throw new CustomHttpException("No constructor standings found for year: " + year, StatusCodes.Status404NotFound);
+                throw new GeneralException("No constructor standings found for year: " + year, StatusCodes.Status404NotFound);
             }
 
             JsonElement standings = standingsLists[0];
@@ -139,7 +139,7 @@ namespace Lyzer.Clients
             if (result == null)
             {
                 _logger.LogError("Could not retrieve races from jolpica for year: {Year}", season);
-                throw new CustomHttpException("Could not retrieve races from jolpica for year: " + season, StatusCodes.Status500InternalServerError);
+                throw new GeneralException("Could not retrieve races from jolpica for year: " + season, StatusCodes.Status500InternalServerError);
             }
 
             JsonElement root = result.RootElement;
