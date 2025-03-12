@@ -1,0 +1,36 @@
+services:
+  redis:
+    image: redis:7.4.1-alpine3.20
+    container_name: lyzer-redis
+    volumes:
+      - redis-data-staging:/data
+    networks:
+      - lyzer-network
+
+  api:
+    build:
+      context: Backend/Lyzer
+      dockerfile: Docker/Release/Dockerfile
+    container_name: lyzer-api
+    env_file:
+      - .env
+    networks:
+      - lyzer-network
+
+  web:
+    build:
+      context: ./Frontend
+      dockerfile: docker/release/Dockerfile
+    container_name: lyzer-web
+    ports:
+      - "80:80"
+    networks:
+      - lyzer-network
+
+networks:
+  lyzer-network:
+    driver: bridge
+
+volumes:
+  redis-data-staging:
+    external: false

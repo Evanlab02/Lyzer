@@ -1,0 +1,46 @@
+name: Temporary Docs Deployment
+permissions: write-all
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  UV_SYSTEM_PYTHON: 1
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Docs
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "Docs/requirements.txt"
+
+      - name: Install dependencies
+        run: |
+          uv pip install -r requirements.txt
+
+      - name: Sync Changes
+        run: |
+          git fetch
+
+      - name: Deploy Documentation
+        run: |
+          uv run mkdocs gh-deploy --force --no-history

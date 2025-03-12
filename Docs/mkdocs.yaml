@@ -49,12 +49,14 @@ extra_css:
 
 nav:
   - Home: index.md
+  - Roadmap/Milestones:
+    - Release 0.1.0: roadmap/0-1-0.md
+  - Architecture, code and patterns:
+    - Overview: architecture/overview.md
+    - API/Backend:
+      - General Structure: architecture/backend/overview.md
+      - How we utilize redis: architecture/backend/caching.md
+    - Frontend:
+      - General Structure: architecture/frontend/overview.md
   - Development:
     - Getting Started: dev/index.md
-  - Architecture, code and patterns:
-    - Overview: dev/architecture.md
-    - How we utilize redis: backend/caching.md
-    - API/Backend:
-      - General Structure: backend/architecture.md
-    - Frontend:
-      - General Structure: frontend/architecture.md
