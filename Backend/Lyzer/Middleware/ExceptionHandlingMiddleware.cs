@@ -21,15 +21,10 @@ namespace Lyzer.Middleware
             {
                 await _next(context);
             }
-            catch (CustomHttpException ex)
+            catch (GeneralException ex)
             {
                 _logger.LogError(ex, "Custom HTTP exception occurred.");
                 await HandleExceptionAsync(context, ex.StatusCode, ex.Message, ex);
-            }
-            catch (Exception404NotFound ex)
-            {
-                _logger.LogError(ex, "404 exception occurred.");
-                await HandleExceptionAsync(context, StatusCodes.Status404NotFound, "Not found.", ex);
             }
             catch (Exception ex)
             {
@@ -46,7 +41,7 @@ namespace Lyzer.Middleware
             var errorResponse = new
             {
                 Message = message,
-                Details = exception.Message
+                Details = exception.StackTrace
             };
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
