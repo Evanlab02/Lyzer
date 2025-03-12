@@ -5,6 +5,8 @@ using Lyzer.Clients;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
 using Lyzer.Common.Extensions;
+using Lyzer.Common.Helpers;
+using Lyzer.Errors;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -46,120 +48,31 @@ namespace Lyzer.Services
             return cachedRaces;
         }
 
-        private RaceDTO? GetNextOrCurrentRace(RacesDTO racesDto)
+        public UpcomingRaceWeekendDTO GetUpcomingRaceWeekend(RaceDTO nextRace, RaceDTO previousRace)
         {
-            var now = DateTimeOffset.UtcNow;
-
-            return racesDto.Races
-                .Where(r => now < r.RaceStartDateTime.AddMinutes((int)MaxSessionTimeConstants.Race))
-                .OrderBy(r => r.RaceStartDateTime)
-                .FirstOrDefault();
-        }
-
-        public RaceDTO? GetLastRace(RacesDTO racesDto)
-        {
-            var now = DateTimeOffset.UtcNow;
-
-            return racesDto.Races
-                .Where(r => r.RaceStartDateTime < now)
-                .OrderByDescending(r => r.RaceStartDateTime)
-                .FirstOrDefault();
-        }
-
-        public DateTimeOffset NextFirstSession(RacesDTO racesDto)
-        {
-            var nextRace = GetNextOrCurrentRace(racesDto);
-
-            if (nextRace == null)
-            {
-                throw new InvalidOperationException("No upcoming race found.");
-            }
-
             var firstSession = nextRace.Sessions.FirstOrDefault();
+            DateTimeOffset firstSessionDateTime = nextRace.RaceStartDateTime.AddDays(-2);
 
-            if (firstSession == null)
+            if (firstSession != null)
             {
-                return nextRace.RaceStartDateTime.AddDays(-2);
+                firstSessionDateTime = firstSession.SessionDateTime;
             }
 
-            return firstSession.SessionDateTime;
-        }
+            var isRaceWeekend = DateTimeHelper.IsOngoing(firstSessionDateTime.DateTime, nextRace.RaceStartDateTime.DateTime);
+            var timeToRaceWeekendProgress = TimeToRaceWeekendProgress(nextRace, previousRace);
+            var timeToRaceWeekend = GetMinutesToRaceWeekend(firstSessionDateTime);
 
-        public bool IsRaceWeekend(RacesDTO racesDto)
-        {
-            var nextRace = GetNextOrCurrentRace(racesDto);
-            if (nextRace == null)
-            {
-                return false;
-            }
+            var status = "No";
 
-            DateTimeOffset raceDate = nextRace.RaceStartDateTime;
-            DateTimeOffset practiceDate = NextFirstSession(racesDto);
-            var today = DateTimeOffset.UtcNow;
-
-            return today >= practiceDate && today <= raceDate;
-        }
-
-        public int GetMinutesToRaceWeekend(RacesDTO racesDto)
-        {
-            DateTimeOffset firstPractice = NextFirstSession(racesDto).Date;
-
-            var now = DateTimeOffset.UtcNow;
-            TimeSpan diff = firstPractice - now;
-            return (int)(diff.TotalMinutes < 0 ? 0 : diff.TotalMinutes);
-        }
-
-        public int TimeToRaceWeekendProgress(RacesDTO racesDto)
-        {
-            var lastRace = GetLastRace(racesDto);
-            var nextRace = GetNextOrCurrentRace(racesDto);
-
-            if (nextRace != null)
-            {
-                // Change to start of year if not found
-                DateTimeOffset fallbackDate = new(DateTime.UtcNow.Year, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
-                DateTimeOffset lastRaceDate = lastRace != null
-                    ? lastRace.RaceStartDateTime
-                    : fallbackDate;
-
-                DateTimeOffset nextRaceDate = nextRace.FirstPractice != null ? nextRace.FirstPractice.SessionDateTime : nextRace.RaceStartDateTime;
-
-                TimeSpan timeDiff = nextRaceDate - lastRaceDate;
-                double totalHoursBetweenRaces = timeDiff.TotalHours;
-                double timeSoFar = (DateTimeOffset.UtcNow - lastRaceDate).TotalHours;
-
-                double progress = timeSoFar / totalHoursBetweenRaces * 100;
-                if (progress < 0) return 0;
-                if (progress > 100) return 100;
-                return (int)progress;
-            }
-
-            return 0;
-        }
-
-        public string UpcomingRaceWeekendProgressStatus(RacesDTO racesDto)
-        {
-            var raceWeekendProgress = TimeToRaceWeekendProgress(racesDto);
-
-            switch (raceWeekendProgress)
+            switch (timeToRaceWeekendProgress)
             {
                 case 100:
-                    return "It is race weekend!";
+                    status =  "It is race weekend!";
+                    break;
                 case int progress when progress >= 80:
-                    return "Almost";
-                default:
-                    return "No";
+                    status = "Almost";
+                    break;
             }
-        }
-
-        public async Task<UpcomingRaceWeekendDTO> GetUpcomingRaceWeekend(string season = "current")
-        {
-            RacesDTO racesDto = await GetCachedRaces(season);
-
-            var isRaceWeekend = IsRaceWeekend(racesDto);
-            var timeToRaceWeekendProgress = TimeToRaceWeekendProgress(racesDto);
-            var status = UpcomingRaceWeekendProgressStatus(racesDto);
-            var timeToRaceWeekend = GetMinutesToRaceWeekend(racesDto);
 
             return new UpcomingRaceWeekendDTO()
             {
@@ -170,76 +83,60 @@ namespace Lyzer.Services
             };
         }
 
-        public async Task<RaceWeekendProgressDTO> GetRaceWeekendProgress()
+        private int TimeToRaceWeekendProgress(RaceDTO nextRace, RaceDTO previousRace)
         {
-            var races = await GetCachedRaces("current");
-            var nextRace = GetNextOrCurrentRace(races);
+            DateTimeOffset lastRaceDate = previousRace.RaceStartDateTime;
 
-            if (nextRace == null)
-            {
-                throw new InvalidOperationException("No upcoming race found.");
-            }
+            DateTimeOffset nextRaceDate = nextRace.FirstPractice != null ? nextRace.FirstPractice.SessionDateTime : nextRace.RaceStartDateTime;
 
-            var nextSession = GetNextRaceSession(nextRace);
+            TimeSpan timeDiff = nextRaceDate - lastRaceDate;
+            double totalHoursBetweenRaces = timeDiff.TotalHours;
+            double timeSoFar = (DateTimeOffset.UtcNow - lastRaceDate).TotalHours;
+
+            double progress = timeSoFar / totalHoursBetweenRaces * 100;
+            if (progress < 0) return 0;
+            if (progress > 100) return 100;
+            return (int)progress;
+        }
+
+        private int GetMinutesToRaceWeekend(DateTimeOffset firstSession)
+        {
+            var now = DateTimeOffset.UtcNow;
+            TimeSpan diff = firstSession - now;
+            return (int)(diff.TotalMinutes < 0 ? 0 : diff.TotalMinutes);
+        }
+
+        public RaceWeekendProgressDTO GetRaceWeekendProgress(RaceDTO nextRace)
+        {
+            var nextSession = RacesHelper.GetNextRaceSession(nextRace);
 
             var now = DateTimeOffset.UtcNow;
 
-            if (nextSession == null
-                    && (nextRace.RaceStartDateTime.AddMinutes((int)MaxSessionTimeConstants.Race) > now))
-            {
-                nextSession = new SessionDTO()
-                {
-                    Name = "Race",
-                    Date = nextRace.RaceStartDateTime.Date.ToString(),
-                    Time = nextRace.RaceStartDateTime.TimeOfDay.ToString()
-                };
-            }
-
-            var isOngoing = nextSession?.SessionDateTime < now && nextSession.SessionDateTime.AddMinutes(GetMaxSessionTime(nextSession)) > now;
-            var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession!);
+            var isOngoing = DateTimeHelper.IsOngoing(nextSession.SessionDateTime, nextSession.SessionEndDateTime);
+            var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession);
 
             return new RaceWeekendProgressDTO()
             {
-                Name = nextSession?.Name ?? "No upcoming session.",
+                Name = nextSession.Name,
                 Ongoing = isOngoing,
                 WeekendProgress = weekendProgressPercentage,
                 StartDateTime = nextSession?.SessionDateTime
             };
         }
 
-        private SessionDTO? GetNextRaceSession(RaceDTO race)
-        {
-            var now = DateTimeOffset.UtcNow;
-
-            return race.Sessions.FirstOrDefault(x => x.SessionDateTime > now);
-        }
-
-        private int GetMaxSessionTime(SessionDTO session)
-        {
-            if (session.Name.Contains("Practice"))
-                return (int)MaxSessionTimeConstants.Practice;
-
-            var maxTime = Enums.GetValueFromEnumDescription<MaxSessionTimeConstants>(session.Name);
-
-            if (maxTime == null)
-                throw new Exception("Invalid session name provided");
-
-            return maxTime.Value;
-        }
-
         private int GetWeekendProgressPercentage(RaceDTO race, SessionDTO nextSession)
         {
             var now = DateTimeOffset.UtcNow;
 
-            var remainingSessions = race.Sessions.Where(x => x.SessionDateTime <= now).Count();
+            var completedSessions = race.Sessions.Where(x => x.SessionDateTime <= now).Count();
 
             if (race.RaceStartDateTime < now)
-                remainingSessions++;
+                completedSessions++;
 
             //+1 to include the race
             var totalSessions = race.Sessions.Count + 1;
 
-            return (int)Math.Round((double)remainingSessions / totalSessions * 100);
+            return (int)Math.Round((double)completedSessions / totalSessions * 100);
         }
     }
 }
