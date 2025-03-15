@@ -62,6 +62,7 @@ nav:
   - Proposals:
     - Ideas:
       - Idea Proposal Framework: proposals/ideas/framework.md
+      - ETL: proposals/ideas/ETL.md
     - Tech Debt:
       - Tech Debt Identification Framework: proposals/tech-debt/framework.md
       - .NET 9 Migration: proposals/tech-debt/NET9.md
