@@ -5,7 +5,7 @@
 - Date: 2025-03-12
 - Status: Review
 - Planned: No
-- Milestone: Not assigned
+- Milestone: Not planned
 
 ## Summary
 
