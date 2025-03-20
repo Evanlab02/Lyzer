@@ -1,8 +1,8 @@
 namespace Lyzer.Errors
 {
-    public class CustomHttpException : Exception
+    public class GeneralException : Exception
     {
-        public CustomHttpException(string message, int statusCode) : base(message)
+        public GeneralException(string message, int statusCode) : base(message)
         {
             StatusCode = statusCode;
         }
