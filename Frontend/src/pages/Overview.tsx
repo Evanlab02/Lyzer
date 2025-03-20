@@ -8,6 +8,7 @@ export default function Overview() {
 	const { 
 		raceWeekendProgress,
 		upcomingRaceWeekend,
+		seasonProgress,
 		refreshData
 	} = useOverview();;
 
@@ -26,7 +27,9 @@ export default function Overview() {
 					raceWeekendProgress={raceWeekendProgress}
 					upcomingRaceWeekend={upcomingRaceWeekend}
 				/>
-				<TableSection />
+				<TableSection 
+					seasonProgress={seasonProgress}
+				/>
 			</GridContainer>
 		</div>
 	);

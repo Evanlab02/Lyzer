@@ -16,5 +16,30 @@
         margin: 10px 0 10px 0;
         font-size: 1.35rem;
         min-height: 42px;
+
+        .lyzer-card-section {
+            .lyzer-card-section-title {
+                font-weight: 700 !important;
+                font-size: 22px !important;
+                margin: 0;
+            }
+    
+            .lyzer-card-section-subtitle {
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                margin: 0;
+                color: var(--off-text-colour);
+            }
+    
+            .lyzer-card-section-divider {
+                margin-bottom: 1rem;
+            }
+
+            &:last-child {
+                .lyzer-card-section-divider {
+                    display: none;
+                }
+            }
+        }
     }
 }
