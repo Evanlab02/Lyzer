@@ -24,6 +24,15 @@ it("should return the overview data that is not a race weekend", async () => {
 			timeToRaceWeekend: 4000
 		});
 	});
+
+	await waitFor(() => {
+		expect(result.current.seasonProgress).toStrictEqual({
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
+		});
+	});
 });
 
 it("should return the overview data that is a race weekend and ongoing", async () => {
@@ -47,6 +56,15 @@ it("should return the overview data that is a race weekend and ongoing", async (
 			timeToRaceWeekend: 0
 		});
 	});
+
+	await waitFor(() => {
+		expect(result.current.seasonProgress).toStrictEqual({
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
+		});
+	});
 });
 
 it("should return new data when refreshData is called", async () => {
@@ -58,6 +76,7 @@ it("should return new data when refreshData is called", async () => {
 	await waitFor(() => {
 		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsNotRaceWeekend.raceWeekendProgress);
 		expect(result.current.upcomingRaceWeekend).toStrictEqual(overviewMockIsNotRaceWeekend.upcomingRaceWeekend);
+		expect(result.current.seasonProgress).toStrictEqual(overviewMockIsNotRaceWeekend.seasonProgress);
 	});
 
 	await waitFor(() => {
@@ -67,5 +86,6 @@ it("should return new data when refreshData is called", async () => {
 	await waitFor(() => {
 		expect(result.current.raceWeekendProgress).toStrictEqual(overviewMockIsRaceWeekendOngoing.raceWeekendProgress);
 		expect(result.current.upcomingRaceWeekend).toStrictEqual(overviewMockIsRaceWeekendOngoing.upcomingRaceWeekend);
+		expect(result.current.seasonProgress).toStrictEqual(overviewMockIsRaceWeekendOngoing.seasonProgress);
 	});
 });

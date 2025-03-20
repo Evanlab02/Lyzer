@@ -13,6 +13,7 @@
   --secondary-colour: #{colours.$lyzer-white};
   --card-bg-colour: #{colours.$lyzer-dark-grey};
   --progress-bar-track-colour: #{colours.$lyzer-mid-grey};
+  --off-text-colour: #{colours.$lyzer-mid-grey};
 }
 
 
@@ -21,6 +22,7 @@
   --secondary-colour: #{colours.$lyzer-black};
   --card-bg-colour: #{colours.$lyzer-white};
   --progress-bar-track-colour: #{colours.$lyzer-dark-grey};
+  --off-text-colour: #{colours.$lyzer-dark-grey};
 }
 
 [data-theme="dark"] {
@@ -28,4 +30,5 @@
   --secondary-colour: #{colours.$lyzer-white};
   --card-bg-colour: #{colours.$lyzer-dark-grey};
   --progress-bar-track-colour: #{colours.$lyzer-mid-grey};
+  --off-text-colour: #{colours.$lyzer-mid-grey};
 }

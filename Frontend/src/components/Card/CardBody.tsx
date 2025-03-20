@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-export default function CardBody(props: PropsWithChildren) {
+export default function CardBody(props: Readonly<PropsWithChildren>) {
 	const { children } = props;
 
 	return (

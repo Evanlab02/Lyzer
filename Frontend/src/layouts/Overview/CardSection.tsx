@@ -20,7 +20,7 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 
 	return (
 		<>
-			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>
                         Is it race weekend?
@@ -40,7 +40,7 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 					/>
 				</Card>
 			</GridItem>
-			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>
                         Race weekend progress
@@ -60,14 +60,14 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 					/>
 				</Card>
 			</GridItem>
-			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>
                         Driver leader
 					</CardHeading>
 				</Card>
 			</GridItem>
-			<GridItem xs={12} sm={12} md={6} lg={4} xl={3} xxl={3}>
+			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>
                         Constructor leader
