@@ -19,7 +19,7 @@ This will reduce the load on our API and Jolpica and make the system more effici
 
 **What does it solve:**
 
-- Removes the reliance on only a cache for F1 data and instead store it in a more durable and scalable way.
+- Removes the reliance on only a cache for F1 data and instead store it in a more durable and scalable way using a database.
 - Allows us to compute metrics and store the calculations for use later on, reducing overhead on the API,
 - Also allowing us to use a more durable store for data from previous seasons like driver standings, results etc. Things that will not change. Significantly reducing the amount of load we create for Jolpica.
 - Provides a historical data store for analytics.
@@ -69,7 +69,7 @@ Important to note here is that this will take a careful structuring in the sourc
 
 **NOTE: There is one thing that was missed here and that is that we will likely store Qualifying, Sprint and Sprint Qualifying data in a seperate table than the session table. This way we can continue the result table trend and create new tables that link to sprint/sprint qualifying/qualifying session tables. Session tables can probably be more accurately named as practice session table.**
 
-### Implementation approach
+## Implementation plan
 
 Here is a very rough draft implementation plan:
 
