@@ -43,6 +43,7 @@ namespace Lyzer.Services
 
             UpcomingRaceWeekendDTO upcomingRaceWeekend = _racesService.GetUpcomingRaceWeekend(nextRace, previousRace);
             RaceWeekendProgressDTO raceWeekendProgress = _racesService.GetRaceWeekendProgress(nextRace);
+			List<OverviewDriverDTO> drivers = await _driverService.GetCurrentDriverStandings();
 
             return new OverviewDataDTO
             {
