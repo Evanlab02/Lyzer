@@ -1,5 +1,5 @@
 site_name: Lyzer
-site_url: 'https://littleclumsy.github.io/Lyzer/'
+site_url: 'https://evanlab02.github.io/Lyzer/'
 plugins:
   - search
 
@@ -51,6 +51,27 @@ nav:
   - Home: index.md
   - Roadmap/Milestones:
     - Release 0.1.0: roadmap/0-1-0.md
+  - Contributing:
+    - Overview: contributing/index.md
+    - Code: contributing/code.md
+    - Documentation: contributing/docs.md
+    - Reporting Issues: contributing/reporting-issues.md
+    - Ideas: contributing/ideas.md
+    - Design: contributing/design.md
+    - Technical Debt: contributing/tech-debt.md
+  - Proposals:
+    - Ideas:
+      - Idea Proposal Framework: proposals/ideas/framework.md
+      - ETL: proposals/ideas/ETL.md
+    - Tech Debt:
+      - Tech Debt Identification Framework: proposals/tech-debt/framework.md
+      - .NET 9 Migration: proposals/tech-debt/NET9.md
+      - React 19 Migration: proposals/tech-debt/React19.md
+      - Valkey Migration: proposals/tech-debt/Valkey.md
+      - Vite 6 Migration: proposals/tech-debt/Vite6.md
+    - Examples:
+      - Example Idea Proposal: proposals/examples/example-idea-proposal.md
+      - Example Tech Debt Identification: proposals/examples/example-tech-debt-identification.md
   - Architecture, code and patterns:
     - Overview: architecture/overview.md
     - API/Backend:
