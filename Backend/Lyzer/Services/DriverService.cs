@@ -50,8 +50,8 @@ namespace Lyzer.Services
             return cachedDrivers.Select(x => new OverviewDriverDTO
             {
                 Name = $"{x.Driver.GivenName} {x.Driver.FamilyName}",
-                Points = Int32.Parse(x.Points),
-                Position = Int32.Parse(x.Position),
+                Points = !string.IsNullOrEmpty(x.Points) ? Int32.Parse(x.Points) : 0,
+                Position = !string.IsNullOrEmpty(x.Position) ? Int32.Parse(x.Position) : 0,
                 Colour = ConstructorConstants.ConstructorColours.GetColourForConstructor(x.Constructors.First().ConstructorId)
             }).ToList();
         }
