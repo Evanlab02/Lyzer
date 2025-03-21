@@ -24,5 +24,11 @@ namespace Lyzer.Controllers
         {
             return await _driverService.GetCachedDriverStandings("current");
         }
+
+        [HttpGet("standings/{year}", Name = "Get driver standings for year")]
+        public async Task<DriverStandingsDTO> GetDriverStandingsForYear(string year)
+        {
+            return await _driverService.GetCachedDriverStandings(year);
+        }
     }
 }

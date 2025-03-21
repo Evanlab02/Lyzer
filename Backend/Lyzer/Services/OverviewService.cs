@@ -7,10 +7,12 @@ namespace Lyzer.Services
     public class OverviewService
     {
         private readonly RacesService _racesService;
+        private readonly DriverService _driverService;
 
-        public OverviewService(RacesService racesService)
+        public OverviewService(RacesService racesService, DriverService driverService)
         {
             _racesService = racesService;
+            _driverService = driverService;
         }
 
         public async Task<OverviewDataDTO> GetOverviewData()
@@ -41,11 +43,13 @@ namespace Lyzer.Services
 
             UpcomingRaceWeekendDTO upcomingRaceWeekend = _racesService.GetUpcomingRaceWeekend(nextRace, previousRace);
             RaceWeekendProgressDTO raceWeekendProgress = _racesService.GetRaceWeekendProgress(nextRace);
+            List<OverviewDriverDTO> drivers = await _driverService.GetCurrentDriverStandings();
 
             return new OverviewDataDTO
             {
                 RaceWeekendProgress = raceWeekendProgress,
                 UpcomingRaceWeekend = upcomingRaceWeekend,
+                Drivers = drivers
             };
         }
     }

@@ -42,5 +42,18 @@ namespace Lyzer.Services
 
             return cachedDriverStandings;
         }
+
+        public async Task<List<OverviewDriverDTO>> GetCurrentDriverStandings()
+        {
+            var cachedDrivers = (await GetCachedDriverStandings("current")).DriverStandings;
+
+            return cachedDrivers.Select(x => new OverviewDriverDTO
+            {
+                Name = $"{x.Driver.GivenName} {x.Driver.FamilyName}",
+                Points = !string.IsNullOrEmpty(x.Points) ? Int32.Parse(x.Points) : 0,
+                Position = !string.IsNullOrEmpty(x.Position) ? Int32.Parse(x.Position) : 0,
+                Colour = ConstructorConstants.ConstructorColours.GetColourForConstructor(x.Constructors.First().ConstructorId)
+            }).ToList();
+        }
     }
 }
