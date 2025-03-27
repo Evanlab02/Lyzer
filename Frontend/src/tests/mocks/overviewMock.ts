@@ -12,6 +12,12 @@ export const overviewMockIsNotRaceWeekend: OverviewInterface = {
 		status: "No",
 		timeToRaceWeekendProgress: 50,
 		timeToRaceWeekend: 4000
+	},
+	seasonProgress: {
+		previousRaceWinner: "Max Verstappen",
+		previousGrandPrix: "Qatar",
+		seasonProgress: 12,
+		seasonTotalRaces: 24
 	}
 };
 
@@ -27,5 +33,11 @@ export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
 		status: "Yes",
 		timeToRaceWeekendProgress: 100,
 		timeToRaceWeekend: 0
+	},
+	seasonProgress: {
+		previousRaceWinner: "Max Verstappen",
+		previousGrandPrix: "Qatar",
+		seasonProgress: 12,
+		seasonTotalRaces: 24
 	}
 };

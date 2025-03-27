@@ -41,7 +41,7 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -69,7 +69,7 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -97,7 +97,7 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -110,7 +110,7 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -123,36 +123,92 @@ exports[`Given the user is on the overview page when it is not a race weekend, t
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -200,7 +256,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -223,7 +279,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -251,7 +307,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -264,7 +320,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -277,36 +333,92 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -354,7 +466,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -377,7 +489,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -405,7 +517,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -418,7 +530,7 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -431,36 +543,92 @@ exports[`Given the user is on the overview page when it is race weekend and ther
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -508,7 +676,7 @@ exports[`Given the user is on the overview page when it is race weekend and we a
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -531,7 +699,7 @@ exports[`Given the user is on the overview page when it is race weekend and we a
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -559,7 +727,7 @@ exports[`Given the user is on the overview page when it is race weekend and we a
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -572,7 +740,7 @@ exports[`Given the user is on the overview page when it is race weekend and we a
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -585,36 +753,92 @@ exports[`Given the user is on the overview page when it is race weekend and we a
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -662,7 +886,7 @@ exports[`Given: User is on the overview page When: It is less than 24 hours to g
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -690,7 +914,7 @@ exports[`Given: User is on the overview page When: It is less than 24 hours to g
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -718,7 +942,7 @@ exports[`Given: User is on the overview page When: It is less than 24 hours to g
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -731,7 +955,7 @@ exports[`Given: User is on the overview page When: It is less than 24 hours to g
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -744,36 +968,92 @@ exports[`Given: User is on the overview page When: It is less than 24 hours to g
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -821,7 +1101,7 @@ exports[`Given: User is on the overview page When: It is not race weekend Then: 
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -849,7 +1129,7 @@ exports[`Given: User is on the overview page When: It is not race weekend Then: 
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -877,7 +1157,7 @@ exports[`Given: User is on the overview page When: It is not race weekend Then: 
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -890,7 +1170,7 @@ exports[`Given: User is on the overview page When: It is not race weekend Then: 
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -903,36 +1183,92 @@ exports[`Given: User is on the overview page When: It is not race weekend Then: 
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>
@@ -980,7 +1316,7 @@ exports[`Given: User is on the overview page When: It is race weekend Then: User
     class="flex-grid-container"
   >
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -1003,7 +1339,7 @@ exports[`Given: User is on the overview page When: It is race weekend Then: User
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -1031,7 +1367,7 @@ exports[`Given: User is on the overview page When: It is race weekend Then: User
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -1044,7 +1380,7 @@ exports[`Given: User is on the overview page When: It is race weekend Then: User
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
@@ -1057,36 +1393,92 @@ exports[`Given: User is on the overview page When: It is race weekend Then: User
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-3 flex-grid-col-xxl-3"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
-          Overview Section
-        </h1>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Max Verstappen
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Race Winner
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              Qatar
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Previous Grand Prix
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+          <div
+            class="lyzer-card-section"
+          >
+            <h3
+              class="lyzer-card-section-title"
+            >
+              12 of 24 races
+            </h3>
+            <p
+              class="lyzer-card-section-subtitle"
+            >
+              Season Progress
+            </p>
+            <hr
+              class="lyzer-card-section-divider"
+            />
+          </div>
+        </h3>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-4 flex-grid-col-xxl-4"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-9 flex-grid-col-xxl-9"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Constructor Standings
-        </h1>
+        </span>
       </div>
     </div>
     <div
-      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-5 flex-grid-col-xxl-5"
+      class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-12 flex-grid-col-lg-12 flex-grid-col-xl-12 flex-grid-col-xxl-12"
     >
       <div
         class="lyzer-card"
       >
-        <h1>
+        <span
+          class="lyzer-card-heading"
+        >
           Driver Standings
-        </h1>
+        </span>
       </div>
     </div>
   </div>

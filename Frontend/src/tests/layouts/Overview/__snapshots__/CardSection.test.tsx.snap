@@ -5,7 +5,7 @@ exports[`CardSection renders correctly 1`] = `
   data-testid="lyzer-card-section"
 >
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -28,7 +28,7 @@ exports[`CardSection renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -56,7 +56,7 @@ exports[`CardSection renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -69,7 +69,7 @@ exports[`CardSection renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -89,7 +89,7 @@ exports[`CardSection renders loading state correctly 1`] = `
   data-testid="lyzer-card-section"
 >
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -112,7 +112,7 @@ exports[`CardSection renders loading state correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -135,7 +135,7 @@ exports[`CardSection renders loading state correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"
@@ -148,7 +148,7 @@ exports[`CardSection renders loading state correctly 1`] = `
     </div>
   </div>
   <div
-    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-4 flex-grid-col-xl-3 flex-grid-col-xxl-3"
+    class="flex-grid-item flex-grid-col-xs-12 flex-grid-col-sm-12 flex-grid-col-md-6 flex-grid-col-lg-6 flex-grid-col-xl-3 flex-grid-col-xxl-3"
   >
     <div
       class="lyzer-card"

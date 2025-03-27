@@ -16,6 +16,12 @@ it("Given the user is on the overview page when it is race weekend and there is 
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
 			timeToRaceWeekend: 0
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -41,6 +47,12 @@ it("Given the user is on the overview page when it is race weekend and there is 
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
 			timeToRaceWeekend: 0
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -66,6 +78,12 @@ it("Given the user is on the overview page when it is race weekend and we are ha
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
 			timeToRaceWeekend: 0
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -91,6 +109,12 @@ it("Given the user is on the overview page when it is not a race weekend, then t
 			status: "Almost",
 			timeToRaceWeekendProgress: 90,
 			timeToRaceWeekend: 600
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -116,6 +140,12 @@ it("Given: User is on the overview page When: It is not race weekend Then: User 
 			status: "No",
 			timeToRaceWeekendProgress: 50,
 			timeToRaceWeekend: 7200
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -141,6 +171,12 @@ it("Given: User is on the overview page When: It is less than 24 hours to go unt
 			status: "Almost",
 			timeToRaceWeekendProgress: 80,
 			timeToRaceWeekend: 600
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
@@ -166,6 +202,12 @@ it("Given: User is on the overview page When: It is race weekend Then: User shou
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
 			timeToRaceWeekend: 0
+		},
+		seasonProgress: {
+			previousRaceWinner: "Max Verstappen",
+			previousGrandPrix: "Qatar",
+			seasonProgress: 12,
+			seasonTotalRaces: 24
 		}
 	} as OverviewInterface;
 
