@@ -1,15 +1,11 @@
-using System;
 using System.Runtime.Serialization;
 
 using Lyzer.Clients;
 using Lyzer.Common.Constants;
 using Lyzer.Common.DTO;
-using Lyzer.Common.Extensions;
 using Lyzer.Common.Helpers;
-using Lyzer.Errors;
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Lyzer.Services
 {
@@ -109,11 +105,8 @@ namespace Lyzer.Services
         public RaceWeekendProgressDTO GetRaceWeekendProgress(RaceDTO nextRace)
         {
             var nextSession = RacesHelper.GetNextRaceSession(nextRace);
-
-            var now = DateTimeOffset.UtcNow;
-
             var isOngoing = DateTimeHelper.IsOngoing(nextSession.SessionDateTime, nextSession.SessionEndDateTime);
-            var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace, nextSession);
+            var weekendProgressPercentage = GetWeekendProgressPercentage(nextRace);
 
             return new RaceWeekendProgressDTO()
             {
@@ -124,7 +117,7 @@ namespace Lyzer.Services
             };
         }
 
-        private int GetWeekendProgressPercentage(RaceDTO race, SessionDTO nextSession)
+        private int GetWeekendProgressPercentage(RaceDTO race)
         {
             var now = DateTimeOffset.UtcNow;
 

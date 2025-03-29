@@ -4,6 +4,7 @@
     {
         public required RaceWeekendProgressDTO RaceWeekendProgress { get; set; }
         public required UpcomingRaceWeekendDTO UpcomingRaceWeekend { get; set; }
+        public required SeasonProgressDTO SeasonProgress { get; set; }
     }
 
     public class RaceWeekendProgressDTO
@@ -20,5 +21,13 @@
         public required int TimeToRaceWeekendProgress { get; set; }
         public required string Status { get; set; }
         public required double TimeToRaceWeekend { get; set; }
+    }
+
+    public class SeasonProgressDTO
+    {
+        public required string PreviousRaceWinner { get; set; }
+        public required string PreviousGrandPrix { get; set; }
+        public required int SeasonProgress { get; set; }
+        public required int SeasonTotalRaces { get; set; }
     }
 }
