@@ -1,4 +1,4 @@
-﻿using Lyzer.Common.DTO;
+using Lyzer.Common.DTO;
 using Lyzer.Common.Helpers;
 using Lyzer.Errors;
 
@@ -13,6 +13,23 @@ namespace Lyzer.Services
         {
             _racesService = racesService;
             _resultsService = resultsService;
+        }
+
+        private async Task<SeasonProgressDTO> GetSeasonProgress(RacesDTO races, RaceDTO previousRace)
+        {
+            string season = previousRace.Season;
+            string previousRound = previousRace.Round;
+
+            ResultsDTO previousRaceResult = await _resultsService.GetCachedRaceResult(season, previousRound);
+            DriverDTO lastRaceWinner = previousRaceResult.Results[0].Driver;
+
+            return new SeasonProgressDTO
+            {
+                PreviousRaceWinner = $"{lastRaceWinner.GivenName} {lastRaceWinner.FamilyName}",
+                PreviousGrandPrix = previousRace.RaceName,
+                SeasonProgress = int.Parse(previousRace.Round),
+                SeasonTotalRaces = races.Races.Count
+            };
         }
 
         public async Task<OverviewDataDTO> GetOverviewData()
@@ -43,20 +60,7 @@ namespace Lyzer.Services
 
             UpcomingRaceWeekendDTO upcomingRaceWeekend = _racesService.GetUpcomingRaceWeekend(nextRace, previousRace);
             RaceWeekendProgressDTO raceWeekendProgress = _racesService.GetRaceWeekendProgress(nextRace);
-
-            string season = previousRace.Season;
-            string previousRound = previousRace.Round;
-
-            ResultsDTO previousRaceResult = await _resultsService.GetCachedRaceResult(season, previousRound);
-            DriverDTO lastRaceWinner = previousRaceResult.Results[0].Driver;
-
-            SeasonProgressDTO seasonProgress = new SeasonProgressDTO
-            {
-                PreviousRaceWinner = $"{lastRaceWinner.GivenName} {lastRaceWinner.FamilyName}",
-                PreviousGrandPrix = previousRace.RaceName,
-                SeasonProgress = int.Parse(previousRace.Round),
-                SeasonTotalRaces = races.Races.Count
-            };
+            SeasonProgressDTO seasonProgress = await GetSeasonProgress(races, previousRace);
 
             return new OverviewDataDTO
             {
