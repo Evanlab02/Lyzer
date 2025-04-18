@@ -1,4 +1,4 @@
-﻿using Lyzer.Common.DTO;
+using Lyzer.Common.DTO;
 using Lyzer.Common.Helpers;
 using Lyzer.Errors;
 

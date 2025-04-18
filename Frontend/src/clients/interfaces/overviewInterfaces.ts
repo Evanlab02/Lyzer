@@ -1,6 +1,7 @@
 export interface OverviewInterface {
     raceWeekendProgress: RaceWeekendProgress;
     upcomingRaceWeekend: UpcomingRaceWeekend;
+    seasonProgress: SeasonProgress;
 }
 
 export interface RaceWeekendProgress {
@@ -15,4 +16,12 @@ export interface UpcomingRaceWeekend {
     timeToRaceWeekendProgress: number;
     timeToRaceWeekend: number;
     status: string;
+}
+
+
+export interface SeasonProgress {
+    previousRaceWinner: string;
+    previousGrandPrix: string;
+    seasonProgress: number;
+    seasonTotalRaces: number;
 }

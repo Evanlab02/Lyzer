@@ -1,6 +1,6 @@
 import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import Card, { CardBody, CardHeading } from "../../components/Card";
+import Card, { CardBody, CardHeading, CardSection } from "../../components/Card";
 
 it("Basic card renders correctly", async () => {
 	const { findByTestId } = render(
@@ -48,6 +48,36 @@ it("Card with heading and body renders correctly", async () => {
 			<CardBody>
                     Card Body
 			</CardBody>
+		</Card>
+	);
+
+	const card = await findByTestId("lyzer-card");
+	expect(card).toMatchSnapshot();
+});
+
+it("Card with section renders correctly", async () => {
+	const { findByTestId } = render(
+		<Card testId="lyzer-card">
+			<CardSection
+				title="Card Section Title"
+				subtitle="Card Section Subtitle"
+			/>
+		</Card>
+	);
+
+	const card = await findByTestId("lyzer-card");
+	expect(card).toMatchSnapshot();
+});
+
+it("Card with section renders correctly, including children", async () => {
+	const { findByTestId } = render(
+		<Card testId="lyzer-card">
+			<CardSection
+				title="Card Section Title"
+				subtitle="Card Section Subtitle"
+			>
+				<p>Card Section Content</p>
+			</CardSection>
 		</Card>
 	);
 

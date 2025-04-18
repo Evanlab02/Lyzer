@@ -52,3 +52,56 @@ exports[`Card with heading renders correctly 1`] = `
   </span>
 </div>
 `;
+
+exports[`Card with section renders correctly 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  <div
+    class="lyzer-card-section"
+  >
+    <h3
+      class="lyzer-card-section-title"
+    >
+      Card Section Title
+    </h3>
+    <p
+      class="lyzer-card-section-subtitle"
+    >
+      Card Section Subtitle
+    </p>
+    <hr
+      class="lyzer-card-section-divider"
+    />
+  </div>
+</div>
+`;
+
+exports[`Card with section renders correctly, including children 1`] = `
+<div
+  class="lyzer-card"
+  data-testid="lyzer-card"
+>
+  <div
+    class="lyzer-card-section"
+  >
+    <h3
+      class="lyzer-card-section-title"
+    >
+      Card Section Title
+    </h3>
+    <p
+      class="lyzer-card-section-subtitle"
+    >
+      Card Section Subtitle
+    </p>
+    <p>
+      Card Section Content
+    </p>
+    <hr
+      class="lyzer-card-section-divider"
+    />
+  </div>
+</div>
+`;
