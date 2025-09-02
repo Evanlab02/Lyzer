@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  fe-test:
+  frontend:
     runs-on: ubuntu-latest
     defaults:
       run:

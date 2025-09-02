@@ -4,15 +4,61 @@ using Lyzer.Errors;
 
 namespace Lyzer.Services
 {
-    public class OverviewService
+    public class OverviewService(RacesService racesService, ResultsService resultsService)
     {
-        private readonly RacesService _racesService;
-        private readonly ResultsService _resultsService;
+        private readonly RacesService _racesService = racesService;
+        private readonly ResultsService _resultsService = resultsService;
 
-        public OverviewService(RacesService racesService, ResultsService resultsService)
+        private static UpcomingRaceWeekendDTO GetUpcomingRaceWeekend(RaceDTO nextRace, RaceDTO previousRace)
         {
-            _racesService = racesService;
-            _resultsService = resultsService;
+            DateTimeOffset firstSessionDateTime = nextRace.RaceStartDateTime.AddDays(-2);
+            DateTimeOffset previousRaceDateTime = previousRace.RaceStartDateTime;
+            DateTimeOffset nextRaceDateTime = nextRace.FirstPractice != null ? nextRace.FirstPractice.SessionDateTime : nextRace.RaceStartDateTime;
+            SessionDTO? firstSession = nextRace.Sessions.FirstOrDefault();
+
+            if (firstSession != null)
+            {
+                firstSessionDateTime = firstSession.SessionDateTime;
+            }
+
+            var isRaceWeekend = DateTimeHelper.IsOngoing(firstSessionDateTime.DateTime, nextRace.RaceStartDateTime.DateTime);
+            var timeToRaceWeekend = DateTimeHelper.GetMinutesUntilDateTimeOffset(firstSessionDateTime);
+            var timeToRaceWeekendProgress = DateTimeHelper.GetTimeProgressBetweenDateTimeOffsetsAsPercentage(previousRaceDateTime, nextRaceDateTime);
+
+            var status = "No";
+
+            switch (timeToRaceWeekendProgress)
+            {
+                case 100:
+                    status = "It is race weekend!";
+                    break;
+                case int progress when progress >= 80:
+                    status = "Almost";
+                    break;
+            }
+
+            return new UpcomingRaceWeekendDTO()
+            {
+                IsRaceWeekend = isRaceWeekend,
+                TimeToRaceWeekendProgress = timeToRaceWeekendProgress,
+                Status = status,
+                TimeToRaceWeekend = timeToRaceWeekend
+            };
+        }
+
+        private static RaceWeekendProgressDTO GetRaceWeekendProgress(RaceDTO nextRace)
+        {
+            var nextSession = RacesHelper.GetNextRaceSession(nextRace);
+            var weekendProgressPercentage = RacesHelper.GetWeekendProgressPercentage(nextRace);
+            var isOngoing = DateTimeHelper.IsOngoing(nextSession.SessionDateTime, nextSession.SessionEndDateTime);
+
+            return new RaceWeekendProgressDTO()
+            {
+                Name = nextSession.Name,
+                Ongoing = isOngoing,
+                WeekendProgress = weekendProgressPercentage,
+                StartDateTime = nextSession?.SessionDateTime
+            };
         }
 
         private async Task<SeasonProgressDTO> GetSeasonProgress(RacesDTO races, RaceDTO previousRace)
@@ -32,19 +78,19 @@ namespace Lyzer.Services
             };
         }
 
+
         public async Task<OverviewDataDTO> GetOverviewData()
         {
             var races = await _racesService.GetCachedRaces("current");
 
-            var nextRace = RacesHelper.GetNextOrCurrentRace(races);
             var previousRace = RacesHelper.GetPreviousRace(races);
+            var nextRace = RacesHelper.GetNextOrCurrentRace(races);
 
             if (previousRace == null)
             {
                 var now = DateTime.Now;
                 var previousYear = now.AddYears(-1).Year.ToString();
                 var previousYearRaces = await _racesService.GetCachedRaces(previousYear);
-
                 previousRace = RacesHelper.GetPreviousRace(previousYearRaces);
             }
 
@@ -58,8 +104,8 @@ namespace Lyzer.Services
                 throw new GeneralException("No upcoming race.", StatusCodes.Status404NotFound);
             }
 
-            UpcomingRaceWeekendDTO upcomingRaceWeekend = _racesService.GetUpcomingRaceWeekend(nextRace, previousRace);
-            RaceWeekendProgressDTO raceWeekendProgress = _racesService.GetRaceWeekendProgress(nextRace);
+            UpcomingRaceWeekendDTO upcomingRaceWeekend = GetUpcomingRaceWeekend(nextRace, previousRace);
+            RaceWeekendProgressDTO raceWeekendProgress = GetRaceWeekendProgress(nextRace);
             SeasonProgressDTO seasonProgress = await GetSeasonProgress(races, previousRace);
 
             return new OverviewDataDTO

@@ -1,6 +1,4 @@
-﻿using Lyzer.Clients;
-
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 
 namespace Lyzer.Services
 {
@@ -33,7 +31,7 @@ namespace Lyzer.Services
             return await _db.StringGetAsync(key);
         }
 
-        public async Task<bool?> exists(string key)
+        public async Task<bool?> Exists(string key)
         {
             return await _db.KeyExistsAsync(key);
         }

@@ -7,16 +7,9 @@ namespace Lyzer.Controllers
 {
     [ApiController]
     [Route("api/v1/lyzer/overview")]
-    public class OverviewController : ControllerBase
+    public class OverviewController(OverviewService overviewService) : ControllerBase
     {
-        private readonly RacesService _raceService;
-        private readonly OverviewService _overviewService;
-
-        public OverviewController(RacesService raceService, OverviewService overviewService)
-        {
-            _raceService = raceService;
-            _overviewService = overviewService;
-        }
+        private readonly OverviewService _overviewService = overviewService;
 
         [HttpGet("", Name = "GetOverviewData")]
         public async Task<OverviewDataDTO> GetOverviewData()

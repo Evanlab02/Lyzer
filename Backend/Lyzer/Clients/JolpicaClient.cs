@@ -15,18 +15,18 @@ namespace Lyzer.Clients
     {
         private readonly ILogger<JolpicaClient> _logger;
         private readonly RestClient _client;
-        private const string _ResponseWrapper = "MRData";
+        private const string ResponseWrapper = "MRData";
 
         public JolpicaClient(ILogger<JolpicaClient> logger)
         {
-            RestClientOptions options = new RestClientOptions(JolpicaConstants.BaseUri);
+            RestClientOptions options = new(JolpicaConstants.BaseUri);
             _client = new RestClient(options);
             _logger = logger;
         }
 
         public async Task<DriverStandingsDTO> GetDriverStandings(string year)
         {
-            string requestPath = String.Format(JolpicaConstants.DriverStandingsUri, year);
+            string requestPath = string.Format(JolpicaConstants.DriverStandingsUri, year);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
@@ -38,7 +38,7 @@ namespace Lyzer.Clients
             JsonElement root = result.RootElement;
 
             JsonElement standingsLists = root
-                .GetProperty(_ResponseWrapper)
+                .GetProperty(ResponseWrapper)
                 .GetProperty("StandingsTable")
                 .GetProperty("StandingsLists");
 
@@ -62,7 +62,7 @@ namespace Lyzer.Clients
 
         public async Task<ResultsDTO> GetRaceResult(string year, string round)
         {
-            string requestPath = String.Format(JolpicaConstants.ResultsUri, year, round);
+            string requestPath = string.Format(JolpicaConstants.ResultsUri, year, round);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
@@ -74,7 +74,7 @@ namespace Lyzer.Clients
             JsonElement root = result.RootElement;
 
             JsonElement resultsLists = root
-                .GetProperty(_ResponseWrapper)
+                .GetProperty(ResponseWrapper)
                 .GetProperty("RaceTable")
                 .GetProperty("Races");
 
@@ -98,7 +98,7 @@ namespace Lyzer.Clients
 
         public async Task<ConstructorStandingsDTO> GetContructorsStandingsForYear(string year)
         {
-            string requestPath = String.Format(JolpicaConstants.ConstructorStandingsUri, year);
+            string requestPath = string.Format(JolpicaConstants.ConstructorStandingsUri, year);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
@@ -110,7 +110,7 @@ namespace Lyzer.Clients
             JsonElement root = result.RootElement;
 
             JsonElement standingsLists = root
-                .GetProperty(_ResponseWrapper)
+                .GetProperty(ResponseWrapper)
                 .GetProperty("StandingsTable")
                 .GetProperty("StandingsLists");
 
@@ -133,7 +133,7 @@ namespace Lyzer.Clients
         }
         public async Task<RacesDTO> GetAllRacesForSeason(string season)
         {
-            string requestPath = String.Format(JolpicaConstants.RacesUri, season);
+            string requestPath = string.Format(JolpicaConstants.RacesUri, season);
             JsonDocument? result = await _client.GetAsync<JsonDocument>(requestPath);
 
             if (result == null)
@@ -145,7 +145,7 @@ namespace Lyzer.Clients
             JsonElement root = result.RootElement;
 
             JsonElement races = root
-                .GetProperty(_ResponseWrapper)
+                .GetProperty(ResponseWrapper)
                 .GetProperty("RaceTable");
 
             RacesDTO? raceList = JsonConvert.DeserializeObject<RacesDTO>(races.GetRawText());
@@ -185,14 +185,14 @@ namespace Lyzer.Clients
                  * 2. Sets the session name, via the dictionary we created above.
                  */
 
-                race.Sessions = allSessions
+                race.Sessions = [.. allSessions
                     .Where(x => x != null)
                     .Select(session =>
                         {
                             session!.Name = sessionNames[session];
                             return session;
                         })
-                    .ToList();
+                ];
             }
 
             return raceList;

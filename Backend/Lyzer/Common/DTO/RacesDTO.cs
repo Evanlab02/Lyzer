@@ -12,7 +12,7 @@ namespace Lyzer.Common.DTO
     {
         public required string Season { get; set; }
         public required string Round { get; set; }
-        public required string Url { get; set; }
+        public string? Url { get; set; }
         public required string RaceName { get; set; }
         public required CircuitDTO Circuit { get; set; }
 
