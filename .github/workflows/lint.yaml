@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  be-lint:
+  backend:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -27,7 +27,7 @@ jobs:
       - name: Check formatting
         run: dotnet format --verify-no-changes
 
-  fe-lint:
+  frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
