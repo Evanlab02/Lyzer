@@ -1,12 +1,7 @@
 namespace Lyzer.Errors
 {
-    public class GeneralException : Exception
+    public class GeneralException(string message, int statusCode) : Exception(message)
     {
-        public GeneralException(string message, int statusCode) : base(message)
-        {
-            StatusCode = statusCode;
-        }
-
-        public int StatusCode { get; }
+        public int StatusCode { get; } = statusCode;
     }
 }

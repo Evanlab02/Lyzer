@@ -8,22 +8,15 @@ using Newtonsoft.Json;
 
 namespace Lyzer.Services
 {
-    public class ConstructorService
+    public class ConstructorService(ILogger<ConstructorService> logger, CacheService cache, JolpicaClient client)
     {
-        private readonly ILogger<ConstructorService> _logger;
-        private readonly CacheService _cache;
-        private readonly JolpicaClient _client;
-
-        public ConstructorService(ILogger<ConstructorService> logger, CacheService cache, JolpicaClient client)
-        {
-            _logger = logger;
-            _cache = cache;
-            _client = client;
-        }
+        private readonly ILogger<ConstructorService> _logger = logger;
+        private readonly CacheService _cache = cache;
+        private readonly JolpicaClient _client = client;
 
         public async Task<ConstructorStandingsDTO> GetCachedConstructorStandings(string year)
         {
-            string key = String.Format(CacheKeyConstants.ConstructorStandings, year);
+            string key = string.Format(CacheKeyConstants.ConstructorStandings, year);
             string? result = await _cache.Get(key);
 
             if (result == null)
@@ -34,13 +27,7 @@ namespace Lyzer.Services
             }
 
             ConstructorStandingsDTO? cachedConstructorStandings = JsonConvert.DeserializeObject<ConstructorStandingsDTO>(result);
-
-            if (cachedConstructorStandings == null)
-            {
-                throw new SerializationException("Could not deserialize cached result.");
-            }
-
-            return cachedConstructorStandings;
+            return cachedConstructorStandings ?? throw new SerializationException("Could not deserialize cached result.");
         }
     }
 }

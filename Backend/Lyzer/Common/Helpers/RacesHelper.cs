@@ -45,10 +45,22 @@ namespace Lyzer.Common.Helpers
                 };
             }
 
-            if (nextSession == null)
-                throw new GeneralException("No upcoming session found.", StatusCodes.Status500InternalServerError);
+            return nextSession ?? throw new GeneralException("No upcoming session found.", StatusCodes.Status500InternalServerError);
+        }
 
-            return nextSession;
+        public static int GetWeekendProgressPercentage(RaceDTO race)
+        {
+            var now = DateTimeOffset.UtcNow;
+
+            var completedSessions = race.Sessions.Where(x => x.SessionDateTime <= now).Count();
+
+            if (race.RaceStartDateTime < now)
+                completedSessions++;
+
+            //+1 to include the race
+            var totalSessions = race.Sessions.Count + 1;
+
+            return (int)Math.Round((double)completedSessions / totalSessions * 100);
         }
     }
 }

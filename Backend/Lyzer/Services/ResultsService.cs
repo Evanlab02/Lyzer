@@ -8,22 +8,15 @@ using Newtonsoft.Json;
 
 namespace Lyzer.Services
 {
-    public class ResultsService
+    public class ResultsService(ILogger<ResultsService> logger, JolpicaClient client, CacheService cache)
     {
-        private readonly ILogger<ResultsService> _logger;
-        private readonly JolpicaClient _client;
-        private readonly CacheService _cache;
-
-        public ResultsService(ILogger<ResultsService> logger, JolpicaClient client, CacheService cache)
-        {
-            _logger = logger;
-            _client = client;
-            _cache = cache;
-        }
+        private readonly ILogger<ResultsService> _logger = logger;
+        private readonly JolpicaClient _client = client;
+        private readonly CacheService _cache = cache;
 
         public async Task<ResultsDTO> GetCachedRaceResult(string year, string round)
         {
-            string key = String.Format(CacheKeyConstants.Results, year, round);
+            string key = string.Format(CacheKeyConstants.Results, year, round);
             string? result = await _cache.Get(key);
 
             if (result == null)
@@ -35,12 +28,7 @@ namespace Lyzer.Services
 
             ResultsDTO? cachedResults = JsonConvert.DeserializeObject<ResultsDTO>(result);
 
-            if (cachedResults == null)
-            {
-                throw new SerializationException("Could not deserialize cached result.");
-            }
-
-            return cachedResults;
+            return cachedResults ?? throw new SerializationException("Could not deserialize cached result.");
         }
     }
 }

@@ -8,22 +8,15 @@ using Newtonsoft.Json;
 
 namespace Lyzer.Services
 {
-    public class DriverService
+    public class DriverService(ILogger<DriverService> logger, JolpicaClient client, CacheService cache)
     {
-        private readonly ILogger<DriverService> _logger;
-        private readonly JolpicaClient _client;
-        private readonly CacheService _cache;
-
-        public DriverService(ILogger<DriverService> logger, JolpicaClient client, CacheService cache)
-        {
-            _logger = logger;
-            _client = client;
-            _cache = cache;
-        }
+        private readonly ILogger<DriverService> _logger = logger;
+        private readonly JolpicaClient _client = client;
+        private readonly CacheService _cache = cache;
 
         public async Task<DriverStandingsDTO> GetCachedDriverStandings(string year)
         {
-            string key = String.Format(CacheKeyConstants.DriverStandings, year);
+            string key = string.Format(CacheKeyConstants.DriverStandings, year);
             string? result = await _cache.Get(key);
 
             if (result == null)
@@ -34,13 +27,7 @@ namespace Lyzer.Services
             }
 
             DriverStandingsDTO? cachedDriverStandings = JsonConvert.DeserializeObject<DriverStandingsDTO>(result);
-
-            if (cachedDriverStandings == null)
-            {
-                throw new SerializationException("Could not deserialize cached result.");
-            }
-
-            return cachedDriverStandings;
+            return cachedDriverStandings ?? throw new SerializationException("Could not deserialize cached result.");
         }
     }
 }

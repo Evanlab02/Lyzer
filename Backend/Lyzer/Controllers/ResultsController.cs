@@ -8,16 +8,10 @@ namespace Lyzer.Controllers
 {
     [ApiController]
     [Route("/api/v1/results")]
-    public class ResultsController : ControllerBase
+    public class ResultsController(ILogger<ResultsController> logger, ResultsService resultsService) : ControllerBase
     {
-        private readonly ILogger<ResultsController> _logger;
-        private readonly ResultsService _resultsService;
-
-        public ResultsController(ILogger<ResultsController> logger, ResultsService resultsService)
-        {
-            _logger = logger;
-            _resultsService = resultsService;
-        }
+        private readonly ILogger<ResultsController> _logger = logger;
+        private readonly ResultsService _resultsService = resultsService;
 
         [HttpGet("current/{round}", Name = "GetLatestRaceResult")]
         public async Task<ResultsDTO> GetLatestRaceResult(string round)
