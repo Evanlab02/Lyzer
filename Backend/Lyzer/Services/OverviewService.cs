@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace Lyzer.Services
 {
+    /// <summary>
+    /// Service responsible for aggregating and providing overview data for the F1 dashboard.
+    /// </summary>
     public class OverviewService(CacheService cacheService, RacesService racesService, ResultsService resultsService, DriverService driverService)
     {
         private readonly CacheService _cacheService = cacheService;
@@ -15,6 +18,12 @@ namespace Lyzer.Services
         private readonly ResultsService _resultsService = resultsService;
         private readonly DriverService _driverService = driverService;
 
+        /// <summary>
+        /// Calculates information about the upcoming race weekend.
+        /// </summary>
+        /// <param name="nextRace">The next scheduled race.</param>
+        /// <param name="previousRace">The most recently completed race.</param>
+        /// <returns>Information about the upcoming race weekend including time and status.</returns>
         private static UpcomingRaceWeekendDTO GetUpcomingRaceWeekend(RaceDTO nextRace, RaceDTO previousRace)
         {
             DateTimeOffset firstSessionDateTime = nextRace.RaceStartDateTime.AddDays(-2);
@@ -52,6 +61,11 @@ namespace Lyzer.Services
             };
         }
 
+        /// <summary>
+        /// Calculates the progress through the current or upcoming race weekend.
+        /// </summary>
+        /// <param name="nextRace">The next scheduled race.</param>
+        /// <returns>Progress information for the race weekend including the next session and completion percentage.</returns>
         private static RaceWeekendProgressDTO GetRaceWeekendProgress(RaceDTO nextRace)
         {
             var nextSession = RacesHelper.GetNextRaceSession(nextRace);
@@ -67,6 +81,12 @@ namespace Lyzer.Services
             };
         }
 
+        /// <summary>
+        /// Retrieves season progress information including the previous race winner and race count.
+        /// </summary>
+        /// <param name="races">The complete list of races for the season.</param>
+        /// <param name="previousRace">The most recently completed race.</param>
+        /// <returns>Season progress information including previous race details and overall season progress.</returns>
         private async Task<SeasonProgressDTO> GetSeasonProgress(RacesDTO races, RaceDTO previousRace)
         {
             string season = previousRace.Season;
@@ -84,6 +104,10 @@ namespace Lyzer.Services
             };
         }
 
+        /// <summary>
+        /// Retrieves and formats the current driver championship standings for overview display.
+        /// </summary>
+        /// <returns>Formatted driver standings including leader information and all positions with team colors.</returns>
         private async Task<OverviewDriverStandingsDTO> GetDriverStandings()
         {
             DriverStandingsDTO standings = await _driverService.GetCachedDriverStandings("current");
@@ -116,6 +140,16 @@ namespace Lyzer.Services
             return finalStandings;
         }
 
+        /// <summary>
+        /// Retrieves comprehensive overview data for the F1 dashboard.
+        /// </summary>
+        /// <returns>
+        /// Complete overview data including race weekend progress, upcoming race information,
+        /// season progress, and driver standings. Results are cached for 15 minutes.
+        /// </returns>
+        /// <exception cref="GeneralException">
+        /// Thrown when no previous race is found (500 Internal Server Error) or when no upcoming race is found (404 Not Found).
+        /// </exception>
         public async Task<OverviewDataDTO> GetOverviewData()
         {
             string key = CacheKeyConstants.OverviewData;

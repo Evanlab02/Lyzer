@@ -1,13 +1,29 @@
 namespace Lyzer.Common.Constants.Colors
 {
+    /// <summary>
+    /// Defines color constants for F1 constructors/teams.
+    /// </summary>
     public static class ConstructorColorConstants
     {
+        /// <summary>
+        /// Data transfer object representing a constructor and its associated color.
+        /// </summary>
         public class ConstructorColorDTO
         {
+            /// <summary>
+            /// The name of the constructor/team.
+            /// </summary>
             public required string Constructor { get; set; }
+
+            /// <summary>
+            /// The hex color code associated with the constructor (e.g., "#FF9800").
+            /// </summary>
             public required string Colour { get; set; }
         }
 
+        /// <summary>
+        /// Internal collection of constructor colors for the current F1 season.
+        /// </summary>
         private static readonly List<ConstructorColorDTO> _constructorColours = new()
         {
             new ConstructorColorDTO { Constructor = "McLaren", Colour = "#FF9800" },
@@ -22,8 +38,17 @@ namespace Lyzer.Common.Constants.Colors
             new ConstructorColorDTO { Constructor = "Williams", Colour = "#005AFF" }
         };
 
+        /// <summary>
+        /// Gets the read-only collection of all constructor colors.
+        /// </summary>
+        /// <returns>A read-only list of constructor color mappings.</returns>
         public static IReadOnlyList<ConstructorColorDTO> GetConstructorColours() => _constructorColours;
 
+        /// <summary>
+        /// Retrieves the color code for a specific constructor.
+        /// </summary>
+        /// <param name="constructor">The name of the constructor to look up.</param>
+        /// <returns>The hex color code for the constructor, or an empty string if not found or if the input is null/empty.</returns>
         public static string GetColorForConstructor(string? constructor)
         {
             if (string.IsNullOrEmpty(constructor))
