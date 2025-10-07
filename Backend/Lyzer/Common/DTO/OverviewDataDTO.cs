@@ -5,6 +5,7 @@
         public required RaceWeekendProgressDTO RaceWeekendProgress { get; set; }
         public required UpcomingRaceWeekendDTO UpcomingRaceWeekend { get; set; }
         public required SeasonProgressDTO SeasonProgress { get; set; }
+        public required OverviewDriverStandingsDTO Drivers { get; set; }
     }
 
     public class RaceWeekendProgressDTO
@@ -29,5 +30,20 @@
         public required string PreviousGrandPrix { get; set; }
         public required int SeasonProgress { get; set; }
         public required int SeasonTotalRaces { get; set; }
+    }
+
+    public class OverviewDriverStandingsDTO
+    {
+        public required string Leader { get; set; }
+        public required string Color { get; set; }
+        public required List<OverviewDriverStandingsEntryDTO> Standings { get; set; }
+    }
+
+    public class OverviewDriverStandingsEntryDTO
+    {
+        public required string Position { get; set; }
+        public required string Driver { get; set; }
+        public required string Points { get; set; }
+        public required string Color { get; set; }
     }
 }

@@ -15,5 +15,10 @@
         public required string Wins { get; set; }
         public required DriverDTO Driver { get; set; }
         public required List<ConstructorDTO> Constructors { get; set; }
+
+        public string GetDriverFullName()
+        {
+            return Driver.GetFullName();
+        }
     }
 }

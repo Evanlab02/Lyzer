@@ -1,13 +1,19 @@
+using Lyzer.Common.Constants;
+using Lyzer.Common.Constants.Colors;
 using Lyzer.Common.DTO;
 using Lyzer.Common.Helpers;
 using Lyzer.Errors;
 
+using Newtonsoft.Json;
+
 namespace Lyzer.Services
 {
-    public class OverviewService(RacesService racesService, ResultsService resultsService)
+    public class OverviewService(CacheService cacheService, RacesService racesService, ResultsService resultsService, DriverService driverService)
     {
+        private readonly CacheService _cacheService = cacheService;
         private readonly RacesService _racesService = racesService;
         private readonly ResultsService _resultsService = resultsService;
+        private readonly DriverService _driverService = driverService;
 
         private static UpcomingRaceWeekendDTO GetUpcomingRaceWeekend(RaceDTO nextRace, RaceDTO previousRace)
         {
@@ -78,9 +84,52 @@ namespace Lyzer.Services
             };
         }
 
+        private async Task<OverviewDriverStandingsDTO> GetDriverStandings()
+        {
+            DriverStandingsDTO standings = await _driverService.GetCachedDriverStandings("current");
+            DriverStandingDTO? firstPosition = standings.DriverStandings.FirstOrDefault(standing => standing.PositionText.Equals("1"));
+
+            string leader = string.Empty;
+            string color = string.Empty;
+            if (firstPosition != null)
+            {
+                leader = firstPosition.GetDriverFullName();
+                color = ConstructorColorConstants.GetColorForConstructor(firstPosition.Constructors.FirstOrDefault()?.Name);
+            }
+
+            List<DriverStandingDTO> sortedStandings = [.. standings.DriverStandings.OrderBy(x => int.Parse(x.PositionText))];
+            List<OverviewDriverStandingsEntryDTO> finalStandingEntries = [.. sortedStandings.Select(entry => new OverviewDriverStandingsEntryDTO()
+            {
+                Driver = entry.GetDriverFullName(),
+                Points = entry.Points,
+                Position = entry.PositionText,
+                Color = ConstructorColorConstants.GetColorForConstructor(entry.Constructors.FirstOrDefault()?.Name)
+            })];
+
+            OverviewDriverStandingsDTO finalStandings = new()
+            {
+                Leader = leader,
+                Color = color,
+                Standings = finalStandingEntries
+            };
+
+            return finalStandings;
+        }
 
         public async Task<OverviewDataDTO> GetOverviewData()
         {
+            string key = CacheKeyConstants.OverviewData;
+            string? result = await _cacheService.Get(key);
+
+            if (result != null)
+            {
+                OverviewDataDTO? cachedOverviewData = JsonConvert.DeserializeObject<OverviewDataDTO>(result);
+                if (cachedOverviewData != null)
+                {
+                    return cachedOverviewData;
+                }
+            }
+
             var races = await _racesService.GetCachedRaces("current");
 
             var previousRace = RacesHelper.GetPreviousRace(races);
@@ -107,13 +156,18 @@ namespace Lyzer.Services
             UpcomingRaceWeekendDTO upcomingRaceWeekend = GetUpcomingRaceWeekend(nextRace, previousRace);
             RaceWeekendProgressDTO raceWeekendProgress = GetRaceWeekendProgress(nextRace);
             SeasonProgressDTO seasonProgress = await GetSeasonProgress(races, previousRace);
+            OverviewDriverStandingsDTO driverStandings = await GetDriverStandings();
 
-            return new OverviewDataDTO
+            OverviewDataDTO overviewData = new()
             {
                 RaceWeekendProgress = raceWeekendProgress,
                 UpcomingRaceWeekend = upcomingRaceWeekend,
-                SeasonProgress = seasonProgress
+                SeasonProgress = seasonProgress,
+                Drivers = driverStandings
             };
+
+            await _cacheService.Add(key, JsonConvert.SerializeObject(overviewData), TimeSpan.FromMinutes(15));
+            return overviewData;
         }
     }
 }
