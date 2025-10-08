@@ -2,13 +2,14 @@ import { useMemo } from "react";
 import { SeasonProgress } from "../../clients/interfaces/overviewInterfaces";
 import Card, { CardBody, CardHeading, CardSection } from "../../components/Card";
 import { GridItem } from "../../components/Grid";
-import { LOADING_SEASON_PROGRESS } from "../../constants/loading";
+
 export interface TableSectionProps {
-	seasonProgress?: SeasonProgress;
+	loading: boolean;
+	seasonProgress: SeasonProgress;
 }
 
 export default function TableSection(props: Readonly<TableSectionProps>) {
-	const { seasonProgress = LOADING_SEASON_PROGRESS } = props;
+	const { loading, seasonProgress } = props;
 
 	const previousRaceWinner = seasonProgress.previousRaceWinner;
 	const previousGrandPrix = seasonProgress.previousGrandPrix;
@@ -24,9 +25,9 @@ export default function TableSection(props: Readonly<TableSectionProps>) {
 			<GridItem xs={12} sm={12} md={12} lg={12} xl={3} xxl={3}>
 				<Card>
 					<CardBody>
-						<CardSection title={previousRaceWinner} subtitle="Previous Race Winner" />
-						<CardSection title={previousGrandPrix} subtitle="Previous Grand Prix" />
-						<CardSection title={seasonProgressDisplay} subtitle="Season Progress" />
+						<CardSection title={previousRaceWinner} subtitle="Previous Race Winner" skeletonTitleHeight="20" skeletonSubtitleHeight="10" loading={loading} />
+						<CardSection title={previousGrandPrix} subtitle="Previous Grand Prix" skeletonTitleHeight="20" skeletonSubtitleHeight="10" loading={loading} />
+						<CardSection title={seasonProgressDisplay} subtitle="Season Progress" skeletonTitleHeight="20" skeletonSubtitleHeight="10" loading={loading} />
 					</CardBody>
 				</Card>
 			</GridItem>

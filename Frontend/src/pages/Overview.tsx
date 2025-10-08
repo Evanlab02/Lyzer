@@ -29,7 +29,7 @@ export default function Overview() {
 					raceWeekendProgress={raceWeekendProgress}
 					upcomingRaceWeekend={upcomingRaceWeekend}
 				/>
-				<TableSection seasonProgress={seasonProgress} />
+				<TableSection loading={isLoading} seasonProgress={seasonProgress} />
 			</GridContainer>
 		</div>
 	);

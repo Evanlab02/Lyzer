@@ -22,7 +22,7 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>Is it race weekend?</CardHeading>
-					<CardBody>
+					<CardBody loading={loading} skeletonHeight="43px">
 						{upcomingRaceWeekend.status}
 						{upcomingRaceWeekend.timeToRaceWeekend > 0 && !upcomingRaceWeekend.isRaceWeekend && (
 							<p className="text-sm m-0">
@@ -40,7 +40,7 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>Race weekend progress</CardHeading>
-					<CardBody>
+					<CardBody loading={loading} skeletonHeight="43px">
 						{raceWeekendProgress.ongoing
 							? `Ongoing session: ${raceWeekendProgress.name}`
 							: `Next session: ${raceWeekendProgress.name}`}
@@ -58,11 +58,15 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>Driver leader</CardHeading>
+					<CardBody loading={loading} skeletonHeight="43px"></CardBody>
+					<Progress value={0} max={100} />
 				</Card>
 			</GridItem>
 			<GridItem xs={12} sm={12} md={6} lg={6} xl={3} xxl={3}>
 				<Card>
 					<CardHeading>Constructor leader</CardHeading>
+					<CardBody loading={loading} skeletonHeight="43px"></CardBody>
+					<Progress value={0} max={100} />
 				</Card>
 			</GridItem>
 		</>
