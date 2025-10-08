@@ -1,7 +1,7 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import Overview from "../../pages/Overview";
+import { expect, it } from "vitest";
 import { OverviewInterface } from "../../clients/interfaces/overviewInterfaces";
+import Overview from "../../pages/Overview";
 
 it("Given the user is on the overview page when it is race weekend and there is no ongoing session, then the user should be able to see what the next session of the race weekend will be.", async () => {
 	const mockData = {

@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
 import { Home, User } from "lucide-react";
+import { PropsWithChildren } from "react";
 
 interface RouteInterface extends PropsWithChildren {
 	name: string;

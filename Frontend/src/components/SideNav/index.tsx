@@ -1,6 +1,6 @@
+import { ArrowLeftToLine } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeftToLine } from "lucide-react";
 import { ROUTES } from "../../constants/routes";
 import { useTheme } from "../../hooks/useTheme";
 import "./styles/index.scss";

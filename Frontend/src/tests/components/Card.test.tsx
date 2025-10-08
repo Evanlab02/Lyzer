@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import Card, { CardBody, CardHeading, CardSection } from "../../components/Card";
 
 it("Basic card renders correctly", async () => {

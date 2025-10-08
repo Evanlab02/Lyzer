@@ -1,7 +1,7 @@
+import { PropsWithChildren } from "react";
 import CardBody from "./CardBody";
 import CardHeading from "./CardHeading";
 import CardSection from "./CardSection";
-import { PropsWithChildren } from "react";
 import "./styles/index.scss";
 
 export interface CardProps extends PropsWithChildren {

@@ -1,8 +1,8 @@
+import { RefreshCcw } from "lucide-react";
 import { GridContainer } from "../components/Grid";
+import useOverview from "../hooks/useOverview";
 import CardSection from "../layouts/Overview/CardSection";
 import TableSection from "../layouts/Overview/TableSection";
-import useOverview from "../hooks/useOverview";
-import { RefreshCcw } from "lucide-react";
 
 export default function Overview() {
 	const { raceWeekendProgress, upcomingRaceWeekend, seasonProgress, refreshData } = useOverview();

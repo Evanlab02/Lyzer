@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import { GridContainer, GridItem } from "../../components/Grid";
 
 it("Grid container renders correctly", async () => {

@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import CardSection from "../../../layouts/Overview/CardSection";
 
 it("CardSection renders loading state correctly", async () => {

@@ -1,7 +1,7 @@
-import { vi, expect, it } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
-import ThemeProvider from "../../components/ThemeProvider";
+import { expect, it, vi } from "vitest";
 import NavBar from "../../components/NavBar";
+import ThemeProvider from "../../components/ThemeProvider";
 
 it("Navbar renders correctly", async () => {
 	const { findByTestId } = render(

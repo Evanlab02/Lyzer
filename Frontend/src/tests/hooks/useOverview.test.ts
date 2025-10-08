@@ -1,9 +1,9 @@
-import { expect, it } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
+import { expect, it } from "vitest";
 import useOverview from "../../hooks/useOverview";
 import {
-	overviewMockIsRaceWeekendOngoing,
 	overviewMockIsNotRaceWeekend,
+	overviewMockIsRaceWeekendOngoing,
 } from "../mocks/overviewMock";
 
 it("should return the overview data that is not a race weekend", async () => {

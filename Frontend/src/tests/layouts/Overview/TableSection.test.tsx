@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import TableSection from "../../../layouts/Overview/TableSection";
 
 it("TableSection renders loading state correctly", async () => {

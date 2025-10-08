@@ -1,6 +1,6 @@
-import { expect, it } from "vitest";
-import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { expect, it } from "vitest";
 import ThemeProvider from "../../components/ThemeProvider";
 import Navigation from "../../routes/Navigation";
 import { overviewMockIsNotRaceWeekend } from "../mocks/overviewMock";

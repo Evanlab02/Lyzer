@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import Progress from "../../components/Progress";
 
 it("Empty progress bar renders correctly", async () => {

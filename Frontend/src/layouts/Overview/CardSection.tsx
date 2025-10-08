@@ -1,11 +1,11 @@
 import { DateTime } from "luxon";
-import Progress from "../../components/Progress";
-import Card, { CardBody, CardHeading } from "../../components/Card";
-import { GridItem } from "../../components/Grid";
 import {
 	RaceWeekendProgress,
 	UpcomingRaceWeekend,
 } from "../../clients/interfaces/overviewInterfaces";
+import Card, { CardBody, CardHeading } from "../../components/Card";
+import { GridItem } from "../../components/Grid";
+import Progress from "../../components/Progress";
 import {
 	LOADING_RACE_WEEKEND_PROGRESS,
 	LOADING_UPCOMING_RACE_WEEKEND,

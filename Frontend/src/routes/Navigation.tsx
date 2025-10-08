@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Overview from "../pages/Overview";
 import NotFound from "../pages/404";
+import Overview from "../pages/Overview";
 
 export default function Navigation() {
 	return (
