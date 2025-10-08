@@ -6,10 +6,7 @@ import NavBar from "../../components/NavBar";
 it("Navbar renders correctly", async () => {
 	const { findByTestId } = render(
 		<ThemeProvider>
-			<NavBar
-				testId="lyzer-nav-bar"
-				onMenuClick={vi.fn()}
-			/>
+			<NavBar testId="lyzer-nav-bar" onMenuClick={vi.fn()} />
 		</ThemeProvider>
 	);
 
@@ -19,7 +16,7 @@ it("Navbar renders correctly", async () => {
 
 it("Navbar onMenuClick is called", async () => {
 	const onMenuClick = vi.fn();
-    
+
 	const { findByTestId } = render(
 		<ThemeProvider>
 			<NavBar

@@ -2,19 +2,14 @@ import { useMemo } from "react";
 import "./styles/index.scss";
 
 export interface ProgressProps {
-    value?: number;
-    max?: number;
-    useProgressColour?: boolean;
-    testId?: string;
+	value?: number;
+	max?: number;
+	useProgressColour?: boolean;
+	testId?: string;
 }
 
 export default function Progress(props: Readonly<ProgressProps>) {
-	const { 
-		value = 0, 
-		max = 100,
-		useProgressColour = false,
-		testId
-	} = props;
+	const { value = 0, max = 100, useProgressColour = false, testId } = props;
 
 	const progressClassName = useMemo(() => {
 		const progressPercentage = (value / max) * 100;

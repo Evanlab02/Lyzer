@@ -15,8 +15,12 @@ function App() {
 
 	return (
 		<>
-			<SideMenu sideNavOpen={sideNavOpen} onCloseClick={toggleSideNav} onSideNavBlur={toggleSideNav}/>
-			<NavBar onMenuClick={toggleSideNav}/>
+			<SideMenu
+				sideNavOpen={sideNavOpen}
+				onCloseClick={toggleSideNav}
+				onSideNavBlur={toggleSideNav}
+			/>
+			<NavBar onMenuClick={toggleSideNav} />
 			<Navigation />
 			<Outlet />
 		</>

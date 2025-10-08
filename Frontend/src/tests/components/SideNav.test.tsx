@@ -4,7 +4,6 @@ import { fireEvent, render } from "@testing-library/react";
 import ThemeProvider from "../../components/ThemeProvider";
 import SideMenu from "../../components/SideNav";
 
-
 it("SideNav renders closed correctly", async () => {
 	const { findByTestId } = render(
 		<MemoryRouter initialEntries={["/"]}>

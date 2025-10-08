@@ -16,12 +16,12 @@ it("TableSection renders loading state correctly", async () => {
 it("TableSection renders correctly", async () => {
 	const { findByTestId } = render(
 		<div data-testid="lyzer-table-section">
-			<TableSection 
+			<TableSection
 				seasonProgress={{
 					previousRaceWinner: "Max Verstappen",
 					previousGrandPrix: "Qatar",
 					seasonProgress: 12,
-					seasonTotalRaces: 24
+					seasonTotalRaces: 24,
 				}}
 			/>
 		</div>

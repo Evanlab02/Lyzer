@@ -2,14 +2,10 @@ import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import CardSection from "../../../layouts/Overview/CardSection";
 
-
 it("CardSection renders loading state correctly", async () => {
 	const { findByTestId } = render(
 		<div data-testid="lyzer-card-section">
-			<CardSection 
-				raceWeekendProgress={undefined}
-				upcomingRaceWeekend={undefined}
-			/>
+			<CardSection raceWeekendProgress={undefined} upcomingRaceWeekend={undefined} />
 		</div>
 	);
 
@@ -20,18 +16,18 @@ it("CardSection renders loading state correctly", async () => {
 it("CardSection renders correctly", async () => {
 	const { findByTestId } = render(
 		<div data-testid="lyzer-card-section">
-			<CardSection 
+			<CardSection
 				raceWeekendProgress={{
 					name: "Race",
 					ongoing: true,
 					weekendProgress: 100,
-					startDateTime: "2025-02-22T12:00:00.000Z"
+					startDateTime: "2025-02-22T12:00:00.000Z",
 				}}
 				upcomingRaceWeekend={{
 					isRaceWeekend: true,
 					status: "Yes",
 					timeToRaceWeekendProgress: 100,
-					timeToRaceWeekend: 0
+					timeToRaceWeekend: 0,
 				}}
 			/>
 		</div>

@@ -5,32 +5,21 @@ import useOverview from "../hooks/useOverview";
 import { RefreshCcw } from "lucide-react";
 
 export default function Overview() {
-	const { 
-		raceWeekendProgress,
-		upcomingRaceWeekend,
-		seasonProgress,
-		refreshData
-	} = useOverview();;
+	const { raceWeekendProgress, upcomingRaceWeekend, seasonProgress, refreshData } = useOverview();
 
 	return (
 		<div className="page-content" data-testid="lyzer-overview-page">
 			<div className="flex-row justify-between items-center">
 				<h2>Overview</h2>
-				<RefreshCcw 
-					className="cursor-pointer" 
-					size={24} 
-					onClick={refreshData}
-				/>
+				<RefreshCcw className="cursor-pointer" size={24} onClick={refreshData} />
 			</div>
 			<GridContainer>
-				<CardSection 
+				<CardSection
 					raceWeekendProgress={raceWeekendProgress}
 					upcomingRaceWeekend={upcomingRaceWeekend}
 				/>
-				<TableSection 
-					seasonProgress={seasonProgress}
-				/>
+				<TableSection seasonProgress={seasonProgress} />
 			</GridContainer>
 		</div>
 	);
-};
+}

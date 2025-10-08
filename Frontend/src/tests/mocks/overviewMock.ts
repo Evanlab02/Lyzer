@@ -5,20 +5,20 @@ export const overviewMockIsNotRaceWeekend: OverviewInterface = {
 		name: "Practice 1",
 		ongoing: false,
 		weekendProgress: 0,
-		startDateTime: "2025-02-22T12:00:00.000Z"
+		startDateTime: "2025-02-22T12:00:00.000Z",
 	},
 	upcomingRaceWeekend: {
 		isRaceWeekend: false,
 		status: "No",
 		timeToRaceWeekendProgress: 50,
-		timeToRaceWeekend: 4000
+		timeToRaceWeekend: 4000,
 	},
 	seasonProgress: {
 		previousRaceWinner: "Max Verstappen",
 		previousGrandPrix: "Qatar",
 		seasonProgress: 12,
-		seasonTotalRaces: 24
-	}
+		seasonTotalRaces: 24,
+	},
 };
 
 export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
@@ -26,18 +26,18 @@ export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
 		name: "Race",
 		ongoing: true,
 		weekendProgress: 100,
-		startDateTime: "2025-02-22T12:00:00.000Z"
-	}, 
+		startDateTime: "2025-02-22T12:00:00.000Z",
+	},
 	upcomingRaceWeekend: {
 		isRaceWeekend: true,
 		status: "Yes",
 		timeToRaceWeekendProgress: 100,
-		timeToRaceWeekend: 0
+		timeToRaceWeekend: 0,
 	},
 	seasonProgress: {
 		previousRaceWinner: "Max Verstappen",
 		previousGrandPrix: "Qatar",
 		seasonProgress: 12,
-		seasonTotalRaces: 24
-	}
+		seasonTotalRaces: 24,
+	},
 };

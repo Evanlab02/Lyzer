@@ -23,8 +23,6 @@ export default function ThemeProvider(props: PropsWithChildren) {
 	}, [isDarkMode]);
 
 	return (
-		<ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>{children}</ThemeContext.Provider>
 	);
-};
+}

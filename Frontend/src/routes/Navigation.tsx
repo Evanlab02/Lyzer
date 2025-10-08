@@ -5,8 +5,8 @@ import NotFound from "../pages/404";
 export default function Navigation() {
 	return (
 		<Routes>
-			<Route path="" element={<Overview/>} />
-			<Route path="*" element={<NotFound/>} />
+			<Route path="" element={<Overview />} />
+			<Route path="*" element={<NotFound />} />
 		</Routes>
 	);
-};
+}

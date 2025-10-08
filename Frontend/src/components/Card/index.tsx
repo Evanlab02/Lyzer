@@ -5,13 +5,13 @@ import { PropsWithChildren } from "react";
 import "./styles/index.scss";
 
 export interface CardProps extends PropsWithChildren {
-    testId?: string;
+	testId?: string;
 }
 
 export default function Card(props: Readonly<CardProps>) {
 	const { children, testId } = props;
 
-	return(
+	return (
 		<div className="lyzer-card" data-testid={testId}>
 			{children}
 		</div>
