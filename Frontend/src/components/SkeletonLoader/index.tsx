@@ -16,9 +16,6 @@ export default function SkeletonLoader(props: Readonly<SkeletonLoaderProps>) {
 	};
 
 	return (
-		<div
-			className={`skeleton-loader skeleton-loader--${variant} ${className}`}
-			style={style}
-		/>
+		<div className={`skeleton-loader skeleton-loader--${variant} ${className}`} style={style} />
 	);
 }

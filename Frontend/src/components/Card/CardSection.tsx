@@ -12,7 +12,16 @@ export interface CardSectionProps extends PropsWithChildren {
 }
 
 export default function CardSection(props: Readonly<CardSectionProps>) {
-	const { title, subtitle, children, skeletonTitleHeight, skeletonSubtitleHeight, skeletonBodyHeight, skeletonBodyVariant, loading = false } = props;
+	const {
+		title,
+		subtitle,
+		children,
+		skeletonTitleHeight,
+		skeletonSubtitleHeight,
+		skeletonBodyHeight,
+		skeletonBodyVariant,
+		loading = false,
+	} = props;
 
 	if (loading) {
 		return (
@@ -23,7 +32,9 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 				<p className="lyzer-card-section-subtitle">
 					<SkeletonLoader height={skeletonSubtitleHeight} variant="text" />
 				</p>
-				{skeletonBodyHeight && <SkeletonLoader height={skeletonSubtitleHeight} variant={skeletonBodyVariant} />}
+				{skeletonBodyHeight && (
+					<SkeletonLoader height={skeletonSubtitleHeight} variant={skeletonBodyVariant} />
+				)}
 				<hr className="lyzer-card-section-divider" />
 			</div>
 		);

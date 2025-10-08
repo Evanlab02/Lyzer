@@ -8,6 +8,11 @@ export interface CardBodyProps extends PropsWithChildren {
 
 export default function CardBody(props: Readonly<CardBodyProps>) {
 	const { children, skeletonHeight, loading = false } = props;
-	if (loading) return <h3 className="lyzer-card-body"><SkeletonLoader height={skeletonHeight}/></h3>;
+	if (loading)
+		return (
+			<h3 className="lyzer-card-body">
+				<SkeletonLoader height={skeletonHeight} />
+			</h3>
+		);
 	return <h3 className="lyzer-card-body">{children}</h3>;
 }
