@@ -10,7 +10,7 @@ export interface ErrorProps {
 export default function LyzerError(props: Readonly<ErrorProps>) {
 	const { error, message, testId } = props;
 
-	const errorMessage = message || error?.message || "An unexpected error occurred";
+	const errorMessage = message ?? error?.message ?? "An unexpected error occurred";
 
 	return (
 		<div className="lyzer-error" data-testid={testId}>
