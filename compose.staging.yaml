@@ -9,7 +9,7 @@ services:
 
   api:
     build:
-      context: Backend/Lyzer
+      context: ./Backend
       dockerfile: Docker/Release/Dockerfile
     container_name: lyzer-api
     env_file:

@@ -2,7 +2,13 @@
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.enableEditorConfigSupport": true,
     "files.exclude": {
-        "**/bin": true,
-        "**/obj": true
-    },
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "bin/": true,
+        "obj/": true,
+        "Lyzer.csproj.user": true,
+    }
 }

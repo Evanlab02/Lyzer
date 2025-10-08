@@ -11,7 +11,7 @@ services:
 
   api:
     build:
-      context: Backend/Lyzer
+      context: ./Backend/
       dockerfile: Docker/Dev/Dockerfile
     container_name: lyzer-api
     env_file:
@@ -23,17 +23,17 @@ services:
     develop:
       watch:
         - action: sync
-          path: ./Backend/Lyzer
+          path: ./Backend/
           target: /app
           ignore:
             - bin/
             - obj/
         - action: rebuild
-          path: ./Backend/Lyzer/Lyzer.csproj
+          path: ./Backend/Lyzer.csproj
 
   docs:
     build:
-      context: Docs
+      context: ./Docs
     container_name: lyzer-docs
     ports:
       - 8000:8000

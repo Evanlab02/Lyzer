@@ -6,3 +6,7 @@ format:
 lint:
 	dotnet format --verify-no-changes
 	dotnet build
+
+.PHONY: build
+build:
+	dotnet build

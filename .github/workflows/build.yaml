@@ -24,7 +24,7 @@ jobs:
         with:
           dotnet-version: '8.x'
           cache: true
-          cache-dependency-path: Backend/Lyzer
+          cache-dependency-path: Backend
       - name: Install dependencies
         run: dotnet restore
       - name: Build app
