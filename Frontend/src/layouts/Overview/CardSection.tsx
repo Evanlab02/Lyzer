@@ -6,22 +6,16 @@ import {
 import Card, { CardBody, CardHeading } from "../../components/Card";
 import { GridItem } from "../../components/Grid";
 import Progress from "../../components/Progress";
-import {
-	LOADING_RACE_WEEKEND_PROGRESS,
-	LOADING_UPCOMING_RACE_WEEKEND,
-} from "../../constants/loading";
 import { convertMinutesToHighestDenominator } from "../../utils/time";
 
 export interface CardSectionProps {
-	raceWeekendProgress?: RaceWeekendProgress;
-	upcomingRaceWeekend?: UpcomingRaceWeekend;
+	loading: boolean;
+	raceWeekendProgress: RaceWeekendProgress;
+	upcomingRaceWeekend: UpcomingRaceWeekend;
 }
 
 export default function CardSection(props: Readonly<CardSectionProps>) {
-	const {
-		raceWeekendProgress = LOADING_RACE_WEEKEND_PROGRESS,
-		upcomingRaceWeekend = LOADING_UPCOMING_RACE_WEEKEND,
-	} = props;
+	const { loading, raceWeekendProgress, upcomingRaceWeekend } = props;
 
 	return (
 		<>

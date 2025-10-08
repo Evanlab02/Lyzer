@@ -1,11 +1,21 @@
 import { RefreshCcw } from "lucide-react";
+import LyzerError from "../components/Error";
 import { GridContainer } from "../components/Grid";
 import useOverview from "../hooks/useOverview";
 import CardSection from "../layouts/Overview/CardSection";
 import TableSection from "../layouts/Overview/TableSection";
 
 export default function Overview() {
-	const { raceWeekendProgress, upcomingRaceWeekend, seasonProgress, refreshData } = useOverview();
+	const {
+		error,
+		isLoading,
+		raceWeekendProgress,
+		upcomingRaceWeekend,
+		seasonProgress,
+		refreshData,
+	} = useOverview();
+
+	if (error) return <LyzerError error={error}></LyzerError>;
 
 	return (
 		<div className="page-content" data-testid="lyzer-overview-page">
@@ -15,6 +25,7 @@ export default function Overview() {
 			</div>
 			<GridContainer>
 				<CardSection
+					loading={isLoading}
 					raceWeekendProgress={raceWeekendProgress}
 					upcomingRaceWeekend={upcomingRaceWeekend}
 				/>

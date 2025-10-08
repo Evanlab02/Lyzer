@@ -2,6 +2,7 @@ export interface OverviewInterface {
 	raceWeekendProgress: RaceWeekendProgress;
 	upcomingRaceWeekend: UpcomingRaceWeekend;
 	seasonProgress: SeasonProgress;
+	drivers: DriverStandings;
 }
 
 export interface RaceWeekendProgress {
@@ -23,4 +24,17 @@ export interface SeasonProgress {
 	previousGrandPrix: string;
 	seasonProgress: number;
 	seasonTotalRaces: number;
+}
+
+export interface DriverStandingsEntry {
+	position: string;
+	driver: string;
+	points: string;
+	color: string;
+}
+
+export interface DriverStandings {
+	leader: string;
+	color: string;
+	standings: DriverStandingsEntry[];
 }

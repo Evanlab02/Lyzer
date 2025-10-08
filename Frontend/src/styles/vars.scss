@@ -2,6 +2,7 @@
 
 :root {
 	// SAME ACROSS ALL THEMES
+	--lyzer-error: #{colours.$lyzer-red};
 	--progress-bar-indicator-colour: #{colours.$lyzer-red};
 	--progress-bar-indicator-colour-complete: #{colours.$lyzer-success};
 	--progress-bar-indicator-colour-almost: #{colours.$lyzer-finalizing};

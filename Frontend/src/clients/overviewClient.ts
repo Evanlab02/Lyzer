@@ -9,7 +9,14 @@ export async function getOverview(): Promise<OverviewInterface> {
 	});
 
 	if (!response.ok || response.status !== 200) {
-		throw new Error("Failed to fetch overview data.");
+		let message = "No additional information";
+		try {
+			let jsonContent = await response.json();
+			message = jsonContent["message"];
+		} catch {
+			console.warn("Failed to parse JSON, ignoring.");
+		}
+		throw new Error(`Failed to fetch overview data (${response.status} - ${message})`);
 	}
 
 	return (await response.json()) as OverviewInterface;

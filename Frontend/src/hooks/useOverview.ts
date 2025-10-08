@@ -1,38 +1,63 @@
-import { useEffect, useState } from "react";
-import {
-	RaceWeekendProgress,
-	SeasonProgress,
-	UpcomingRaceWeekend,
-} from "../clients/interfaces/overviewInterfaces";
+import { useCallback, useEffect, useState } from "react";
+import { OverviewInterface } from "../clients/interfaces/overviewInterfaces";
 import { getOverview } from "../clients/overviewClient";
 
+const EMPTY: OverviewInterface = {
+	raceWeekendProgress: {
+		name: "",
+		ongoing: false,
+		weekendProgress: 0,
+		startDateTime: "",
+	},
+	upcomingRaceWeekend: {
+		isRaceWeekend: false,
+		timeToRaceWeekendProgress: 0,
+		status: "",
+		timeToRaceWeekend: 0,
+	},
+	seasonProgress: {
+		previousRaceWinner: "",
+		previousGrandPrix: "",
+		seasonProgress: 0,
+		seasonTotalRaces: 0,
+	},
+	drivers: {
+		leader: "",
+		color: "",
+		standings: [],
+	},
+};
+
 export default function useOverview() {
-	const [raceWeekendProgress, setRaceWeekendProgress] = useState<RaceWeekendProgress>();
-	const [upcomingRaceWeekend, setUpcomingRaceWeekend] = useState<UpcomingRaceWeekend>();
-	const [seasonProgress, setSeasonProgress] = useState<SeasonProgress>();
+	const [data, setData] = useState<OverviewInterface>(EMPTY);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState<Error>();
+
+	const fetchData = useCallback(async () => {
+		try {
+			setIsLoading(true);
+			setError(undefined);
+			const result = await getOverview();
+			setData(result);
+		} catch (err) {
+			setError(err instanceof Error ? err : new Error("Failed to fetch overview data"));
+		} finally {
+			setIsLoading(false);
+		}
+	}, []);
 
 	useEffect(() => {
 		void fetchData();
-	}, []);
+	}, [fetchData]);
 
-	const fetchData = async () => {
-		const result = await getOverview();
-		setRaceWeekendProgress(result.raceWeekendProgress);
-		setUpcomingRaceWeekend(result.upcomingRaceWeekend);
-		setSeasonProgress(result.seasonProgress);
-	};
-
-	const refreshData = () => {
-		setRaceWeekendProgress(undefined);
-		setUpcomingRaceWeekend(undefined);
-		setSeasonProgress(undefined);
+	const refreshData = useCallback(() => {
 		void fetchData();
-	};
+	}, [fetchData]);
 
 	return {
-		raceWeekendProgress,
-		upcomingRaceWeekend,
-		seasonProgress,
+		...data,
+		isLoading,
+		error,
 		refreshData,
 	};
 }
