@@ -13,14 +13,14 @@ it("CardSection renders loading state correctly", async () => {
 					name: "",
 					ongoing: false,
 					weekendProgress: 0,
-					startDateTime: undefined
-				}} 
+					startDateTime: undefined,
+				}}
 				upcomingRaceWeekend={{
 					isRaceWeekend: false,
 					status: "",
 					timeToRaceWeekend: 0,
-					timeToRaceWeekendProgress: 0
-				}} 
+					timeToRaceWeekendProgress: 0,
+				}}
 			/>
 		</div>
 	);

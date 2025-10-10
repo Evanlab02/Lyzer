@@ -120,7 +120,14 @@ it("Loading card body renders skeleton correctly with custom variant and height.
 it("Card with loading section renders correctly.", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardSection title="" subtitle="" loading skeletonBodyHeight="600px" skeletonSubtitleHeight="90px" skeletonTitleHeight="80px">
+			<CardSection
+				title=""
+				subtitle=""
+				loading
+				skeletonBodyHeight="600px"
+				skeletonSubtitleHeight="90px"
+				skeletonTitleHeight="80px"
+			>
 				<p>Card Section Content</p>
 			</CardSection>
 		</Card>

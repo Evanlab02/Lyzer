@@ -30,7 +30,11 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 					<SkeletonLoader height={skeletonTitleHeight} variant="text" />
 				</h3>
 				{skeletonSubtitleHeight && (
-					<SkeletonLoader className="lyzer-card-section-subtitle" height={skeletonSubtitleHeight} variant="text" />
+					<SkeletonLoader
+						className="lyzer-card-section-subtitle"
+						height={skeletonSubtitleHeight}
+						variant="text"
+					/>
 				)}
 				{skeletonBodyHeight && (
 					<SkeletonLoader height={skeletonBodyHeight} variant={skeletonBodyVariant} />
