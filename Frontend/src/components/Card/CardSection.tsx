@@ -29,11 +29,11 @@ export default function CardSection(props: Readonly<CardSectionProps>) {
 				<h3 className="lyzer-card-section-title">
 					<SkeletonLoader height={skeletonTitleHeight} variant="text" />
 				</h3>
-				<p className="lyzer-card-section-subtitle">
-					<SkeletonLoader height={skeletonSubtitleHeight} variant="text" />
-				</p>
+				{skeletonSubtitleHeight && (
+					<SkeletonLoader className="lyzer-card-section-subtitle" height={skeletonSubtitleHeight} variant="text" />
+				)}
 				{skeletonBodyHeight && (
-					<SkeletonLoader height={skeletonSubtitleHeight} variant={skeletonBodyVariant} />
+					<SkeletonLoader height={skeletonBodyHeight} variant={skeletonBodyVariant} />
 				)}
 				<hr className="lyzer-card-section-divider" />
 			</div>

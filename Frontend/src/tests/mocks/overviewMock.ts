@@ -1,27 +1,159 @@
-import { OverviewInterface } from "../../clients/interfaces/overviewInterfaces";
+import { OverviewData } from "../../clients/interfaces/overviewInterfaces";
 
-export const overviewMockIsNotRaceWeekend: OverviewInterface = {
+export const overviewMockIsNotRaceWeekend: OverviewData = {
 	raceWeekendProgress: {
-		name: "Practice 1",
+		name: "First Practice",
 		ongoing: false,
 		weekendProgress: 0,
-		startDateTime: "2025-02-22T12:00:00.000Z",
+		startDateTime: "2025-10-17T17:30:00Z",
 	},
 	upcomingRaceWeekend: {
 		isRaceWeekend: false,
+		timeToRaceWeekendProgress: 0,
 		status: "No",
-		timeToRaceWeekendProgress: 50,
-		timeToRaceWeekend: 4000,
+		timeToRaceWeekend: 10255,
 	},
 	seasonProgress: {
-		previousRaceWinner: "Max Verstappen",
-		previousGrandPrix: "Qatar",
-		seasonProgress: 12,
+		previousRaceWinner: "George Russell",
+		previousGrandPrix: "Singapore Grand Prix",
+		seasonProgress: 18,
 		seasonTotalRaces: 24,
+	},
+	drivers: {
+		leader: "Oscar Piastri",
+		color: "#FF9800",
+		standings: [
+			{
+				position: "1",
+				driver: "Oscar Piastri",
+				points: "336",
+				color: "#FF9800",
+			},
+			{
+				position: "2",
+				driver: "Lando Norris",
+				points: "314",
+				color: "#FF9800",
+			},
+			{
+				position: "3",
+				driver: "Max Verstappen",
+				points: "273",
+				color: "#1E5BC6",
+			},
+			{
+				position: "4",
+				driver: "George Russell",
+				points: "237",
+				color: "#6CD3BF",
+			},
+			{
+				position: "5",
+				driver: "Charles Leclerc",
+				points: "173",
+				color: "#E8002D",
+			},
+			{
+				position: "6",
+				driver: "Lewis Hamilton",
+				points: "125",
+				color: "#E8002D",
+			},
+			{
+				position: "7",
+				driver: "Andrea Kimi Antonelli",
+				points: "88",
+				color: "#6CD3BF",
+			},
+			{
+				position: "8",
+				driver: "Alexander Albon",
+				points: "70",
+				color: "#005AFF",
+			},
+			{
+				position: "9",
+				driver: "Isack Hadjar",
+				points: "39",
+				color: "#6692FF",
+			},
+			{
+				position: "10",
+				driver: "Nico Hülkenberg",
+				points: "37",
+				color: "#00FF00",
+			},
+			{
+				position: "11",
+				driver: "Fernando Alonso",
+				points: "36",
+				color: "#2D826D",
+			},
+			{
+				position: "12",
+				driver: "Carlos Sainz",
+				points: "32",
+				color: "#005AFF",
+			},
+			{
+				position: "13",
+				driver: "Lance Stroll",
+				points: "32",
+				color: "#2D826D",
+			},
+			{
+				position: "14",
+				driver: "Liam Lawson",
+				points: "30",
+				color: "#1E5BC6",
+			},
+			{
+				position: "15",
+				driver: "Esteban Ocon",
+				points: "28",
+				color: "#B6BABD",
+			},
+			{
+				position: "16",
+				driver: "Pierre Gasly",
+				points: "20",
+				color: "#0090FF",
+			},
+			{
+				position: "17",
+				driver: "Yuki Tsunoda",
+				points: "20",
+				color: "#6692FF",
+			},
+			{
+				position: "18",
+				driver: "Gabriel Bortoleto",
+				points: "18",
+				color: "#00FF00",
+			},
+			{
+				position: "19",
+				driver: "Oliver Bearman",
+				points: "18",
+				color: "#B6BABD",
+			},
+			{
+				position: "20",
+				driver: "Franco Colapinto",
+				points: "0",
+				color: "#0090FF",
+			},
+			{
+				position: "21",
+				driver: "Jack Doohan",
+				points: "0",
+				color: "#0090FF",
+			},
+		],
 	},
 };
 
-export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
+export const overviewMockIsRaceWeekendOngoing: OverviewData = {
 	raceWeekendProgress: {
 		name: "Race",
 		ongoing: true,
@@ -35,9 +167,141 @@ export const overviewMockIsRaceWeekendOngoing: OverviewInterface = {
 		timeToRaceWeekend: 0,
 	},
 	seasonProgress: {
-		previousRaceWinner: "Max Verstappen",
-		previousGrandPrix: "Qatar",
-		seasonProgress: 12,
+		previousRaceWinner: "George Russell",
+		previousGrandPrix: "Singapore Grand Prix",
+		seasonProgress: 18,
 		seasonTotalRaces: 24,
+	},
+	drivers: {
+		leader: "Oscar Piastri",
+		color: "#FF9800",
+		standings: [
+			{
+				position: "1",
+				driver: "Oscar Piastri",
+				points: "336",
+				color: "#FF9800",
+			},
+			{
+				position: "2",
+				driver: "Lando Norris",
+				points: "314",
+				color: "#FF9800",
+			},
+			{
+				position: "3",
+				driver: "Max Verstappen",
+				points: "273",
+				color: "#1E5BC6",
+			},
+			{
+				position: "4",
+				driver: "George Russell",
+				points: "237",
+				color: "#6CD3BF",
+			},
+			{
+				position: "5",
+				driver: "Charles Leclerc",
+				points: "173",
+				color: "#E8002D",
+			},
+			{
+				position: "6",
+				driver: "Lewis Hamilton",
+				points: "125",
+				color: "#E8002D",
+			},
+			{
+				position: "7",
+				driver: "Andrea Kimi Antonelli",
+				points: "88",
+				color: "#6CD3BF",
+			},
+			{
+				position: "8",
+				driver: "Alexander Albon",
+				points: "70",
+				color: "#005AFF",
+			},
+			{
+				position: "9",
+				driver: "Isack Hadjar",
+				points: "39",
+				color: "#6692FF",
+			},
+			{
+				position: "10",
+				driver: "Nico Hülkenberg",
+				points: "37",
+				color: "#00FF00",
+			},
+			{
+				position: "11",
+				driver: "Fernando Alonso",
+				points: "36",
+				color: "#2D826D",
+			},
+			{
+				position: "12",
+				driver: "Carlos Sainz",
+				points: "32",
+				color: "#005AFF",
+			},
+			{
+				position: "13",
+				driver: "Lance Stroll",
+				points: "32",
+				color: "#2D826D",
+			},
+			{
+				position: "14",
+				driver: "Liam Lawson",
+				points: "30",
+				color: "#1E5BC6",
+			},
+			{
+				position: "15",
+				driver: "Esteban Ocon",
+				points: "28",
+				color: "#B6BABD",
+			},
+			{
+				position: "16",
+				driver: "Pierre Gasly",
+				points: "20",
+				color: "#0090FF",
+			},
+			{
+				position: "17",
+				driver: "Yuki Tsunoda",
+				points: "20",
+				color: "#6692FF",
+			},
+			{
+				position: "18",
+				driver: "Gabriel Bortoleto",
+				points: "18",
+				color: "#00FF00",
+			},
+			{
+				position: "19",
+				driver: "Oliver Bearman",
+				points: "18",
+				color: "#B6BABD",
+			},
+			{
+				position: "20",
+				driver: "Franco Colapinto",
+				points: "0",
+				color: "#0090FF",
+			},
+			{
+				position: "21",
+				driver: "Jack Doohan",
+				points: "0",
+				color: "#0090FF",
+			},
+		],
 	},
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SideMenu from "./components/SideNav";
@@ -9,9 +9,9 @@ import "./styles/utils.scss";
 function App() {
 	const [sideNavOpen, setSideNavOpen] = useState(false);
 
-	function toggleSideNav() {
+	const toggleSideNav = useCallback(() => {
 		setSideNavOpen((prev) => !prev);
-	}
+	}, [setSideNavOpen]);
 
 	return (
 		<>

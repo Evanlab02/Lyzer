@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { OverviewInterface } from "../clients/interfaces/overviewInterfaces";
+import { OverviewData } from "../clients/interfaces/overviewInterfaces";
 import { getOverview } from "../clients/overviewClient";
 
-const EMPTY: OverviewInterface = {
+const EMPTY: OverviewData = {
 	raceWeekendProgress: {
 		name: "",
 		ongoing: false,
@@ -29,7 +29,7 @@ const EMPTY: OverviewInterface = {
 };
 
 export default function useOverview() {
-	const [data, setData] = useState<OverviewInterface>(EMPTY);
+	const [data, setData] = useState<OverviewData>(EMPTY);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<Error>();
 
@@ -37,6 +37,7 @@ export default function useOverview() {
 		try {
 			setIsLoading(true);
 			setError(undefined);
+			setData(EMPTY);
 			const result = await getOverview();
 			setData(result);
 		} catch (err) {
@@ -44,13 +45,9 @@ export default function useOverview() {
 		} finally {
 			setIsLoading(false);
 		}
-	}, []);
+	}, [setIsLoading, setData, setError]);
 
 	useEffect(() => {
-		void fetchData();
-	}, [fetchData]);
-
-	const refreshData = useCallback(() => {
 		void fetchData();
 	}, [fetchData]);
 
@@ -58,6 +55,6 @@ export default function useOverview() {
 		...data,
 		isLoading,
 		error,
-		refreshData,
+		fetchData,
 	};
 }

@@ -21,7 +21,7 @@ exports[`CardSection renders correctly 1`] = `
         Yes
       </h3>
       <progress
-        class="lyzer-progress lyzer-progress-complete"
+        class="lyzer-progress lyzer-progress-complete lyzer-progress-shadow"
         max="100"
         value="100"
       />
@@ -49,7 +49,7 @@ exports[`CardSection renders correctly 1`] = `
         </p>
       </h3>
       <progress
-        class="lyzer-progress lyzer-progress-complete"
+        class="lyzer-progress lyzer-progress-complete lyzer-progress-shadow"
         max="100"
         value="100"
       />
@@ -66,6 +66,17 @@ exports[`CardSection renders correctly 1`] = `
       >
         Driver leader
       </span>
+      <h3
+        class="lyzer-card-body"
+      >
+        Oscar Piastri
+      </h3>
+      <progress
+        class="lyzer-progress  lyzer-progress-shadow"
+        max="100"
+        style="--progress-bar-indicator-colour: #FF9800;"
+        value="100"
+      />
     </div>
   </div>
   <div
@@ -79,6 +90,14 @@ exports[`CardSection renders correctly 1`] = `
       >
         Constructor leader
       </span>
+      <h3
+        class="lyzer-card-body"
+      />
+      <progress
+        class="lyzer-progress  "
+        max="100"
+        value="0"
+      />
     </div>
   </div>
 </div>
@@ -102,10 +121,13 @@ exports[`CardSection renders loading state correctly 1`] = `
       <h3
         class="lyzer-card-body"
       >
-        No
+        <div
+          class="skeleton-loader skeleton-loader--rect "
+          style="width: 100%; height: 43px;"
+        />
       </h3>
       <progress
-        class="lyzer-progress lyzer-progress-incomplete"
+        class="lyzer-progress lyzer-progress-incomplete "
         max="100"
         value="0"
       />
@@ -125,10 +147,13 @@ exports[`CardSection renders loading state correctly 1`] = `
       <h3
         class="lyzer-card-body"
       >
-        Next session: Loading...
+        <div
+          class="skeleton-loader skeleton-loader--rect "
+          style="width: 100%; height: 43px;"
+        />
       </h3>
       <progress
-        class="lyzer-progress lyzer-progress-incomplete"
+        class="lyzer-progress lyzer-progress-incomplete "
         max="100"
         value="0"
       />
@@ -145,6 +170,19 @@ exports[`CardSection renders loading state correctly 1`] = `
       >
         Driver leader
       </span>
+      <h3
+        class="lyzer-card-body"
+      >
+        <div
+          class="skeleton-loader skeleton-loader--rect "
+          style="width: 100%; height: 43px;"
+        />
+      </h3>
+      <progress
+        class="lyzer-progress  "
+        max="100"
+        value="0"
+      />
     </div>
   </div>
   <div
@@ -158,6 +196,19 @@ exports[`CardSection renders loading state correctly 1`] = `
       >
         Constructor leader
       </span>
+      <h3
+        class="lyzer-card-body"
+      >
+        <div
+          class="skeleton-loader skeleton-loader--rect "
+          style="width: 100%; height: 43px;"
+        />
+      </h3>
+      <progress
+        class="lyzer-progress  "
+        max="100"
+        value="0"
+      />
     </div>
   </div>
 </div>

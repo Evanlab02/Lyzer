@@ -12,24 +12,39 @@ export default function Overview() {
 		raceWeekendProgress,
 		upcomingRaceWeekend,
 		seasonProgress,
-		refreshData,
+		drivers,
+		fetchData,
 	} = useOverview();
 
 	if (error) return <LyzerError error={error}></LyzerError>;
+
+	const { leader, color, standings } = drivers;
 
 	return (
 		<div className="page-content" data-testid="lyzer-overview-page">
 			<div className="flex-row justify-between items-center">
 				<h2>Overview</h2>
-				<RefreshCcw className="cursor-pointer" size={24} onClick={refreshData} />
+				<RefreshCcw
+					className="cursor-pointer"
+					size={24}
+					onClick={() => {
+						void fetchData();
+					}}
+				/>
 			</div>
 			<GridContainer>
 				<CardSection
 					loading={isLoading}
 					raceWeekendProgress={raceWeekendProgress}
 					upcomingRaceWeekend={upcomingRaceWeekend}
+					leader={leader}
+					leaderColor={color}
 				/>
-				<TableSection loading={isLoading} seasonProgress={seasonProgress} />
+				<TableSection
+					loading={isLoading}
+					seasonProgress={seasonProgress}
+					driverStandings={standings}
+				/>
 			</GridContainer>
 		</div>
 	);

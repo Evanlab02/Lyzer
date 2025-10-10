@@ -2,7 +2,7 @@
 
 exports[`Empty progress bar renders correctly 1`] = `
 <progress
-  class="lyzer-progress "
+  class="lyzer-progress  "
   data-testid="lyzer-progress-bar"
   max="100"
   value="0"
@@ -11,7 +11,7 @@ exports[`Empty progress bar renders correctly 1`] = `
 
 exports[`Progress bar renders correctly with 50% value 1`] = `
 <progress
-  class="lyzer-progress lyzer-progress-incomplete"
+  class="lyzer-progress lyzer-progress-incomplete lyzer-progress-shadow"
   data-testid="lyzer-progress-bar"
   max="100"
   value="50"
@@ -20,7 +20,7 @@ exports[`Progress bar renders correctly with 50% value 1`] = `
 
 exports[`Progress bar renders correctly with 80% value 1`] = `
 <progress
-  class="lyzer-progress lyzer-progress-almost"
+  class="lyzer-progress lyzer-progress-almost lyzer-progress-shadow"
   data-testid="lyzer-progress-bar"
   max="100"
   value="80"
@@ -29,7 +29,7 @@ exports[`Progress bar renders correctly with 80% value 1`] = `
 
 exports[`Progress bar renders correctly with 100% value 1`] = `
 <progress
-  class="lyzer-progress lyzer-progress-complete"
+  class="lyzer-progress lyzer-progress-complete lyzer-progress-shadow"
   data-testid="lyzer-progress-bar"
   max="100"
   value="100"
@@ -38,7 +38,7 @@ exports[`Progress bar renders correctly with 100% value 1`] = `
 
 exports[`Progress bar renders correctly with value 1`] = `
 <progress
-  class="lyzer-progress "
+  class="lyzer-progress  lyzer-progress-shadow"
   data-testid="lyzer-progress-bar"
   max="100"
   value="50"

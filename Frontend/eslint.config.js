@@ -39,7 +39,6 @@ export default tseslint.config(
 			"linebreak-style": ["error", "unix"],
 			quotes: ["error", "double"],
 			semi: ["error", "always"],
-			"react-hooks/exhaustive-deps": "off",
 			"prettier/prettier": "error",
 		},
 		settings: { react: { version: "detect" } },

@@ -12,10 +12,10 @@ it("should return the overview data that is not a race weekend", async () => {
 
 	await waitFor(() => {
 		expect(result.current.raceWeekendProgress).toStrictEqual({
-			name: "Practice 1",
+			name: "First Practice",
 			ongoing: false,
 			weekendProgress: 0,
-			startDateTime: "2025-02-22T12:00:00.000Z",
+			startDateTime: "2025-10-17T17:30:00Z",
 		});
 	});
 
@@ -23,16 +23,16 @@ it("should return the overview data that is not a race weekend", async () => {
 		expect(result.current.upcomingRaceWeekend).toStrictEqual({
 			isRaceWeekend: false,
 			status: "No",
-			timeToRaceWeekendProgress: 50,
-			timeToRaceWeekend: 4000,
+			timeToRaceWeekendProgress: 0,
+			timeToRaceWeekend: 10255,
 		});
 	});
 
 	await waitFor(() => {
 		expect(result.current.seasonProgress).toStrictEqual({
-			previousRaceWinner: "Max Verstappen",
-			previousGrandPrix: "Qatar",
-			seasonProgress: 12,
+			previousRaceWinner: "George Russell",
+			previousGrandPrix: "Singapore Grand Prix",
+			seasonProgress: 18,
 			seasonTotalRaces: 24,
 		});
 	});
@@ -62,9 +62,9 @@ it("should return the overview data that is a race weekend and ongoing", async (
 
 	await waitFor(() => {
 		expect(result.current.seasonProgress).toStrictEqual({
-			previousRaceWinner: "Max Verstappen",
-			previousGrandPrix: "Qatar",
-			seasonProgress: 12,
+			previousRaceWinner: "George Russell",
+			previousGrandPrix: "Singapore Grand Prix",
+			seasonProgress: 18,
 			seasonTotalRaces: 24,
 		});
 	});
@@ -89,7 +89,7 @@ it("should return new data when refreshData is called", async () => {
 	});
 
 	await waitFor(() => {
-		result.current.refreshData();
+		result.current.fetchData();
 	});
 
 	await waitFor(() => {

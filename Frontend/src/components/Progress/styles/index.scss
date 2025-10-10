@@ -1,40 +1,57 @@
 .lyzer-progress {
 	width: 100%;
 	border-radius: 8px;
-	border-width: 0px;
+	border: 0;
 	height: 6px;
 	background-color: var(--progress-bar-track-colour);
 	color: var(--progress-bar-indicator-colour);
-}
+	overflow: hidden;
+	-webkit-appearance: none;
+	appearance: none;
 
-.lyzer-progress::-webkit-progress-value,
-.lyzer-progress::-moz-progress-bar {
-	background-color: var(--progress-bar-indicator-colour);
+	&::-webkit-progress-bar {
+		background-color: var(--progress-bar-track-colour);
+		border-radius: 8px;
+	}
+
+	&::-webkit-progress-value {
+		background-color: var(--progress-bar-indicator-colour);
+		border-radius: 8px;
+	}
+
+	&::-moz-progress-bar {
+		background-color: var(--progress-bar-indicator-colour);
+		border-radius: 8px;
+	}
 }
 
 .lyzer-progress-complete {
-	color: var(--progress-bar-indicator-colour-complete) !important;
-}
+	color: var(--progress-bar-indicator-colour-complete);
 
-.lyzer-progress-complete::-webkit-progress-value,
-.lyzer-progress-complete::-moz-progress-bar {
-	background-color: var(--progress-bar-indicator-colour-complete) !important;
+	&::-webkit-progress-value,
+	&::-moz-progress-bar {
+		background-color: var(--progress-bar-indicator-colour-complete);
+	}
 }
 
 .lyzer-progress-almost {
-	color: var(--progress-bar-indicator-colour-almost) !important;
-}
+	color: var(--progress-bar-indicator-colour-almost);
 
-.lyzer-progress-almost::-webkit-progress-value,
-.lyzer-progress-almost::-moz-progress-bar {
-	background-color: var(--progress-bar-indicator-colour-almost) !important;
+	&::-webkit-progress-value,
+	&::-moz-progress-bar {
+		background-color: var(--progress-bar-indicator-colour-almost);
+	}
 }
 
 .lyzer-progress-incomplete {
-	color: var(--progress-bar-indicator-colour-incomplete) !important;
+	color: var(--progress-bar-indicator-colour-incomplete);
+
+	&::-webkit-progress-value,
+	&::-moz-progress-bar {
+		background-color: var(--progress-bar-indicator-colour-incomplete);
+	}
 }
 
-.lyzer-progress-incomplete::-webkit-progress-value,
-.lyzer-progress-incomplete::-moz-progress-bar {
-	background-color: var(--progress-bar-indicator-colour-incomplete) !important;
+.lyzer-progress-shadow {
+	box-shadow: 0 0 5px currentColor;
 }

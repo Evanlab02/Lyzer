@@ -1,0 +1,173 @@
+.lyzer-table-wrapper {
+	max-height: 600px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-radius: 4px;
+	position: relative;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--off-text-colour);
+		border-radius: 4px;
+
+		&:hover {
+			background: var(--secondary-colour);
+		}
+	}
+
+	scrollbar-width: thin;
+	scrollbar-color: var(--off-text-colour) transparent;
+}
+
+.lyzer-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	font-size: 15px;
+	font-variant-numeric: tabular-nums;
+
+	thead {
+		position: sticky;
+		top: 0;
+		z-index: 5;
+
+		tr {
+			th {
+				padding: 16px 20px;
+				font-weight: 600;
+				font-size: 11px;
+				text-transform: uppercase;
+				color: var(--off-text-colour);
+				letter-spacing: 1px;
+				border-bottom: 1px solid var(--card-border-colour);
+				background-color: var(--card-bg-colour);
+				white-space: nowrap;
+
+				&:first-child {
+					padding-left: 24px;
+				}
+
+				&:last-child {
+					padding-right: 24px;
+				}
+			}
+
+			@media (width < 800px) {
+				.th-vanish {
+					display: none;
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+			position: relative;
+
+			&:nth-child(even) {
+				background-color: rgba(255, 255, 255, 0.02);
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 24px;
+				right: 24px;
+				height: 1px;
+				background: var(--card-border-colour);
+				opacity: 0.3;
+			}
+
+			&:last-child::after {
+				display: none;
+			}
+
+			&:hover {
+				background-color: rgba(225, 6, 0, 0.04);
+				transform: translateX(2px);
+			}
+
+			td {
+				padding: 18px 20px;
+				color: var(--secondary-colour);
+				position: relative;
+				font-size: 16px;
+
+				&:first-child {
+					padding-left: 24px;
+				}
+
+				&:last-child {
+					padding-right: 24px;
+				}
+
+				&.with-border {
+					&::before {
+						content: "";
+						position: absolute;
+						left: 0;
+						top: 8px;
+						bottom: 8px;
+						width: 4px;
+						background: currentColor;
+						border-radius: 0 2px 2px 0;
+						box-shadow: 0 0 8px currentColor;
+					}
+				}
+
+				.table-alt-value {
+					display: none;
+				}
+
+				@media (width < 800px) {
+					.table-default-value {
+						display: none;
+					}
+
+					.table-alt-value {
+						display: inline;
+					}
+				}
+			}
+
+			@media (width < 800px) {
+				.td-vanish {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+[data-theme="light"] {
+	.lyzer-table tbody tr {
+		&:nth-child(even) {
+			background-color: rgba(0, 0, 0, 0.02);
+		}
+
+		&:hover {
+			background-color: rgba(225, 6, 0, 0.02);
+		}
+	}
+}
+
+[data-theme="dark"] {
+	.lyzer-table tbody tr {
+		&:nth-child(even) {
+			background-color: rgba(255, 255, 255, 0.03);
+		}
+
+		&:hover {
+			background-color: rgba(225, 6, 0, 0.06);
+		}
+	}
+}

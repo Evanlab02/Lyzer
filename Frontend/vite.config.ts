@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
 				provider: "v8",
 			},
 			setupFiles: ["./src/setupTests.ts"],
-			workspace: [
+			projects: [
 				{
 					extends: true,
 					test: {
