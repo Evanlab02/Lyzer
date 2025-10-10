@@ -15,6 +15,10 @@
 	cursor: pointer;
 }
 
+.text-xl {
+	font-size: large;
+}
+
 .text-sm {
 	font-size: 0.875rem;
 }
@@ -33,4 +37,8 @@
 
 .text-right {
 	text-align: right;
+}
+
+.fw-bold {
+	font-weight: bold;
 }

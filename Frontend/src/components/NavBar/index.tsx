@@ -24,7 +24,7 @@ export default function NavBar(props: Readonly<NavBarProps>) {
 				id="navbar-menu"
 				data-testid={menuToggleTestId}
 			/>
-			<div>L Y Z E R</div>
+			<div className="text-xl fw-bold">L Y Z E R</div>
 			{isDarkMode ? (
 				<Moon
 					id="theme-toggle-dark"

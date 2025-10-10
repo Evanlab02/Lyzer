@@ -98,7 +98,6 @@
 
 			td {
 				padding: 18px 20px;
-				color: var(--secondary-colour);
 				position: relative;
 				font-size: 16px;
 
@@ -117,7 +116,7 @@
 						left: 0;
 						top: 8px;
 						bottom: 8px;
-						width: 4px;
+						width: 5px;
 						background: currentColor;
 						border-radius: 0 2px 2px 0;
 						box-shadow: 0 0 8px currentColor;
@@ -145,6 +144,14 @@
 				}
 			}
 		}
+	}
+
+	.table-default-value {
+		color: var(--secondary-colour);
+	}
+
+	.table-alt-value {
+		color: var(--secondary-colour);
 	}
 }
 
