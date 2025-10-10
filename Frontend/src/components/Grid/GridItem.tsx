@@ -1,12 +1,12 @@
 import { PropsWithChildren } from "react";
 
 export interface FlexGridItemProps extends PropsWithChildren {
-    xs?: number
-    sm?: number
-    md?: number
-    lg?: number
-    xl?: number
-    xxl?: number
+	xs?: number;
+	sm?: number;
+	md?: number;
+	lg?: number;
+	xl?: number;
+	xxl?: number;
 }
 
 export default function GridItem(props: Readonly<FlexGridItemProps>) {
@@ -19,12 +19,10 @@ export default function GridItem(props: Readonly<FlexGridItemProps>) {
 		md && `flex-grid-col-md-${md.toString()}`,
 		lg && `flex-grid-col-lg-${lg.toString()}`,
 		xl && `flex-grid-col-xl-${xl.toString()}`,
-		xxl && `flex-grid-col-xxl-${xxl.toString()}`
-	].filter(Boolean).join(" ");
+		xxl && `flex-grid-col-xxl-${xxl.toString()}`,
+	]
+		.filter(Boolean)
+		.join(" ");
 
-	return (
-		<div className={classes}>
-			{children}
-		</div>
-	);
+	return <div className={classes}>{children}</div>;
 }

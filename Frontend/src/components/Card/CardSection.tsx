@@ -1,9 +1,8 @@
 import { PropsWithChildren } from "react";
 
 export interface CardSectionProps extends PropsWithChildren {
-    title: string;
-    subtitle: string;
-
+	title: string;
+	subtitle: string;
 }
 
 export default function CardSection(props: Readonly<CardSectionProps>) {

@@ -1,11 +1,11 @@
+import { ArrowLeftToLine } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeftToLine } from "lucide-react";
 import { ROUTES } from "../../constants/routes";
 import { useTheme } from "../../hooks/useTheme";
 import "./styles/index.scss";
 
-interface SideNavProps  {
+interface SideNavProps {
 	sideNavOpen: boolean;
 	testId?: string;
 	menuToggleTestId?: string;
@@ -14,15 +14,9 @@ interface SideNavProps  {
 }
 
 export default function SideMenu(props: Readonly<SideNavProps>) {
-	const { 
-		sideNavOpen, 
-		testId,
-		menuToggleTestId,
-		onCloseClick, 
-		onSideNavBlur
-	} = props;
+	const { sideNavOpen, testId, menuToggleTestId, onCloseClick, onSideNavBlur } = props;
 
-	const {isDarkMode} = useTheme();
+	const { isDarkMode } = useTheme();
 
 	const sideNavRef = useRef<HTMLDivElement>(null);
 
@@ -49,8 +43,13 @@ export default function SideMenu(props: Readonly<SideNavProps>) {
 	};
 
 	return (
-		<div id="side-menu" className={"side-nav " + (sideNavOpen ? "open" : "closed")} ref={sideNavRef} data-testid={testId}>
-			<ArrowLeftToLine 
+		<div
+			id="side-menu"
+			className={"side-nav " + (sideNavOpen ? "open" : "closed")}
+			ref={sideNavRef}
+			data-testid={testId}
+		>
+			<ArrowLeftToLine
 				onClick={onCloseClick}
 				onBlur={onSideNavBlur}
 				color={isDarkMode ? "white" : "black"}
@@ -63,15 +62,13 @@ export default function SideMenu(props: Readonly<SideNavProps>) {
 				Create hover style
 				Add logo to top of side menu */}
 				{Object.values(ROUTES).map((item, index) => (
-					<Link 
-						key={`linkContainer${index.toString()}`} 
+					<Link
+						key={`linkContainer${index.toString()}`}
 						className={"link-container " + (isSelectedRoute(item.route) ? "selected" : "")}
 						to={item.route}
 					>
 						{item.children}
-						<div key={`linkName${index.toString()}`}>
-							{item.name.toUpperCase()}
-						</div>
+						<div key={`linkName${index.toString()}`}>{item.name.toUpperCase()}</div>
 					</Link>
 				))}
 			</div>

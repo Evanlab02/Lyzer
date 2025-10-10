@@ -1,15 +1,12 @@
-import { vi, expect, it } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
-import ThemeProvider from "../../components/ThemeProvider";
+import { expect, it, vi } from "vitest";
 import NavBar from "../../components/NavBar";
+import ThemeProvider from "../../components/ThemeProvider";
 
 it("Navbar renders correctly", async () => {
 	const { findByTestId } = render(
 		<ThemeProvider>
-			<NavBar
-				testId="lyzer-nav-bar"
-				onMenuClick={vi.fn()}
-			/>
+			<NavBar testId="lyzer-nav-bar" onMenuClick={vi.fn()} />
 		</ThemeProvider>
 	);
 
@@ -19,7 +16,7 @@ it("Navbar renders correctly", async () => {
 
 it("Navbar onMenuClick is called", async () => {
 	const onMenuClick = vi.fn();
-    
+
 	const { findByTestId } = render(
 		<ThemeProvider>
 			<NavBar

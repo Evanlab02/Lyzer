@@ -1,9 +1,8 @@
-import { vi, expect, it } from "vitest";
-import { MemoryRouter } from "react-router-dom";
 import { fireEvent, render } from "@testing-library/react";
-import ThemeProvider from "../../components/ThemeProvider";
+import { MemoryRouter } from "react-router-dom";
+import { expect, it, vi } from "vitest";
 import SideMenu from "../../components/SideNav";
-
+import ThemeProvider from "../../components/ThemeProvider";
 
 it("SideNav renders closed correctly", async () => {
 	const { findByTestId } = render(

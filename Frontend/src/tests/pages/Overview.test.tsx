@@ -1,7 +1,7 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import Overview from "../../pages/Overview";
+import { expect, it } from "vitest";
 import { OverviewInterface } from "../../clients/interfaces/overviewInterfaces";
+import Overview from "../../pages/Overview";
 
 it("Given the user is on the overview page when it is race weekend and there is no ongoing session, then the user should be able to see what the next session of the race weekend will be.", async () => {
 	const mockData = {
@@ -9,26 +9,24 @@ it("Given the user is on the overview page when it is race weekend and there is 
 			name: "Qualifying 3",
 			ongoing: false,
 			weekendProgress: 80,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: true,
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
-			timeToRaceWeekend: 0
+			timeToRaceWeekend: 0,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
@@ -40,26 +38,24 @@ it("Given the user is on the overview page when it is race weekend and there is 
 			name: "Race",
 			ongoing: true,
 			weekendProgress: 100,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: true,
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
-			timeToRaceWeekend: 0
+			timeToRaceWeekend: 0,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
@@ -71,27 +67,25 @@ it("Given the user is on the overview page when it is race weekend and we are ha
 			name: "Qualifying 3",
 			ongoing: false,
 			weekendProgress: 50,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: true,
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
-			timeToRaceWeekend: 0
+			timeToRaceWeekend: 0,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
-	
+	const { findByTestId } = render(<Overview />);
+
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
 });
@@ -102,26 +96,24 @@ it("Given the user is on the overview page when it is not a race weekend, then t
 			name: "Practice 1",
 			ongoing: false,
 			weekendProgress: 0,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: false,
 			status: "Almost",
 			timeToRaceWeekendProgress: 90,
-			timeToRaceWeekend: 600
+			timeToRaceWeekend: 600,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
@@ -133,26 +125,24 @@ it("Given: User is on the overview page When: It is not race weekend Then: User 
 			name: "Practice 1",
 			ongoing: false,
 			weekendProgress: 0,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: false,
 			status: "No",
 			timeToRaceWeekendProgress: 50,
-			timeToRaceWeekend: 7200
+			timeToRaceWeekend: 7200,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
@@ -164,26 +154,24 @@ it("Given: User is on the overview page When: It is less than 24 hours to go unt
 			name: "Practice 1",
 			ongoing: false,
 			weekendProgress: 0,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: false,
 			status: "Almost",
 			timeToRaceWeekendProgress: 80,
-			timeToRaceWeekend: 600
+			timeToRaceWeekend: 600,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();
@@ -195,26 +183,24 @@ it("Given: User is on the overview page When: It is race weekend Then: User shou
 			name: "Race",
 			ongoing: true,
 			weekendProgress: 100,
-			startDateTime: "2025-02-22T12:00:00.000Z"
+			startDateTime: "2025-02-22T12:00:00.000Z",
 		},
 		upcomingRaceWeekend: {
 			isRaceWeekend: true,
 			status: "Yes",
 			timeToRaceWeekendProgress: 100,
-			timeToRaceWeekend: 0
+			timeToRaceWeekend: 0,
 		},
 		seasonProgress: {
 			previousRaceWinner: "Max Verstappen",
 			previousGrandPrix: "Qatar",
 			seasonProgress: 12,
-			seasonTotalRaces: 24
-		}
+			seasonTotalRaces: 24,
+		},
 	} as OverviewInterface;
 
 	fetchMock.mockResponseOnce(JSON.stringify(mockData));
-	const { findByTestId } = render(
-		<Overview />
-	);
+	const { findByTestId } = render(<Overview />);
 
 	const overviewPage = await findByTestId("lyzer-overview-page");
 	expect(overviewPage).toMatchSnapshot();

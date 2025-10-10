@@ -25,7 +25,6 @@ export function convertMinutesToHighestDenominator(minutes: number) {
 		return `${hours.toString()} ${suffix}`;
 	}
 
-    
 	const minutesFloored = Math.round(minutes);
 	const suffix = minutesFloored > 1 || minutesFloored === 0 ? "minutes" : "minute";
 	return `${minutesFloored.toString()} ${suffix}`;

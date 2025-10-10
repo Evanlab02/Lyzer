@@ -45,4 +45,3 @@ it("convertMinutesToHighestDenominator should return the correct for 0 minutes",
 	const result = convertMinutesToHighestDenominator(0);
 	expect(result).toBe("0 minutes");
 });
-

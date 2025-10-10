@@ -1,16 +1,16 @@
 import { OverviewInterface } from "./interfaces/overviewInterfaces";
 
-export async function getOverview() : Promise<OverviewInterface> {
+export async function getOverview(): Promise<OverviewInterface> {
 	const response = await fetch("/apis/lyzer/api/v1/lyzer/overview", {
 		method: "GET",
 		headers: {
-			"Content-Type": "application/json"
-		}
+			"Content-Type": "application/json",
+		},
 	});
 
 	if (!response.ok || response.status !== 200) {
 		throw new Error("Failed to fetch overview data.");
 	}
 
-	return await response.json() as OverviewInterface;
+	return (await response.json()) as OverviewInterface;
 }

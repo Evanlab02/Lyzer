@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { RaceWeekendProgress, SeasonProgress, UpcomingRaceWeekend } from "../clients/interfaces/overviewInterfaces";
+import {
+	RaceWeekendProgress,
+	SeasonProgress,
+	UpcomingRaceWeekend,
+} from "../clients/interfaces/overviewInterfaces";
 import { getOverview } from "../clients/overviewClient";
 
 export default function useOverview() {
@@ -29,6 +33,6 @@ export default function useOverview() {
 		raceWeekendProgress,
 		upcomingRaceWeekend,
 		seasonProgress,
-		refreshData
+		refreshData,
 	};
 }

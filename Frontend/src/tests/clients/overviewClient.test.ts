@@ -1,7 +1,9 @@
 import { expect, it } from "vitest";
 import { getOverview } from "../../clients/overviewClient";
-import { overviewMockIsNotRaceWeekend, overviewMockIsRaceWeekendOngoing } from "../mocks/overviewMock";
-
+import {
+	overviewMockIsNotRaceWeekend,
+	overviewMockIsRaceWeekendOngoing,
+} from "../mocks/overviewMock";
 
 it("getOverview returns overview data that is not a race weekend", async () => {
 	fetchMock.mockResponseOnce(JSON.stringify(overviewMockIsNotRaceWeekend));
@@ -24,4 +26,3 @@ it("getOverview fails when the response is not ok", async () => {
 
 	await expect(callWrapper).rejects.toThrow("Failed to fetch overview data.");
 });
-

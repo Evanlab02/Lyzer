@@ -1,13 +1,9 @@
-import { expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { expect, it } from "vitest";
 import Card, { CardBody, CardHeading, CardSection } from "../../components/Card";
 
 it("Basic card renders correctly", async () => {
-	const { findByTestId } = render(
-		<Card testId="lyzer-card">
-			Basic Card
-		</Card>
-	);
+	const { findByTestId } = render(<Card testId="lyzer-card">Basic Card</Card>);
 
 	const card = await findByTestId("lyzer-card");
 	expect(card).toMatchSnapshot();
@@ -16,9 +12,7 @@ it("Basic card renders correctly", async () => {
 it("Card with heading renders correctly", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardHeading>
-                Card Heading
-			</CardHeading>
+			<CardHeading>Card Heading</CardHeading>
 		</Card>
 	);
 
@@ -29,9 +23,7 @@ it("Card with heading renders correctly", async () => {
 it("Card with body renders correctly", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardBody>
-                Card Body
-			</CardBody>
+			<CardBody>Card Body</CardBody>
 		</Card>
 	);
 
@@ -42,12 +34,8 @@ it("Card with body renders correctly", async () => {
 it("Card with heading and body renders correctly", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardHeading>
-                Card Heading
-			</CardHeading>
-			<CardBody>
-                    Card Body
-			</CardBody>
+			<CardHeading>Card Heading</CardHeading>
+			<CardBody>Card Body</CardBody>
 		</Card>
 	);
 
@@ -58,10 +46,7 @@ it("Card with heading and body renders correctly", async () => {
 it("Card with section renders correctly", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardSection
-				title="Card Section Title"
-				subtitle="Card Section Subtitle"
-			/>
+			<CardSection title="Card Section Title" subtitle="Card Section Subtitle" />
 		</Card>
 	);
 
@@ -72,10 +57,7 @@ it("Card with section renders correctly", async () => {
 it("Card with section renders correctly, including children", async () => {
 	const { findByTestId } = render(
 		<Card testId="lyzer-card">
-			<CardSection
-				title="Card Section Title"
-				subtitle="Card Section Subtitle"
-			>
+			<CardSection title="Card Section Title" subtitle="Card Section Subtitle">
 				<p>Card Section Content</p>
 			</CardSection>
 		</Card>

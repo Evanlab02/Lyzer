@@ -1,0 +1,20 @@
+.lyzer-error {
+	background-color: var(--card-bg-colour);
+	border: 1px solid var(--lyzer-error);
+	color: var(--lyzer-error);
+	border-radius: 8px;
+	padding: 16px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 1rem;
+
+	.lyzer-error-icon {
+		flex-shrink: 0;
+	}
+
+	.lyzer-error-message {
+		font-size: 14px;
+		font-weight: 500;
+	}
+}
