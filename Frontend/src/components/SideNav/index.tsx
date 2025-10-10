@@ -66,6 +66,7 @@ export default function SideMenu(props: Readonly<SideNavProps>) {
 						key={`linkContainer${index.toString()}`}
 						className={"link-container " + (isSelectedRoute(item.route) ? "selected" : "")}
 						to={item.route}
+						onClick={onCloseClick}
 					>
 						{item.children}
 						<div key={`linkName${index.toString()}`}>{item.name.toUpperCase()}</div>

@@ -37,7 +37,9 @@ exports[`Navbar renders correctly 1`] = `
       y2="18"
     />
   </svg>
-  <div>
+  <div
+    class="text-xl fw-bold"
+  >
     L Y Z E R
   </div>
   <svg

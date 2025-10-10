@@ -8,7 +8,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-	{ ignores: ["dist"] },
+	{ ignores: ["dist", "coverage"] },
 	{
 		extends: [
 			js.configs.recommended,
@@ -20,7 +20,7 @@ export default tseslint.config(
 			ecmaVersion: 2020,
 			globals: globals.browser,
 			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+				project: ["./tsconfig.node.json", "./tsconfig.app.json", "./tsconfig.test.json"],
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
@@ -39,7 +39,6 @@ export default tseslint.config(
 			"linebreak-style": ["error", "unix"],
 			quotes: ["error", "double"],
 			semi: ["error", "always"],
-			"react-hooks/exhaustive-deps": "off",
 			"prettier/prettier": "error",
 		},
 		settings: { react: { version: "detect" } },

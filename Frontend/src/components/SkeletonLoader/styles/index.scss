@@ -1,0 +1,29 @@
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+.skeleton-loader {
+	background: var(--progress-bar-track-colour);
+	animation: pulse 2s ease-in-out infinite;
+	border-radius: 4px;
+
+	&--text {
+		height: 1em;
+		margin-bottom: 0.5em;
+		border-radius: 2px;
+	}
+
+	&--circle {
+		border-radius: 50%;
+	}
+
+	&--rect {
+		border-radius: 4px;
+	}
+}

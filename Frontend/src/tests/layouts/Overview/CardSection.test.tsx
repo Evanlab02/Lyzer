@@ -5,7 +5,23 @@ import CardSection from "../../../layouts/Overview/CardSection";
 it("CardSection renders loading state correctly", async () => {
 	const { findByTestId } = render(
 		<div data-testid="lyzer-card-section">
-			<CardSection raceWeekendProgress={undefined} upcomingRaceWeekend={undefined} />
+			<CardSection
+				loading
+				leader=""
+				leaderColor=""
+				raceWeekendProgress={{
+					name: "",
+					ongoing: false,
+					weekendProgress: 0,
+					startDateTime: undefined,
+				}}
+				upcomingRaceWeekend={{
+					isRaceWeekend: false,
+					status: "",
+					timeToRaceWeekend: 0,
+					timeToRaceWeekendProgress: 0,
+				}}
+			/>
 		</div>
 	);
 
@@ -17,6 +33,9 @@ it("CardSection renders correctly", async () => {
 	const { findByTestId } = render(
 		<div data-testid="lyzer-card-section">
 			<CardSection
+				loading={false}
+				leader="Oscar Piastri"
+				leaderColor="#FF9800"
 				raceWeekendProgress={{
 					name: "Race",
 					ongoing: true,

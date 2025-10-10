@@ -15,10 +15,30 @@
 	cursor: pointer;
 }
 
+.text-xl {
+	font-size: large;
+}
+
 .text-sm {
 	font-size: 0.875rem;
 }
 
 .m-0 {
 	margin: 0;
+}
+
+.w-full {
+	width: 100%;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.fw-bold {
+	font-weight: bold;
 }

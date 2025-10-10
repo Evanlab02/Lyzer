@@ -4,7 +4,45 @@ exports[`Navigation renders 404 page correctly 1`] = `
 <div
   data-testid="lyzer-not-found-page"
 >
-  Page not found
+  <div
+    class="lyzer-error"
+  >
+    <svg
+      class="lucide lucide-circle-alert lyzer-error-icon"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="8"
+        y2="12"
+      />
+      <line
+        x1="12"
+        x2="12.01"
+        y1="16"
+        y2="16"
+      />
+    </svg>
+    <span
+      class="lyzer-error-message"
+    >
+      Page not found.
+    </span>
+  </div>
 </div>
 `;
 
@@ -66,13 +104,13 @@ exports[`Navigation renders overview page correctly 1`] = `
           <p
             class="text-sm m-0"
           >
-            3 days to go
+            1 week to go
           </p>
         </h3>
         <progress
-          class="lyzer-progress lyzer-progress-incomplete"
+          class="lyzer-progress lyzer-progress-incomplete "
           max="100"
-          value="50"
+          value="0"
         />
       </div>
     </div>
@@ -90,15 +128,15 @@ exports[`Navigation renders overview page correctly 1`] = `
         <h3
           class="lyzer-card-body"
         >
-          Next session: Practice 1
+          Next session: First Practice
           <p
             class="text-sm m-0"
           >
-            Sat, Feb 22, 2025, 12:00 PM
+            Fri, Oct 17, 2025, 5:30 PM
           </p>
         </h3>
         <progress
-          class="lyzer-progress lyzer-progress-incomplete"
+          class="lyzer-progress lyzer-progress-incomplete "
           max="100"
           value="0"
         />
@@ -115,6 +153,17 @@ exports[`Navigation renders overview page correctly 1`] = `
         >
           Driver leader
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          Oscar Piastri
+        </h3>
+        <progress
+          class="lyzer-progress  lyzer-progress-shadow"
+          max="100"
+          style="--progress-bar-indicator-colour: #FF9800;"
+          value="100"
+        />
       </div>
     </div>
     <div
@@ -128,6 +177,14 @@ exports[`Navigation renders overview page correctly 1`] = `
         >
           Constructor leader
         </span>
+        <h3
+          class="lyzer-card-body"
+        />
+        <progress
+          class="lyzer-progress  "
+          max="100"
+          value="0"
+        />
       </div>
     </div>
     <div
@@ -136,6 +193,11 @@ exports[`Navigation renders overview page correctly 1`] = `
       <div
         class="lyzer-card"
       >
+        <span
+          class="lyzer-card-heading"
+        >
+          Season Information
+        </span>
         <h3
           class="lyzer-card-body"
         >
@@ -145,7 +207,7 @@ exports[`Navigation renders overview page correctly 1`] = `
             <h3
               class="lyzer-card-section-title"
             >
-              Max Verstappen
+              George Russell
             </h3>
             <p
               class="lyzer-card-section-subtitle"
@@ -162,7 +224,7 @@ exports[`Navigation renders overview page correctly 1`] = `
             <h3
               class="lyzer-card-section-title"
             >
-              Qatar
+              Singapore Grand Prix
             </h3>
             <p
               class="lyzer-card-section-subtitle"
@@ -179,7 +241,7 @@ exports[`Navigation renders overview page correctly 1`] = `
             <h3
               class="lyzer-card-section-title"
             >
-              12 of 24 races
+              18 of 24 races
             </h3>
             <p
               class="lyzer-card-section-subtitle"
@@ -204,6 +266,9 @@ exports[`Navigation renders overview page correctly 1`] = `
         >
           Constructor Standings
         </span>
+        <h3
+          class="lyzer-card-body"
+        />
       </div>
     </div>
     <div
@@ -217,6 +282,1670 @@ exports[`Navigation renders overview page correctly 1`] = `
         >
           Driver Standings
         </span>
+        <h3
+          class="lyzer-card-body"
+        >
+          <div
+            class="lyzer-table-wrapper"
+          >
+            <table
+              class="lyzer-table"
+            >
+              <thead>
+                <tr>
+                  <th
+                    class="text-left "
+                    style="width: 70px;"
+                  >
+                    Pos
+                  </th>
+                  <th
+                    class="text-left "
+                  >
+                    Driver
+                  </th>
+                  <th
+                    class="text-left "
+                    style="width: 100px;"
+                  >
+                    Points
+                  </th>
+                  <th
+                    class="text-left th-vanish"
+                    style="width: 100px;"
+                  >
+                    Gap
+                  </th>
+                  <th
+                    class="text-right th-vanish"
+                    style="width: 100px;"
+                  >
+                    To Leader
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(255, 152, 0); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      1
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Oscar Piastri
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      PIA
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      336
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      336
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      -
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      -
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      -
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      -
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(255, 152, 0); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Lando Norris
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      NOR
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      314
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      314
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      22
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      22
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      22
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      22
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(30, 91, 198); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      3
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      3
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Max Verstappen
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      VER
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      273
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      273
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      41
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      41
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      63
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      63
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(108, 211, 191); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      4
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      4
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      George Russell
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      RUS
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      237
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      237
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      36
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      36
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      99
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      99
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(232, 0, 45); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      5
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      5
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Charles Leclerc
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      LEC
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      173
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      173
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      64
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      64
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      163
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      163
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(232, 0, 45); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      6
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      6
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Lewis Hamilton
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      HAM
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      125
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      125
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      48
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      48
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      211
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      211
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(108, 211, 191); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      7
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      7
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Andrea Kimi Antonelli
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      ANT
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      88
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      88
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      37
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      37
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      248
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      248
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 90, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      8
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      8
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Alexander Albon
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      ALB
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      70
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      70
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      18
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      266
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      266
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(102, 146, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      9
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      9
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Isack Hadjar
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      HAD
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      39
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      39
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      31
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      31
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      297
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      297
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 255, 0); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      10
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      10
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Nico Hülkenberg
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      HÜL
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      37
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      37
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      299
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      299
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(45, 130, 109); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      11
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      11
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Fernando Alonso
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      ALO
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      36
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      36
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      1
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      300
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      300
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 90, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      12
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      12
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Carlos Sainz
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      SAI
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      32
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      32
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      4
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      4
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      304
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      304
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(45, 130, 109); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      13
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      13
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Lance Stroll
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      STR
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      32
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      32
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      304
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      304
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(30, 91, 198); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      14
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      14
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Liam Lawson
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      LAW
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      30
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      30
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      306
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      306
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(182, 186, 189); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      15
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      15
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Esteban Ocon
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      OCO
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      28
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      28
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      308
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      308
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 144, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      16
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      16
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Pierre Gasly
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      GAS
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      20
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      8
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      8
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      316
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      316
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(102, 146, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      17
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      17
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Yuki Tsunoda
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      TSU
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      20
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      316
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      316
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 255, 0); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      18
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Gabriel Bortoleto
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      BOR
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      18
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      2
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      318
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      318
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(182, 186, 189); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      19
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      19
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Oliver Bearman
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      BEA
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      18
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      318
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      318
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 144, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      20
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Franco Colapinto
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      COL
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      18
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      336
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      336
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="text-left with-border  undefined"
+                    style="color: rgb(0, 144, 255); font-weight: 700; width: 70px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      21
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      21
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 500;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      Jack Doohan
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      DOO
+                    </span>
+                  </td>
+                  <td
+                    class="text-left  undefined"
+                    style="font-weight: 700; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-left td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      0
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      0
+                    </span>
+                  </td>
+                  <td
+                    class="text-right td-vanish off-text-color"
+                    style="font-weight: 600; width: 100px;"
+                  >
+                    <span
+                      class="table-default-value"
+                    >
+                      336
+                    </span>
+                    <span
+                      class="table-alt-value"
+                    >
+                      336
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </h3>
       </div>
     </div>
   </div>
